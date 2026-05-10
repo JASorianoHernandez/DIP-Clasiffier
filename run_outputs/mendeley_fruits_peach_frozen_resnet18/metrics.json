@@ -1,0 +1,52 @@
+{
+  "dataset": "mendeley_fruits",
+  "condition": "frozen",
+  "backbone_name": "resnet18",
+  "num_classes": 2,
+  "class_names": [
+    "fresh",
+    "rotten"
+  ],
+  "unfreeze_layers": 0,
+  "use_head": false,
+  "best_acc": 0.92437,
+  "acc_history": [
+    {
+      "epoch": 5,
+      "acc": 0.890756
+    },
+    {
+      "epoch": 10,
+      "acc": 0.907563
+    },
+    {
+      "epoch": 15,
+      "acc": 0.92437
+    },
+    {
+      "epoch": 20,
+      "acc": 0.915966
+    },
+    {
+      "epoch": 25,
+      "acc": 0.915966
+    },
+    {
+      "epoch": 30,
+      "acc": 0.92437
+    }
+  ],
+  "config": {
+    "epochs": 30,
+    "batch_size": 32,
+    "num_workers": 4,
+    "lr": 0.001,
+    "lr_backbone": 1e-05,
+    "embedding_dim": 128,
+    "eval_every": 5,
+    "save_every": 10,
+    "weight_decay": 0.0001,
+    "val_split": 0.2,
+    "seed": 42
+  }
+}

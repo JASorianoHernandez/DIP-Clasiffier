@@ -1,0 +1,53 @@
+{
+  "dataset": "mendeley_fruitvision",
+  "condition": "layer4",
+  "backbone_name": "resnet18",
+  "num_classes": 3,
+  "class_names": [
+    "formalin",
+    "fresh",
+    "rotten"
+  ],
+  "unfreeze_layers": 1,
+  "use_head": false,
+  "best_acc": 0.871,
+  "acc_history": [
+    {
+      "epoch": 5,
+      "acc": 0.801576
+    },
+    {
+      "epoch": 10,
+      "acc": 0.834072
+    },
+    {
+      "epoch": 15,
+      "acc": 0.871
+    },
+    {
+      "epoch": 20,
+      "acc": 0.867061
+    },
+    {
+      "epoch": 25,
+      "acc": 0.86903
+    },
+    {
+      "epoch": 30,
+      "acc": 0.866076
+    }
+  ],
+  "config": {
+    "epochs": 30,
+    "batch_size": 32,
+    "num_workers": 4,
+    "lr": 0.001,
+    "lr_backbone": 1e-05,
+    "embedding_dim": 128,
+    "eval_every": 5,
+    "save_every": 10,
+    "weight_decay": 0.0001,
+    "val_split": 0.2,
+    "seed": 42
+  }
+}

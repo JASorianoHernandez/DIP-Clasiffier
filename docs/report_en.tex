@@ -1,0 +1,511 @@
+\documentclass[12pt, a4paper]{article}
+
+% ── Packages ─────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\setlength{\headheight}{13.6pt}
+\addtolength{\topmargin}{-1.6pt}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage[hidelinks]{hyperref}
+
+% ── Section formatting ────────────────────────────────────────────────────────
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+
+% ── Header / Footer ───────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Korean Food Freshness Classification}
+\lhead{\small Preliminary Report --- 2026}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Graphics path ─────────────────────────────────────────────────────────────
+\graphicspath{{figures/}}
+
+% ── Code style ────────────────────────────────────────────────────────────────
+\lstset{
+    basicstyle=\small\ttfamily,
+    frame=single,
+    language=Python,
+    breaklines=true,
+    showstringspaces=false,
+    numbers=none,
+}
+
+% ── Caption setup ─────────────────────────────────────────────────────────────
+\captionsetup{font=small, labelfont=bf, skip=6pt}
+
+% ── Table column types ────────────────────────────────────────────────────────
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── Title Page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+\centering
+\vspace*{2.5cm}
+
+{\LARGE\bfseries Freshness Classification of Korean Food}\\[3.5cm]
+
+{\normalsize Digital Image Processing}\\[0.4em]
+{\normalsize 2026}\\[3cm]
+
+\hrule
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Datasets}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Available Datasets}
+
+Seven publicly available datasets were identified and surveyed.
+Table~\ref{tab:datasets} summarizes their properties.
+Together they cover fruits, vegetables, and citrus varieties, with fresh/rotten
+binary labels and, in one case, a three-class annotation including formalin-mixed
+samples.
+One dataset (Ripening Stages) uses an object detection format (YOLOv5) rather
+than image classification and is therefore excluded from training experiments.
+
+\begin{table}[h]
+\centering
+\caption{Datasets surveyed. $^{\dagger}$Object detection format --- excluded from classification experiments.}
+\label{tab:datasets}
+\begin{tabular}{L{3.0cm} L{3.6cm} C{2.6cm} C{1.4cm} C{1.5cm}}
+\toprule
+\textbf{Dataset} & \textbf{Categories} & \textbf{Classes} & \textbf{Images} & \textbf{Source} \\
+\midrule
+FruitVision
+    & Apple, Banana, Grape, Mango, Orange
+    & Fresh / Formalin / Rotten
+    & 10,154 & Mendeley \\[4pt]
+Lemon Varieties
+    & 7 lemon varieties
+    & Fresh / Rotten
+    & 1,956 & Mendeley \\[4pt]
+Ripening Stages$^{\dagger}$
+    & Strawberry, Avocado
+    & Unripe / Partial / Ripe / Rotten
+    & --- & Mendeley \\[4pt]
+Fruits Classification
+    & Peach, Pomegranate, Strawberry
+    & Fresh / Rotten
+    & 1,655 & Mendeley \\[4pt]
+Fruits Quality
+    & 12 mixed fruits
+    & Fresh / Rotten
+    & 359 & Kaggle \\[4pt]
+Fruits Fresh/Rotten
+    & Apple, Banana, Orange
+    & Fresh / Rotten
+    & 13,599 & Kaggle \\[4pt]
+Fresh \& Stale
+    & Apple, Banana, Cucumber, Okra, Orange, Potato, Tomato
+    & Fresh / Rotten
+    & 27,317 & Kaggle \\
+\midrule
+\multicolumn{3}{l}{\textbf{Total (classification datasets)}}
+    & \textbf{55,040} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+None of the available datasets contains Korean food items.
+The FruitVision dataset is the most challenging due to its three-class structure,
+where formalin-mixed samples are visually similar to fresh ones --- making it
+a useful proxy for detecting subtle spoilage indicators, analogous to the
+difficulty expected in fermented Korean food.
+
+\subsection{Korean Food Dataset --- Proposal}
+
+No labeled dataset for Korean food freshness currently exists in public
+repositories.
+Table~\ref{tab:korean} lists the target food categories and classification
+states for the proposed dataset.
+
+\begin{table}[h]
+\centering
+\caption{Target categories for the proposed Korean food freshness dataset.}
+\label{tab:korean}
+\begin{tabular}{L{3cm} C{2.5cm} C{3.2cm} L{4cm}}
+\toprule
+\textbf{Category} & \textbf{Romanization} & \textbf{States} & \textbf{Notes} \\
+\midrule
+Kimchi           & kimchi       & Fresh / Rotten             & Color and mold during spoilage \\
+Rice cake        & tteok        & Fresh / Rotten             & Mold visible on surface \\
+Side dishes      & banchan      & Fresh / Rotten             & Vegetable-based, wilting \\
+Cooked rice      & bap          & Fresh / Rotten             & Mold indicator \\
+Korean apple     & sagwa        & Fresh / Rotten             & Similar to Western apple \\
+Mandarin (Jeju)  & gyul         & Fresh / Semifresh / Rotten & Jeju variety, citrus \\
+Shine muscat     & shine muscat & Fresh / Semifresh / Rotten & High-value grape variety \\
+Strawberry       & ttalgi       & Fresh / Rotten             & Fast spoilage \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Methodology}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Overall Pipeline}
+
+The classification pipeline consists of four sequential stages:
+
+\begin{center}
+\begin{tabular}{clL{7.5cm}}
+\toprule
+\textbf{Stage} & \textbf{Component} & \textbf{Description} \\
+\midrule
+1 & Data preparation   & Raw datasets reorganized into unified
+                          \texttt{food/state/} folder structure \\
+2 & Feature extraction & Pre-trained CNN backbone (ImageNet weights),
+                          frozen or partially unfrozen \\
+3 & Projection head    & $d_\text{out} \!\to\! 256 \!\to\! 128$
+                          linear projection with ReLU \\
+4 & Classification     & Linear layer $128 \!\to\! C$
+                          with cross-entropy loss \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All input images are resized to $224 \times 224$ pixels.
+Training images undergo data augmentation (random resized crop, horizontal flip,
+$\pm 30^{\circ}$ rotation, color jitter on brightness/contrast/saturation/hue,
+Gaussian blur) to increase robustness to lighting and viewpoint variation.
+Validation images are center-cropped without augmentation.
+All images are normalized with ImageNet channel statistics
+($\mu = [0.485, 0.456, 0.406]$, $\sigma = [0.229, 0.224, 0.225]$).
+
+\subsection{Backbone Architectures}
+
+Six backbone architectures are considered.
+Table~\ref{tab:backbones} summarizes their properties.
+Preliminary experiments are conducted with ResNet-18 as the primary backbone.
+EfficientNet-B0 is identified as the recommended architecture for the final
+Korean food classifier based on its accuracy-to-parameter ratio and demonstrated
+suitability for small datasets.
+
+\begin{table}[h]
+\centering
+\caption{Backbone architectures considered in this study.}
+\label{tab:backbones}
+\begin{tabular}{lC{2cm}C{2cm}C{2.2cm}C{1.5cm}}
+\toprule
+\textbf{Model} & \textbf{Params} & \textbf{Out dim} &
+\makecell{\textbf{ImageNet}\\\textbf{Top-1}} & \textbf{Family} \\
+\midrule
+ResNet-18       & 11.2M &  512 & 69.8\% & ResNet      \\
+ResNet-34       & 21.3M &  512 & 73.3\% & ResNet      \\
+ResNet-50       & 25.6M & 2048 & 76.1\% & ResNet      \\
+MobileNetV3-S   &  2.5M &  576 & 67.7\% & MobileNet   \\
+EfficientNet-B0 &  5.3M & 1280 & 77.1\% & EfficientNet \\
+EfficientNet-B2 &  9.1M & 1408 & 80.1\% & EfficientNet \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Training Conditions}
+
+Four training conditions form an ablation study to determine the optimal degree
+of backbone fine-tuning.
+Conditions C3 and C4 (with projection head) are the focus of this study,
+as the additional non-linear projection consistently improves performance over
+a direct linear probe.
+
+\begin{table}[h]
+\centering
+\caption{Training conditions (ablation study).}
+\label{tab:conditions}
+\begin{tabular}{llllL{4cm}}
+\toprule
+\textbf{ID} & \textbf{Name} & \textbf{Backbone} & \textbf{Head} &
+\textbf{Description} \\
+\midrule
+C1 & \texttt{frozen}       & Frozen      & Linear only         & No backbone adaptation \\
+C2 & \texttt{layer4}       & Layer4 free & Linear only         & Partial fine-tuning, no projection \\
+C3 & \texttt{head\_frozen} & Frozen      & Projection + Linear & Full head, frozen backbone \\
+C4 & \texttt{head\_layer4} & Layer4 free & Projection + Linear & Full head + partial fine-tuning \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All models are trained with Adam optimizer
+($\text{lr} = 10^{-3}$, $\text{lr}_\text{backbone} = 10^{-5}$,
+weight decay $= 10^{-4}$) and cosine annealing over 50 epochs.
+Batch size is 32.
+
+\subsection{Label Modes}
+
+Two classification targets are evaluated:
+
+\begin{itemize}
+    \item \textbf{state}: classes correspond to freshness states only
+    (fresh / rotten, or fresh / formalin / rotten). The model learns
+    state-invariant features across all food categories.
+    \item \textbf{fruit\_state}: classes correspond to food-state combinations
+    (e.g., \texttt{apple\_fresh}, \texttt{apple\_rotten}). The model
+    simultaneously learns food identity and freshness state, enabling a richer
+    confusion matrix analysis.
+\end{itemize}
+
+\subsection{Evaluation Metrics}
+
+Given the potential class imbalance in real-world Korean food datasets,
+accuracy alone is insufficient.
+We report:
+\begin{itemize}
+    \item \textbf{Macro F1-score}: harmonic mean of precision and recall,
+    averaged equally across classes regardless of class frequency.
+    \item \textbf{Macro Precision and Recall}: sensitivity to false positives
+    and false negatives per class.
+    \item \textbf{Confusion matrix}: row-normalized per true class, to identify
+    systematic misclassification patterns.
+\end{itemize}
+For food safety applications, recall on the \textit{rotten} class is
+particularly critical: a false negative (rotten food classified as fresh)
+carries higher risk than a false positive.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Preliminary Experiments}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Setup}
+
+All experiments in this section use ResNet-18 with ImageNet pre-trained weights.
+Conditions C3 and C4 (with projection head) are the primary focus.
+A stratified 80/20 train/validation split is applied to all datasets.
+Experiments marked \textit{pending} are in progress at the time of this report.
+
+\subsection{Results}
+
+Table~\ref{tab:results} reports the best macro F1-score achieved per dataset
+and condition combination.
+
+\begin{table}[h]
+\centering
+\caption{Best macro F1-score (\%) --- ResNet-18, conditions C3 and C4.
+\textit{Pending}: experiment in progress.
+N/A: fruit\_state not applicable (single-fruit dataset).
+Bold: best result per dataset.}
+\label{tab:results}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lC{2cm}C{2.2cm}C{2cm}C{2.2cm}}
+\toprule
+\multirow{2}{*}{\textbf{Dataset}}
+    & \multicolumn{2}{c}{\textbf{C3: head\_frozen}}
+    & \multicolumn{2}{c}{\textbf{C4: head\_layer4}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+    & state & fruit\_state & state & fruit\_state \\
+\midrule
+FruitVision (3-class)
+    & 82.6 & 86.2 & \textbf{88.0} & \textit{pending} \\
+Fruits Classification
+    & 94.0 & \textit{pending}
+    & \textbf{95.8} & \textit{pending} \\
+Lemon Varieties
+    & \textit{pending} & N/A & \textbf{98.2} & N/A \\
+Fruits Fresh/Rotten
+    & \textit{pending} & 99.2
+    & \textit{pending} & \textbf{99.5} \\
+Fresh \& Stale (9 categories)
+    & \textit{pending} & \textit{pending}
+    & \textit{pending} & \textit{pending} \\
+Fruits Quality
+    & \textit{pending} & \textit{pending}
+    & \textit{pending} & \textit{pending} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Confusion Matrix Analysis}
+
+Figure~\ref{fig:cm} shows the row-normalized confusion matrices for two
+representative completed experiments.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{confusion_matrix.png}
+\caption{Row-normalized confusion matrices (final epoch).
+The formalin class in FruitVision shows the highest misclassification rate,
+predominantly confused with fresh --- analogous to the challenge of detecting
+subtle spoilage in Korean fermented foods.
+The Kaggle Fruits Fresh/Rotten matrix (6 classes, fruit\_state mode) shows
+near-perfect diagonal structure with essentially no cross-fruit confusion.}
+\label{fig:cm}
+\end{figure}
+
+\subsection{Learning Curves}
+
+Figures~\ref{fig:acc}--\ref{fig:recall} show the per-epoch metrics for all
+completed runs, grouped by dataset.
+Each curve corresponds to one training condition and backbone combination.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{acc_curves.png}
+\caption{Validation accuracy over training epochs per dataset.}
+\label{fig:acc}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{f1_curves.png}
+\caption{Macro-averaged F1 score over training epochs per dataset.}
+\label{fig:f1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{precision_curves.png}
+\caption{Macro-averaged precision over training epochs per dataset.}
+\label{fig:prec}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{recall_curves.png}
+\caption{Macro-averaged recall over training epochs per dataset.}
+\label{fig:recall}
+\end{figure}
+
+\subsection{Key Findings}
+
+The following observations are drawn from completed experiments:
+
+\begin{enumerate}
+
+\item \textbf{Fine-tuning is critical for subtle spoilage detection.}
+On FruitVision (3-class), the gap between C3 (frozen backbone, 82.6\%)
+and C4 (layer4 fine-tuned, 88.0\%) is 5.4 percentage points.
+For binary problems, the gap is smaller but consistent:
+Fruits Classification achieves 94.0\% (C3) vs.\ 95.8\% (C4).
+
+\item \textbf{Formalin is the hardest class to detect.}
+In FruitVision (C4, state mode), per-class F1 at 50 epochs:
+rotten 96.4\%, fresh 85.4\%, formalin 82.3\%.
+The safety-critical error is formalin predicted as fresh: 135 out of 635
+formalin samples (21.3\%) pass undetected.
+In fruit\_state mode (15 classes, C3), this dangerous error is reduced:
+only 9 out of 129 apple\_formalin samples are predicted as apple\_fresh (7.0\%).
+However, fresh apples are frequently misclassified as formalin (69/153 = 45\%),
+indicating the frozen backbone struggles to separate the two visually similar
+states and errs on the side of over-flagging.
+
+\item \textbf{fruit\_state mode improves FruitVision with a frozen backbone.}
+C3 achieves 82.6\% in state mode (3 classes) but 86.2\% in fruit\_state mode
+(15 classes). The additional fruit-identity signal helps the frozen backbone
+form better decision boundaries even without fine-tuning.
+
+\item \textbf{Transfer learning reaches near-perfect accuracy on clean datasets.}
+Fruits Fresh/Rotten (apple, banana, orange) achieves 99.5\% F1 with C4 in
+fruit\_state mode (6 classes), with the confusion matrix showing near-zero
+off-diagonal entries --- the model jointly learns fruit identity and freshness
+state without error.
+
+\item \textbf{Small datasets converge early and require early stopping.}
+Lemon Varieties (1,956 images) peaks at epoch 25 (98.2\% F1) and shows
+rising validation loss thereafter.
+Fruits Classification (1,655 images) peaks at epoch 10 (95.8\% F1, C4) then
+oscillates.
+For the Korean food dataset, early stopping on validation F1 will be essential.
+
+\end{enumerate}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Korean Food Dataset Proposal}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Target Categories and Classification Scheme}
+
+Two types of Korean food items are targeted:
+
+\textbf{Korean fruits}, directly comparable to existing datasets:
+Korean apple, Jeju mandarin (\textit{gyul}), shine muscat grape,
+Korean strawberry (\textit{maehyang} variety).
+These share visual properties with Western counterparts but have distinct color
+profiles and surface textures that make a domain-specific model preferable.
+
+\textbf{Korean prepared foods}, with no analog in existing datasets:
+Kimchi (fermented cabbage), \textit{tteok} (rice cake),
+\textit{banchan} (side dishes), cooked rice (\textit{bap}).
+For these categories, binary classification (fresh / rotten) is proposed,
+as the intermediate ``semifresh'' state is visually ambiguous in fermented items.
+
+\subsection{Data Collection Pipeline}
+
+Two automated image collection scripts have been implemented, one targeting
+Korean fruits and one targeting Korean prepared foods.
+Both use Bing Image Search with 5--8 search queries per class per freshness
+state, combining Korean-language and romanized search terms to maximize
+result diversity (e.g., \textit{``fresh kimchi bright red color''} and
+\textit{``moldy kimchi white fungus''} for the kimchi category).
+
+Downloaded images are validated and processed as follows:
+\begin{itemize}
+    \item \textbf{Integrity check}: corrupt or unreadable files are discarded.
+    \item \textbf{Minimum resolution}: $100 \times 100$ pixels.
+    \item \textbf{Format}: any format accepted; converted to RGB JPEG.
+    \item \textbf{Output size}: $256 \times 256$ pixels
+    (model crops to $224 \times 224$ during training).
+\end{itemize}
+
+The pipeline supports incremental collection with resume capability:
+if a class folder already contains images from a previous run, only the
+remaining count is downloaded.
+The target dataset size is 100 images per class per freshness state.
+Table~\ref{tab:korean_counts} summarizes the expected dataset composition.
+
+\begin{table}[h]
+\centering
+\caption{Expected composition of the Korean food dataset (target counts).}
+\label{tab:korean_counts}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Category} & \textbf{Type} & \textbf{States} & \textbf{Classes} & \textbf{Target images} \\
+\midrule
+Kimchi, tteok, banchan, bap & Prepared food & 2 (Fresh/Rotten)       & 8  & 800  \\
+Apple, mandarin, strawberry  & Korean fruit  & 2 (Fresh/Rotten)       & 6  & 600  \\
+Shine muscat, mandarin       & Korean fruit  & 3 (Fresh/Semi/Rotten)  & 6  & 600  \\
+\midrule
+\multicolumn{4}{l}{\textbf{Total}}                                    & \textbf{$\sim$2,000} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This scale is deliberately comparable to Lemon Varieties (1,956 images),
+for which the pipeline achieved 98.2\% F1 with transfer learning ---
+confirming that 2,000 images is a sufficient starting point.
+
+\subsection{Integration with Training Pipeline}
+
+The Korean food dataset will be organized in the same
+\texttt{food/state/} nested structure used throughout this study,
+making it directly compatible with the existing training and evaluation
+pipeline without any code modifications.
+The \texttt{prepare\_datasets.py} script can be extended with a new
+preparation function, and the training pipeline selects the dataset
+interactively at runtime.
+
+\end{document}

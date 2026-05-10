@@ -1,0 +1,56 @@
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Environments ──────────────────────────────────────────────
+.env
+.venv/
+env/
+venv/
+
+# ── Dataset images (heavy) ────────────────────────────────────
+# Ignore all content inside data/ and datasets/ EXCEPT .gitkeep
+data/**
+!data/**/
+!data/**/.gitkeep
+
+datasets/**
+!datasets/**/
+!datasets/**/.gitkeep
+
+# Nested git repo inside mendeley_ripening_stages (yolov5 clone)
+datasets/mendeley_ripening_stages/**/yolov5/
+
+# ── Draft folders — keep scripts, ignore image data and zips ──
+AnusDraft/korean_fruit_dataset/
+AnusDraft/*.zip
+TanzinaDraft/*.zip
+
+# ── Model checkpoints (heavy) ─────────────────────────────────
+run_outputs/**/*.pt
+
+# ── OS junk ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor ────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── LaTeX build artifacts ─────────────────────────────────────
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+docs/*.synctex.gz
+docs/*.fls
+docs/*.fdb_latexmk

@@ -1,0 +1,237 @@
+{
+  "dataset": "mendeley_fruitvision",
+  "condition": "head_layer4",
+  "backbone_name": "resnet18",
+  "num_classes": 3,
+  "class_names": [
+    "formalin",
+    "fresh",
+    "rotten"
+  ],
+  "unfreeze_layers": 1,
+  "use_head": true,
+  "best_acc": 0.878877,
+  "best_f1": 0.880293,
+  "best_precision": 0.886878,
+  "best_recall": 0.877365,
+  "final_confusion_matrix": [
+    [
+      493,
+      135,
+      7
+    ],
+    [
+      66,
+      685,
+      9
+    ],
+    [
+      4,
+      25,
+      607
+    ]
+  ],
+  "acc_history": [
+    {
+      "epoch": 5,
+      "acc": 0.804037
+    },
+    {
+      "epoch": 10,
+      "acc": 0.848351
+    },
+    {
+      "epoch": 15,
+      "acc": 0.856721
+    },
+    {
+      "epoch": 20,
+      "acc": 0.863614
+    },
+    {
+      "epoch": 25,
+      "acc": 0.864599
+    },
+    {
+      "epoch": 30,
+      "acc": 0.877893
+    },
+    {
+      "epoch": 35,
+      "train_loss": 0.379113,
+      "acc": 0.875923,
+      "val_loss": 0.285664,
+      "f1_macro": 0.878386,
+      "precision_macro": 0.881488,
+      "recall_macro": 0.876124,
+      "f1_per_class": [
+        0.830671,
+        0.847826,
+        0.956661
+      ],
+      "precision_per_class": [
+        0.842788,
+        0.824627,
+        0.977049
+      ],
+      "recall_per_class": [
+        0.818898,
+        0.872368,
+        0.937107
+      ],
+      "confusion_matrix": [
+        [
+          520,
+          108,
+          7
+        ],
+        [
+          90,
+          663,
+          7
+        ],
+        [
+          7,
+          33,
+          596
+        ]
+      ]
+    },
+    {
+      "epoch": 40,
+      "train_loss": 0.385302,
+      "acc": 0.873461,
+      "val_loss": 0.276196,
+      "f1_macro": 0.87599,
+      "precision_macro": 0.878739,
+      "recall_macro": 0.87393,
+      "f1_per_class": [
+        0.826816,
+        0.84359,
+        0.957566
+      ],
+      "precision_per_class": [
+        0.838188,
+        0.8225,
+        0.97553
+      ],
+      "recall_per_class": [
+        0.815748,
+        0.865789,
+        0.940252
+      ],
+      "confusion_matrix": [
+        [
+          518,
+          109,
+          8
+        ],
+        [
+          95,
+          658,
+          7
+        ],
+        [
+          5,
+          33,
+          598
+        ]
+      ]
+    },
+    {
+      "epoch": 45,
+      "train_loss": 0.381108,
+      "acc": 0.856721,
+      "val_loss": 0.316188,
+      "f1_macro": 0.858006,
+      "precision_macro": 0.874885,
+      "recall_macro": 0.852379,
+      "f1_per_class": [
+        0.785095,
+        0.834524,
+        0.954397
+      ],
+      "precision_per_class": [
+        0.872832,
+        0.761957,
+        0.989865
+      ],
+      "recall_per_class": [
+        0.713386,
+        0.922368,
+        0.921384
+      ],
+      "confusion_matrix": [
+        [
+          453,
+          180,
+          2
+        ],
+        [
+          55,
+          701,
+          4
+        ],
+        [
+          11,
+          39,
+          586
+        ]
+      ]
+    },
+    {
+      "epoch": 50,
+      "train_loss": 0.372302,
+      "acc": 0.878877,
+      "val_loss": 0.267337,
+      "f1_macro": 0.880293,
+      "precision_macro": 0.886878,
+      "recall_macro": 0.877365,
+      "f1_per_class": [
+        0.823038,
+        0.853583,
+        0.964257
+      ],
+      "precision_per_class": [
+        0.875666,
+        0.810651,
+        0.974318
+      ],
+      "recall_per_class": [
+        0.776378,
+        0.901316,
+        0.954403
+      ],
+      "confusion_matrix": [
+        [
+          493,
+          135,
+          7
+        ],
+        [
+          66,
+          685,
+          9
+        ],
+        [
+          4,
+          25,
+          607
+        ]
+      ]
+    }
+  ],
+  "config": {
+    "epochs": 50,
+    "batch_size": 32,
+    "num_workers": 4,
+    "lr": 0.001,
+    "lr_backbone": 1e-05,
+    "embedding_dim": 128,
+    "eval_every": 5,
+    "save_every": 10,
+    "weight_decay": 0.0001,
+    "val_split": 0.2,
+    "seed": 42
+  }
+}

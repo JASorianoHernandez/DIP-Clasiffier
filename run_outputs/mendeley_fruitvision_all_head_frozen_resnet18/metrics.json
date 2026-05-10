@@ -1,0 +1,200 @@
+{
+  "dataset": "mendeley_fruitvision",
+  "condition": "head_frozen",
+  "backbone_name": "resnet18",
+  "num_classes": 3,
+  "class_names": [
+    "formalin",
+    "fresh",
+    "rotten"
+  ],
+  "unfreeze_layers": 0,
+  "use_head": true,
+  "best_acc": 0.822255,
+  "best_f1": 0.826231,
+  "best_precision": 0.8304,
+  "best_recall": 0.829019,
+  "final_confusion_matrix": [
+    [
+      448,
+      171,
+      16
+    ],
+    [
+      112,
+      624,
+      24
+    ],
+    [
+      25,
+      35,
+      576
+    ]
+  ],
+  "acc_history": [
+    {
+      "epoch": 5,
+      "acc": 0.762186
+    },
+    {
+      "epoch": 10,
+      "acc": 0.797144
+    },
+    {
+      "epoch": 15,
+      "acc": 0.799606
+    },
+    {
+      "epoch": 20,
+      "acc": 0.796652
+    },
+    {
+      "epoch": 25,
+      "acc": 0.817331
+    },
+    {
+      "epoch": 30,
+      "acc": 0.82127
+    },
+    {
+      "epoch": 35,
+      "acc": 0.820286
+    },
+    {
+      "epoch": 40,
+      "train_loss": 0.453905,
+      "acc": 0.822255,
+      "val_loss": 0.383351,
+      "f1_macro": 0.826231,
+      "precision_macro": 0.8304,
+      "recall_macro": 0.829019,
+      "f1_per_class": [
+        0.776741,
+        0.770642,
+        0.93131
+      ],
+      "precision_per_class": [
+        0.71372,
+        0.83105,
+        0.946429
+      ],
+      "recall_per_class": [
+        0.851969,
+        0.718421,
+        0.916667
+      ],
+      "confusion_matrix": [
+        [
+          541,
+          85,
+          9
+        ],
+        [
+          190,
+          546,
+          24
+        ],
+        [
+          27,
+          26,
+          583
+        ]
+      ]
+    },
+    {
+      "epoch": 45,
+      "train_loss": 0.465715,
+      "acc": 0.818808,
+      "val_loss": 0.369066,
+      "f1_macro": 0.816572,
+      "precision_macro": 0.824129,
+      "recall_macro": 0.817208,
+      "f1_per_class": [
+        0.726159,
+        0.79602,
+        0.927536
+      ],
+      "precision_per_class": [
+        0.816929,
+        0.754717,
+        0.900741
+      ],
+      "recall_per_class": [
+        0.653543,
+        0.842105,
+        0.955975
+      ],
+      "confusion_matrix": [
+        [
+          415,
+          187,
+          33
+        ],
+        [
+          86,
+          640,
+          34
+        ],
+        [
+          7,
+          21,
+          608
+        ]
+      ]
+    },
+    {
+      "epoch": 50,
+      "train_loss": 0.471879,
+      "acc": 0.811423,
+      "val_loss": 0.3888,
+      "f1_macro": 0.813153,
+      "precision_macro": 0.817561,
+      "recall_macro": 0.810742,
+      "f1_per_class": [
+        0.734426,
+        0.784906,
+        0.920128
+      ],
+      "precision_per_class": [
+        0.765812,
+        0.751807,
+        0.935065
+      ],
+      "recall_per_class": [
+        0.705512,
+        0.821053,
+        0.90566
+      ],
+      "confusion_matrix": [
+        [
+          448,
+          171,
+          16
+        ],
+        [
+          112,
+          624,
+          24
+        ],
+        [
+          25,
+          35,
+          576
+        ]
+      ]
+    }
+  ],
+  "config": {
+    "epochs": 50,
+    "batch_size": 32,
+    "num_workers": 4,
+    "lr": 0.001,
+    "lr_backbone": 1e-05,
+    "embedding_dim": 128,
+    "eval_every": 5,
+    "save_every": 10,
+    "weight_decay": 0.0001,
+    "val_split": 0.2,
+    "seed": 42
+  }
+}
