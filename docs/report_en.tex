@@ -251,6 +251,41 @@ C4 & \texttt{head\_layer4} & Layer4 free & Projection + Linear & Full head + par
 \end{tabular}
 \end{table}
 
+In all conditions the backbone is initialized with ImageNet pre-trained weights
+and produces a feature vector of dimension $d_\text{out}$ (e.g.\ 512 for
+ResNet-18, Table~\ref{tab:backbones}).
+
+\textbf{C1 -- frozen backbone, linear head.}
+All backbone weights are frozen; gradients do not flow through the convolutional
+layers.
+A single linear layer $d_\text{out} \to C$ is trained from scratch.
+This is the classical \emph{linear probe} setting, where the pre-trained backbone
+acts purely as a fixed feature extractor.
+
+\textbf{C2 -- layer4 unfrozen, linear head.}
+The last residual block of the backbone (\texttt{layer4} in ResNet notation,
+comprising two residual units totaling $\approx$\,2M parameters for ResNet-18)
+is unfrozen and fine-tuned jointly with the linear head.
+All earlier layers remain frozen.
+This allows the backbone to specialize its high-level features to the target
+domain without the cost of full fine-tuning.
+
+\textbf{C3 -- frozen backbone, projection head.}
+A two-layer non-linear projection head
+($d_\text{out} \!\to\! 256 \!\to\! 128$ with ReLU) is appended before the
+final linear classifier.
+The backbone remains completely frozen; only the head is trained.
+The additional capacity of the projection layers allows the model to learn a
+more discriminative embedding space without modifying the backbone.
+
+\textbf{C4 -- layer4 unfrozen, projection head.}
+Combines the projection head of C3 with the partial fine-tuning of C2.
+The last backbone block (\texttt{layer4}) and the full projection head are
+optimized jointly, with a lower learning rate applied to the backbone
+($\text{lr}_\text{backbone} = 10^{-5}$) to prevent catastrophic forgetting.
+This is the most expressive configuration and consistently achieves the best
+validation F1.
+
 All models are trained with Adam optimizer
 ($\text{lr} = 10^{-3}$, $\text{lr}_\text{backbone} = 10^{-5}$,
 weight decay $= 10^{-4}$) and cosine annealing over 50 epochs.
@@ -274,15 +309,53 @@ Two classification targets are evaluated:
 
 Given the potential class imbalance in real-world Korean food datasets,
 accuracy alone is insufficient.
-We report:
+Let $TP_c$, $FP_c$, $FN_c$, and $TN_c$ denote true positives, false positives,
+false negatives, and true negatives for class $c$, and let $C$ be the total
+number of classes.
+The following metrics are reported:
+
 \begin{itemize}
-    \item \textbf{Macro F1-score}: harmonic mean of precision and recall,
-    averaged equally across classes regardless of class frequency.
-    \item \textbf{Macro Precision and Recall}: sensitivity to false positives
-    and false negatives per class.
+    \item \textbf{Accuracy}: fraction of all samples correctly classified,
+    \begin{equation}
+        \text{Accuracy} = \frac{\displaystyle\sum_{c=1}^{C} TP_c}{\text{total samples}}.
+    \end{equation}
+
+    \item \textbf{Precision} (per class): fraction of predicted positives that
+    are truly positive,
+    \begin{equation}
+        \text{Precision}_c = \frac{TP_c}{TP_c + FP_c}.
+    \end{equation}
+
+    \item \textbf{Recall} (per class): fraction of actual positives correctly
+    identified,
+    \begin{equation}
+        \text{Recall}_c = \frac{TP_c}{TP_c + FN_c}.
+    \end{equation}
+
+    \item \textbf{F1-score} (per class): harmonic mean of precision and recall,
+    \begin{equation}
+        F1_c = \frac{2\,\cdot\,\text{Precision}_c\,\cdot\,\text{Recall}_c}
+                    {\text{Precision}_c + \text{Recall}_c}
+             = \frac{2\,TP_c}{2\,TP_c + FP_c + FN_c}.
+    \end{equation}
+
+    \item \textbf{Macro averages}: each per-class metric is averaged uniformly
+    over all classes,
+    \begin{equation}
+        \overline{F1} = \frac{1}{C}\sum_{c=1}^{C} F1_c,
+        \qquad
+        \overline{\text{Precision}} = \frac{1}{C}\sum_{c=1}^{C} \text{Precision}_c,
+        \qquad
+        \overline{\text{Recall}} = \frac{1}{C}\sum_{c=1}^{C} \text{Recall}_c.
+    \end{equation}
+    Macro averaging treats every class equally regardless of sample count,
+    which is essential when minority classes (e.g.\ formalin) are
+    safety-critical.
+
     \item \textbf{Confusion matrix}: row-normalized per true class, to identify
     systematic misclassification patterns.
 \end{itemize}
+
 For food safety applications, recall on the \textit{rotten} class is
 particularly critical: a false negative (rotten food classified as fresh)
 carries higher risk than a false positive.
@@ -507,5 +580,201 @@ pipeline without any code modifications.
 The \texttt{prepare\_datasets.py} script can be extended with a new
 preparation function, and the training pipeline selects the dataset
 interactively at runtime.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Software Implementation}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The classification system is implemented in Python (PyTorch) and organized into
+five modules.
+Figure~\ref{fig:pipeline} illustrates the data flow between components.
+
+\subsection{Usage Workflow}
+
+Only two scripts are executed directly by the user; the remaining modules
+are imported internally by \texttt{train.py}.
+
+\begin{enumerate}
+    \item \textbf{\texttt{python prepare\_datasets.py}} ---
+    Run once per dataset.
+    Reorganizes the raw images from \texttt{datasets/} into the unified
+    \texttt{data/\{dataset\}/\{fruit\}/\{state\}/} structure.
+    Must be run before any training.
+
+    \item \textbf{\texttt{python train.py}} ---
+    Run once per experiment.
+    Presents an interactive menu to select dataset, label mode, condition,
+    and backbone.
+    Internally imports \texttt{backbone.py} (to build the model) and
+    \texttt{dataset.py} (to build the data loaders); these two modules are
+    never executed directly.
+    Saves results to \texttt{run\_outputs/\{run\_name\}/}.
+
+    \item \textbf{\texttt{python analyze.py}} ---
+    Run after one or more training experiments are complete.
+    Reads all \texttt{metrics.json} files and produces comparison plots
+    across all runs.
+
+    \item \textbf{\texttt{python docs/prepare\_figures.py}} ---
+    Copies the generated plots into \texttt{docs/figures/} for inclusion
+    in this report.
+\end{enumerate}
+
+\noindent
+\texttt{backbone.py} and \texttt{dataset.py} are never run directly.
+They are libraries: \texttt{backbone.py} provides the backbone registry and
+\texttt{dataset.py} provides the data loaders.
+Both are imported at the top of \texttt{train.py} and called transparently
+during training.
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{ccccc}
+\fbox{\texttt{datasets/}} & $\longrightarrow$ &
+\fbox{\texttt{prepare\_datasets.py}} & $\longrightarrow$ &
+\fbox{\texttt{data/}} \\[6pt]
+& & & & $\downarrow$ \\[6pt]
+\fbox{\texttt{backbone.py}} & $\longrightarrow$ &
+\multicolumn{3}{c}{\fbox{\texttt{train.py}  $\longleftarrow$  \texttt{dataset.py}}} \\[6pt]
+& & & & $\downarrow$ \\[6pt]
+& & \multicolumn{3}{c}{\fbox{\texttt{run\_outputs/\{run\_name\}/}}} \\[6pt]
+& & & & $\downarrow$ \\[6pt]
+& & \multicolumn{3}{c}{\fbox{\texttt{analyze.py} $\longrightarrow$ \texttt{run\_outputs/\_plots/}}}
+\end{tabular}
+\caption{Data flow between the five software modules.}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{\texttt{prepare\_datasets.py} --- Dataset Preparation}
+
+Raw datasets are downloaded from their respective sources and placed in the
+\texttt{datasets/} directory, each in its original folder structure.
+\texttt{prepare\_datasets.py} reads each raw dataset and reorganizes it into
+a unified \texttt{data/\{dataset\}/\{fruit\}/\{state\}/} hierarchy compatible
+with PyTorch's \texttt{ImageFolder} loader.
+The script handles format differences across datasets:
+flat structures (all images in one folder), split structures (pre-divided
+\texttt{train/test/}), and nested structures (fruit then state sub-folders).
+Each dataset has a dedicated preparation function that normalizes class names,
+resolves naming inconsistencies (e.g.\ \texttt{freshpatato}
+$\to$ \texttt{potato/fresh}), and copies or hard-links images to the output
+directory.
+The script is idempotent: re-running it on an already-prepared dataset
+overwrites nothing.
+
+\subsection{\texttt{backbone.py} --- Backbone Registry}
+
+A central registry (\texttt{BACKBONE\_REGISTRY}) maps string identifiers
+(\texttt{"resnet18"}, \texttt{"efficientnet\_b0"}, etc.) to factory functions
+that return pre-trained models loaded from \texttt{torchvision}.
+The \texttt{GenericBackbone} wrapper exposes a unified interface:
+\begin{itemize}
+    \item \texttt{forward(x)} returns the feature vector of dimension
+    $d_\text{out}$ (the output of the backbone's global pooling layer,
+    \emph{before} the original classification head).
+    \item \texttt{unfreeze\_layers(n)} selectively unfreezes the last $n$
+    layer groups of the backbone, leaving all earlier weights frozen.
+    For ResNet this corresponds to the last $n$ residual stages
+    (\texttt{layer4}, \texttt{layer3}, \ldots).
+\end{itemize}
+This design decouples the backbone choice from the training loop, making it
+trivial to swap architectures.
+
+\subsection{\texttt{dataset.py} --- Data Loading}
+
+\texttt{dataset.py} provides three loaders that cover the three folder layouts
+found across the six datasets:
+\begin{itemize}
+    \item \textbf{Layout A} (flat): all images in a single directory.
+    \item \textbf{Layout B} (split): pre-divided \texttt{train/} and
+    \texttt{test/} sub-folders.
+    \item \textbf{Layout C} (nested): \texttt{fruit/state/} hierarchy,
+    used for all experiments in this study.
+\end{itemize}
+For Layout C, \texttt{get\_loaders\_nested()} constructs a stratified 80/20
+train/validation split using scikit-learn's \texttt{StratifiedShuffleSplit}.
+Two separate \texttt{ImageFolder} objects (one with augmentation transforms,
+one with validation-only transforms) are created over the same index sets so
+that training and validation images receive different preprocessing.
+The \texttt{label\_mode} parameter controls whether class labels are derived
+from freshness state only (\texttt{state}) or from fruit-state combinations
+(\texttt{fruit\_state}).
+
+\subsection{\texttt{train.py} --- Training Loop}
+
+The training script presents an interactive menu for dataset, label mode,
+condition, and backbone selection.
+The run directory name is deterministically computed from these choices
+(e.g.\ \texttt{mendeley\_fruitvision\_all\_head\_layer4\_resnet18\_fs}),
+which serves as both a unique identifier and a resume key.
+
+Training proceeds for a fixed number of epochs (default 50) with the following
+behavior:
+\begin{itemize}
+    \item \textbf{Evaluation every 5 epochs}: accuracy, macro F1, macro
+    precision, macro recall, per-class metrics, and confusion matrix are
+    computed on the validation set and appended to \texttt{metrics.json}.
+    \item \textbf{Rolling checkpoint every 10 epochs}: a single
+    \texttt{checkpoint.pt} file is overwritten, keeping disk usage constant.
+    \item \textbf{Best model}: whenever validation F1 improves, the full model
+    state is saved to \texttt{best\_model.pt}.
+    \item \textbf{Resume}: if a checkpoint exists in the run directory,
+    training automatically resumes from the last saved epoch.
+\end{itemize}
+At the end of training, all metrics are serialized to
+\texttt{metrics.json}, which serves as the single source of truth for all
+subsequent analysis.
+
+\subsection{\texttt{analyze.py} --- Visualization}
+
+\texttt{analyze.py} scans \texttt{run\_outputs/} for all
+\texttt{metrics.json} files, loads them into a list of run records, and
+generates nine plots grouped into three categories.
+
+\textbf{Learning curves} (one subplot per dataset, one line per
+condition+backbone combination):
+\begin{itemize}
+    \item \texttt{acc\_curves.png} --- validation accuracy vs.\ epoch.
+    Shows whether training has converged and whether different conditions
+    converge at different rates.
+    \item \texttt{f1\_curves.png} --- macro F1 vs.\ epoch.
+    The primary metric used for model selection; reveals overfitting when
+    F1 peaks and then declines.
+    \item \texttt{precision\_curves.png} --- macro precision vs.\ epoch.
+    Indicates how often the model's positive predictions are correct.
+    \item \texttt{recall\_curves.png} --- macro recall vs.\ epoch.
+    Indicates how many true positives the model captures; particularly
+    important for the rotten and formalin classes.
+    \item \texttt{loss\_curves.png} --- training loss and validation loss
+    vs.\ epoch on the same axes.
+    Divergence between the two signals overfitting.
+\end{itemize}
+
+\textbf{Aggregate comparisons} (summarize best results across all runs):
+\begin{itemize}
+    \item \texttt{metrics\_summary.png} --- grouped bar chart showing the
+    best macro F1, precision, recall, and accuracy for each run, organized
+    by dataset and condition.
+    Useful for a quick overview of which configuration wins.
+    \item \texttt{heatmap.png} --- a condition $\times$ backbone grid where
+    each cell shows the best F1 achieved.
+    Empty cells correspond to experiments not yet run.
+\end{itemize}
+
+\textbf{Error analysis} (inspect what the model gets wrong):
+\begin{itemize}
+    \item \texttt{confusion\_matrix.png} --- row-normalized confusion matrix
+    for each completed run at the final epoch.
+    Each row represents a true class; each column a predicted class.
+    Values on the diagonal are correct classifications; off-diagonal values
+    reveal systematic confusions (e.g.\ formalin predicted as fresh).
+    \item \texttt{per\_class.png} --- bar chart of F1, precision, and recall
+    broken down by individual class for each run.
+    Identifies which specific class is pulling the macro average down.
+\end{itemize}
+
+All plots are saved to \texttt{run\_outputs/\_plots/}.
+Running \texttt{docs/prepare\_figures.py} copies them to
+\texttt{docs/figures/} for inclusion in this report.
 
 \end{document}
