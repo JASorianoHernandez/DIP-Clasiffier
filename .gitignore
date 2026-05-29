@@ -32,6 +32,18 @@ datasets/mendeley_ripening_stages/**/yolov5/
 AnusDraft/korean_fruit_dataset/
 AnusDraft/*.zip
 TanzinaDraft/*.zip
+Other/AnusDraft/korean_fruit_dataset/
+Other/AnusDraft/*.zip
+Other/TanzinaDraft/*.zip
+
+# ── LaTeX build artifacts (Other/) ───────────────────────────
+Other/LatexReport/*.aux
+Other/LatexReport/*.log
+Other/LatexReport/*.out
+Other/LatexReport/*.toc
+Other/LatexReport/*.synctex.gz
+Other/LatexReport/*.fls
+Other/LatexReport/*.fdb_latexmk
 
 # ── Model checkpoints (heavy) ─────────────────────────────────
 run_outputs/**/*.pt

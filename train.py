@@ -27,14 +27,18 @@ Output: run_outputs/<dataset>_<condition>_<backbone>/
 
 import os
 import json
+import time
 import argparse
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from pathlib import Path
+from collections import Counter
 from sklearn.metrics import (
     accuracy_score, f1_score, precision_score,
     recall_score, confusion_matrix,
+    roc_auc_score, matthews_corrcoef,
 )
 
 from dataset import get_loaders, get_loaders_nested
@@ -54,7 +58,7 @@ COND_CFG = {
 }
 
 CONFIG = {
-    "epochs"        : 50,
+    "epochs"        : 60,
     "batch_size"    : 32,
     "num_workers"   : 4,
     "lr"            : 1e-3,
@@ -99,6 +103,7 @@ def evaluate(backbone, proj, linear, loader, device, unfreeze, criterion):
     """
     Returns a dict with all validation metrics:
       acc, val_loss, f1_macro, precision_macro, recall_macro,
+      mcc, auc_roc, conf_avg_correct, conf_avg_wrong,
       f1_per_class, precision_per_class, recall_per_class, confusion_matrix
     """
     backbone.eval()
@@ -106,7 +111,7 @@ def evaluate(backbone, proj, linear, loader, device, unfreeze, criterion):
         proj.eval()
     linear.eval()
 
-    all_preds, all_labels = [], []
+    all_preds, all_labels, all_probs = [], [], []
     total_loss, steps = 0.0, 0
 
     for images, labels in loader:
@@ -114,10 +119,12 @@ def evaluate(backbone, proj, linear, loader, device, unfreeze, criterion):
         feats  = backbone(images)
         emb    = proj(feats) if proj is not None else feats
         logits = linear(emb)
+        probs  = torch.softmax(logits, dim=1)
         total_loss += criterion(logits, labels).item()
         steps      += 1
         all_preds.extend(logits.argmax(dim=1).cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
+        all_probs.extend(probs.cpu().numpy())
 
     if unfreeze > 0:
         backbone.train()
@@ -125,16 +132,39 @@ def evaluate(backbone, proj, linear, loader, device, unfreeze, criterion):
         proj.train()
     linear.train()
 
+    probs_arr = np.array(all_probs)
+    n_classes = probs_arr.shape[1]
+
+    # AUC-ROC
+    try:
+        if n_classes == 2:
+            auc = float(roc_auc_score(all_labels, probs_arr[:, 1]))
+        else:
+            auc = float(roc_auc_score(all_labels, probs_arr,
+                                      multi_class="ovr", average="macro"))
+    except ValueError:
+        auc = None
+
+    # Confidence stats
+    conf_correct = [float(max(p)) for p, pred, true
+                    in zip(all_probs, all_preds, all_labels) if pred == true]
+    conf_wrong   = [float(max(p)) for p, pred, true
+                    in zip(all_probs, all_preds, all_labels) if pred != true]
+
     return {
-        "acc"               : round(float(accuracy_score(all_labels, all_preds)), 6),
-        "val_loss"          : round(total_loss / steps, 6),
-        "f1_macro"          : round(float(f1_score(all_labels, all_preds, average="macro",    zero_division=0)), 6),
-        "precision_macro"   : round(float(precision_score(all_labels, all_preds, average="macro", zero_division=0)), 6),
-        "recall_macro"      : round(float(recall_score(all_labels, all_preds, average="macro",    zero_division=0)), 6),
-        "f1_per_class"      : [round(v, 6) for v in f1_score(all_labels, all_preds,        average=None, zero_division=0).tolist()],
+        "acc"                : round(float(accuracy_score(all_labels, all_preds)), 6),
+        "val_loss"           : round(total_loss / steps, 6),
+        "f1_macro"           : round(float(f1_score(all_labels, all_preds, average="macro", zero_division=0)), 6),
+        "precision_macro"    : round(float(precision_score(all_labels, all_preds, average="macro", zero_division=0)), 6),
+        "recall_macro"       : round(float(recall_score(all_labels, all_preds, average="macro", zero_division=0)), 6),
+        "mcc"                : round(float(matthews_corrcoef(all_labels, all_preds)), 6),
+        "auc_roc"            : round(auc, 6) if auc is not None else None,
+        "conf_avg_correct"   : round(float(np.mean(conf_correct)), 6) if conf_correct else None,
+        "conf_avg_wrong"     : round(float(np.mean(conf_wrong)),   6) if conf_wrong   else None,
+        "f1_per_class"       : [round(v, 6) for v in f1_score(all_labels, all_preds, average=None, zero_division=0).tolist()],
         "precision_per_class": [round(v, 6) for v in precision_score(all_labels, all_preds, average=None, zero_division=0).tolist()],
-        "recall_per_class"  : [round(v, 6) for v in recall_score(all_labels, all_preds,    average=None, zero_division=0).tolist()],
-        "confusion_matrix"  : confusion_matrix(all_labels, all_preds).tolist(),
+        "recall_per_class"   : [round(v, 6) for v in recall_score(all_labels, all_preds, average=None, zero_division=0).tolist()],
+        "confusion_matrix"   : confusion_matrix(all_labels, all_preds).tolist(),
     }
 
 
@@ -144,7 +174,7 @@ def evaluate(backbone, proj, linear, loader, device, unfreeze, criterion):
 
 def _save_checkpoint(run_dir, epoch, backbone, proj, linear, optimizer, scheduler,
                      best_acc, acc_history, class_names,
-                     filename=CHECKPOINT_FILE, best_f1=0.0):
+                     filename=CHECKPOINT_FILE, best_f1=0.0, best_mcc=0.0, best_auc=None):
     ckpt = {
         "epoch"       : epoch,
         "backbone"    : backbone.state_dict(),
@@ -154,6 +184,8 @@ def _save_checkpoint(run_dir, epoch, backbone, proj, linear, optimizer, schedule
         "scheduler"   : scheduler.state_dict(),
         "best_acc"    : best_acc,
         "best_f1"     : best_f1,
+        "best_mcc"    : best_mcc,
+        "best_auc"    : best_auc,
         "acc_history" : acc_history,
         "class_names" : class_names,
     }
@@ -235,19 +267,24 @@ def train(dataset_path, condition, backbone_name="resnet18", fruits=None, label_
             head_params, lr=CONFIG["lr"], weight_decay=CONFIG["weight_decay"]
         )
 
-    scheduler    = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=CONFIG["epochs"])
-    criterion    = nn.CrossEntropyLoss()
-    best_acc     = 0.0
-    best_f1      = 0.0
-    acc_history  = []
-    start_epoch  = 1
+    scheduler        = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=CONFIG["epochs"])
+    criterion        = nn.CrossEntropyLoss()
+    best_acc         = 0.0
+    best_f1          = 0.0
+    best_mcc         = -1.0
+    best_auc         = None
+    acc_history      = []
+    start_epoch      = 1
+    train_start_time = time.time()
 
     # ── Resume from checkpoint if it exists ──
     if resuming:
-        ckpt        = torch.load(ckpt_path, map_location=device)
+        ckpt        = torch.load(ckpt_path, map_location=device, weights_only=False)
         start_epoch = ckpt["epoch"] + 1
         best_acc    = ckpt["best_acc"]
         best_f1     = ckpt.get("best_f1", 0.0)
+        best_mcc    = ckpt.get("best_mcc", -1.0)
+        best_auc    = ckpt.get("best_auc", None)
         acc_history = ckpt["acc_history"]
         backbone.load_state_dict(ckpt["backbone"])
         linear.load_state_dict(ckpt["linear"])
@@ -294,13 +331,19 @@ def train(dataset_path, condition, backbone_name="resnet18", fruits=None, label_
         avg_loss = total_loss / steps
 
         if epoch % CONFIG["eval_every"] == 0 or epoch == CONFIG["epochs"]:
-            m = evaluate(backbone, proj, linear, val_loader, device, unfreeze, criterion)
+            m  = evaluate(backbone, proj, linear, val_loader, device, unfreeze, criterion)
+            lr = scheduler.get_last_lr()[0]
 
-            entry = {"epoch": epoch, "train_loss": round(avg_loss, 6), **m}
+            entry = {"epoch": epoch, "train_loss": round(avg_loss, 6),
+                     "learning_rate": round(lr, 8), **m}
             acc_history.append(entry)
 
             if m["acc"] > best_acc:
                 best_acc = m["acc"]
+            if m["mcc"] > best_mcc:
+                best_mcc = m["mcc"]
+            if m["auc_roc"] is not None and (best_auc is None or m["auc_roc"] > best_auc):
+                best_auc = m["auc_roc"]
             if m["f1_macro"] > best_f1:
                 best_f1 = m["f1_macro"]
                 torch.save({
@@ -311,9 +354,11 @@ def train(dataset_path, condition, backbone_name="resnet18", fruits=None, label_
                     "class_names": class_names,
                 }, os.path.join(run_dir, BEST_MODEL_FILE))
 
+            auc_str = f"{m['auc_roc']:.4f}" if m["auc_roc"] is not None else "n/a"
             print(f"  Epoch {epoch:3d}/{CONFIG['epochs']} | "
                   f"train_loss={avg_loss:.4f} | val_loss={m['val_loss']:.4f} | "
                   f"acc={m['acc']*100:.2f}% | f1={m['f1_macro']*100:.2f}% | "
+                  f"mcc={m['mcc']:.3f} | auc={auc_str} | "
                   f"best_f1={best_f1*100:.2f}%")
         else:
             print(f"  Epoch {epoch:3d}/{CONFIG['epochs']} | train_loss={avg_loss:.4f}")
@@ -321,41 +366,72 @@ def train(dataset_path, condition, backbone_name="resnet18", fruits=None, label_
         # Rolling checkpoint every epoch
         _save_checkpoint(run_dir, epoch, backbone, proj, linear,
                          optimizer, scheduler, best_acc, acc_history, class_names,
-                         best_f1=best_f1)
+                         best_f1=best_f1, best_mcc=best_mcc, best_auc=best_auc)
 
         # Named snapshot every save_every epochs
         if epoch % CONFIG["save_every"] == 0:
             _save_checkpoint(run_dir, epoch, backbone, proj, linear,
                              optimizer, scheduler, best_acc, acc_history, class_names,
-                             filename=f"checkpoint_epoch_{epoch}.pt", best_f1=best_f1)
+                             filename=f"checkpoint_epoch_{epoch}.pt",
+                             best_f1=best_f1, best_mcc=best_mcc, best_auc=best_auc)
+
+    training_time = round(time.time() - train_start_time, 1)
 
     # Final confusion matrix from last eval
-    final_cm    = acc_history[-1].get("confusion_matrix", []) if acc_history else []
+    final_cm      = acc_history[-1].get("confusion_matrix", []) if acc_history else []
     best_f1_entry = max(acc_history, key=lambda h: h.get("f1_macro", 0)) if acc_history else {}
 
+    # Class distribution in train / val splits
+    def get_class_dist(loader):
+        subset = loader.dataset
+        if hasattr(subset, "indices"):
+            targets = [subset.dataset.targets[i] for i in subset.indices]
+        else:
+            targets = subset.targets
+        dist = Counter(targets)
+        return {class_names[k]: v for k, v in sorted(dist.items()) if k < len(class_names)}
+
+    train_dist = get_class_dist(train_loader)
+    val_dist   = get_class_dist(val_loader)
+
     metrics = {
-        "dataset"          : dataset_label,
-        "condition"        : condition,
-        "backbone_name"    : backbone_name,
-        "label_mode"       : label_mode,
-        "num_classes"      : num_classes,
-        "class_names"      : class_names,
-        "unfreeze_layers"  : unfreeze,
-        "use_head"         : use_head,
-        "best_acc"         : round(best_acc, 6),
-        "best_f1"          : round(best_f1, 6),
-        "best_precision"   : round(best_f1_entry.get("precision_macro", 0), 6),
-        "best_recall"      : round(best_f1_entry.get("recall_macro", 0), 6),
+        "dataset"               : dataset_label,
+        "condition"             : condition,
+        "backbone_name"         : backbone_name,
+        "label_mode"            : label_mode,
+        "num_classes"           : num_classes,
+        "class_names"           : class_names,
+        "unfreeze_layers"       : unfreeze,
+        "use_head"              : use_head,
+        # Split info
+        "train_samples"         : sum(train_dist.values()),
+        "val_samples"           : sum(val_dist.values()),
+        "train_class_dist"      : train_dist,
+        "val_class_dist"        : val_dist,
+        # Best metrics
+        "best_acc"              : round(best_acc, 6),
+        "best_f1"               : round(best_f1, 6),
+        "best_precision"        : round(best_f1_entry.get("precision_macro", 0), 6),
+        "best_recall"           : round(best_f1_entry.get("recall_macro", 0), 6),
+        "best_mcc"              : round(best_mcc, 6),
+        "best_auc"              : round(best_auc, 6) if best_auc is not None else None,
+        # Training info
+        "training_time_seconds" : training_time,
         "final_confusion_matrix": final_cm,
-        "acc_history"      : acc_history,
-        "config"           : CONFIG,
+        "acc_history"           : acc_history,
+        "config"                : CONFIG,
     }
     with open(os.path.join(run_dir, "metrics.json"), "w") as f:
         json.dump(metrics, f, indent=2)
 
-    print(f"\n  Best accuracy : {best_acc*100:.2f}%")
-    print(f"  Best F1 macro : {best_f1*100:.2f}%")
-    print(f"  Saved         : {run_dir}/")
+    auc_str = f"{best_auc:.4f}" if best_auc is not None else "n/a"
+    print(f"\n  Best accuracy  : {best_acc*100:.2f}%")
+    print(f"  Best F1 macro  : {best_f1*100:.2f}%")
+    print(f"  Best MCC       : {best_mcc:.4f}")
+    print(f"  Best AUC-ROC   : {auc_str}")
+    print(f"  Training time  : {training_time:.0f}s ({training_time/60:.1f} min)")
+    print(f"  Train samples  : {sum(train_dist.values())}  |  Val samples: {sum(val_dist.values())}")
+    print(f"  Saved          : {run_dir}/")
     return best_acc
 
 
@@ -389,9 +465,10 @@ DATASETS = {
     1: ("mendeley_fruitvision",       "./data/mendeley_fruitvision",       "5 fruits × fresh/formalin/rotten   — 10,154 imgs  [C]"),
     2: ("mendeley_fruits",            "./data/mendeley_fruits",            "3 fruits × fresh/rotten            —  1,655 imgs  [C]"),
     3: ("mendeley_lemon_varieties",   "./data/mendeley_lemon_varieties",   "lemon    × fresh/rotten            —  1,956 imgs  [C]"),
-    4: ("kaggle_fruits_fresh_rotten", "./data/kaggle_fruits_fresh_rotten", "3 fruits × fresh/rotten            — 13,599 imgs  [C]"),
+    4: ("kaggle_fruits_fresh_rotten", "./data/kaggle_fruits_fresh_rotten", "3 fruits × fresh/rotten            — 13,599 imgs  [C]  ★ best results (99.7% F1)"),
     5: ("kaggle_fresh_stale",         "./data/kaggle_fresh_stale",         "9 items  × fresh/rotten            — 27,317 imgs  [C]"),
     6: ("kaggle_fruits_quality",      "./data/kaggle_fruits_quality",      "12 fruits mixed × fresh/rotten     —    359 imgs  [B]"),
+    7: ("own_dataset",                "./data/own_dataset",                "own photos × fresh/rotten          —    custom    [C]"),
 }
 # [C] = Layout C: fruit/state nested  →  get_loaders_nested()
 # [B] = Layout B: train/test split    →  get_loaders()
