@@ -10,33 +10,44 @@ Preliminary experiments use publicly available datasets as a proxy before buildi
 ```
 DIP-Classfier/
 │
-├── train.py                  # Training loop with interactive menu
-├── evaluate.py               # Cross-dataset evaluation
-├── analyze.py                # Generate comparison plots from all runs
-├── generate_tracker.py       # Generate Excel experiment tracker
-├── prepare_datasets.py       # Reorganize public datasets into data/
-├── prepare_own_dataset.py    # Resize and organize own photos into data/
-├── rename_own_dataset.py     # Rename own photos to standard convention
+│  ── Internal libraries (not run directly) ──
+├── _backbone.py               # Backbone registry (ResNet, MobileNet, EfficientNet)
+├── _dataset.py                # Data loaders and stratified split
 │
-├── backbone.py               # Backbone registry (ResNet, MobileNet, EfficientNet)
-├── dataset.py                # Data loaders and stratified split
+│  ── Stage 01: Data Preparation ──
+├── 01_01_prepare_datasets.py  # Reorganize public datasets into data/
+├── 01_02_rename_own_dataset.py# Rename own photos to standard convention
+├── 01_03_prepare_own_dataset.py# Resize and organize own photos into data/
 │
-├── data/                     # Prepared datasets (images excluded from git)
-├── datasets/                 # Raw downloaded datasets (images excluded from git)
-├── run_outputs/              # Training results, metrics, plots
+│  ── Stage 02: Training ──
+├── 02_01_train.py             # Training loop with interactive menu
+│
+│  ── Stage 03: Evaluation & Analysis ──
+├── 03_01_evaluate.py          # Cross-dataset evaluation with plots
+├── 03_02_analyze.py           # Training curves and comparison plots
+│
+│  ── Stage 04: Reporting ──
+├── 04_01_generate_tracker.py  # Excel experiment tracker
+├── 04_02_generate_eval_report.py # Excel evaluation report
+│
+├── data/                      # Prepared datasets (images excluded from git)
+├── datasets/                  # Raw downloaded datasets (images excluded from git)
+├── run_outputs/               # Training results, metrics, plots
 │   └── {run_name}/
-│       ├── metrics.json      # All metrics per epoch
-│       ├── best_model.pt     # Best model weights
-│       ├── checkpoint.pt     # Resume checkpoint
-│       └── eval/             # Cross-dataset evaluation results
+│       ├── metrics.json       # All metrics per epoch
+│       ├── best_model.pt      # Best model weights
+│       ├── checkpoint.pt      # Resume checkpoint
+│       └── eval/              # Cross-dataset evaluation results
 │
 ├── Other/
-│   ├── LatexReport/          # LaTeX report source and figures
-│   ├── Literature/           # Reference papers
-│   ├── AnusDraft/            # Korean fruit scraper scripts
-│   └── TanzinaDraft/         # Korean food scraper scripts
+│   ├── LatexReport/           # LaTeX report source and figures
+│   ├── Literature/            # Reference papers
+│   ├── AnusDraft/             # Korean fruit scraper scripts
+│   └── TanzinaDraft/          # Korean food scraper scripts
 │
-└── experiments_tracker.xlsx  # Experiment status and results tracker
+├── experiments_tracker.xlsx   # Experiment status per backbone/dataset/condition
+├── eval_report.xlsx           # Cross-dataset evaluation rankings
+└── README.md
 ```
 
 ---
@@ -55,39 +66,61 @@ pip install torch torchvision scikit-learn matplotlib numpy openpyxl
 
 ## Usage
 
-Scripts are run in this order:
+Scripts are run in stage order:
 
-### 1. Prepare datasets
-```bash
-python prepare_datasets.py
-```
-Reorganizes raw datasets from `datasets/` into unified `data/{dataset}/{fruit}/{state}/` structure.
+### Stage 01 — Data Preparation
 
-### 2. Train
 ```bash
-python train.py
+# Public datasets (run once per dataset)
+python 01_01_prepare_datasets.py
+
+# Own photos (run once)
+python 01_02_rename_own_dataset.py    # rename to standard convention
+python 01_03_prepare_own_dataset.py   # resize and copy to data/
 ```
-Interactive menu to select dataset, label mode, backbone and condition (C1–C4).
+
+### Stage 02 — Training
+
+```bash
+python 02_01_train.py
+```
+Interactive menu: select dataset, label mode, backbone and condition (C1–C4).
 Results saved to `run_outputs/{run_name}/metrics.json`.
 
-### 3. Evaluate (cross-dataset)
-```bash
-python evaluate.py
-```
-Loads a trained model and evaluates it on any dataset, including your own photos.
-Generates per-image predictions and plots.
+### Stage 03 — Evaluation & Analysis
 
-### 4. Analyze
 ```bash
-python analyze.py
-```
-Reads all `metrics.json` files and generates comparison plots across all runs.
+# Cross-dataset evaluation (own photos vs trained models)
+python 03_01_evaluate.py
 
-### 5. Update tracker
-```bash
-python generate_tracker.py
+# Training curves and comparison plots
+python 03_02_analyze.py
 ```
-Generates `experiments_tracker.xlsx` with current run status and metrics.
+
+### Stage 04 — Reporting
+
+```bash
+# Update experiment tracker Excel
+python 04_01_generate_tracker.py
+
+# Generate evaluation report Excel
+python 04_02_generate_eval_report.py
+```
+
+---
+
+## Experiment ID Format
+
+Each run is identified by a short code: `{DATASET}-{BACKBONE}-{CONDITION}-{LABELMODE}`
+
+| Dimension | Examples |
+|---|---|
+| Dataset | KFQ, MFR, MLM, MFV, KFR, KFS, OWN |
+| Backbone | R18, R34, R50, MN3, EB0, EB2 |
+| Condition | C1, C2, C3, C4 |
+| Label mode | ST (state), FS (fruit_state) |
+
+Example: `KFR-R18-C4-ST` = kaggle_fruits_fresh_rotten, ResNet-18, head_layer4, state
 
 ---
 
@@ -98,44 +131,22 @@ Generates `experiments_tracker.xlsx` with current run status and metrics.
 | C1 | `frozen` | Frozen | Linear only | No backbone adaptation |
 | C2 | `layer4` | Layer4 free | Linear only | Partial fine-tuning |
 | C3 | `head_frozen` | Frozen | Projection + Linear | Full head, frozen backbone |
-| C4 | `head_layer4` | Layer4 free | Projection + Linear | Full head + fine-tuning |
+| C4 | `head_layer4` | Layer4 free | Projection + Linear | Full head + fine-tuning ← best |
 
 ---
 
-## Preliminary Results (ResNet-18)
+## Current Results (ResNet-18, best F1 per dataset)
 
-> Experiments in progress. Results shown are best validation metrics across 60 epochs.
+| Dataset | Images | Best Condition | Best F1 |
+|---|---|---|---|
+| kaggle_fruits_fresh_rotten | 13,599 | C4 state | **99.8%** |
+| kaggle_fresh_stale | 27,317 | C4 state | **99.0%** |
+| mendeley_lemon_varieties | 1,956 | C4 state | **98.5%** |
+| mendeley_fruits | 1,655 | C4 state | **96.4%** |
+| mendeley_fruitvision | 10,154 | C4 state | **90.6%** |
+| kaggle_fruits_quality | 359 | C2 state | **91.6%** |
 
-### kaggle_fruits_quality (359 images — Fresh / Rotten)
-
-| Condition | Label Mode | Acc | F1 | Precision | Recall |
-|-----------|-----------|-----|-----|-----------|--------|
-| C1 frozen | state | 86.1% | 86.1% | 86.2% | 86.1% |
-| C2 layer4 | state | 91.7% | 91.6% | 92.2% | 91.7% |
-| C3 head_frozen | state | 86.1% | 86.0% | 87.1% | 86.1% |
-| C4 head_layer4 | state | 88.9% | 88.9% | 89.0% | 88.9% |
-
-### mendeley_fruits (1,655 images — Peach / Pomegranate / Strawberry)
-
-| Condition | Label Mode | Acc | F1 | Precision | Recall |
-|-----------|-----------|-----|-----|-----------|--------|
-| C1 frozen | state | 94.3% | 94.3% | 94.5% | 94.3% |
-| C1 frozen | fruit_state | 90.9% | 91.0% | 91.1% | 91.3% |
-| C2 layer4 | state | 95.5% | 95.5% | 95.7% | 95.5% |
-| C2 layer4 | fruit_state | 92.7% | 92.7% | 92.8% | 92.9% |
-| C3 head_frozen | state | 95.2% | 95.2% | 95.2% | 95.2% |
-| C3 head_frozen | fruit_state | 94.3% | 94.1% | 94.1% | 94.2% |
-| **C4 head_layer4** | **state** | **96.4%** | **96.4%** | **96.5%** | **96.4%** |
-| C4 head_layer4 | fruit_state | 93.4% | 93.4% | 93.4% | 93.5% |
-
-### mendeley_lemon_varieties (1,956 images — 7 lemon varieties)
-
-| Condition | Label Mode | Acc | F1 | Precision | Recall |
-|-----------|-----------|-----|-----|-----------|--------|
-| C1 frozen | state | 96.2% | 96.2% | 96.3% | 96.2% |
-| C2 layer4 | state | 98.0% | 98.0% | 98.0% | 98.0% |
-| C3 head_frozen | state | 96.2% | 96.2% | 96.3% | 96.2% |
-| **C4 head_layer4** | **state** | **98.5%** | **98.5%** | **98.5%** | **98.5%** |
+> See `experiments_tracker.xlsx` for full results across all conditions and backbones.
 
 ---
 
@@ -149,9 +160,3 @@ Generates `experiments_tracker.xlsx` with current run status and metrics.
 | Fruits Quality | 12 mixed fruits | Fresh / Rotten | 359 | Kaggle |
 | Fruits Fresh/Rotten | Apple, Banana, Orange | Fresh / Rotten | 13,599 | Kaggle |
 | Fresh & Stale | 9 fruits/vegetables | Fresh / Rotten | 27,317 | Kaggle |
-
----
-
-## Experiment Status
-
-See `experiments_tracker.xlsx` for full status across all datasets, backbones and conditions.

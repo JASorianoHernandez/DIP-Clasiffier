@@ -1,0 +1,45 @@
+{
+  "model_run": "mendeley_fruits_all_head_frozen_resnet18",
+  "model_classes": [
+    "fresh",
+    "rotten"
+  ],
+  "eval_dataset": "own_dataset",
+  "eval_classes": [
+    "fresh",
+    "rotten"
+  ],
+  "label_mode": "state",
+  "device": "cuda",
+  "acc": 0.7917,
+  "f1_macro": 0.7884,
+  "precision_macro": 0.7929,
+  "recall_macro": 0.7867,
+  "mcc": 0.5795,
+  "auc_roc": 0.8671,
+  "inference_ms_per_img": 262.58,
+  "conf_avg_correct": 0.935,
+  "conf_avg_wrong": 0.8543,
+  "f1_per_class": [
+    0.8148,
+    0.7619
+  ],
+  "precision_per_class": [
+    0.7857,
+    0.8
+  ],
+  "recall_per_class": [
+    0.8462,
+    0.7273
+  ],
+  "confusion_matrix": [
+    [
+      11,
+      2
+    ],
+    [
+      3,
+      8
+    ]
+  ]
+}
