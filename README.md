@@ -160,3 +160,18 @@ Example: `KFR-R18-C4-ST` = kaggle_fruits_fresh_rotten, ResNet-18, head_layer4, s
 | Fruits Quality | 12 mixed fruits | Fresh / Rotten | 359 | Kaggle |
 | Fruits Fresh/Rotten | Apple, Banana, Orange | Fresh / Rotten | 13,599 | Kaggle |
 | Fresh & Stale | 9 fruits/vegetables | Fresh / Rotten | 27,317 | Kaggle |
+
+---
+
+## Changelog
+
+| # | Date | Description |
+|---|------|-------------|
+| 8 | 2026-05-30 | EfficientNet-B0 Phase 2 experiments started. Script reorganization with stage numbering (00–04). eval_report.xlsx and experiments_tracker.xlsx added. Cross-dataset evaluation on own_dataset (18 models). |
+| 7 | 2026-05-29 | All ResNet-18 baseline runs complete (C1-C4, state+fruit_state, all 6 datasets). evaluate.py with MCC, AUC, confidence stats, ROC curves. |
+| 6 | 2026-05-17 | train.py updated with MCC, AUC-ROC, learning rate tracking, train/val split info. New metrics format. |
+| 5 | 2026-05-11 | Added evaluate.py for cross-dataset evaluation. generate_tracker.py. Own dataset pipeline (rename + prepare). |
+| 4 | 2026-05-08 | LaTeX report updated with methodology, formulas, software description. Literature added. |
+| 3 | 2026-05-07 | Reorganized project into Other/ subfolder. |
+| 2 | 2026-05-07 | New run results, updated plots, report tables. |
+| 1 | 2026-05-06 | Initial commit: transfer learning pipeline, 6 datasets, ResNet-18 baseline. |
