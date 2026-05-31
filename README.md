@@ -111,27 +111,110 @@ python 04_02_generate_eval_report.py
 
 ## Experiment ID Format
 
-Each run is identified by a short code: `{DATASET}-{BACKBONE}-{CONDITION}-{LABELMODE}`
+Every training run is uniquely identified by a 4-part code:
 
-| Dimension | Examples |
-|---|---|
-| Dataset | KFQ, MFR, MLM, MFV, KFR, KFS, OWN |
-| Backbone | R18, R34, R50, MN3, EB0, EB2 |
-| Condition | C1, C2, C3, C4 |
-| Label mode | ST (state), FS (fruit_state) |
+```
+{DATASET}-{BACKBONE}-{CONDITION}-{LABELMODE}
 
-Example: `KFR-EB0-C3-ST` = kaggle_fruits_fresh_rotten, EfficientNet-B0, head_frozen, state
+Example:  KFR-EB0-C3-ST
+          │    │    │   └─ ST = state mode (fresh / rotten)
+          │    │    └───── C3 = head_frozen condition
+          │    └────────── EB0 = EfficientNet-B0
+          └─────────────── KFR = kaggle_fruits_fresh_rotten
+```
+
+### Dataset codes
+
+| Code | Dataset | Images | Classes |
+|------|---------|--------|---------|
+| KFQ | kaggle_fruits_quality | 359 | fresh / rotten |
+| MFR | mendeley_fruits | 1,655 | fresh / rotten |
+| MLM | mendeley_lemon_varieties | 1,956 | fresh / rotten |
+| MFV | mendeley_fruitvision | 10,154 | fresh / formalin / rotten |
+| KFR | kaggle_fruits_fresh_rotten | 13,599 | fresh / rotten |
+| KFS | kaggle_fresh_stale | 27,317 | fresh / rotten |
+| OWN | own_dataset | custom | fresh / rotten |
+
+### Backbone codes
+
+| Code | Model | Params | Output dim |
+|------|-------|--------|------------|
+| R18 | ResNet-18 | 11.2M | 512 |
+| R34 | ResNet-34 | 21.3M | 512 |
+| R50 | ResNet-50 | 25.6M | 2048 |
+| MN3 | MobileNetV3-Small | 2.5M | 576 |
+| EB0 | EfficientNet-B0 | 5.3M | 1280 |
+| EB2 | EfficientNet-B2 | 9.1M | 1408 |
+
+### Label mode codes
+
+| Code | Mode | Description |
+|------|------|-------------|
+| ST | state | Classify by freshness only: `fresh`, `rotten`, `formalin` |
+| FS | fruit_state | Classify by fruit + freshness: `apple_fresh`, `apple_rotten`, etc. |
 
 ---
 
 ## Training Conditions
 
-| ID | Name | Backbone | Head | Description |
-|----|------|----------|------|-------------|
-| C1 | `frozen` | Frozen | Linear only | No backbone adaptation |
-| C2 | `layer4` | Layer4 free | Linear only | Partial fine-tuning |
-| C3 | `head_frozen` | Frozen | Projection + Linear | Full head, frozen backbone |
-| C4 | `head_layer4` | Layer4 free | Projection + Linear | Full head + fine-tuning |
+Each experiment uses one of four training conditions that differ in how much of the pre-trained backbone is allowed to adapt to the new domain.
+
+All backbones are initialized with ImageNet pre-trained weights. The backbone produces a feature vector (e.g. 512 dimensions for ResNet-18) that is passed through a head to produce the final classification.
+
+### C1 — frozen + linear head
+The entire backbone is locked — no weights are updated during training. Only a single linear layer (`d_out → C classes`) is trained from scratch. This is the classical *linear probe*: the pre-trained backbone acts as a fixed feature extractor. Fastest to train, weakest performance.
+
+```
+ImageNet backbone (frozen) → Linear(C)
+```
+
+### C2 — layer4 + linear head
+The last residual block of the backbone (`layer4`, ~2M parameters) is unfrozen and fine-tuned alongside the linear head. All earlier layers remain frozen. No projection head — just a direct linear classifier. Allows the backbone to adapt its highest-level features to the target domain.
+
+```
+ImageNet backbone (layers 1-3 frozen, layer4 free) → Linear(C)
+```
+
+### C3 — frozen + projection head
+The backbone is fully frozen (like C1), but a two-layer non-linear projection head is added before the classifier:
+
+```
+ImageNet backbone (frozen) → Linear(256) → ReLU → Linear(128) → ReLU → Linear(C)
+```
+
+The projection head can warp the feature space to find better decision boundaries without modifying the backbone. This is the **optimal condition for EfficientNet** — its 1280-dim features are already rich enough without fine-tuning.
+
+### C4 — layer4 + projection head
+Combines C2 and C3: `layer4` is unfrozen **and** the projection head is used. The backbone and head are trained jointly, but with different learning rates (`lr=1e-3` for head, `lr_backbone=1e-5` for layer4) to prevent catastrophic forgetting. This is the **optimal condition for ResNet-18**.
+
+```
+ImageNet backbone (layer4 free) → Linear(256) → ReLU → Linear(128) → ReLU → Linear(C)
+```
+
+### Summary
+
+|  | Backbone frozen | layer4 free |
+|--|----------------|-------------|
+| **Linear head only** | C1 | C2 |
+| **Projection head** | C3 | C4 |
+
+---
+
+## Experimental Procedure
+
+The full workflow followed in this project:
+
+### 1. Data preparation
+Raw datasets downloaded from Kaggle and Mendeley are reorganized into a unified `fruit/state/` folder structure using `01_01_prepare_datasets.py`. Own photos are renamed to a standard convention (`KFS-R18-C3-ST` style) and resized to 256px using `01_02` and `01_03`.
+
+### 2. Training
+`02_01_train.py` presents an interactive menu to select dataset, label mode, backbone and condition. A stratified 80/20 train/validation split is applied at runtime with a fixed seed (42) for reproducibility. Training runs for 60 epochs with Adam optimizer and cosine annealing learning rate schedule. Metrics (accuracy, F1, precision, recall, MCC, AUC-ROC, confusion matrix) are recorded every 5 epochs and saved to `metrics.json`. The best model by validation F1 is saved as `best_model.pt`.
+
+### 3. Cross-dataset evaluation
+`03_01_evaluate.py` loads a `best_model.pt` from any completed run and evaluates it on any other dataset — including own photos never seen during training. This measures domain shift: how much performance degrades when moving from internet photos to real-world photos. Generates per-image predictions with confidence scores, ROC curves, and confusion matrices.
+
+### 4. Analysis and reporting
+`03_02_analyze.py` generates training curves across all runs. `04_01_generate_tracker.py` and `04_02_generate_eval_report.py` produce Excel files with color-coded results tables and multiple ranking views (by F1, recall, robustness/domain shift).
 
 ---
 
