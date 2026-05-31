@@ -383,83 +383,123 @@ carries higher risk than a false positive.
 
 \subsection{Setup}
 
-All experiments in this section use ResNet-18 with ImageNet pre-trained weights.
-Conditions C3 and C4 (with projection head) are the primary focus.
-A stratified 80/20 train/validation split is applied to all datasets.
+Experiments are organized in two phases.
+\textbf{Phase 1} uses ResNet-18 as baseline backbone across all six datasets,
+all four conditions (C1--C4), and both label modes (state and fruit\_state).
+\textbf{Phase 2} introduces EfficientNet-B0 and EfficientNet-B2 for backbone
+comparison, focusing on state mode and conditions C1--C4.
+All experiments apply a stratified 80/20 train/validation split with fixed
+seed 42 and train for 60 epochs with Adam optimizer and cosine annealing.
 Experiments marked \textit{pending} are in progress at the time of this report.
 
-\subsection{Results}
+\subsection{Results --- Phase 1: ResNet-18 Baseline}
 
-Table~\ref{tab:results} reports the best macro F1-score achieved per dataset
-and condition combination.
+Table~\ref{tab:results_r18} reports the best macro F1-score for ResNet-18
+across all datasets and conditions.
+C4 (head\_layer4) achieves the best result in most datasets;
+C2 (layer4) wins on the smallest dataset (Fruits Quality, 359 images).
 
 \begin{table}[h]
 \centering
-\caption{Best macro F1-score (\%) --- ResNet-18, conditions C3 and C4.
-\textit{Pending}: experiment in progress.
-N/A: fruit\_state not applicable (single-fruit dataset).
-Bold: best result per dataset.}
-\label{tab:results}
-\setlength{\tabcolsep}{6pt}
-\begin{tabular}{lC{2cm}C{2.2cm}C{2cm}C{2.2cm}}
+\caption{Best macro F1-score (\%) --- ResNet-18, all conditions, state mode.
+Bold: best per dataset.}
+\label{tab:results_r18}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lC{1.6cm}C{1.6cm}C{1.6cm}C{1.6cm}C{1.8cm}}
 \toprule
-\multirow{2}{*}{\textbf{Dataset}}
-    & \multicolumn{2}{c}{\textbf{C3: head\_frozen}}
-    & \multicolumn{2}{c}{\textbf{C4: head\_layer4}} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}
-    & state & fruit\_state & state & fruit\_state \\
+\textbf{Dataset} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} & \textbf{Best cond.} \\
 \midrule
-FruitVision (3-class)
-    & 82.6 & 86.2 & \textbf{88.0} & \textit{pending} \\
-Fruits Classification
-    & 94.0 & 94.5
-    & \textbf{95.8} & \textit{pending} \\
-Lemon Varieties
-    & \textit{pending} & N/A & \textbf{98.2} & N/A \\
-Fruits Fresh/Rotten
-    & 99.3 & 99.2
-    & \textbf{99.7} & 99.5 \\
-Fresh \& Stale (18 classes)
-    & 97.9 & 96.1
-    & \textbf{99.0} & 97.7 \\
-Fruits Quality
-    & \textit{pending} & N/A
-    & \textit{pending} & N/A \\
+Fruits Fresh/Rotten & 97.6 & 99.8 & 99.4 & \textbf{99.8} & C2 / C4 \\
+Fresh \& Stale      & 95.0 & 98.9 & 98.0 & \textbf{99.0} & C4 \\
+Lemon Varieties     & 96.2 & 98.0 & 96.2 & \textbf{98.5} & C4 \\
+Fruits Classification & 94.3 & 95.5 & 95.2 & \textbf{96.4} & C4 \\
+FruitVision (3-cls) & 78.3 & \textbf{91.0} & 86.7 & 90.6 & C2 \\
+Fruits Quality      & 86.1 & \textbf{91.6} & 86.0 & 88.9 & C2 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{All Runs --- Detailed Results}
+\subsection{Results --- Phase 2: Backbone Comparison}
 
-Table~\ref{tab:allruns} lists every completed experiment sorted by accuracy.
-All runs use ResNet-18 with all available fruits.
-Rows marked $^{\dagger}$ used an earlier code version that ran for only 30 epochs
-and did not record F1, precision, or recall; accuracy is included for reference only.
+Table~\ref{tab:results_bb} compares the best F1-score per dataset across
+ResNet-18, EfficientNet-B0 and EfficientNet-B2 (state mode, best condition).
+EfficientNet results use C3 (head\_frozen) as the optimal condition.
+
+\begin{table}[h]
+\centering
+\caption{Best macro F1-score (\%) by backbone --- state mode.
+\textit{Pending}: experiment in progress.
+Bold: best backbone per dataset.}
+\label{tab:results_bb}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lC{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}}
+\toprule
+\textbf{Dataset} & \textbf{R18 best} & \textbf{R18 cond} & \textbf{EB0 best} & \textbf{EB2 best} & \textbf{Winner} \\
+\midrule
+Fruits Fresh/Rotten & 99.8 & C2/C4 & \textbf{100.0} & 99.9 & EB0 \\
+Fresh \& Stale      & 99.0 & C4 & \textbf{99.4} & \textit{pending} & EB0 \\
+Lemon Varieties     & 98.5 & C4 & \textbf{98.7} & \textit{pending} & EB0 \\
+Fruits Classification & 96.4 & C4 & \textbf{97.0} & \textit{pending} & EB0 \\
+FruitVision (3-cls) & 91.0 & C2 & 91.6 & \textbf{92.3} & EB2 \\
+Fruits Quality      & \textbf{91.6} & C2 & 86.1 & \textit{pending} & R18 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Optimal condition per backbone.}
+A consistent pattern emerges across datasets:
+ResNet-18 performs best under C4 (layer4 unfrozen + projection head) in most
+datasets, while both EfficientNet variants perform best under C3
+(backbone frozen + projection head).
+This suggests that EfficientNet's higher-dimensional feature vectors
+(1280--1408 vs.\ 512 for ResNet-18) are already sufficiently discriminative
+without fine-tuning, whereas ResNet-18 benefits from partial backbone
+adaptation to the target domain.
+
+\paragraph{Effect of dataset size.}
+On the smallest dataset (Fruits Quality, 359 images), ResNet-18 outperforms
+EfficientNet-B0 by 5.5 percentage points.
+On datasets with more than 1,500 images, EfficientNet-B0 consistently matches
+or surpasses ResNet-18.
+This indicates that EfficientNet's larger head is more prone to overfitting
+on very small datasets.
+
+\subsection{All Runs --- ResNet-18 Complete Results}
+
+Table~\ref{tab:allruns} lists all ResNet-18 runs sorted by F1-score.
 
 \begin{table}[h]
 \centering
 \small
-\caption{All completed runs sorted by validation accuracy.
-All experiments: ResNet-18, all fruits.
-$^{\dagger}$Early-version run (30 epochs); F1/Prec/Recall not recorded.}
+\caption{All ResNet-18 runs sorted by F1-score (state mode, 60 epochs).}
 \label{tab:allruns}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{L{3.8cm} C{2.4cm} C{1.2cm} C{1.2cm} C{1.2cm} C{1.2cm} C{0.8cm}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{L{3.5cm} C{2.2cm} C{1.2cm} C{1.2cm} C{1.2cm} C{1.2cm}}
 \toprule
-\textbf{Dataset} & \textbf{Condition} & \textbf{Acc} & \textbf{F1} & \textbf{Prec} & \textbf{Recall} & \textbf{Ep} \\
+\textbf{Dataset} & \textbf{Condition} & \textbf{Acc} & \textbf{F1} & \textbf{MCC} & \textbf{AUC} \\
 \midrule
-Fruits Fresh/Rotten & head\_layer4 & 99.7 & 99.7 & 99.7 & 99.7 & 50 \\
-Fruits Fresh/Rotten & head\_frozen & 99.3 & 99.3 & 99.3 & 99.3 & 50 \\
-Fresh \& Stale      & head\_layer4 & 99.0 & 99.0 & 99.0 & 99.0 & 50 \\
-Lemon Varieties     & head\_layer4 & 98.2 & 98.2 & 98.2 & 98.2 & 50 \\
-Fresh \& Stale      & head\_frozen & 97.9 & 97.9 & 97.9 & 97.9 & 50 \\
-Fruits Classification & head\_layer4 & 95.8 & 95.8 & 95.8 & 95.8 & 50 \\
-Fruits Classification & head\_frozen & 94.0 & 94.0 & 94.0 & 94.0 & 50 \\
-Fruits Classification$^{\dagger}$ & frozen & 93.4 & --- & --- & --- & 30 \\
-FruitVision         & head\_layer4 & 87.9 & 88.0 & 88.7 & 87.7 & 50 \\
-FruitVision$^{\dagger}$ & layer4   & 87.1 & --- & --- & --- & 30 \\
-FruitVision         & head\_frozen & 82.2 & 82.6 & 83.0 & 82.9 & 50 \\
-FruitVision$^{\dagger}$ & frozen   & 75.3 & --- & --- & --- & 30 \\
+Fruits Fresh/Rotten & layer4      & 99.8 & 99.8 & 0.996 & 1.000 \\
+Fruits Fresh/Rotten & head\_layer4 & 99.8 & 99.8 & 0.996 & 1.000 \\
+Fresh \& Stale      & head\_layer4 & 99.0 & 99.0 & 0.979 & 1.000 \\
+Lemon Varieties     & head\_layer4 & 98.5 & 98.5 & 0.970 & 1.000 \\
+Fresh \& Stale      & layer4      & 98.9 & 98.9 & 0.978 & 1.000 \\
+Fruits Fresh/Rotten & head\_frozen & 99.4 & 99.4 & 0.987 & 0.999 \\
+Fresh \& Stale      & head\_frozen & 98.0 & 98.0 & 0.960 & 1.000 \\
+Lemon Varieties     & layer4      & 98.0 & 98.0 & 0.960 & 0.999 \\
+Fruits Fresh/Rotten & frozen      & 97.6 & 97.6 & 0.952 & 0.997 \\
+Fresh \& Stale      & frozen      & 95.0 & 95.0 & 0.899 & 1.000 \\
+Fruits Classification & head\_layer4 & 96.4 & 96.4 & 0.929 & 0.995 \\
+Lemon Varieties     & frozen      & 96.2 & 96.2 & 0.925 & 0.992 \\
+Fruits Classification & layer4    & 95.5 & 95.5 & 0.912 & 0.993 \\
+Fruits Classification & head\_frozen & 95.2 & 95.2 & 0.904 & 0.990 \\
+Fruits Classification & frozen    & 94.3 & 94.3 & 0.888 & 0.982 \\
+FruitVision         & layer4      & 90.9 & 91.0 & 0.863 & 0.981 \\
+FruitVision         & head\_layer4 & 90.4 & 90.6 & 0.856 & 0.982 \\
+Fruits Quality      & layer4      & 91.7 & 91.6 & 0.839 & 0.947 \\
+FruitVision         & head\_frozen & 86.4 & 86.7 & 0.797 & 0.965 \\
+Fruits Quality      & head\_layer4 & 88.9 & 88.9 & 0.789 & 0.951 \\
+Fruits Quality      & frozen      & 86.1 & 86.1 & 0.732 & 0.914 \\
+FruitVision         & frozen      & 78.0 & 78.3 & 0.686 & 0.932 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -516,6 +556,51 @@ Each curve corresponds to one training condition and backbone combination.
 \end{figure}
 
 
+\subsection{Cross-Dataset Evaluation on Real Photos}
+
+To measure domain shift, trained models are evaluated on a small collection
+of 121 real strawberry photos taken with a phone camera under natural
+lighting conditions (\texttt{own\_dataset}).
+None of the training datasets contain strawberry photos taken in these
+conditions.
+
+Table~\ref{tab:own} shows the top results, sorted by F1 on \texttt{own\_dataset}.
+The ID column uses the experiment identifier format
+\texttt{DATASET-BACKBONE-CONDITION-MODE} defined in Section~\ref{sec:sw}.
+
+\begin{table}[h]
+\centering
+\caption{Cross-dataset evaluation on own\_dataset (121 real photos, state mode).
+Drop = F1\_train $-$ F1\_eval.}
+\label{tab:own}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{L{3.8cm} C{2cm} C{2cm} C{1.6cm}}
+\toprule
+\textbf{Model ID} & \textbf{F1 train} & \textbf{F1 eval} & \textbf{Drop} \\
+\midrule
+MLM-R18-C4-ST  & 98.5 & \textbf{91.7} & 6.8 \\
+MLM-EB0-C4-ST  & 95.4 & \textbf{91.7} & 3.7 \\
+MLM-R18-C2-ST  & 98.0 & 87.5 & 10.5 \\
+MFR-EB0-C3-ST  & 97.0 & 87.3 & 9.7  \\
+MFR-R18-C4-ST  & 96.4 & 87.3 & 9.1  \\
+KFS-R18-C4-ST  & 99.0 & 87.3 & 11.7 \\
+KFR-R18-C4-ST  & 99.8 & 70.8 & 29.0 \\
+KFR-EB0-C3-ST  & 100.0 & 65.7 & 34.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two observations are notable.
+First, the Lemon Varieties models (MLM) generalize best despite not being the
+highest-performing models on their own dataset.
+The more diverse photographic conditions in that dataset appear to produce
+more transferable features.
+Second, the models trained on Fruits Fresh/Rotten (KFR) suffer the largest
+domain shift: a model achieving 100\% F1 on studio photos drops to 65.7\%
+on real-world phone camera photos.
+This confirms that high in-domain accuracy does not imply good generalization
+to unseen visual domains.
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Korean Food Dataset Proposal}
 % ─────────────────────────────────────────────────────────────────────────────
@@ -550,6 +635,7 @@ interactively at runtime.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Software Implementation}
+\label{sec:sw}
 % ─────────────────────────────────────────────────────────────────────────────
 
 The classification system is implemented in Python (PyTorch) and organized into
@@ -558,41 +644,34 @@ Figure~\ref{fig:pipeline} illustrates the data flow between components.
 
 \subsection{Usage Workflow}
 
-Only two scripts are executed directly by the user; the remaining modules
-are imported internally by \texttt{train.py}.
+Scripts are organized in four numbered stages.
+Internal libraries (\texttt{\_backbone.py}, \texttt{\_dataset.py}) are
+imported automatically and never run directly.
 
 \begin{enumerate}
-    \item \textbf{\texttt{python prepare\_datasets.py}} ---
-    Run once per dataset.
-    Reorganizes the raw images from \texttt{datasets/} into the unified
-    \texttt{data/\{dataset\}/\{fruit\}/\{state\}/} structure.
-    Must be run before any training.
+    \item \textbf{Stage 01 --- Data preparation}
+    \texttt{01\_01\_prepare\_datasets.py} reorganizes raw datasets into the
+    unified \texttt{data/\{dataset\}/\{fruit\}/\{state\}/} structure.
+    \texttt{01\_02\_rename\_own\_dataset.py} and
+    \texttt{01\_03\_prepare\_own\_dataset.py} handle own photos.
 
-    \item \textbf{\texttt{python train.py}} ---
-    Run once per experiment.
-    Presents an interactive menu to select dataset, label mode, condition,
-    and backbone.
-    Internally imports \texttt{backbone.py} (to build the model) and
-    \texttt{dataset.py} (to build the data loaders); these two modules are
-    never executed directly.
-    Saves results to \texttt{run\_outputs/\{run\_name\}/}.
+    \item \textbf{Stage 02 --- Training}
+    \texttt{02\_01\_train.py} presents an interactive menu to select dataset,
+    label mode, condition, and backbone.
+    Results are saved to \texttt{run\_outputs/\{run\_name\}/}.
 
-    \item \textbf{\texttt{python analyze.py}} ---
-    Run after one or more training experiments are complete.
-    Reads all \texttt{metrics.json} files and produces comparison plots
-    across all runs.
+    \item \textbf{Stage 03 --- Evaluation and analysis}
+    \texttt{03\_01\_evaluate.py} loads any \texttt{best\_model.pt} and
+    evaluates it on any dataset, generating per-image predictions and plots.
+    \texttt{03\_02\_analyze.py} reads all \texttt{metrics.json} files and
+    generates training-curve comparison plots.
 
-    \item \textbf{\texttt{python docs/prepare\_figures.py}} ---
-    Copies the generated plots into \texttt{docs/figures/} for inclusion
-    in this report.
+    \item \textbf{Stage 04 --- Reporting}
+    \texttt{04\_01\_generate\_tracker.py} produces
+    \texttt{experiments\_tracker.xlsx} with color-coded run status.
+    \texttt{04\_02\_generate\_eval\_report.py} produces
+    \texttt{eval\_report.xlsx} with ranked cross-dataset evaluation results.
 \end{enumerate}
-
-\noindent
-\texttt{backbone.py} and \texttt{dataset.py} are never run directly.
-They are libraries: \texttt{backbone.py} provides the backbone registry and
-\texttt{dataset.py} provides the data loaders.
-Both are imported at the top of \texttt{train.py} and called transparently
-during training.
 
 \begin{figure}[h]
 \centering
