@@ -167,6 +167,7 @@ Example: `KFR-R18-C4-ST` = kaggle_fruits_fresh_rotten, ResNet-18, head_layer4, s
 
 | # | Date | Description |
 |---|------|-------------|
+| 9 | 2026-05-31 | EfficientNet-B2 Phase 2 started. EB0 complete on 5 datasets. EB0 C3 reaches 100% F1 on fruits_fresh_rotten. EB2 outperforms EB0/R18 on fruitvision. Updated eval_report and tracker. |
 | 8 | 2026-05-30 | EfficientNet-B0 Phase 2 experiments started. Script reorganization with stage numbering (00–04). eval_report.xlsx and experiments_tracker.xlsx added. Cross-dataset evaluation on own_dataset (18 models). |
 | 7 | 2026-05-29 | All ResNet-18 baseline runs complete (C1-C4, state+fruit_state, all 6 datasets). evaluate.py with MCC, AUC, confidence stats, ROC curves. |
 | 6 | 2026-05-17 | train.py updated with MCC, AUC-ROC, learning rate tracking, train/val split info. New metrics format. |
