@@ -40,10 +40,10 @@ COND_COLOR = {
     "head_layer4": "#C44E52",
 }
 COND_LABEL = {
-    "frozen"     : "Frozen",
-    "layer4"     : "Layer4",
-    "head_frozen": "Head+Frozen",
-    "head_layer4": "Head+Layer4",
+    "frozen"     : "C1",
+    "layer4"     : "C2",
+    "head_frozen": "C3",
+    "head_layer4": "C4",
 }
 BACKBONE_LS = {
     "resnet18"          : "-",
@@ -52,6 +52,23 @@ BACKBONE_LS = {
     "mobilenet_v3_small": ":",
     "efficientnet_b0"   : (0, (5, 1)),
     "efficientnet_b2"   : (0, (3, 1, 1, 1)),
+}
+BB_CODE = {
+    "resnet18"          : "R18",
+    "resnet34"          : "R34",
+    "resnet50"          : "R50",
+    "mobilenet_v3_small": "MN3",
+    "efficientnet_b0"   : "EB0",
+    "efficientnet_b2"   : "EB2",
+}
+DS_CODE = {
+    "kaggle_fruits_quality"     : "KFQ",
+    "mendeley_fruits"           : "MFR",
+    "mendeley_lemon_varieties"  : "MLM",
+    "mendeley_fruitvision"      : "MFV",
+    "kaggle_fruits_fresh_rotten": "KFR",
+    "kaggle_fresh_stale"        : "KFS",
+    "own_dataset"               : "OWN",
 }
 
 
@@ -105,9 +122,10 @@ def _fruits_tag(r):
 
 
 def _run_label(r):
-    bb  = r.get("backbone_name", "").replace("efficientnet_", "eff_").replace("mobilenet_v3_small", "mob_s")
-    tag = _fruits_tag(r)
-    return f"{COND_LABEL.get(r.get('condition',''), r.get('condition',''))} | {bb} | {tag}"
+    bb   = BB_CODE.get(r.get("backbone_name", ""), r.get("backbone_name", "")[:4])
+    cond = COND_LABEL.get(r.get("condition", ""), r.get("condition", ""))
+    ds   = DS_CODE.get(r.get("dataset", ""), r.get("dataset", "")[:4].upper())
+    return f"{ds}-{bb}-{cond}"
 
 
 # ─────────────────────────────────────────────────────────────
@@ -136,16 +154,19 @@ def print_summary(runs):
 # ─────────────────────────────────────────────────────────────
 
 def _plot_metric_curves(runs, out_dir, metric_key, metric_label, filename, marker):
-    """Generic curve plotter — one subplot per dataset, one metric."""
+    """Generic curve plotter — 2×3 grid of datasets, one metric."""
     datasets = sorted({r["dataset"] for r in runs if r.get("acc_history")})
     if not datasets:
         return
 
-    fig, axes = plt.subplots(1, len(datasets),
-                             figsize=(6 * len(datasets), 4.5), squeeze=False)
+    n_cols = 3
+    n_rows = (len(datasets) + n_cols - 1) // n_cols
+    fig, axes = plt.subplots(n_rows, n_cols,
+                             figsize=(6 * n_cols, 4.5 * n_rows), squeeze=False)
 
-    for col, ds in enumerate(datasets):
-        ax      = axes[0][col]
+    for idx, ds in enumerate(datasets):
+        row, col = divmod(idx, n_cols)
+        ax      = axes[row][col]
         ds_runs = [r for r in runs if r["dataset"] == ds and r.get("acc_history")]
 
         for r in ds_runs:
@@ -159,13 +180,18 @@ def _plot_metric_curves(runs, out_dir, metric_key, metric_label, filename, marke
             ax.plot(epochs, vals, color=color, linestyle=ls,
                     linewidth=1.8, marker=marker, markersize=3, label=label)
 
-        title = ds.replace("mendeley_", "").replace("_", " ").title()
+        title = DS_CODE.get(ds, ds.replace("mendeley_","").replace("_"," ").title())
         ax.set_title(title, fontsize=11)
         ax.set_xlabel("Epoch")
         ax.set_ylabel(f"{metric_label} (%)")
         ax.legend(fontsize=6, loc="lower right")
         ax.grid(True, alpha=0.25)
         ax.set_ylim(bottom=40)
+
+    # Hide unused subplots
+    for idx in range(len(datasets), n_rows * n_cols):
+        row, col = divmod(idx, n_cols)
+        axes[row][col].set_visible(False)
 
     fig.suptitle(f"Validation {metric_label} over Training",
                  fontsize=13, fontweight="bold")
@@ -219,11 +245,14 @@ def plot_loss_curves(runs, out_dir):
     if not datasets or not has_val_loss:
         return
 
-    fig, axes = plt.subplots(1, len(datasets),
-                             figsize=(7 * len(datasets), 5), squeeze=False)
+    n_cols = 3
+    n_rows = (len(datasets) + n_cols - 1) // n_cols
+    fig, axes = plt.subplots(n_rows, n_cols,
+                             figsize=(7 * n_cols, 5 * n_rows), squeeze=False)
 
-    for col, ds in enumerate(datasets):
-        ax = axes[0][col]
+    for idx, ds in enumerate(datasets):
+        row, col = divmod(idx, n_cols)
+        ax = axes[row][col]
         ds_runs = [r for r in runs if r["dataset"] == ds and r.get("acc_history")]
 
         for r in ds_runs:
@@ -243,12 +272,16 @@ def plot_loss_curves(runs, out_dir):
                 ax.plot(epochs, train_loss, color=color, linestyle=":",
                         linewidth=1.2, alpha=0.6, label=f"{label} (train)")
 
-        title = ds.replace("mendeley_", "").replace("_", " ").title()
+        title = DS_CODE.get(ds, ds.replace("mendeley_","").replace("_"," ").title())
         ax.set_title(f"{title} — Loss", fontsize=11)
         ax.set_xlabel("Epoch")
         ax.set_ylabel("Loss")
         ax.legend(fontsize=6, loc="upper right")
         ax.grid(True, alpha=0.25)
+
+    for idx in range(len(datasets), n_rows * n_cols):
+        row, col = divmod(idx, n_cols)
+        axes[row][col].set_visible(False)
 
     fig.suptitle("Train Loss vs Val Loss", fontsize=13, fontweight="bold")
     plt.tight_layout()
@@ -268,11 +301,14 @@ def plot_metrics_summary(runs, out_dir):
     metric_labels = ["Accuracy", "F1 Macro", "Precision", "Recall"]
     metric_colors = ["#4C72B0", "#C44E52", "#55A868", "#DD8452"]
 
-    fig, axes = plt.subplots(1, len(datasets),
-                             figsize=(8 * len(datasets), 6), squeeze=False)
+    n_cols = 3
+    n_rows = (len(datasets) + n_cols - 1) // n_cols
+    fig, axes = plt.subplots(n_rows, n_cols,
+                             figsize=(8 * n_cols, 6 * n_rows), squeeze=False)
 
-    for col, ds in enumerate(datasets):
-        ax = axes[0][col]
+    for idx, ds in enumerate(datasets):
+        row, col = divmod(idx, n_cols)
+        ax = axes[row][col]
         ds_runs = [r for r in runs if r["dataset"] == ds]
         conds   = [c for c in CONDITIONS if any(r.get("condition") == c for r in ds_runs)]
 
@@ -295,11 +331,15 @@ def plot_metrics_summary(runs, out_dir):
         ax.set_xticklabels([COND_LABEL[c] for c in conds], fontsize=9)
         ax.set_ylabel("Score (%)")
         ax.set_ylim(0, 108)
-        ax.set_title(ds.replace("mendeley_", "").replace("_", " ").title(), fontsize=11)
+        ax.set_title(DS_CODE.get(ds, ds.replace("mendeley_","").replace("_"," ").title()), fontsize=11)
         ax.legend(fontsize=8)
         ax.grid(True, axis="y", alpha=0.25)
         ax.axhline(100 / (ds_runs[0].get("num_classes", 2) if ds_runs else 2),
                    color="gray", linestyle="--", linewidth=1, alpha=0.4, label="Random")
+
+    for idx in range(len(datasets), n_rows * n_cols):
+        row, col = divmod(idx, n_cols)
+        axes[row][col].set_visible(False)
 
     fig.suptitle("Best Acc / F1 / Precision / Recall per Condition", fontsize=13, fontweight="bold")
     plt.tight_layout()
@@ -310,117 +350,166 @@ def plot_metrics_summary(runs, out_dir):
 # Plot 4 — Heatmap condition × backbone (Acc and F1)
 # ─────────────────────────────────────────────────────────────
 
+def _draw_heatmap_cell(ax, runs, ds, metric_key, metric_label, backbones):
+    """Draw one condition×backbone heatmap cell for a given dataset and metric."""
+    ds_code = DS_CODE.get(ds, ds[:4].upper())
+    matrix  = np.full((len(CONDITIONS), len(backbones)), np.nan)
+
+    for r in runs:
+        if r["dataset"] != ds:
+            continue
+        c = r.get("condition", "")
+        b = r.get("backbone_name", "")
+        if c in CONDITIONS and b in backbones:
+            val = r.get(metric_key, 0) * 100
+            i, j = CONDITIONS.index(c), backbones.index(b)
+            if np.isnan(matrix[i, j]) or val > matrix[i, j]:
+                matrix[i, j] = val
+
+    vmin = max(0, np.nanmin(matrix) - 5) if not np.all(np.isnan(matrix)) else 0
+    im   = ax.imshow(matrix, cmap="YlGn", aspect="auto", vmin=vmin, vmax=100)
+    plt.colorbar(im, ax=ax, shrink=0.7)
+
+    short_bb = [BB_CODE.get(b, b[:4]) for b in backbones]
+    ax.set_xticks(range(len(backbones))); ax.set_xticklabels(short_bb, rotation=25, ha="right", fontsize=9)
+    ax.set_yticks(range(len(CONDITIONS))); ax.set_yticklabels([COND_LABEL[c] for c in CONDITIONS], fontsize=9)
+    ax.set_title(ds_code, fontsize=11)
+
+    for i in range(len(CONDITIONS)):
+        for j in range(len(backbones)):
+            val = matrix[i, j]
+            if not np.isnan(val):
+                txt_color = "white" if val > (vmin + (100 - vmin) * 0.7) else "black"
+                ax.text(j, i, f"{val:.1f}", ha="center", va="center",
+                        fontsize=9, color=txt_color, fontweight="bold")
+            else:
+                ax.text(j, i, "—", ha="center", va="center", fontsize=11, color="#aaaaaa")
+
+
 def plot_heatmap(runs, out_dir):
+    """Two separate figures (Accuracy / F1 Macro), each a 3×2 grid of datasets."""
     datasets  = sorted({r["dataset"] for r in runs})
     backbones = sorted({r.get("backbone_name", "") for r in runs})
     if not datasets or not backbones:
         return
 
-    fig, axes = plt.subplots(len(datasets), 2,
-                             figsize=(max(5, len(backbones) * 2.5) * 2,
-                                      len(CONDITIONS) * 1.5 * len(datasets) + 1),
-                             squeeze=False)
+    n_cols = 2
+    n_rows = 3
 
-    for row, ds in enumerate(datasets):
-        for col, (metric_key, metric_label) in enumerate([("best_acc", "Accuracy"), ("best_f1", "F1 Macro")]):
-            ax = axes[row][col]
-            matrix = np.full((len(CONDITIONS), len(backbones)), np.nan)
+    for metric_key, metric_label, fname in [
+        ("best_acc", "Accuracy",  "heatmap_acc.png"),
+        ("best_f1",  "F1 Macro",  "heatmap_f1.png"),
+    ]:
+        cell_w = max(4, len(backbones) * 1.8)
+        cell_h = len(CONDITIONS) * 1.2 + 1
+        fig, axes = plt.subplots(n_rows, n_cols,
+                                 figsize=(cell_w * n_cols, cell_h * n_rows),
+                                 squeeze=False)
 
-            for r in runs:
-                if r["dataset"] != ds:
-                    continue
-                c = r.get("condition", "")
-                b = r.get("backbone_name", "")
-                if c in CONDITIONS and b in backbones:
-                    val = r.get(metric_key, 0) * 100
-                    i, j = CONDITIONS.index(c), backbones.index(b)
-                    if np.isnan(matrix[i, j]) or val > matrix[i, j]:
-                        matrix[i, j] = val
+        for idx, ds in enumerate(datasets):
+            row, col = divmod(idx, n_cols)
+            _draw_heatmap_cell(axes[row][col], runs, ds, metric_key, metric_label, backbones)
 
-            vmin = max(0, np.nanmin(matrix) - 5) if not np.all(np.isnan(matrix)) else 0
-            im = ax.imshow(matrix, cmap="YlGn", aspect="auto", vmin=vmin, vmax=100)
-            plt.colorbar(im, ax=ax, label=f"{metric_label} (%)", shrink=0.8)
+        for idx in range(len(datasets), n_rows * n_cols):
+            row, col = divmod(idx, n_cols)
+            axes[row][col].set_visible(False)
 
-            ax.set_xticks(range(len(backbones)))
-            ax.set_yticks(range(len(CONDITIONS)))
-            short_bb = [b.replace("efficientnet_", "eff_").replace("mobilenet_v3_small", "mob_s")
-                        for b in backbones]
-            ax.set_xticklabels(short_bb, rotation=25, ha="right", fontsize=9)
-            ax.set_yticklabels([COND_LABEL[c] for c in CONDITIONS], fontsize=9)
-            title = ds.replace("mendeley_", "").replace("_", " ").title()
-            ax.set_title(f"{title} — {metric_label}", fontsize=11)
-
-            for i in range(len(CONDITIONS)):
-                for j in range(len(backbones)):
-                    val = matrix[i, j]
-                    if not np.isnan(val):
-                        txt_color = "white" if val > (vmin + (100 - vmin) * 0.7) else "black"
-                        ax.text(j, i, f"{val:.1f}%", ha="center", va="center",
-                                fontsize=10, color=txt_color, fontweight="bold")
-                    else:
-                        ax.text(j, i, "—", ha="center", va="center",
-                                fontsize=12, color="#aaaaaa")
-
-    fig.suptitle("Condition × Backbone Heatmap", fontsize=13, fontweight="bold")
-    plt.tight_layout()
-    _save(fig, out_dir, "heatmap.png")
+        fig.suptitle(f"Condition × Backbone Heatmap — {metric_label}",
+                     fontsize=13, fontweight="bold")
+        plt.tight_layout(h_pad=4.0)
+        plt.subplots_adjust(top=0.92)
+        _save(fig, out_dir, fname)
 
 
 # ─────────────────────────────────────────────────────────────
 # Plot 5 — Confusion matrices
 # ─────────────────────────────────────────────────────────────
 
+def _draw_confusion(ax, r, show_xlabel=True, show_ylabel=True):
+    """Draw a normalized confusion matrix — no colorbar, no title."""
+    cm  = np.array(r["final_confusion_matrix"])
+    cls = r.get("class_names", [str(i) for i in range(cm.shape[0])])
+    cm_norm = cm.astype(float)
+    row_sums = cm_norm.sum(axis=1, keepdims=True)
+    cm_norm  = np.divide(cm_norm, row_sums, where=row_sums > 0)
+
+    ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
+
+    ax.set_xticks(range(len(cls)))
+    ax.set_yticks(range(len(cls)))
+    # x-tick labels (class names) only on bottom row
+    ax.set_xticklabels(cls if show_xlabel else [""] * len(cls),
+                       rotation=30, ha="right", fontsize=8)
+    # y-tick labels (class names) only on left column
+    ax.set_yticklabels(cls if show_ylabel else [""] * len(cls), fontsize=8)
+
+    if show_xlabel: ax.set_xlabel("Predicted", fontsize=8)
+    # "True" ylabel handled externally as dataset code
+
+    for i in range(len(cls)):
+        for j in range(len(cls)):
+            pct = cm_norm[i, j]
+            ax.text(j, i, f"{pct*100:.0f}%\n({cm[i,j]})",
+                    ha="center", va="center", fontsize=8,
+                    color="white" if pct > 0.6 else "black")
+
+
 def plot_confusion_matrices(runs, out_dir):
+    """One PNG per backbone. Grid: rows=datasets, cols=C1-C4.
+    Shared column headers (C1-C4) on top row, shared row labels (dataset codes) on left."""
     valid = [r for r in runs if r.get("final_confusion_matrix")]
     if not valid:
         return
 
-    n   = len(valid)
-    cols = min(3, n)
-    rows = (n + cols - 1) // cols
-    fig, axes = plt.subplots(rows, cols,
-                             figsize=(5 * cols, 4.5 * rows), squeeze=False)
+    datasets  = sorted({r["dataset"] for r in valid})
+    backbones = sorted({r.get("backbone_name","") for r in valid})
 
-    for idx, r in enumerate(valid):
-        ax  = axes[idx // cols][idx % cols]
-        cm  = np.array(r["final_confusion_matrix"])
-        cls = r.get("class_names", [str(i) for i in range(cm.shape[0])])
+    for bb in backbones:
+        bb_code = BB_CODE.get(bb, bb[:4])
+        bb_runs = [r for r in valid if r.get("backbone_name") == bb]
+        ds_list = [ds for ds in datasets if any(r["dataset"] == ds for r in bb_runs)]
+        if not ds_list:
+            continue
 
-        # Normalize per row (true class)
-        cm_norm = cm.astype(float)
-        row_sums = cm_norm.sum(axis=1, keepdims=True)
-        cm_norm  = np.divide(cm_norm, row_sums, where=row_sums > 0)
+        n_rows = len(ds_list)
+        n_cols = len(CONDITIONS)
+        fig, axes = plt.subplots(n_rows, n_cols,
+                                 figsize=(4.5 * n_cols, 5.2 * n_rows),
+                                 squeeze=False)
+        fig.suptitle(f"Confusion Matrices — {bb_code}", fontsize=14,
+                     fontweight="bold")
 
-        im = ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
-        plt.colorbar(im, ax=ax, shrink=0.8)
+        for row, ds in enumerate(ds_list):
+            ds_code = DS_CODE.get(ds, ds[:4].upper())
+            for col, cond in enumerate(CONDITIONS):
+                ax = axes[row][col]
+                match = [r for r in bb_runs
+                         if r["dataset"] == ds and r.get("condition") == cond]
 
-        ax.set_xticks(range(len(cls)))
-        ax.set_yticks(range(len(cls)))
-        ax.set_xticklabels(cls, rotation=30, ha="right", fontsize=9)
-        ax.set_yticklabels(cls, fontsize=9)
-        ax.set_xlabel("Predicted")
-        ax.set_ylabel("True")
+                # Column header — only top row
+                if row == 0:
+                    ax.set_title(COND_LABEL.get(cond, cond), fontsize=13,
+                                 fontweight="bold", pad=10)
 
-        title = (f"{COND_LABEL.get(r.get('condition',''), r.get('condition',''))} | "
-                 f"{r.get('backbone_name','').replace('efficientnet_','eff_')} | "
-                 f"{r.get('dataset','').replace('mendeley_','')}")
-        ax.set_title(title, fontsize=9)
+                if match:
+                    show_x = (row == n_rows - 1)
+                    show_y = (col == 0)   # class names on left column
+                    _draw_confusion(ax, match[0],
+                                    show_xlabel=show_x, show_ylabel=show_y)
+                    # Dataset code as row label — left column only, above class names
+                    if col == 0:
+                        ax.set_ylabel(f"{ds_code}", fontsize=12, fontweight="bold",
+                                      labelpad=12, rotation=0, ha="right", va="center")
+                    if row != n_rows - 1:
+                        ax.set_xlabel("")
+                else:
+                    ax.text(0.5, 0.5, "n/a", ha="center", va="center",
+                            transform=ax.transAxes, fontsize=14, color="gray")
+                    ax.axis("off")
 
-        for i in range(len(cls)):
-            for j in range(len(cls)):
-                raw = cm[i, j]
-                pct = cm_norm[i, j]
-                txt_color = "white" if pct > 0.6 else "black"
-                ax.text(j, i, f"{pct*100:.0f}%\n({raw})",
-                        ha="center", va="center", fontsize=8, color=txt_color)
-
-    # Hide unused subplots
-    for idx in range(len(valid), rows * cols):
-        axes[idx // cols][idx % cols].set_visible(False)
-
-    fig.suptitle("Confusion Matrices (row-normalized, final epoch)", fontsize=13, fontweight="bold")
-    plt.tight_layout()
-    _save(fig, out_dir, "confusion_matrix.png")
+        plt.tight_layout(pad=1.5, h_pad=2.5, w_pad=1.5)
+        plt.subplots_adjust(top=0.94, bottom=0.06)
+        _save(fig, out_dir, f"confusion_matrix_{bb_code}.png")
 
 
 # ─────────────────────────────────────────────────────────────
@@ -428,55 +517,84 @@ def plot_confusion_matrices(runs, out_dir):
 # ─────────────────────────────────────────────────────────────
 
 def plot_per_class(runs, out_dir):
+    """One PNG per backbone. Grid: rows = datasets, cols = conditions (C1-C4)."""
     valid = [r for r in runs if r.get("acc_history") and
              any("f1_per_class" in h for h in r["acc_history"])]
     if not valid:
         return
 
-    n    = len(valid)
-    cols = min(3, n)
-    rows = (n + cols - 1) // cols
-    fig, axes = plt.subplots(rows, cols,
-                             figsize=(6 * cols, 4 * rows), squeeze=False)
+    datasets  = sorted({r["dataset"] for r in valid})
+    backbones = sorted({r.get("backbone_name","") for r in valid})
 
-    for idx, r in enumerate(valid):
-        ax  = axes[idx // cols][idx % cols]
-        # Use last eval entry with per-class data
-        hist = [h for h in r["acc_history"] if "f1_per_class" in h]
-        if not hist:
-            ax.set_visible(False)
+    for bb in backbones:
+        bb_code = BB_CODE.get(bb, bb[:4])
+        bb_runs = [r for r in valid if r.get("backbone_name") == bb]
+        ds_list = [ds for ds in datasets if any(r["dataset"] == ds for r in bb_runs)]
+        if not ds_list:
             continue
 
-        last = hist[-1]
-        cls  = r.get("class_names", [])
-        f1s  = last.get("f1_per_class", [])
-        precs= last.get("precision_per_class", [])
-        recs = last.get("recall_per_class", [])
+        n_rows = len(ds_list)
+        n_cols = len(CONDITIONS)
+        fig, axes = plt.subplots(n_rows, n_cols,
+                                 figsize=(6 * n_cols, 5.5 * n_rows), squeeze=False)
+        fig.suptitle(f"Per-Class Metrics — {bb_code} (final epoch)",
+                     fontsize=14, fontweight="bold")
 
-        x      = np.arange(len(cls))
-        width  = 0.25
-        ax.bar(x - width, [v * 100 for v in f1s],  width, label="F1",        color="#C44E52", alpha=0.85)
-        ax.bar(x,         [v * 100 for v in precs], width, label="Precision", color="#4C72B0", alpha=0.85)
-        ax.bar(x + width, [v * 100 for v in recs],  width, label="Recall",    color="#55A868", alpha=0.85)
+        for row, ds in enumerate(ds_list):
+            ds_code = DS_CODE.get(ds, ds[:4].upper())
+            for col, cond in enumerate(CONDITIONS):
+                ax    = axes[row][col]
+                match = [r for r in bb_runs
+                         if r["dataset"] == ds and r.get("condition") == cond]
 
-        ax.set_xticks(x)
-        ax.set_xticklabels(cls, fontsize=9)
-        ax.set_ylim(0, 108)
-        ax.set_ylabel("Score (%)")
-        ax.legend(fontsize=8)
-        ax.grid(True, axis="y", alpha=0.25)
+                # Shared column header — top row only
+                if row == 0:
+                    ax.set_title(COND_LABEL.get(cond, cond), fontsize=13,
+                                 fontweight="bold", pad=10)
 
-        title = (f"{COND_LABEL.get(r.get('condition',''), r.get('condition',''))} | "
-                 f"{r.get('backbone_name','').replace('efficientnet_','eff_')} | "
-                 f"{r.get('dataset','').replace('mendeley_','')}")
-        ax.set_title(title, fontsize=9)
+                if not match:
+                    ax.text(0.5, 0.5, "n/a", ha="center", va="center",
+                            transform=ax.transAxes, fontsize=14, color="gray")
+                    ax.axis("off")
+                    continue
 
-    for idx in range(len(valid), rows * cols):
-        axes[idx // cols][idx % cols].set_visible(False)
+                r    = match[0]
+                hist = [h for h in r["acc_history"] if "f1_per_class" in h]
+                if not hist:
+                    ax.set_visible(False)
+                    continue
 
-    fig.suptitle("Per-Class F1 / Precision / Recall (final epoch)", fontsize=13, fontweight="bold")
-    plt.tight_layout()
-    _save(fig, out_dir, "per_class.png")
+                last  = hist[-1]
+                cls   = r.get("class_names", [])
+                f1s   = last.get("f1_per_class", [])
+                precs = last.get("precision_per_class", [])
+                recs  = last.get("recall_per_class", [])
+
+                x     = np.arange(len(cls))
+                width = 0.25
+                ax.bar(x - width, [v*100 for v in f1s],   width, label="F1",        color="#C44E52", alpha=0.85)
+                ax.bar(x,         [v*100 for v in precs],  width, label="Precision", color="#4C72B0", alpha=0.85)
+                ax.bar(x + width, [v*100 for v in recs],   width, label="Recall",    color="#55A868", alpha=0.85)
+
+                ax.set_xticks(x)
+                ax.set_xticklabels(cls, fontsize=8, rotation=20, ha="right")
+                ax.set_ylim(0, 108)
+                ax.grid(True, axis="y", alpha=0.25)
+
+                # Shared row label — left column only
+                if col == 0:
+                    ax.set_ylabel(f"{ds_code}\nScore (%)", fontsize=11,
+                                  fontweight="bold", labelpad=8)
+                else:
+                    ax.set_ylabel("")
+
+                # Legend only on first cell per row
+                if col == 0:
+                    ax.legend(fontsize=7, loc="upper right")
+
+        plt.tight_layout(pad=1.5, h_pad=2.5, w_pad=1.5)
+        plt.subplots_adjust(top=0.94, bottom=0.06)
+        _save(fig, out_dir, f"per_class_{bb_code}.png")
 
 
 # ─────────────────────────────────────────────────────────────

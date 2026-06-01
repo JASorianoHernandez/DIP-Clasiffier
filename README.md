@@ -179,42 +179,51 @@ Best macro F1 per dataset and backbone (state mode, 60 epochs).
 | mendeley_fruitvision | 10,154 | C3 | **91.6%** | 0.872 | 0.988 |
 | kaggle_fruits_quality | 359 | C4 | 86.1% | 0.727 | 0.883 |
 
-### EfficientNet-B2 (in progress)
+### EfficientNet-B2
 
 | Dataset | Images | Best Cond | F1 | MCC | AUC |
 |---|---|---|---|---|---|
 | kaggle_fruits_fresh_rotten | 13,599 | C3 | **99.9%** | 0.999 | 1.000 |
+| kaggle_fresh_stale | 27,317 | C3 | pending | — | — |
+| mendeley_lemon_varieties | 1,956 | C3 | **98.5%** | — | — |
+| mendeley_fruits | 1,655 | C4 | **95.8%** | — | — |
 | mendeley_fruitvision | 10,154 | C3 | **92.3%** | 0.881 | 0.987 |
+| kaggle_fruits_quality | 359 | C3 | **88.9%** | — | — |
 
 ---
 
-## Key Findings (preliminary)
+## Key Findings
 
-- **C3 is optimal for EfficientNet** (head\_frozen — backbone frozen + projection head). In 5 of 6 completed datasets, EB0 C3 outperforms EB0 C4.
+- **C3 is optimal for EfficientNet** (head\_frozen). In 5 of 6 datasets, EB0 C3 outperforms EB0 C4. EB2 follows the same pattern.
 - **C4 is optimal for ResNet-18** (head\_layer4). Consistent across all datasets.
-- **Dataset size determines which backbone wins.** Below ~500 images ResNet-18 outperforms EfficientNet-B0. Above ~1,500 images EfficientNet-B0 consistently wins.
+- **Dataset size determines which backbone wins.** Below ~500 images ResNet-18 outperforms EfficientNet. Above ~1,500 images EfficientNet-B0 consistently wins.
 - **EfficientNet-B0 C3 reached 100% F1** on kaggle\_fruits\_fresh\_rotten — the only perfect result across all experiments.
-- **Formalin is the hardest class.** FruitVision is the only dataset where no backbone exceeds 92.3%. Directly relevant to Korean fermented foods.
-- **Domain shift is real and quantifiable.** A model with 99.8% F1 on training data drops to 70.8% on real phone camera photos of the same category.
-- **Generalization ≠ training performance.** The best generalizing model (lemon C4, 91.7% on own photos) is not the one with the highest training F1 (fruits\_fresh\_rotten EB0 C3, 100%).
+- **Formalin is the hardest class.** FruitVision is the only dataset where no backbone exceeds 92.3%. EB2 C3 achieves the best result (92.3%).
+- **Domain shift is real and large.** Mean drop across all models: 16 percentage points. Range: 3.7 to 34.3 points.
+- **Generalization ≠ training performance.** KFR-EB0-C3 achieves 100% training F1 but only 65.7% on real photos (-34.3%). MLM-R18-C4 achieves 98.5% training F1 and 91.7% on real photos (-6.8%).
+- **EB2 shows higher variance in generalization.** Best result: MFR-EB2-C3 at 91.6%. Worst result: MLM-EB2-C4 at 43.4%. EB2 is more sensitive to domain shift than EB0 or R18.
+- **Diverse training data generalizes better.** Models trained on Lemon Varieties (MLM) consistently top the cross-dataset rankings despite not having the highest training F1.
 
 ---
 
 ## Cross-Dataset Evaluation on Own Photos
 
-Models trained on public datasets evaluated on 121 real strawberry photos (`own_dataset`):
+60 models evaluated on 121 real strawberry photos (`own_dataset`). Top and notable results:
 
-| ID | Train F1 | Eval F1 | Drop |
-|---|---|---|---|
-| MLM-R18-C4-ST | 98.5% | **91.7%** | 6.8% |
-| MLM-EB0-C4-ST | 95.4% | **91.7%** | 3.7% |
-| MLM-R18-C2-ST | 98.0% | 87.5% | 10.5% |
-| MFR-EB0-C3-ST | 97.0% | 87.3% | 9.7% |
-| KFS-R18-C4-ST | 99.0% | 87.3% | 11.7% |
-| KFR-R18-C4-ST | 99.8% | 70.8% | 29.0% |
-| KFR-EB0-C3-ST | 100.0% | 65.7% | 34.3% |
+| ID | Train F1 | Eval F1 | Recall | Drop |
+|---|---|---|---|---|
+| MLM-R18-C4 | 98.5% | **91.7%** | 92.3% | 6.8% |
+| MLM-EB0-C4 | 95.4% | **91.7%** | 92.3% | 3.7% |
+| MFR-EB2-C3 | — | **91.6%** | 91.6% | — |
+| MFR-EB2-C1 | — | **91.6%** | 91.6% | — |
+| MLM-R18-C2 | 98.0% | 87.5% | 88.5% | 10.5% |
+| MFR-EB0-C3 | 97.0% | 87.3% | 87.1% | 9.7% |
+| KFR-R18-C4 | 99.8% | 70.8% | 71.0% | 29.0% |
+| KFR-EB0-C3 | 100.0% | 65.7% | 65.7% | 34.3% |
+| MLM-EB2-C4 | — | 43.4% | 47.9% | — |
 
-> Lemon Varieties models generalize best — more diverse photographic conditions produce more transferable features.
+> Best generalizers: Lemon Varieties (MLM) and Fruits Classification (MFR) — photographic diversity during training improves real-world transfer.
+> EB2 C4 variants show catastrophic domain shift on several datasets.
 
 ---
 
