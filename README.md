@@ -101,29 +101,44 @@ Example:  KFR-EB0-C3-ST
 
 ## Training Conditions
 
-Each condition controls how much of the pre-trained backbone is allowed to adapt.
+Four conditions form an ablation study over two dimensions: whether the backbone is partially fine-tuned, and whether a non-linear projection head is used.
 
-|  | Backbone frozen | layer4 free |
+|  | Backbone frozen | Layer4 free |
 |--|----------------|-------------|
 | **Linear head only** | C1 | C2 |
 | **Projection head** | C3 | C4 |
 
-**C1 — frozen + linear:**
-Backbone completely locked. Only a linear layer `d_out → C` is trained.
-Classical linear probe — fastest, weakest.
+---
 
-**C2 — layer4 + linear:**
-Last backbone block (~2M params) unfrozen. Linear classifier only.
-Allows high-level feature adaptation without a projection head.
+**C1 — Linear probe (frozen backbone + linear head)**
 
-**C3 — frozen + projection head:**
-Backbone frozen. A two-layer non-linear head `d_out → 256 → 128 → C`
-is trained from scratch. Optimal condition for EfficientNet backbones.
+All backbone weights are locked. Only a single linear layer `d_out → C` is optimized. This is the classical *linear probe* — evaluates the quality of ImageNet features without any domain adaptation. Fastest to train, but cannot compensate for mismatches between ImageNet and food freshness features.
 
-**C4 — layer4 + projection head:**
-Layer4 unfrozen + projection head. Trained with dual learning rates
-(`lr=1e-3` head, `lr_backbone=1e-5` backbone) to prevent catastrophic forgetting.
-Optimal condition for ResNet-18.
+---
+
+**C2 — Partial fine-tuning (layer4 free + linear head)**
+
+The last residual block of the backbone (`layer4`, ~2M params for ResNet-18) is unfrozen and trained alongside the linear classifier. All earlier layers remain frozen. This allows the highest-level feature detectors to specialize toward freshness-relevant patterns while preserving low and mid-level ImageNet features. Same classifier as C1 — no extra non-linear capacity.
+
+---
+
+**C3 — Projection head + frozen backbone**
+
+The backbone is fully frozen, but instead of a single linear layer, a two-layer non-linear projection head is used:
+```
+d_out → Linear(256) → ReLU → Linear(128) → ReLU → Linear(C)
+```
+The non-linear head reshapes the feature space to form more discriminative decision boundaries without touching the backbone. This is the **optimal condition for EfficientNet** variants — their 1280/1408-dim features are already expressive enough without fine-tuning.
+
+---
+
+**C4 — Projection head + partial fine-tuning (layer4 free)**
+
+Combines the projection head of C3 with the backbone fine-tuning of C2. Uses a **dual learning rate** strategy to prevent catastrophic forgetting:
+- Head: `lr = 1e-3`
+- Backbone layer4: `lr_backbone = 1e-5` (100× smaller)
+
+The drastically lower backbone LR ensures gradual adaptation — the backbone specializes toward freshness features without destroying the hierarchical representations inherited from ImageNet pre-training. This is the **optimal condition for ResNet-18**.
 
 ---
 
@@ -289,6 +304,8 @@ DIP-Classfier/
 | # | Date | Description |
 |---|------|-------------|
 | 11 | 2026-05-31 | Restructured README. EB0 fresh_stale complete (99.4%). EB2 fruits_fresh_rotten complete (99.9%). Updated LaTeX report with backbone comparison and cross-dataset sections. |
+| 12 | 2026-06-01 | MobileNetV3 experiments running. Detailed C1-C4 explanations in README and IEEE paper. analyze.py plots restructured with per-backbone grids and numbered --plots flag. |
+| 11 | 2026-05-31 | Restructured README. EB0 fresh_stale 99.4%. EB2 fruits_fresh_rotten 99.9%. Updated LaTeX. |
 | 10 | 2026-05-31 | Updated README with full results summary, key findings and cross-dataset evaluation. |
 | 9 | 2026-05-31 | EfficientNet-B2 Phase 2 started. EB0 C3 reaches 100% F1 on fruits\_fresh\_rotten. |
 | 8 | 2026-05-30 | EfficientNet-B0 Phase 2 experiments. Script reorganization with stage numbering. eval\_report.xlsx added. |

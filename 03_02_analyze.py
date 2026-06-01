@@ -124,8 +124,7 @@ def _fruits_tag(r):
 def _run_label(r):
     bb   = BB_CODE.get(r.get("backbone_name", ""), r.get("backbone_name", "")[:4])
     cond = COND_LABEL.get(r.get("condition", ""), r.get("condition", ""))
-    ds   = DS_CODE.get(r.get("dataset", ""), r.get("dataset", "")[:4].upper())
-    return f"{ds}-{bb}-{cond}"
+    return f"{bb}-{cond}"
 
 
 # ─────────────────────────────────────────────────────────────
@@ -211,7 +210,7 @@ def plot_acc_curves(runs, out_dir):
 
 def plot_f1_curves(runs, out_dir):
     _plot_metric_curves(runs, out_dir,
-                        metric_key="f1_macro", metric_label="F1 Macro",
+                        metric_key="f1_macro", metric_label="F1 Score",
                         filename="f1_curves.png", marker="s")
 
 
@@ -276,7 +275,7 @@ def plot_loss_curves(runs, out_dir):
         ax.set_title(f"{title} — Loss", fontsize=11)
         ax.set_xlabel("Epoch")
         ax.set_ylabel("Loss")
-        ax.legend(fontsize=6, loc="upper right")
+        ax.legend(fontsize=6, loc="upper left")
         ax.grid(True, alpha=0.25)
 
     for idx in range(len(datasets), n_rows * n_cols):
@@ -332,7 +331,7 @@ def plot_metrics_summary(runs, out_dir):
         ax.set_ylabel("Score (%)")
         ax.set_ylim(0, 108)
         ax.set_title(DS_CODE.get(ds, ds.replace("mendeley_","").replace("_"," ").title()), fontsize=11)
-        ax.legend(fontsize=8)
+        ax.legend(fontsize=8, loc="lower right")
         ax.grid(True, axis="y", alpha=0.25)
         ax.axhline(100 / (ds_runs[0].get("num_classes", 2) if ds_runs else 2),
                    color="gray", linestyle="--", linewidth=1, alpha=0.4, label="Random")
@@ -341,7 +340,7 @@ def plot_metrics_summary(runs, out_dir):
         row, col = divmod(idx, n_cols)
         axes[row][col].set_visible(False)
 
-    fig.suptitle("Best Acc / F1 / Precision / Recall per Condition", fontsize=13, fontweight="bold")
+    fig.suptitle("Training Condition Comparison", fontsize=13, fontweight="bold")
     plt.tight_layout()
     _save(fig, out_dir, "metrics_summary.png")
 
@@ -393,12 +392,14 @@ def plot_heatmap(runs, out_dir):
     if not datasets or not backbones:
         return
 
-    n_cols = 2
-    n_rows = 3
+    n_cols = 3
+    n_rows = 2
 
     for metric_key, metric_label, fname in [
-        ("best_acc", "Accuracy",  "heatmap_acc.png"),
-        ("best_f1",  "F1 Macro",  "heatmap_f1.png"),
+        ("best_acc",       "Accuracy",  "heatmap_acc.png"),
+        ("best_f1",        "F1 Score",  "heatmap_f1.png"),
+        ("best_precision", "Precision", "heatmap_precision.png"),
+        ("best_recall",    "Recall",    "heatmap_recall.png"),
     ]:
         cell_w = max(4, len(backbones) * 1.8)
         cell_h = len(CONDITIONS) * 1.2 + 1
@@ -414,10 +415,10 @@ def plot_heatmap(runs, out_dir):
             row, col = divmod(idx, n_cols)
             axes[row][col].set_visible(False)
 
-        fig.suptitle(f"Condition × Backbone Heatmap — {metric_label}",
+        fig.suptitle(f"{metric_label} — Condition × Backbone Heatmap",
                      fontsize=13, fontweight="bold")
         plt.tight_layout(h_pad=4.0)
-        plt.subplots_adjust(top=0.92)
+        plt.subplots_adjust(top=0.92, bottom=0.08)
         _save(fig, out_dir, fname)
 
 
@@ -431,20 +432,19 @@ def _draw_confusion(ax, r, show_xlabel=True, show_ylabel=True):
     cls = r.get("class_names", [str(i) for i in range(cm.shape[0])])
     cm_norm = cm.astype(float)
     row_sums = cm_norm.sum(axis=1, keepdims=True)
-    cm_norm  = np.divide(cm_norm, row_sums, where=row_sums > 0)
+    cm_norm  = np.divide(cm_norm, row_sums, out=np.zeros_like(cm_norm), where=row_sums > 0)
 
     ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
 
     ax.set_xticks(range(len(cls)))
     ax.set_yticks(range(len(cls)))
-    # x-tick labels (class names) only on bottom row
-    ax.set_xticklabels(cls if show_xlabel else [""] * len(cls),
-                       rotation=30, ha="right", fontsize=8)
-    # y-tick labels (class names) only on left column
-    ax.set_yticklabels(cls if show_ylabel else [""] * len(cls), fontsize=8)
+    # x-tick labels always visible (needed for formalin and multi-class)
+    ax.set_xticklabels(cls, rotation=0, ha="center", fontsize=7)
+    # y-tick labels always visible
+    ax.set_yticklabels(cls, fontsize=7)
 
-    if show_xlabel: ax.set_xlabel("Predicted", fontsize=8)
-    # "True" ylabel handled externally as dataset code
+    if show_xlabel: ax.set_xlabel("Predicted", fontsize=7)
+    # "True" ylabel handled externally as condition/dataset code
 
     for i in range(len(cls)):
         for j in range(len(cls)):
@@ -471,34 +471,35 @@ def plot_confusion_matrices(runs, out_dir):
         if not ds_list:
             continue
 
-        n_rows = len(ds_list)
-        n_cols = len(CONDITIONS)
+        # Rows = conditions, Cols = datasets
+        n_rows = len(CONDITIONS)
+        n_cols = len(ds_list)
         fig, axes = plt.subplots(n_rows, n_cols,
-                                 figsize=(4.5 * n_cols, 5.2 * n_rows),
+                                 figsize=(3.8 * n_cols, 4.2 * n_rows),
                                  squeeze=False)
         fig.suptitle(f"Confusion Matrices — {bb_code}", fontsize=14,
                      fontweight="bold")
 
-        for row, ds in enumerate(ds_list):
-            ds_code = DS_CODE.get(ds, ds[:4].upper())
-            for col, cond in enumerate(CONDITIONS):
+        for row, cond in enumerate(CONDITIONS):
+            for col, ds in enumerate(ds_list):
+                ds_code = DS_CODE.get(ds, ds[:4].upper())
                 ax = axes[row][col]
                 match = [r for r in bb_runs
                          if r["dataset"] == ds and r.get("condition") == cond]
 
-                # Column header — only top row
+                # Column header (dataset code) — only top row
                 if row == 0:
-                    ax.set_title(COND_LABEL.get(cond, cond), fontsize=13,
-                                 fontweight="bold", pad=10)
+                    ax.set_title(ds_code, fontsize=13, fontweight="bold", pad=10)
 
                 if match:
                     show_x = (row == n_rows - 1)
-                    show_y = (col == 0)   # class names on left column
+                    show_y = (col == 0)
                     _draw_confusion(ax, match[0],
                                     show_xlabel=show_x, show_ylabel=show_y)
-                    # Dataset code as row label — left column only, above class names
+                    # Condition code as row label — left column only
                     if col == 0:
-                        ax.set_ylabel(f"{ds_code}", fontsize=12, fontweight="bold",
+                        ax.set_ylabel(COND_LABEL.get(cond, cond),
+                                      fontsize=12, fontweight="bold",
                                       labelpad=12, rotation=0, ha="right", va="center")
                     if row != n_rows - 1:
                         ax.set_xlabel("")
@@ -507,8 +508,8 @@ def plot_confusion_matrices(runs, out_dir):
                             transform=ax.transAxes, fontsize=14, color="gray")
                     ax.axis("off")
 
-        plt.tight_layout(pad=1.5, h_pad=2.5, w_pad=1.5)
-        plt.subplots_adjust(top=0.94, bottom=0.06)
+        plt.tight_layout(pad=2.5, h_pad=5.0, w_pad=3.5)
+        plt.subplots_adjust(top=0.91, bottom=0.06)
         _save(fig, out_dir, f"confusion_matrix_{bb_code}.png")
 
 
@@ -533,24 +534,24 @@ def plot_per_class(runs, out_dir):
         if not ds_list:
             continue
 
-        n_rows = len(ds_list)
-        n_cols = len(CONDITIONS)
+        # Rows = conditions, Cols = datasets
+        n_rows = len(CONDITIONS)
+        n_cols = len(ds_list)
         fig, axes = plt.subplots(n_rows, n_cols,
-                                 figsize=(6 * n_cols, 5.5 * n_rows), squeeze=False)
+                                 figsize=(6 * n_cols, 6.5 * n_rows), squeeze=False)
         fig.suptitle(f"Per-Class Metrics — {bb_code} (final epoch)",
                      fontsize=14, fontweight="bold")
 
-        for row, ds in enumerate(ds_list):
-            ds_code = DS_CODE.get(ds, ds[:4].upper())
-            for col, cond in enumerate(CONDITIONS):
+        for row, cond in enumerate(CONDITIONS):
+            for col, ds in enumerate(ds_list):
+                ds_code = DS_CODE.get(ds, ds[:4].upper())
                 ax    = axes[row][col]
                 match = [r for r in bb_runs
                          if r["dataset"] == ds and r.get("condition") == cond]
 
-                # Shared column header — top row only
+                # Column header (dataset code) — top row only
                 if row == 0:
-                    ax.set_title(COND_LABEL.get(cond, cond), fontsize=13,
-                                 fontweight="bold", pad=10)
+                    ax.set_title(ds_code, fontsize=13, fontweight="bold", pad=10)
 
                 if not match:
                     ax.text(0.5, 0.5, "n/a", ha="center", va="center",
@@ -577,14 +578,12 @@ def plot_per_class(runs, out_dir):
                 ax.bar(x + width, [v*100 for v in recs],   width, label="Recall",    color="#55A868", alpha=0.85)
 
                 ax.set_xticks(x)
-                ax.set_xticklabels(cls, fontsize=8, rotation=20, ha="right")
+                ax.set_xticklabels(cls, fontsize=8, rotation=0, ha="center")
                 ax.set_ylim(0, 108)
                 ax.grid(True, axis="y", alpha=0.25)
 
-                # Shared row label — left column only
                 if col == 0:
-                    ax.set_ylabel(f"{ds_code}\nScore (%)", fontsize=11,
-                                  fontweight="bold", labelpad=8)
+                    ax.set_ylabel("Score (%)", fontsize=9)
                 else:
                     ax.set_ylabel("")
 
@@ -592,8 +591,16 @@ def plot_per_class(runs, out_dir):
                 if col == 0:
                     ax.legend(fontsize=7, loc="upper right")
 
-        plt.tight_layout(pad=1.5, h_pad=2.5, w_pad=1.5)
-        plt.subplots_adjust(top=0.94, bottom=0.06)
+        plt.tight_layout(pad=2.5, h_pad=5.0, w_pad=3.0)
+        plt.subplots_adjust(top=0.93, bottom=0.05, left=0.08)
+
+        # Row labels using figure coordinates
+        for row, cond in enumerate(CONDITIONS):
+            y_pos = 1.0 - (row + 0.5) / n_rows
+            fig.text(0.01, y_pos, COND_LABEL.get(cond, cond),
+                     fontsize=13, fontweight="bold",
+                     ha="left", va="center", rotation=0)
+
         _save(fig, out_dir, f"per_class_{bb_code}.png")
 
 
@@ -613,14 +620,49 @@ def _save(fig, out_dir, filename):
 # Entry point
 # ─────────────────────────────────────────────────────────────
 
+PLOT_MENU = {
+    1: ("acc_curves",      plot_acc_curves),
+    2: ("f1_curves",       plot_f1_curves),
+    3: ("precision_curves",plot_precision_curves),
+    4: ("recall_curves",   plot_recall_curves),
+    5: ("loss_curves",     plot_loss_curves),
+    6: ("metrics_summary", plot_metrics_summary),
+    7: ("heatmap",         plot_heatmap),
+    8: ("confusion_matrix",plot_confusion_matrices),
+    9: ("per_class",       plot_per_class),
+}
+
+
+def parse_plots(raw):
+    """Parse --plots argument: '1,3', '1-5', 'all' → set of ints."""
+    if raw is None or raw.strip().lower() == "all":
+        return set(PLOT_MENU.keys())
+    selected = set()
+    for part in raw.split(","):
+        part = part.strip()
+        if "-" in part:
+            a, b = part.split("-", 1)
+            selected.update(range(int(a), int(b) + 1))
+        else:
+            selected.add(int(part))
+    return selected & set(PLOT_MENU.keys())
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset",  type=str, default=None)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument("--dataset",  type=str, default=None,
+                        help="Filter by dataset name")
     parser.add_argument("--runs_dir", type=str, default="run_outputs")
+    parser.add_argument("--plots",    type=str, default=None,
+                        help="Plots to generate: '1,3', '1-5', or 'all' (default).\n"
+                             "  1=acc  2=f1  3=prec  4=recall  5=loss\n"
+                             "  6=summary  7=heatmap  8=confusion  9=per_class")
     args = parser.parse_args()
 
     runs = scan_runs(root=args.runs_dir, dataset_filter=args.dataset)
-
     if not runs:
         print("No runs found in run_outputs/.")
         raise SystemExit(0)
@@ -628,15 +670,15 @@ if __name__ == "__main__":
     out_dir = os.path.join(args.runs_dir, "_plots")
     os.makedirs(out_dir, exist_ok=True)
 
-    print_summary(runs)
-    plot_acc_curves(runs, out_dir)
-    plot_f1_curves(runs, out_dir)
-    plot_precision_curves(runs, out_dir)
-    plot_recall_curves(runs, out_dir)
-    plot_loss_curves(runs, out_dir)
-    plot_metrics_summary(runs, out_dir)
-    plot_heatmap(runs, out_dir)
-    plot_confusion_matrices(runs, out_dir)
-    plot_per_class(runs, out_dir)
+    selected = parse_plots(args.plots)
 
-    print(f"\nDone. All plots saved to {out_dir}/")
+    print_summary(runs)
+    print(f"\nGenerating plots: {sorted(selected)}")
+    print(f"  " + "  ".join(f"{n}={PLOT_MENU[n][0]}" for n in sorted(selected)))
+
+    for n in sorted(selected):
+        name, fn = PLOT_MENU[n]
+        print(f"\n[{n}] {name}")
+        fn(runs, out_dir)
+
+    print(f"\nDone. Plots saved to {out_dir}/")

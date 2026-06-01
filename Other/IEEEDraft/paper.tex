@@ -25,13 +25,11 @@
 A Comparative Study of Backbone Architectures and Training Conditions}
 
 \author{
-    \IEEEauthorblockN{Author Name}
+    \IEEEauthorblockN{Nadir Anushah  anu's Mail \\Soriano Hernandez Jorge Adan adan\_25@naver.com \\ Nizam Tanzina Tanzina's Mail}
     \IEEEauthorblockA{
-        Department of Computer Science\\
-        Institution Name\\
-        City, Country\\
-        email@institution.edu
-    }
+        Hoseo University }
+        %\\City, Country\\
+       % email@institution.edu  
 }
 
 \maketitle
@@ -230,12 +228,14 @@ ImageNet weights from the \texttt{torchvision} library:
 
 \subsection{Training Conditions}
 
-Four training conditions form an ablation study over backbone
-fine-tuning and classification head architecture (Table~\ref{tab:conditions}).
+Four training conditions form an ablation study over two independent
+dimensions: (1) whether the backbone is partially fine-tuned, and
+(2) whether a non-linear projection head is used before the classifier.
+Table~\ref{tab:conditions} summarizes all four combinations.
 
 \begin{table}[h]
 \centering
-\caption{Training conditions.}
+\caption{Training conditions — ablation over fine-tuning and head architecture.}
 \label{tab:conditions}
 \begin{tabular}{lp{1.8cm}p{1.8cm}p{2.2cm}}
 \toprule
@@ -249,18 +249,65 @@ C4 & Layer4 free & Proj.\ + Linear     & Full head + fine-tuning \\
 \end{tabular}
 \end{table}
 
-In conditions C3 and C4, a two-layer projection head maps the backbone
-output to a 128-dimensional embedding before classification:
-$d_\text{out} \xrightarrow{\text{FC}} 256 \xrightarrow{\text{ReLU}}
-\xrightarrow{\text{FC}} 128 \xrightarrow{\text{ReLU}} C$,
-where $C$ is the number of classes.
-In condition C4, \texttt{layer4} of the backbone is unfrozen and trained
-with a reduced learning rate $\text{lr}_\text{backbone} = 10^{-5}$,
-compared to $\text{lr} = 10^{-3}$ for the head, to mitigate catastrophic
-forgetting~\cite{kirkpatrick2017catastrophic}.
+\textbf{C1 — Linear probe (frozen backbone, linear head).}
+All backbone weights are locked throughout training.
+Only a single linear layer $\mathbf{W} \in \mathbb{R}^{d_\text{out} \times C}$
+is optimized, where $d_\text{out}$ is the backbone output dimension and
+$C$ the number of classes.
+This is the classical \textit{linear probe} setting~\cite{kornblith2019better},
+which evaluates the quality of pre-trained features without any domain
+adaptation.
+It is the fastest and most data-efficient condition, but cannot correct
+for any mismatch between ImageNet features and the target domain.
 
-All models are trained for 60 epochs using the Adam optimizer with
-cosine annealing learning rate schedule and weight decay $10^{-4}$.
+\textbf{C2 — Partial fine-tuning (layer4 free, linear head).}
+The last residual block of the backbone (\texttt{layer4}, comprising
+approximately 2M parameters for ResNet-18 and proportionally more for
+EfficientNet) is unfrozen and trained jointly with the linear classifier.
+All earlier layers remain frozen.
+This allows the highest-level feature detectors to adapt toward
+freshness-specific representations while retaining the general low-level
+and mid-level features learned from ImageNet.
+The linear head is the same as C1, providing no additional non-linear
+capacity beyond the unfrozen backbone block.
+
+\textbf{C3 — Projection head with frozen backbone.}
+The backbone is fully frozen (as in C1), but the simple linear classifier
+is replaced by a two-layer non-linear projection head followed by a
+linear output layer:
+\begin{equation}
+    \mathbf{h} = \text{ReLU}\!\left(\mathbf{W}_2\,
+        \text{ReLU}\!\left(\mathbf{W}_1\,\mathbf{f}\right)\right),
+    \quad \hat{y} = \mathbf{W}_3\,\mathbf{h}
+\end{equation}
+where $\mathbf{f} \in \mathbb{R}^{d_\text{out}}$ is the backbone feature
+vector, $\mathbf{W}_1 \in \mathbb{R}^{256 \times d_\text{out}}$,
+$\mathbf{W}_2 \in \mathbb{R}^{128 \times 256}$, and
+$\mathbf{W}_3 \in \mathbb{R}^{C \times 128}$.
+The non-linear projection can reshape the feature space to form more
+discriminative decision boundaries without requiring backbone fine-tuning.
+This condition is particularly relevant when the pre-trained features
+are already highly expressive, as is the case for larger EfficientNet
+variants.
+
+\textbf{C4 — Full head with partial fine-tuning.}
+This condition combines the projection head of C3 with the backbone
+fine-tuning of C2.
+The last backbone block (\texttt{layer4}) and the full projection head
+are optimized jointly, using a dual learning rate strategy:
+$\text{lr} = 10^{-3}$ for the projection head and classifier, and
+$\text{lr}_\text{backbone} = 10^{-5}$ for the backbone block.
+The reduced backbone learning rate is essential to prevent catastrophic
+forgetting~\cite{kirkpatrick2017catastrophic}: aggressive updates to the
+backbone destroy the general-purpose representations learned during
+ImageNet pre-training, effectively resetting the transfer learning benefit.
+By using a learning rate two orders of magnitude smaller, the backbone
+adapts \textit{gradually} toward freshness-relevant features while
+preserving the hierarchical feature structure inherited from pre-training.
+
+All models are trained for 60 epochs using the Adam optimizer
+($\beta_1 = 0.9$, $\beta_2 = 0.999$) with cosine annealing learning
+rate schedule and weight decay $\lambda = 10^{-4}$.
 Batch size is 32.
 
 \subsection{Evaluation Metrics}

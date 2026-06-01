@@ -1,0 +1,45 @@
+{
+  "model_run": "mendeley_fruits_all_head_layer4_mobilenet_v3_small",
+  "model_classes": [
+    "fresh",
+    "rotten"
+  ],
+  "eval_dataset": "own_dataset",
+  "eval_classes": [
+    "fresh",
+    "rotten"
+  ],
+  "label_mode": "state",
+  "device": "cuda",
+  "acc": 0.7917,
+  "f1_macro": 0.7913,
+  "precision_macro": 0.8071,
+  "recall_macro": 0.8007,
+  "mcc": 0.6078,
+  "auc_roc": 0.8322,
+  "inference_ms_per_img": 215.32,
+  "conf_avg_correct": 0.8746,
+  "conf_avg_wrong": 0.92,
+  "f1_per_class": [
+    0.7826,
+    0.8
+  ],
+  "precision_per_class": [
+    0.9,
+    0.7143
+  ],
+  "recall_per_class": [
+    0.6923,
+    0.9091
+  ],
+  "confusion_matrix": [
+    [
+      9,
+      4
+    ],
+    [
+      1,
+      10
+    ]
+  ]
+}
