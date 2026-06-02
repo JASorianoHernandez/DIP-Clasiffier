@@ -60,6 +60,19 @@ Example:  KFR-EB0-C3-ST
 
 ---
 
+## Datasets
+
+| Dataset | ID | Categories | Classes | Images | Source |
+|---|---|---|---|---|---|
+| FruitVision | MFV | Apple, Banana, Grape, Mango, Orange | Fresh / Formalin / Rotten | 10,154 | Mendeley |
+| Lemon Varieties | MLM | 7 lemon varieties | Fresh / Rotten | 1,956 | Mendeley |
+| Fruits Classification | MFR | Peach, Pomegranate, Strawberry | Fresh / Rotten | 1,655 | Mendeley |
+| Fruits Quality | KFQ | 12 mixed fruits | Fresh / Rotten | 359 | Kaggle |
+| Fruits Fresh/Rotten | KFR | Apple, Banana, Orange | Fresh / Rotten | 13,599 | Kaggle |
+| Fresh & Stale | KFS | 9 fruits/vegetables | Fresh / Rotten | 27,317 | Kaggle |
+
+---
+
 ## Training Conditions
 
 Four conditions form an ablation study over two dimensions: whether the backbone is partially fine-tuned, and whether a non-linear projection head is used.
@@ -239,19 +252,6 @@ Best macro F1 per dataset and backbone (state mode, 60 epochs).
 
 > Best generalizers: Lemon Varieties (MLM) and Fruits Classification (MFR) — photographic diversity during training improves real-world transfer.
 > EB2 C4 variants show catastrophic domain shift on several datasets.
-
----
-
-## Datasets
-
-| Dataset | ID | Categories | Classes | Images | Source |
-|---------|----|-----------|---------|--------|--------|
-| FruitVision | MFV | Apple, Banana, Grape, Mango, Orange | Fresh / Formalin / Rotten | 10,154 | Mendeley |
-| Lemon Varieties | MLM | 7 lemon varieties | Fresh / Rotten | 1,956 | Mendeley |
-| Fruits Classification | MFR | Peach, Pomegranate, Strawberry | Fresh / Rotten | 1,655 | Mendeley |
-| Fruits Quality | KFQ | 12 mixed fruits | Fresh / Rotten | 359 | Kaggle |
-| Fruits Fresh/Rotten | KFR | Apple, Banana, Orange | Fresh / Rotten | 13,599 | Kaggle |
-| Fresh & Stale | KFS | 9 fruits/vegetables | Fresh / Rotten | 27,317 | Kaggle |
 
 ---
 
