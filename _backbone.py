@@ -11,12 +11,6 @@ BACKBONE_REGISTRY = {
     "resnet18": (
         models.resnet18, models.ResNet18_Weights.DEFAULT, 512, "resnet"
     ),
-    "resnet34": (
-        models.resnet34, models.ResNet34_Weights.DEFAULT, 512, "resnet"
-    ),
-    "resnet50": (
-        models.resnet50, models.ResNet50_Weights.DEFAULT, 2048, "resnet"
-    ),
     "mobilenet_v3_small": (
         models.mobilenet_v3_small, models.MobileNet_V3_Small_Weights.DEFAULT, 576, "mobilenet"
     ),
@@ -35,7 +29,7 @@ class GenericBackbone(nn.Module):
     """
     Multi-architecture feature extractor with selective layer unfreezing.
 
-    Supports ResNet-18/34/50, MobileNetV3-Small, and EfficientNet-B0/B2.
+    Supports ResNet-18, MobileNetV3-Small, and EfficientNet-B0/B2.
     The final classification layer is removed; output is a flat feature
     vector of size out_dim. unfreeze_layers controls how many of the last
     blocks receive gradients.

@@ -32,8 +32,6 @@ DS_CODE = {
 }
 BB_CODE = {
     "resnet18"          : "R18",
-    "resnet34"          : "R34",
-    "resnet50"          : "R50",
     "mobilenet_v3_small": "MN3",
     "efficientnet_b0"   : "EB0",
     "efficientnet_b2"   : "EB2",

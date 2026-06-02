@@ -51,9 +51,9 @@ Example:  KFR-EB0-C3-ST
 | Code | Dataset | Code | Backbone | Code | Condition | Code | Mode |
 |------|---------|------|----------|------|-----------|------|------|
 | KFQ | kaggle_fruits_quality | R18 | ResNet-18 | C1 | frozen | ST | state |
-| MFR | mendeley_fruits | R34 | ResNet-34 | C2 | layer4 | FS | fruit_state |
-| MLM | mendeley_lemon_varieties | R50 | ResNet-50 | C3 | head_frozen | | |
-| MFV | mendeley_fruitvision | MN3 | MobileNetV3-S | C4 | head_layer4 | | |
+| MFR | mendeley_fruits | MN3 | MobileNetV3-S | C2 | layer4 | FS | fruit_state |
+| MLM | mendeley_lemon_varieties | EB0 | EfficientNet-B0 | C3 | head_frozen | | |
+| MFV | mendeley_fruitvision | EB2 | EfficientNet-B2 | C4 | head_layer4 | | |
 | KFR | kaggle_fruits_fresh_rotten | EB0 | EfficientNet-B0 | | | | |
 | KFS | kaggle_fresh_stale | EB2 | EfficientNet-B2 | | | | |
 | OWN | own_dataset | | | | | | |

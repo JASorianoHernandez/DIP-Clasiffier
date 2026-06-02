@@ -1,0 +1,45 @@
+{
+  "model_run": "kaggle_fruits_fresh_rotten_all_layer4_mobilenet_v3_small",
+  "model_classes": [
+    "fresh",
+    "rotten"
+  ],
+  "eval_dataset": "own_dataset",
+  "eval_classes": [
+    "fresh",
+    "rotten"
+  ],
+  "label_mode": "state",
+  "device": "cuda",
+  "acc": 0.5417,
+  "f1_macro": 0.4991,
+  "precision_macro": 0.625,
+  "recall_macro": 0.5699,
+  "mcc": 0.187,
+  "auc_roc": 0.7762,
+  "inference_ms_per_img": 215.12,
+  "conf_avg_correct": 0.92,
+  "conf_avg_wrong": 0.7604,
+  "f1_per_class": [
+    0.3529,
+    0.6452
+  ],
+  "precision_per_class": [
+    0.75,
+    0.5
+  ],
+  "recall_per_class": [
+    0.2308,
+    0.9091
+  ],
+  "confusion_matrix": [
+    [
+      3,
+      10
+    ],
+    [
+      1,
+      10
+    ]
+  ]
+}

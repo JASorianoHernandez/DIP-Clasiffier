@@ -28,6 +28,8 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from pathlib import Path
 
+
+
 # ─────────────────────────────────────────────────────────────
 # Style
 # ─────────────────────────────────────────────────────────────
@@ -47,16 +49,12 @@ COND_LABEL = {
 }
 BACKBONE_LS = {
     "resnet18"          : "-",
-    "resnet34"          : "--",
-    "resnet50"          : "-.",
     "mobilenet_v3_small": ":",
     "efficientnet_b0"   : (0, (5, 1)),
     "efficientnet_b2"   : (0, (3, 1, 1, 1)),
 }
 BB_CODE = {
     "resnet18"          : "R18",
-    "resnet34"          : "R34",
-    "resnet50"          : "R50",
     "mobilenet_v3_small": "MN3",
     "efficientnet_b0"   : "EB0",
     "efficientnet_b2"   : "EB2",
@@ -617,6 +615,243 @@ def _save(fig, out_dir, filename):
 
 
 # ─────────────────────────────────────────────────────────────
+# Eval mode — load eval/own_dataset_state.json files
+# ─────────────────────────────────────────────────────────────
+
+def scan_eval_runs(root="run_outputs", eval_dataset="own_dataset",
+                   label_mode="state"):
+    """Load all eval JSON files for a given dataset and label mode."""
+    fname = f"{eval_dataset}_{label_mode}.json"
+    results = []
+    for run_dir in sorted(Path(root).iterdir()):
+        if not run_dir.is_dir() or run_dir.name == "_plots":
+            continue
+        jpath = run_dir / "eval" / fname
+        if not jpath.exists():
+            continue
+        with open(jpath) as f:
+            e = json.load(f)
+
+        # Load training F1 from metrics.json if available
+        f1_train = None
+        mpath = run_dir / "metrics.json"
+        if mpath.exists():
+            with open(mpath) as f:
+                m = json.load(f)
+            f1_train = m.get("best_f1")
+            bb   = m.get("backbone_name", "")
+            cond = m.get("condition", "")
+        else:
+            bb   = ""
+            cond = ""
+
+        results.append({
+            "model_run"   : run_dir.name,
+            "backbone"    : bb,
+            "condition"   : cond,
+            "bb_code"     : BB_CODE.get(bb, bb[:4]),
+            "cond_code"   : COND_LABEL.get(cond, cond),
+            "ds_code"     : DS_CODE.get(e.get("eval_dataset",""), "?"),
+            "f1_eval"     : round(e.get("f1_macro", 0) * 100, 1),
+            "acc_eval"    : round(e.get("acc", 0) * 100, 1),
+            "recall_eval" : round(e.get("recall_macro", 0) * 100, 1),
+            "prec_eval"   : round(e.get("precision_macro", 0) * 100, 1),
+            "mcc_eval"    : round(e.get("mcc", 0), 3),
+            "auc_eval"    : round(e.get("auc_roc", 0), 4) if e.get("auc_roc") else None,
+            "conf_correct": round(e.get("conf_avg_correct", 0) * 100, 1) if e.get("conf_avg_correct") else None,
+            "conf_wrong"  : round(e.get("conf_avg_wrong", 0) * 100, 1) if e.get("conf_avg_wrong") else None,
+            "f1_train"    : round(f1_train * 100, 1) if f1_train else None,
+            "drop"        : round((f1_train - e.get("f1_macro", 0)) * 100, 1) if f1_train else None,
+        })
+
+    results.sort(key=lambda r: r["f1_eval"], reverse=True)
+    return results
+
+
+def plot_eval_ranking(evals, out_dir):
+    """Bar chart: F1_eval per model, grouped by backbone, sorted descending."""
+    if not evals:
+        return
+
+    n = len(evals)
+    fig, ax = plt.subplots(figsize=(max(14, n * 0.45), 6))
+
+    labels = [f"{r['bb_code']}-{r['cond_code']}" for r in evals]
+    f1s    = [r["f1_eval"] for r in evals]
+    colors = [COND_COLOR.get(r["condition"], "#888888") for r in evals]
+
+    bars = ax.bar(range(n), f1s, color=colors, alpha=0.85, edgecolor="white")
+
+    # Value labels on bars
+    for i, (bar, val) in enumerate(zip(bars, f1s)):
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.4,
+                f"{val:.1f}", ha="center", va="bottom", fontsize=8,
+                color="white")
+
+    ax.set_xticks(range(n))
+    ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=8)
+    ax.set_ylabel("F1 Score on own_dataset (%)")
+    ax.set_ylim(0, 105)
+    ax.axhline(90, color=COND_COLOR["head_frozen"], linestyle="--",
+               linewidth=1, alpha=0.5, label="90% reference")
+    ax.grid(True, axis="y", alpha=0.2)
+
+    # Legend for conditions
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c, alpha=0.85)
+               for c in COND_COLOR.values()]
+    ax.legend(handles, [COND_LABEL[c] for c in COND_COLOR],
+              fontsize=9, loc="upper right")
+
+    fig.suptitle(f"Eval Ranking — F1 on own_dataset  ({len(evals)} models)",
+                 fontsize=13, fontweight="bold")
+    plt.tight_layout(pad=1.5)
+    _save(fig, out_dir, "eval_ranking.png")
+
+
+def plot_eval_domain_shift(evals, out_dir):
+    """Side-by-side bars: F1_train vs F1_eval with drop annotation."""
+    valid = [r for r in evals if r["f1_train"] is not None]
+    if not valid:
+        return
+
+    # Sort by drop ascending (best generalizers first)
+    valid.sort(key=lambda r: r["drop"])
+    n = len(valid)
+
+    fig, ax = plt.subplots(figsize=(max(14, n * 0.55), 6))
+    x = np.arange(n)
+    w = 0.38
+
+    ax.bar(x - w/2, [r["f1_train"] for r in valid], w,
+           label="F1 Train", color="#4C72B0", alpha=0.85)
+    ax.bar(x + w/2, [r["f1_eval"] for r in valid], w,
+           label="F1 Eval (own_dataset)", color=COND_COLOR["head_layer4"],
+           alpha=0.85)
+
+    # Drop annotations
+    for i, r in enumerate(valid):
+        drop = r["drop"]
+        col  = "#e74c3c" if drop > 15 else "#f39c12" if drop > 5 else "#2ecc71"
+        ax.text(i, max(r["f1_train"], r["f1_eval"]) + 1.2,
+                f"−{drop:.0f}", ha="center", fontsize=8, color=col,
+                fontweight="bold")
+
+    labels = [f"{r['bb_code']}-{r['cond_code']}" for r in valid]
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=8)
+    ax.set_ylabel("F1 Score (%)")
+    ax.set_ylim(0, 110)
+    ax.legend(fontsize=10)
+    ax.grid(True, axis="y", alpha=0.2)
+
+    fig.suptitle("Domain Shift — F1 Train vs F1 Eval  (sorted by drop ↑ = best generalizer)",
+                 fontsize=12, fontweight="bold")
+    plt.tight_layout(pad=1.5)
+    _save(fig, out_dir, "eval_domain_shift.png")
+
+
+def plot_eval_heatmap(evals, out_dir):
+    """Heatmap: backbone × condition, value = F1_eval."""
+    backbones  = sorted({r["backbone"]  for r in evals if r["backbone"]})
+    conditions = [c for c in CONDITIONS if any(r["condition"] == c for r in evals)]
+
+    if not backbones or not conditions:
+        return
+
+    fig, ax = plt.subplots(figsize=(len(conditions) * 2.2, len(backbones) * 1.5 + 1))
+
+    matrix = np.full((len(backbones), len(conditions)), np.nan)
+    for r in evals:
+        if r["backbone"] in backbones and r["condition"] in conditions:
+            i = backbones.index(r["backbone"])
+            j = conditions.index(r["condition"])
+            val = r["f1_eval"]
+            if np.isnan(matrix[i, j]) or val > matrix[i, j]:
+                matrix[i, j] = val
+
+    vmin = max(0, np.nanmin(matrix) - 5) if not np.all(np.isnan(matrix)) else 0
+    im = ax.imshow(matrix, cmap="YlGn", aspect="auto", vmin=vmin, vmax=100)
+    plt.colorbar(im, ax=ax, label="F1 Eval (%)", shrink=0.8)
+
+    bb_labels   = [BB_CODE.get(b, b[:4]) for b in backbones]
+    cond_labels = [COND_LABEL.get(c, c) for c in conditions]
+    ax.set_xticks(range(len(conditions))); ax.set_xticklabels(cond_labels, fontsize=11)
+    ax.set_yticks(range(len(backbones)));  ax.set_yticklabels(bb_labels, fontsize=11)
+
+    for i in range(len(backbones)):
+        for j in range(len(conditions)):
+            val = matrix[i, j]
+            if not np.isnan(val):
+                col = "white" if val > (vmin + (100 - vmin) * 0.7) else "black"
+                ax.text(j, i, f"{val:.1f}", ha="center", va="center",
+                        fontsize=10, color=col, fontweight="bold")
+            else:
+                ax.text(j, i, "—", ha="center", va="center",
+                        fontsize=11, color="#aaaaaa")
+
+    fig.suptitle("F1 Score on own_dataset — Backbone × Condition",
+                 fontsize=13, fontweight="bold")
+    plt.tight_layout(pad=1.5)
+    _save(fig, out_dir, "eval_heatmap.png")
+
+
+def plot_eval_confidence(evals, out_dir):
+    """Scatter: conf_correct vs conf_wrong per backbone, sized by F1_eval."""
+    valid = [r for r in evals
+             if r["conf_correct"] is not None and r["conf_wrong"] is not None]
+    if not valid:
+        return
+
+    fig, ax = plt.subplots(figsize=(9, 7))
+
+    for r in valid:
+        col  = COND_COLOR.get(r["condition"], "#888888")
+        size = max(30, r["f1_eval"] ** 2 * 0.015)
+        ax.scatter(r["conf_wrong"], r["conf_correct"],
+                   color=col, s=size, alpha=0.75, edgecolors="white",
+                   linewidths=0.8)
+        ax.annotate(f"{r['bb_code']}-{r['cond_code']}",
+                    (r["conf_wrong"], r["conf_correct"]),
+                    fontsize=7, color="#cccccc",
+                    xytext=(4, 2), textcoords="offset points")
+
+    # Reference lines
+    ax.axhline(90, color="#2ecc71", linestyle="--", linewidth=1, alpha=0.5)
+    ax.axvline(60, color="#e74c3c", linestyle="--", linewidth=1, alpha=0.5)
+    ax.set_xlabel("Conf Wrong (%) — lower is better", fontsize=11)
+    ax.set_ylabel("Conf Correct (%) — higher is better", fontsize=11)
+    ax.set_xlim(40, 105); ax.set_ylim(60, 105)
+    ax.grid(True, alpha=0.2)
+
+    handles = [plt.scatter([], [], color=c, s=60, alpha=0.85)
+               for c in COND_COLOR.values()]
+    ax.legend(handles, [COND_LABEL[c] for c in COND_COLOR],
+              fontsize=9, loc="lower right")
+
+    fig.suptitle("Confidence Calibration on own_dataset\n"
+                 "(ideal: top-left — certain when right, uncertain when wrong)",
+                 fontsize=12, fontweight="bold")
+    plt.tight_layout(pad=1.5)
+    _save(fig, out_dir, "eval_confidence.png")
+
+
+def plot_eval_summary(evals, out_dir):
+    """Print console summary of eval results."""
+    print(f"\n{'─'*90}")
+    print(f"  {'Model':<45} {'F1_eval':>8} {'F1_train':>9} {'Drop':>7} "
+          f"{'AUC':>7} {'MCC':>7}")
+    print(f"{'─'*90}")
+    for r in evals[:20]:
+        drop_str = f"-{r['drop']:.1f}" if r["drop"] is not None else "n/a"
+        auc_str  = f"{r['auc_eval']:.3f}" if r["auc_eval"] else "n/a"
+        f1t_str  = f"{r['f1_train']:.1f}%" if r["f1_train"] else "n/a"
+        print(f"  {r['model_run']:<45} {r['f1_eval']:>7.1f}% "
+              f"{f1t_str:>9} {drop_str:>7} {auc_str:>7} {r['mcc_eval']:>7.3f}")
+    print(f"{'─'*90}")
+    print(f"  Total models evaluated: {len(evals)}\n")
+
+
+# ─────────────────────────────────────────────────────────────
 # Entry point
 # ─────────────────────────────────────────────────────────────
 
@@ -632,11 +867,18 @@ PLOT_MENU = {
     9: ("per_class",       plot_per_class),
 }
 
+EVAL_PLOT_MENU = {
+    1: ("eval_ranking",      plot_eval_ranking),
+    2: ("eval_domain_shift", plot_eval_domain_shift),
+    3: ("eval_heatmap",      plot_eval_heatmap),
+    4: ("eval_confidence",   plot_eval_confidence),
+}
 
-def parse_plots(raw):
+
+def parse_plots(raw, menu):
     """Parse --plots argument: '1,3', '1-5', 'all' → set of ints."""
     if raw is None or raw.strip().lower() == "all":
-        return set(PLOT_MENU.keys())
+        return set(menu.keys())
     selected = set()
     for part in raw.split(","):
         part = part.strip()
@@ -645,7 +887,7 @@ def parse_plots(raw):
             selected.update(range(int(a), int(b) + 1))
         else:
             selected.add(int(part))
-    return selected & set(PLOT_MENU.keys())
+    return selected & set(menu.keys())
 
 
 if __name__ == "__main__":
@@ -654,31 +896,70 @@ if __name__ == "__main__":
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument("--dataset",  type=str, default=None,
-                        help="Filter by dataset name")
+                        help="Filter by dataset name (training mode only)")
     parser.add_argument("--runs_dir", type=str, default="run_outputs")
     parser.add_argument("--plots",    type=str, default=None,
-                        help="Plots to generate: '1,3', '1-5', or 'all' (default).\n"
+                        help="Training mode: '1,3', '1-5', or 'all'.\n"
                              "  1=acc  2=f1  3=prec  4=recall  5=loss\n"
-                             "  6=summary  7=heatmap  8=confusion  9=per_class")
+                             "  6=summary  7=heatmap  8=confusion  9=per_class\n"
+                             "Eval mode (--eval): '1,3', or 'all'.\n"
+                             "  1=ranking  2=domain_shift  3=heatmap  4=confidence")
+    parser.add_argument("--eval",     action="store_true",
+                        help="Eval mode: analyze cross-dataset evaluation results")
+    parser.add_argument("--eval-dataset", type=str, default="own_dataset",
+                        help="Dataset name used in evaluation (default: own_dataset)")
+    parser.add_argument("--eval-mode",    type=str, default="state",
+                        help="Label mode used in evaluation (default: state)")
     args = parser.parse_args()
 
-    runs = scan_runs(root=args.runs_dir, dataset_filter=args.dataset)
-    if not runs:
-        print("No runs found in run_outputs/.")
-        raise SystemExit(0)
+    if args.eval:
+        # ── Eval mode ──
+        evals = scan_eval_runs(
+            root=args.runs_dir,
+            eval_dataset=args.eval_dataset,
+            label_mode=args.eval_mode
+        )
+        if not evals:
+            print(f"No eval results found for {args.eval_dataset} ({args.eval_mode}).")
+            raise SystemExit(0)
 
-    out_dir = os.path.join(args.runs_dir, "_plots")
-    os.makedirs(out_dir, exist_ok=True)
+        out_dir = os.path.join(args.runs_dir, "_plots", "eval")
+        os.makedirs(out_dir, exist_ok=True)
 
-    selected = parse_plots(args.plots)
+        selected = parse_plots(args.plots, EVAL_PLOT_MENU)
 
-    print_summary(runs)
-    print(f"\nGenerating plots: {sorted(selected)}")
-    print(f"  " + "  ".join(f"{n}={PLOT_MENU[n][0]}" for n in sorted(selected)))
+        plot_eval_summary(evals, out_dir)
+        print(f"\nGenerating eval plots: {sorted(selected)}")
+        print(f"  " + "  ".join(f"{n}={EVAL_PLOT_MENU[n][0]}"
+                                 for n in sorted(selected)))
 
-    for n in sorted(selected):
-        name, fn = PLOT_MENU[n]
-        print(f"\n[{n}] {name}")
-        fn(runs, out_dir)
+        for n in sorted(selected):
+            name, fn = EVAL_PLOT_MENU[n]
+            print(f"\n[{n}] {name}")
+            fn(evals, out_dir)
 
-    print(f"\nDone. Plots saved to {out_dir}/")
+        print(f"\nDone. Eval plots saved to {out_dir}/")
+
+    else:
+        # ── Training mode ──
+        runs = scan_runs(root=args.runs_dir, dataset_filter=args.dataset)
+        if not runs:
+            print("No runs found in run_outputs/.")
+            raise SystemExit(0)
+
+        out_dir = os.path.join(args.runs_dir, "_plots")
+        os.makedirs(out_dir, exist_ok=True)
+
+        selected = parse_plots(args.plots, PLOT_MENU)
+
+        print_summary(runs)
+        print(f"\nGenerating plots: {sorted(selected)}")
+        print(f"  " + "  ".join(f"{n}={PLOT_MENU[n][0]}"
+                                  for n in sorted(selected)))
+
+        for n in sorted(selected):
+            name, fn = PLOT_MENU[n]
+            print(f"\n[{n}] {name}")
+            fn(runs, out_dir)
+
+        print(f"\nDone. Plots saved to {out_dir}/")
