@@ -1,0 +1,349 @@
+\documentclass[12pt, a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% ──────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Glossary of Terms and Acronyms}\\[0.5em]
+    {\large Transfer Learning for Freshness Classification}\\[0.3em]
+    {\normalsize Digital Image Processing --- 2026}
+\end{center}
+
+\vspace{1em}
+\hrule
+\vspace{1.5em}
+
+% ─────────────────────────────────────────────────────────────
+\section{Acronyms and Abbreviations}
+% ─────────────────────────────────────────────────────────────
+
+\begin{table}[h]
+\begin{tabular}{L{2.5cm} L{11cm}}
+\toprule
+\textbf{Acronym} & \textbf{Definition} \\
+\midrule
+
+AUC-ROC & \textit{Area Under the Receiver Operating Characteristic Curve.}
+          A metric ranging from 0.5 (random classifier) to 1.0 (perfect
+          classifier) that measures the model's ability to separate classes
+          across all decision thresholds, independent of a fixed threshold. \\[4pt]
+
+CNN     & \textit{Convolutional Neural Network.}
+          A class of deep learning model that applies learned filters to
+          detect local patterns (edges, textures, shapes) in images.
+          The foundational architecture for computer vision tasks. \\[4pt]
+
+C1--C4  & \textit{Training Conditions 1 through 4.}
+          An ablation study over backbone fine-tuning and head architecture.
+          See Section~\ref{sec:conditions}. \\[4pt]
+
+DIP     & \textit{Digital Image Processing.}
+          The field of study concerned with the manipulation and analysis
+          of digital images using computational methods. \\[4pt]
+
+EB0     & \textit{EfficientNet-B0.}
+          A compact convolutional backbone (5.3M parameters) achieving
+          77.1\% ImageNet top-1 accuracy through compound scaling. \\[4pt]
+
+EB2     & \textit{EfficientNet-B2.}
+          A larger EfficientNet variant (9.1M parameters) achieving
+          80.1\% ImageNet top-1 accuracy. \\[4pt]
+
+F1      & \textit{F1-Score (macro-averaged).}
+          The harmonic mean of precision and recall, averaged equally
+          across all classes. The primary evaluation metric in this study. \\[4pt]
+
+FN      & \textit{False Negative.}
+          A rotten sample incorrectly classified as fresh.
+          The most dangerous error in food safety applications. \\[4pt]
+
+FP      & \textit{False Positive.}
+          A fresh sample incorrectly classified as rotten.
+          Results in unnecessary food waste. \\[4pt]
+
+GPU     & \textit{Graphics Processing Unit.}
+          Hardware accelerator used to parallelize the matrix operations
+          required for deep learning training and inference. \\[4pt]
+
+ImageNet & \textit{Large Scale Visual Recognition Challenge dataset.}
+           A benchmark dataset of 1.2 million images across 1,000 categories,
+           used to pre-train backbone architectures for transfer learning. \\[4pt]
+
+KFQ     & \textit{Kaggle Fruits Quality.} Dataset code. 359 images, 12 mixed
+          fruit categories, binary fresh/rotten labels. \\[4pt]
+
+KFR     & \textit{Kaggle Fruits Fresh/Rotten.} Dataset code. 13,599 images,
+          apple/banana/orange, binary fresh/rotten labels. \\[4pt]
+
+KFS     & \textit{Kaggle Fresh \& Stale.} Dataset code. 27,317 images,
+          9 fruit and vegetable categories, binary fresh/rotten labels. \\[4pt]
+
+LR      & \textit{Learning Rate.}
+          The step size used by the optimizer when updating model weights.
+          Controls the speed and stability of training convergence. \\[4pt]
+
+MCC     & \textit{Matthews Correlation Coefficient.}
+          A balanced metric ranging from $-1$ (inverse prediction)
+          through $0$ (random) to $+1$ (perfect prediction).
+          More robust than F1-score for imbalanced datasets. \\[4pt]
+
+MFR     & \textit{Mendeley Fruits Classification.} Dataset code. 1,655 images,
+          peach/pomegranate/strawberry, binary fresh/rotten labels. \\[4pt]
+
+MFV     & \textit{Mendeley FruitVision.} Dataset code. 10,154 images,
+          5 fruit categories, three-class fresh/formalin/rotten labels. \\[4pt]
+
+MLM     & \textit{Mendeley Lemon Varieties.} Dataset code. 1,956 images,
+          7 lemon varieties, binary fresh/rotten labels. \\[4pt]
+
+MN3     & \textit{MobileNetV3-Small.}
+          A lightweight backbone (2.5M parameters) optimized for
+          mobile and edge deployment scenarios. \\[4pt]
+
+OWN     & \textit{Own Dataset.} 121 real strawberry photos taken with a
+          mobile phone camera under natural lighting conditions.
+          Used exclusively for cross-domain evaluation. \\[4pt]
+
+R18     & \textit{ResNet-18.}
+          A residual network backbone (11.2M parameters) achieving
+          69.8\% ImageNet top-1 accuracy. Standard transfer learning baseline. \\[4pt]
+
+ReLU    & \textit{Rectified Linear Unit.}
+          Non-linear activation function defined as $f(x) = \max(0, x)$.
+          Applied between layers of the projection head. \\[4pt]
+
+ROC     & \textit{Receiver Operating Characteristic curve.}
+          A plot of true positive rate vs.\ false positive rate at all
+          classification thresholds. See AUC-ROC. \\[4pt]
+
+ST      & \textit{State mode.}
+          Label mode where classes correspond to freshness states only:
+          fresh, rotten, or formalin. \\[4pt]
+
+TN      & \textit{True Negative.}
+          A rotten sample correctly classified as rotten. \\[4pt]
+
+TP      & \textit{True Positive.}
+          A fresh sample correctly classified as fresh. \\[4pt]
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────
+\section{Key Concepts}
+% ─────────────────────────────────────────────────────────────
+
+\subsection{Transfer Learning}
+
+Transfer learning is a machine learning technique in which a model
+pre-trained on a large dataset (source domain) is adapted to perform
+a different but related task on a smaller dataset (target domain).
+In this study, all backbone models are pre-trained on ImageNet and
+then fine-tuned for fruit and vegetable freshness classification.
+The core assumption is that low-level features (edges, textures, colors)
+and mid-level features (shapes, patterns) learned from natural images
+transfer well to the food quality domain.
+
+\subsection{Backbone Architecture}
+
+A backbone is the main feature extraction component of a deep learning
+model for image classification.
+It consists of a series of convolutional layers that progressively
+transform a raw image into a compact feature vector.
+In transfer learning, the backbone is initialized with pre-trained weights
+and may be partially or fully frozen during training on the target task.
+The output of the backbone --- typically obtained after global average
+pooling --- is a fixed-length vector (e.g.\ 512 dimensions for ResNet-18)
+that summarizes the image content.
+
+\subsection{Fine-tuning}
+
+Fine-tuning refers to the process of continuing to train a pre-trained
+model on new data, allowing some or all of its weights to be updated.
+\textit{Partial fine-tuning} (as in conditions C2 and C4) unfreezes
+only the last few layers of the backbone, which capture the most
+task-specific high-level features.
+\textit{Full fine-tuning} updates all weights, which risks
+catastrophic forgetting unless the learning rate is carefully controlled.
+
+\subsection{Catastrophic Forgetting}
+
+A phenomenon in neural networks where learning new information
+causes the model to ``forget'' previously acquired knowledge.
+In transfer learning, aggressive fine-tuning of a pre-trained backbone
+destroys the general-purpose representations learned during pre-training,
+eliminating the benefit of the pre-trained initialization.
+This is mitigated in condition C4 by using a backbone learning rate
+100 times smaller than the head learning rate
+($\text{lr}_\text{backbone} = 10^{-5}$ vs $\text{lr} = 10^{-3}$).
+
+\subsection{Projection Head}
+
+A non-linear transformation applied between the backbone feature vector
+and the final linear classifier.
+In conditions C3 and C4, the projection head consists of two fully
+connected layers with ReLU activation:
+\[
+  \mathbf{f} \in \mathbb{R}^{d_\text{out}}
+  \xrightarrow{\text{FC}(256)} \xrightarrow{\text{ReLU}}
+  \xrightarrow{\text{FC}(128)} \xrightarrow{\text{ReLU}}
+  \mathbf{h} \in \mathbb{R}^{128}
+\]
+The projection head provides additional non-linear capacity to form
+more complex decision boundaries in the feature space, without requiring
+backbone adaptation.
+
+\subsection{Domain Shift}
+
+Domain shift refers to the statistical difference between the distribution
+of training data and the distribution of data encountered at test time.
+In this study, all backbone models are trained on internet-sourced
+images (typically studio photographs with controlled lighting and
+white backgrounds) and evaluated on real-world mobile phone photos
+taken under natural indoor lighting conditions.
+The resulting performance degradation --- measured as
+$\text{Drop} = F1_\text{train} - F1_\text{eval}$ --- quantifies
+the magnitude of domain shift.
+
+\subsection{Macro-Averaged Metrics}
+
+When a classification task involves multiple classes, metrics such as
+F1-score, precision, and recall can be computed per class and then
+averaged.
+\textit{Macro averaging} computes the metric for each class independently
+and takes the unweighted mean:
+\[
+  \overline{F1} = \frac{1}{C} \sum_{c=1}^{C} F1_c,
+  \quad
+  F1_c = \frac{2\,TP_c}{2\,TP_c + FP_c + FN_c}
+\]
+This gives equal weight to every class regardless of its sample count,
+which is important when minority classes (such as formalin) are
+particularly critical from a safety perspective.
+
+\subsection{Confusion Matrix}
+
+A square matrix of size $C \times C$ where entry $(i, j)$ counts
+the number of samples of true class $i$ predicted as class $j$.
+The diagonal entries represent correct predictions; off-diagonal entries
+represent misclassifications.
+In this study, confusion matrices are \textit{row-normalized} so that
+each entry shows the fraction of samples in that true class, making
+error patterns directly comparable across classes of different sizes.
+
+\subsection{Cosine Annealing}
+
+A learning rate scheduling strategy in which the learning rate follows
+a cosine curve from its initial value down to zero over the training
+period:
+\[
+  \text{lr}(t) = \frac{\text{lr}_\text{max}}{2}
+  \left(1 + \cos\!\left(\frac{\pi\, t}{T}\right)\right)
+\]
+where $t$ is the current epoch and $T$ is the total number of epochs.
+This allows large gradient steps early in training and increasingly
+fine adjustments as the model approaches convergence.
+
+\subsection{Stratified Split}
+
+A data splitting strategy that ensures each subset (train and validation)
+contains the same proportion of samples from each class as the full
+dataset.
+In this study, an 80/20 stratified split is applied with a fixed
+random seed (42) to ensure reproducibility.
+This prevents scenarios where, by chance, one class is over- or
+under-represented in the validation set.
+
+\subsection{Formalin Treatment}
+
+Formalin (formaldehyde solution) is used in some markets to preserve
+the appearance of fruits and vegetables, making them visually similar
+to fresh produce despite being unsafe for consumption.
+The FruitVision dataset includes formalin-treated samples as a
+third class, making it the most challenging benchmark in this study.
+The difficulty of distinguishing formalin-treated from fresh samples
+in RGB images is directly analogous to the challenge of detecting
+subtle spoilage in fermented Korean foods.
+
+% ─────────────────────────────────────────────────────────────
+\section{Training Condition Reference}
+\label{sec:conditions}
+% ─────────────────────────────────────────────────────────────
+
+\begin{table}[h]
+\centering
+\begin{tabular}{L{1.5cm} L{2.5cm} L{3cm} L{7cm}}
+\toprule
+\textbf{ID} & \textbf{Backbone} & \textbf{Head} & \textbf{Full description} \\
+\midrule
+C1 & Fully frozen & Linear only &
+  All backbone weights locked. Single linear layer $\mathbf{W} \in
+  \mathbb{R}^{d_\text{out} \times C}$ trained from scratch.
+  Evaluates raw ImageNet feature quality. \\[6pt]
+
+C2 & Last block free & Linear only &
+  \texttt{layer4} (final residual block) unfrozen.
+  All earlier backbone layers frozen.
+  Linear classifier only, no projection head.
+  Allows high-level feature adaptation. \\[6pt]
+
+C3 & Fully frozen & Proj.\ + Linear &
+  All backbone weights locked.
+  Two-layer projection head:
+  $d_\text{out} \to 256 \to 128$, each followed by ReLU,
+  then linear classifier.
+  Non-linear capacity without backbone adaptation. \\[6pt]
+
+C4 & Last block free & Proj.\ + Linear &
+  \texttt{layer4} unfrozen with $\text{lr}_\text{backbone} = 10^{-5}$.
+  Full projection head with $\text{lr} = 10^{-3}$.
+  Maximum adaptation capacity with catastrophic forgetting prevention. \\[6pt]
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────
+\section{Dataset Reference}
+% ─────────────────────────────────────────────────────────────
+
+\begin{table}[h]
+\centering
+\begin{tabular}{L{1.2cm} L{3.5cm} L{1.5cm} L{2cm} L{4cm}}
+\toprule
+\textbf{ID} & \textbf{Full name} & \textbf{Images} & \textbf{Classes} & \textbf{Notes} \\
+\midrule
+KFQ & Kaggle Fruits Quality       &    359 & fresh / rotten & 12 mixed fruit types \\
+MFR & Mendeley Fruits              &  1,655 & fresh / rotten & Peach, pomegranate, strawberry \\
+MLM & Mendeley Lemon Varieties     &  1,956 & fresh / rotten & 7 lemon varieties \\
+MFV & Mendeley FruitVision         & 10,154 & fresh / formalin / rotten & Most challenging; 3 classes \\
+KFR & Kaggle Fruits Fresh/Rotten   & 13,599 & fresh / rotten & Apple, banana, orange \\
+KFS & Kaggle Fresh \& Stale        & 27,317 & fresh / rotten & 9 fruit/vegetable categories \\
+OWN & Own Dataset (strawberry)     &    121 & fresh / rotten & Real phone photos; eval only \\
+\midrule
+    & \textbf{Total (public)}      & \textbf{55,040} & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

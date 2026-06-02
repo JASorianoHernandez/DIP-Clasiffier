@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.5.26)  1 JUN 2026 10:14
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.5.26)  1 JUN 2026 12:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -555,19 +555,25 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
+Missing character: There is no — in font ptmr8t!
+Missing character: There is no — in font ptmr8t!
 
-Underfull \hbox (badness 2042) in paragraph at lines 244--245
+Underfull \hbox (badness 2042) in paragraph at lines 246--247
 []|\T1/ptm/m/n/8 Full head, frozen
  []
 
-
-Overfull \hbox (3.90718pt too wide) detected at line 276
-[]
- []
-
+Missing character: There is no — in font ptmb8t!
+Missing character: There is no — in font ptmb8t!
+Missing character: There is no — in font ptmb8t!
 
 
 [2]
+Missing character: There is no — in font ptmb8t!
+
+Overfull \hbox (3.90718pt too wide) detected at line 325
+[]
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -575,9 +581,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[3] (paper.bbl
+[3]
 
-)
+(paper.bbl
+
+[4])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -591,7 +599,11 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-[4] (paper.aux)
+
+
+[5
+
+] (paper.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -607,12 +619,12 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: B4A6DED489DA396683AB3D5043AE72BE;2732.
  ) 
 Here is how much of TeX's memory you used:
- 14090 strings out of 403249
- 223946 string characters out of 5460860
- 669370 words of memory out of 5000000
- 42393 multiletter control sequences out of 15000+600000
- 707005 words of font info for 120 fonts, out of 8000000 for 9000
+ 14107 strings out of 403249
+ 224219 string characters out of 5460860
+ 670420 words of memory out of 5000000
+ 42405 multiletter control sequences out of 15000+600000
+ 708553 words of font info for 125 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 72i,12n,79p,1004b,390s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,1004b,494s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on paper.pdf (4 pages).
+Output written on paper.pdf (5 pages).
