@@ -34,45 +34,6 @@ Stage 04 — Reporting
 
 ---
 
-## Scripts
-
-### Stage 00 — Internal Libraries
-
-| Script | Description |
-|--------|-------------|
-| `_backbone.py` | Registry of all backbone architectures (ResNet, MobileNet, EfficientNet). Maps string names to factory functions that return ImageNet pre-trained models. Exposes `get_backbone()` and `unfreeze_layers()`. Imported by `02_01_train.py`. |
-| `_dataset.py` | Data loaders for three folder layouts (flat, pre-split, nested fruit/state). Applies training augmentation (crop, flip, rotation, color jitter, blur) and validation transforms. Performs stratified 80/20 split. Imported by `02_01_train.py`. |
-
-### Stage 01 — Data Preparation
-
-| Script | Description |
-|--------|-------------|
-| `01_01_prepare_datasets.py` | Reads raw datasets from `datasets/` and reorganizes them into a unified `data/{dataset}/{fruit}/{state}/` structure compatible with the training pipeline. Handles flat, pre-split, and nested source layouts. |
-| `01_02_rename_own_dataset.py` | Renames own photos to a standard convention `{STATE}_{FRUIT}_{###}.jpg` (e.g. `FR_SB_001.jpg`). Interactive menu to select which fruits to rename. |
-| `01_03_prepare_own_dataset.py` | Resizes own photos so the shortest side is 256 px and copies them to `data/own_dataset/{fruit}/{state}/`. Skips already processed images. |
-
-### Stage 02 — Training
-
-| Script | Description |
-|--------|-------------|
-| `02_01_train.py` | Interactive training loop. Menu selects dataset, label mode, backbone and condition. Runs 60 epochs with Adam + cosine annealing. Saves `metrics.json` (all metrics per 5 epochs), `best_model.pt` (best F1), and rolling checkpoints for resume. |
-
-### Stage 03 — Evaluation & Analysis
-
-| Script | Description |
-|--------|-------------|
-| `03_01_evaluate.py` | Loads any `best_model.pt` and evaluates it on any dataset. Computes F1, accuracy, precision, recall, MCC, AUC-ROC, per-image confidence, and domain shift (Train F1 − Eval F1). Generates confusion matrix, ROC curve, confidence histogram, and per-class bar chart. |
-| `03_02_analyze.py` | Reads all `metrics.json` files and generates training-curve comparison plots (accuracy, F1, precision, recall, loss, heatmap, confusion matrices, per-class bars). |
-
-### Stage 04 — Reporting
-
-| Script | Description |
-|--------|-------------|
-| `04_01_generate_tracker.py` | Generates `experiments_tracker.xlsx`. One sheet per backbone with color-coded run status (complete / running / pending / n/a) and metrics (F1, ACC, MCC, AUC, time). |
-| `04_02_generate_eval_report.py` | Generates `eval_report.xlsx`. One sheet per evaluated dataset with metrics and embedded plots. Four ranking sheets: by F1, by domain shift (robustness), by recall (food safety), by accuracy. |
-
----
-
 ## Experiment ID Format
 
 Every run is identified by a 4-part code:
@@ -139,6 +100,45 @@ Combines the projection head of C3 with the backbone fine-tuning of C2. Uses a *
 - Backbone layer4: `lr_backbone = 1e-5` (100× smaller)
 
 The drastically lower backbone LR ensures gradual adaptation — the backbone specializes toward freshness features without destroying the hierarchical representations inherited from ImageNet pre-training. This is the **optimal condition for ResNet-18**.
+
+---
+
+## Scripts
+
+### Stage 00 — Internal Libraries
+
+| Script | Description |
+|--------|-------------|
+| `_backbone.py` | Registry of all backbone architectures (ResNet, MobileNet, EfficientNet). Maps string names to factory functions that return ImageNet pre-trained models. Exposes `get_backbone()` and `unfreeze_layers()`. Imported by `02_01_train.py`. |
+| `_dataset.py` | Data loaders for three folder layouts (flat, pre-split, nested fruit/state). Applies training augmentation (crop, flip, rotation, color jitter, blur) and validation transforms. Performs stratified 80/20 split. Imported by `02_01_train.py`. |
+
+### Stage 01 — Data Preparation
+
+| Script | Description |
+|--------|-------------|
+| `01_01_prepare_datasets.py` | Reads raw datasets from `datasets/` and reorganizes them into a unified `data/{dataset}/{fruit}/{state}/` structure compatible with the training pipeline. Handles flat, pre-split, and nested source layouts. |
+| `01_02_rename_own_dataset.py` | Renames own photos to a standard convention `{STATE}_{FRUIT}_{###}.jpg` (e.g. `FR_SB_001.jpg`). Interactive menu to select which fruits to rename. |
+| `01_03_prepare_own_dataset.py` | Resizes own photos so the shortest side is 256 px and copies them to `data/own_dataset/{fruit}/{state}/`. Skips already processed images. |
+
+### Stage 02 — Training
+
+| Script | Description |
+|--------|-------------|
+| `02_01_train.py` | Interactive training loop. Menu selects dataset, label mode, backbone and condition. Runs 60 epochs with Adam + cosine annealing. Saves `metrics.json` (all metrics per 5 epochs), `best_model.pt` (best F1), and rolling checkpoints for resume. |
+
+### Stage 03 — Evaluation & Analysis
+
+| Script | Description |
+|--------|-------------|
+| `03_01_evaluate.py` | Loads any `best_model.pt` and evaluates it on any dataset. Computes F1, accuracy, precision, recall, MCC, AUC-ROC, per-image confidence, and domain shift (Train F1 − Eval F1). Generates confusion matrix, ROC curve, confidence histogram, and per-class bar chart. |
+| `03_02_analyze.py` | Reads all `metrics.json` files and generates training-curve comparison plots (accuracy, F1, precision, recall, loss, heatmap, confusion matrices, per-class bars). |
+
+### Stage 04 — Reporting
+
+| Script | Description |
+|--------|-------------|
+| `04_01_generate_tracker.py` | Generates `experiments_tracker.xlsx`. One sheet per backbone with color-coded run status (complete / running / pending / n/a) and metrics (F1, ACC, MCC, AUC, time). |
+| `04_02_generate_eval_report.py` | Generates `eval_report.xlsx`. One sheet per evaluated dataset with metrics and embedded plots. Four ranking sheets: by F1, by domain shift (robustness), by recall (food safety), by accuracy. |
 
 ---
 
