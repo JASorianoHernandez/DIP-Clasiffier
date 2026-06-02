@@ -372,6 +372,21 @@ def write_legend_sheet(ws):
     entry("SUMMARY",  "Best F1 for C4 head_layer4 state across all backbones and datasets.")
     entry("Legend",   "This sheet.")
 
+    blank()
+
+    # ── Backbone notes ──
+    section("BACKBONE NOTES")
+    entry("R18 (ResNet-18)",       "Primary baseline. 11.2M params, 512-dim output. All experiments complete.")
+    entry("EB0 (EfficientNet-B0)", "Phase 2 backbone. 5.3M params, 1280-dim output. All experiments complete.")
+    entry("EB2 (EfficientNet-B2)", "Phase 2 backbone. 9.1M params, 1408-dim output. All experiments complete.")
+    entry("MN3 (MobileNetV3-S)",   "Lightweight backbone for edge/mobile deployment. 2.5M params, 576-dim output. Experiments in progress.")
+    entry("R34 (ResNet-34)",       "NOT CURRENTLY EVALUATED. Included in registry for future use. "
+                                   "Similar architecture to R18 with more layers (21.3M params). "
+                                   "Expected to perform marginally better than R18 but at higher computational cost.")
+    entry("R50 (ResNet-50)",       "NOT CURRENTLY EVALUATED. Included in registry for future use. "
+                                   "Deeper ResNet variant (25.6M params, 2048-dim output). "
+                                   "Uses bottleneck blocks; better suited for large datasets.")
+
     auto_fit_columns(ws)
 
 

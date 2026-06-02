@@ -519,8 +519,32 @@ def write_legend_sheet(ws):
     entry("MCC",               "Matthews Correlation Coefficient (-1 worst / 0 random / +1 perfect)")
     entry("AUC",               "Area Under ROC Curve (0.5 random / 1.0 perfect)")
     entry("ms/img",            "Inference time per image in ms (includes DataLoader + GPU overhead)")
-    entry("Conf Correct (%)",  "Average model confidence on correct predictions")
-    entry("Conf Wrong (%)",    "Average model confidence on wrong predictions — high = overconfident on errors")
+    entry("Conf Correct (%)",  "Average model confidence on correct predictions. "
+                               "Computed as mean(max(softmax(logits))) for images where pred == true label. "
+                               "Higher is better — the model should be certain when it is right.")
+    entry("Conf Wrong (%)",    "Average model confidence on wrong predictions. "
+                               "Computed as mean(max(softmax(logits))) for images where pred != true label. "
+                               "Lower is better. High Conf Wrong (>75%) means the model is overconfident "
+                               "on its errors — dangerous in food safety since a wrong prediction with "
+                               "95% confidence raises no alert.")
+
+    blank()
+
+    section("HOW CONFIDENCE IS CALCULATED (Confidence Distribution Chart)")
+    entry("Step 1 — Logits",
+          "The model outputs raw scores (logits) for each class. "
+          "Example: [2.3, -0.8] for [fresh, rotten].")
+    entry("Step 2 — Softmax",
+          "Logits are converted to probabilities: P(c) = exp(z_c) / sum(exp(z)). "
+          "Example: [2.3, -0.8] -> [95.7%, 4.3%]. Always sums to 100%.")
+    entry("Step 3 — Confidence",
+          "Confidence = max(softmax) = 95.7%. The model predicts the class with "
+          "the highest probability.")
+    entry("Step 4 — Histogram",
+          "For each image, confidence is recorded and labeled correct (green) or "
+          "wrong (red). The chart shows how many images fell in each confidence "
+          "range. Ideal: green near 100%, red near 50-60%. "
+          "Warning: red bars near 100% mean the model is wrong with high certainty.")
 
     blank()
 
