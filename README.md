@@ -7,6 +7,12 @@ and measures domain shift through cross-dataset evaluation on real photos.
 
 ---
 
+## Visual Overview
+
+![Project Pipeline](Other/Animation/drawio/DIPv1.gif)
+
+---
+
 ## Project Pipeline
 
 The project is divided into four numbered stages. Internal libraries (Stage 00) are
