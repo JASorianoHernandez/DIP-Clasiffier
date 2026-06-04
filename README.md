@@ -9,7 +9,13 @@ and measures domain shift through cross-dataset evaluation on real photos.
 
 ## Visual Overview
 
-![Project Pipeline](Other/Animation/drawio/DIPv1.gif)
+**GIF version:**
+
+![Project Pipeline GIF](Other/Animation/drawio/DIPv1.gif)
+
+**WebP version:**
+
+![Project Pipeline WebP](Other/Animation/drawio/DIPv1.webp)
 
 ---
 
