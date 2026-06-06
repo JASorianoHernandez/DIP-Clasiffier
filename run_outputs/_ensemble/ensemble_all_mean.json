@@ -7,505 +7,505 @@
       "id": "KFS-EB0-C1-ST",
       "run": "kaggle_fresh_stale_all_frozen_efficientnet_b0",
       "val_f1": 0.970262,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8833
     },
     {
       "id": "KFS-EB2-C1-ST",
       "run": "kaggle_fresh_stale_all_frozen_efficientnet_b2",
       "val_f1": 0.969516,
-      "eval_f1": 0.7333
+      "eval_f1": 0.7661
     },
     {
       "id": "KFS-MN3-C1-ST",
       "run": "kaggle_fresh_stale_all_frozen_mobilenet_v3_small",
       "val_f1": 0.959402,
-      "eval_f1": 0.8748
+      "eval_f1": 0.9007
     },
     {
       "id": "KFS-R18-C1-ST",
       "run": "kaggle_fresh_stale_all_frozen_resnet18",
       "val_f1": 0.949697,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8592
     },
     {
       "id": "KFS-EB0-C3-ST",
       "run": "kaggle_fresh_stale_all_head_frozen_efficientnet_b0",
       "val_f1": 0.993899,
-      "eval_f1": 0.873
+      "eval_f1": 0.9253
     },
     {
       "id": "KFS-EB2-C3-ST",
       "run": "kaggle_fresh_stale_all_head_frozen_efficientnet_b2",
       "val_f1": 0.993327,
-      "eval_f1": 0.7822
+      "eval_f1": 0.8241
     },
     {
       "id": "KFS-MN3-C3-ST",
       "run": "kaggle_fresh_stale_all_head_frozen_mobilenet_v3_small",
       "val_f1": 0.991992,
-      "eval_f1": 0.619
+      "eval_f1": 0.7833
     },
     {
       "id": "KFS-R18-C3-ST",
       "run": "kaggle_fresh_stale_all_head_frozen_resnet18",
       "val_f1": 0.979798,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8837
     },
     {
       "id": "KFS-EB0-C4-ST",
       "run": "kaggle_fresh_stale_all_head_layer4_efficientnet_b0",
       "val_f1": 0.985134,
-      "eval_f1": 0.7884
+      "eval_f1": 0.8015
     },
     {
       "id": "KFS-EB2-C4-ST",
       "run": "kaggle_fresh_stale_all_head_layer4_efficientnet_b2",
       "val_f1": 0.978841,
-      "eval_f1": 0.5409
+      "eval_f1": 0.7188
     },
     {
       "id": "KFS-MN3-C4-ST",
       "run": "kaggle_fresh_stale_all_head_layer4_mobilenet_v3_small",
       "val_f1": 0.9775,
-      "eval_f1": 0.6643
+      "eval_f1": 0.7848
     },
     {
       "id": "KFS-R18-C4-ST",
       "run": "kaggle_fresh_stale_all_head_layer4_resnet18",
       "val_f1": 0.989518,
-      "eval_f1": 0.873
+      "eval_f1": 0.8662
     },
     {
       "id": "KFS-EB0-C2-ST",
       "run": "kaggle_fresh_stale_all_layer4_efficientnet_b0",
       "val_f1": 0.963243,
-      "eval_f1": 0.6571
+      "eval_f1": 0.8176
     },
     {
       "id": "KFS-EB2-C2-ST",
       "run": "kaggle_fresh_stale_all_layer4_efficientnet_b2",
       "val_f1": 0.960712,
-      "eval_f1": 0.6571
+      "eval_f1": 0.6873
     },
     {
       "id": "KFS-MN3-C2-ST",
       "run": "kaggle_fresh_stale_all_layer4_mobilenet_v3_small",
       "val_f1": 0.934354,
-      "eval_f1": 0.7483
+      "eval_f1": 0.8426
     },
     {
       "id": "KFS-R18-C2-ST",
       "run": "kaggle_fresh_stale_all_layer4_resnet18",
       "val_f1": 0.988759,
-      "eval_f1": 0.7884
+      "eval_f1": 0.8423
     },
     {
       "id": "KFR-EB0-C1-ST",
       "run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b0",
       "val_f1": 0.989907,
-      "eval_f1": 0.8693
+      "eval_f1": 0.8495
     },
     {
       "id": "KFR-EB2-C1-ST",
       "run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b2",
       "val_f1": 0.991407,
-      "eval_f1": 0.5901
+      "eval_f1": 0.6639
     },
     {
       "id": "KFR-MN3-C1-ST",
       "run": "kaggle_fruits_fresh_rotten_all_frozen_mobilenet_v3_small",
       "val_f1": 0.991014,
-      "eval_f1": 0.8748
+      "eval_f1": 0.7844
     },
     {
       "id": "KFR-R18-C1-ST",
       "run": "kaggle_fruits_fresh_rotten_all_frozen_resnet18",
       "val_f1": 0.976093,
-      "eval_f1": 0.7913
+      "eval_f1": 0.8099
     },
     {
       "id": "KFR-EB0-C3-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_frozen_efficientnet_b0",
       "val_f1": 1.0,
-      "eval_f1": 0.873
+      "eval_f1": 0.8757
     },
     {
       "id": "KFR-EB2-C3-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_frozen_efficientnet_b2",
       "val_f1": 0.999252,
-      "eval_f1": 0.6951
+      "eval_f1": 0.7068
     },
     {
       "id": "KFR-MN3-C3-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_frozen_mobilenet_v3_small",
       "val_f1": 1.0,
-      "eval_f1": 0.6571
+      "eval_f1": 0.6856
     },
     {
       "id": "KFR-R18-C3-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_frozen_resnet18",
       "val_f1": 0.993642,
-      "eval_f1": 0.7884
+      "eval_f1": 0.8414
     },
     {
       "id": "KFR-EB0-C4-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_layer4_efficientnet_b0",
       "val_f1": 0.996636,
-      "eval_f1": 0.6571
+      "eval_f1": 0.7246
     },
     {
       "id": "KFR-EB2-C4-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_layer4_efficientnet_b2",
       "val_f1": 0.995513,
-      "eval_f1": 0.619
+      "eval_f1": 0.7392
     },
     {
       "id": "KFR-MN3-C4-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_layer4_mobilenet_v3_small",
       "val_f1": 0.994391,
-      "eval_f1": 0.5714
+      "eval_f1": 0.6856
     },
     {
       "id": "KFR-R18-C4-ST",
       "run": "kaggle_fruits_fresh_rotten_all_head_layer4_resnet18",
       "val_f1": 0.99813,
-      "eval_f1": 0.7078
+      "eval_f1": 0.7346
     },
     {
       "id": "KFR-EB0-C2-ST",
       "run": "kaggle_fruits_fresh_rotten_all_layer4_efficientnet_b0",
       "val_f1": 0.986195,
-      "eval_f1": 0.6571
+      "eval_f1": 0.765
     },
     {
       "id": "KFR-EB2-C2-ST",
       "run": "kaggle_fruits_fresh_rotten_all_layer4_efficientnet_b2",
       "val_f1": 0.985794,
-      "eval_f1": 0.5804
+      "eval_f1": 0.6612
     },
     {
       "id": "KFR-MN3-C2-ST",
       "run": "kaggle_fruits_fresh_rotten_all_layer4_mobilenet_v3_small",
       "val_f1": 0.978305,
-      "eval_f1": 0.4991
+      "eval_f1": 0.6695
     },
     {
       "id": "KFR-R18-C2-ST",
       "run": "kaggle_fruits_fresh_rotten_all_layer4_resnet18",
       "val_f1": 0.997756,
-      "eval_f1": 0.75
+      "eval_f1": 0.8016
     },
     {
       "id": "KFQ-EB0-C1-ST",
       "run": "kaggle_fruits_quality_all_frozen_efficientnet_b0",
       "val_f1": 0.847193,
-      "eval_f1": 0.8286
+      "eval_f1": 0.8829
     },
     {
       "id": "KFQ-EB2-C1-ST",
       "run": "kaggle_fruits_quality_all_frozen_efficientnet_b2",
       "val_f1": 0.888889,
-      "eval_f1": 0.7723
+      "eval_f1": 0.8007
     },
     {
       "id": "KFQ-MN3-C1-ST",
       "run": "kaggle_fruits_quality_all_frozen_mobilenet_v3_small",
       "val_f1": 0.916409,
-      "eval_f1": 0.8322
+      "eval_f1": 0.9005
     },
     {
       "id": "KFQ-R18-C1-ST",
       "run": "kaggle_fruits_quality_all_frozen_resnet18",
       "val_f1": 0.861004,
-      "eval_f1": 0.5804
+      "eval_f1": 0.7413
     },
     {
       "id": "KFQ-EB0-C3-ST",
       "run": "kaggle_fruits_quality_all_head_frozen_efficientnet_b0",
       "val_f1": 0.81913,
-      "eval_f1": 0.873
+      "eval_f1": 0.9089
     },
     {
       "id": "KFQ-EB2-C3-ST",
       "run": "kaggle_fruits_quality_all_head_frozen_efficientnet_b2",
       "val_f1": 0.888889,
-      "eval_f1": 0.8748
+      "eval_f1": 0.8099
     },
     {
       "id": "KFQ-MN3-C3-ST",
       "run": "kaggle_fruits_quality_all_head_frozen_mobilenet_v3_small",
       "val_f1": 0.916084,
-      "eval_f1": 0.7884
+      "eval_f1": 0.9087
     },
     {
       "id": "KFQ-R18-C3-ST",
       "run": "kaggle_fruits_quality_all_head_frozen_resnet18",
       "val_f1": 0.86014,
-      "eval_f1": 0.8286
+      "eval_f1": 0.8829
     },
     {
       "id": "KFQ-EB0-C4-ST",
       "run": "kaggle_fruits_quality_all_head_layer4_efficientnet_b0",
       "val_f1": 0.860681,
-      "eval_f1": 0.7884
+      "eval_f1": 0.8394
     },
     {
       "id": "KFQ-EB2-C4-ST",
       "run": "kaggle_fruits_quality_all_head_layer4_efficientnet_b2",
       "val_f1": 0.833205,
-      "eval_f1": 0.6571
+      "eval_f1": 0.7134
     },
     {
       "id": "KFQ-MN3-C4-ST",
       "run": "kaggle_fruits_quality_all_head_layer4_mobilenet_v3_small",
       "val_f1": 0.861004,
-      "eval_f1": 0.8322
+      "eval_f1": 0.9003
     },
     {
       "id": "KFQ-R18-C4-ST",
       "run": "kaggle_fruits_quality_all_head_layer4_resnet18",
       "val_f1": 0.888803,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8347
     },
     {
       "id": "KFQ-EB0-C2-ST",
       "run": "kaggle_fruits_quality_all_layer4_efficientnet_b0",
       "val_f1": 0.860681,
-      "eval_f1": 0.7913
+      "eval_f1": 0.8428
     },
     {
       "id": "KFQ-EB2-C2-ST",
       "run": "kaggle_fruits_quality_all_layer4_efficientnet_b2",
       "val_f1": 0.861004,
-      "eval_f1": 0.7429
+      "eval_f1": 0.7085
     },
     {
       "id": "KFQ-MN3-C2-ST",
       "run": "kaggle_fruits_quality_all_layer4_mobilenet_v3_small",
       "val_f1": 0.874394,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8662
     },
     {
       "id": "KFQ-R18-C2-ST",
       "run": "kaggle_fruits_quality_all_layer4_resnet18",
       "val_f1": 0.916409,
-      "eval_f1": 0.873
+      "eval_f1": 0.9079
     },
     {
       "id": "MFR-EB0-C1-ST",
       "run": "mendeley_fruits_all_frozen_efficientnet_b0",
       "val_f1": 0.945579,
-      "eval_f1": 0.873
+      "eval_f1": 0.9249
     },
     {
       "id": "MFR-EB2-C1-ST",
       "run": "mendeley_fruits_all_frozen_efficientnet_b2",
       "val_f1": 0.951661,
-      "eval_f1": 0.9161
+      "eval_f1": 0.9251
     },
     {
       "id": "MFR-MN3-C1-ST",
       "run": "mendeley_fruits_all_frozen_mobilenet_v3_small",
       "val_f1": 0.945595,
-      "eval_f1": 0.8322
+      "eval_f1": 0.9007
     },
     {
       "id": "MFR-R18-C1-ST",
       "run": "mendeley_fruits_all_frozen_resnet18",
       "val_f1": 0.942579,
-      "eval_f1": 0.7822
+      "eval_f1": 0.8997
     },
     {
       "id": "MFR-EB0-C3-ST",
       "run": "mendeley_fruits_all_head_frozen_efficientnet_b0",
       "val_f1": 0.969788,
-      "eval_f1": 0.873
+      "eval_f1": 0.9169
     },
     {
       "id": "MFR-EB2-C3-ST",
       "run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
       "val_f1": 0.963738,
-      "eval_f1": 0.9161
+      "eval_f1": 0.9331
     },
     {
       "id": "MFR-MN3-C3-ST",
       "run": "mendeley_fruits_all_head_frozen_mobilenet_v3_small",
       "val_f1": 0.966766,
-      "eval_f1": 0.7884
+      "eval_f1": 0.8757
     },
     {
       "id": "MFR-R18-C3-ST",
       "run": "mendeley_fruits_all_head_frozen_resnet18",
       "val_f1": 0.951661,
-      "eval_f1": 0.7884
+      "eval_f1": 0.8923
     },
     {
       "id": "MFR-EB0-C4-ST",
       "run": "mendeley_fruits_all_head_layer4_efficientnet_b0",
       "val_f1": 0.957704,
-      "eval_f1": 0.7884
+      "eval_f1": 0.7833
     },
     {
       "id": "MFR-EB2-C4-ST",
       "run": "mendeley_fruits_all_head_layer4_efficientnet_b2",
       "val_f1": 0.921432,
-      "eval_f1": 0.7078
+      "eval_f1": 0.7932
     },
     {
       "id": "MFR-MN3-C4-ST",
       "run": "mendeley_fruits_all_head_layer4_mobilenet_v3_small",
       "val_f1": 0.957704,
-      "eval_f1": 0.7913
+      "eval_f1": 0.8347
     },
     {
       "id": "MFR-R18-C4-ST",
       "run": "mendeley_fruits_all_head_layer4_resnet18",
       "val_f1": 0.963743,
-      "eval_f1": 0.873
+      "eval_f1": 0.9169
     },
     {
       "id": "MFR-EB0-C2-ST",
       "run": "mendeley_fruits_all_layer4_efficientnet_b0",
       "val_f1": 0.915066,
-      "eval_f1": 0.8286
+      "eval_f1": 0.8563
     },
     {
       "id": "MFR-EB2-C2-ST",
       "run": "mendeley_fruits_all_layer4_efficientnet_b2",
       "val_f1": 0.870086,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8099
     },
     {
       "id": "MFR-MN3-C2-ST",
       "run": "mendeley_fruits_all_layer4_mobilenet_v3_small",
       "val_f1": 0.927486,
-      "eval_f1": 0.7483
+      "eval_f1": 0.8097
     },
     {
       "id": "MFR-R18-C2-ST",
       "run": "mendeley_fruits_all_layer4_resnet18",
       "val_f1": 0.954668,
-      "eval_f1": 0.873
+      "eval_f1": 0.9085
     },
     {
       "id": "MLM-EB0-C1-ST",
       "run": "mendeley_lemon_varieties_all_frozen_efficientnet_b0",
       "val_f1": 0.966744,
-      "eval_f1": 0.7822
+      "eval_f1": 0.8273
     },
     {
       "id": "MLM-EB2-C1-ST",
       "run": "mendeley_lemon_varieties_all_frozen_efficientnet_b2",
       "val_f1": 0.961636,
-      "eval_f1": 0.6606
+      "eval_f1": 0.7083
     },
     {
       "id": "MLM-MN3-C1-ST",
       "run": "mendeley_lemon_varieties_all_frozen_mobilenet_v3_small",
       "val_f1": 0.943704,
-      "eval_f1": 0.8322
+      "eval_f1": 0.8167
     },
     {
       "id": "MLM-R18-C1-ST",
       "run": "mendeley_lemon_varieties_all_frozen_resnet18",
       "val_f1": 0.961636,
-      "eval_f1": 0.5966
+      "eval_f1": 0.7189
     },
     {
       "id": "MLM-EB0-C3-ST",
       "run": "mendeley_lemon_varieties_all_head_frozen_efficientnet_b0",
       "val_f1": 0.987209,
-      "eval_f1": 0.8286
+      "eval_f1": 0.8563
     },
     {
       "id": "MLM-EB2-C3-ST",
       "run": "mendeley_lemon_varieties_all_head_frozen_efficientnet_b2",
       "val_f1": 0.979533,
-      "eval_f1": 0.8286
+      "eval_f1": 0.8414
     },
     {
       "id": "MLM-MN3-C3-ST",
       "run": "mendeley_lemon_varieties_all_head_frozen_mobilenet_v3_small",
       "val_f1": 0.98209,
-      "eval_f1": 0.7884
+      "eval_f1": 0.808
     },
     {
       "id": "MLM-R18-C3-ST",
       "run": "mendeley_lemon_varieties_all_head_frozen_resnet18",
       "val_f1": 0.961636,
-      "eval_f1": 0.7078
+      "eval_f1": 0.8179
     },
     {
       "id": "MLM-EB0-C4-ST",
       "run": "mendeley_lemon_varieties_all_head_layer4_efficientnet_b0",
       "val_f1": 0.953961,
-      "eval_f1": 0.9167
+      "eval_f1": 0.7678
     },
     {
       "id": "MLM-EB2-C4-ST",
       "run": "mendeley_lemon_varieties_all_head_layer4_efficientnet_b2",
       "val_f1": 0.941175,
-      "eval_f1": 0.4338
+      "eval_f1": 0.5739
     },
     {
       "id": "MLM-MN3-C4-ST",
       "run": "mendeley_lemon_varieties_all_head_layer4_mobilenet_v3_small",
       "val_f1": 0.928351,
-      "eval_f1": 0.2727
+      "eval_f1": 0.4514
     },
     {
       "id": "MLM-R18-C4-ST",
       "run": "mendeley_lemon_varieties_all_head_layer4_resnet18",
       "val_f1": 0.984654,
-      "eval_f1": 0.9167
+      "eval_f1": 0.801
     },
     {
       "id": "MLM-EB0-C2-ST",
       "run": "mendeley_lemon_varieties_all_layer4_efficientnet_b0",
       "val_f1": 0.94629,
-      "eval_f1": 0.7429
+      "eval_f1": 0.6742
     },
     {
       "id": "MLM-EB2-C2-ST",
       "run": "mendeley_lemon_varieties_all_layer4_efficientnet_b2",
       "val_f1": 0.925761,
-      "eval_f1": 0.5804
+      "eval_f1": 0.6597
     },
     {
       "id": "MLM-MN3-C2-ST",
       "run": "mendeley_lemon_varieties_all_layer4_mobilenet_v3_small",
       "val_f1": 0.910336,
-      "eval_f1": 0.2941
+      "eval_f1": 0.465
     },
     {
       "id": "MLM-R18-C2-ST",
       "run": "mendeley_lemon_varieties_all_layer4_resnet18",
       "val_f1": 0.979538,
-      "eval_f1": 0.8748
+      "eval_f1": 0.7932
     }
   ],
   "best_single": {
-    "id": "MLM-EB0-C4-ST",
-    "f1": 0.9167
+    "id": "MFR-EB2-C3-ST",
+    "f1": 0.9331
   },
   "ensemble": {
-    "n_images": 24,
-    "acc": 0.875,
-    "f1_macro": 0.873,
-    "precision_macro": 0.8786,
-    "recall_macro": 0.8706,
-    "mcc": 0.7492,
+    "n_images": 121,
+    "acc": 0.9174,
+    "f1_macro": 0.9167,
+    "precision_macro": 0.9202,
+    "recall_macro": 0.9152,
+    "mcc": 0.8354,
     "confusion_matrix": [
       [
-        12,
-        1
+        61,
+        3
       ],
       [
-        2,
-        9
+        7,
+        50
       ]
     ],
-    "auc_roc": 0.9441
+    "auc_roc": 0.9718
   },
-  "delta_f1_pts": -4.37
+  "delta_f1_pts": -1.64
 }

@@ -705,7 +705,7 @@ def plot_eval_ranking(evals, out_dir):
     fig.suptitle(f"Eval Ranking — F1 on own_dataset  ({len(evals)} models)",
                  fontsize=13, fontweight="bold")
     plt.tight_layout(pad=1.5)
-    _save(fig, out_dir, "eval_ranking.png")
+    _save(fig, out_dir, "01_eval_ranking.png")
 
 
 def plot_eval_domain_shift(evals, out_dir):
@@ -747,7 +747,7 @@ def plot_eval_domain_shift(evals, out_dir):
     fig.suptitle("Domain Shift — F1 Train vs F1 Eval  (sorted by drop ↑ = best generalizer)",
                  fontsize=12, fontweight="bold")
     plt.tight_layout(pad=1.5)
-    _save(fig, out_dir, "eval_domain_shift.png")
+    _save(fig, out_dir, "03_eval_domain_shift.png")
 
 
 def plot_eval_heatmap(evals, out_dir):
@@ -792,7 +792,7 @@ def plot_eval_heatmap(evals, out_dir):
     fig.suptitle("F1 Score on own_dataset — Backbone × Condition",
                  fontsize=13, fontweight="bold")
     plt.tight_layout(pad=1.5)
-    _save(fig, out_dir, "eval_heatmap.png")
+    _save(fig, out_dir, "05_eval_heatmap.png")
 
 
 def plot_eval_confidence(evals, out_dir):
@@ -832,7 +832,152 @@ def plot_eval_confidence(evals, out_dir):
                  "(ideal: top-left — certain when right, uncertain when wrong)",
                  fontsize=12, fontweight="bold")
     plt.tight_layout(pad=1.5)
-    _save(fig, out_dir, "eval_confidence.png")
+    _save(fig, out_dir, "07_eval_confidence.png")
+
+
+def plot_eval_by_dataset(evals, out_dir):
+    """Option C: 2×N grid — row1=ranking, row2=domain_shift, cols=training datasets."""
+
+    def get_ds_code(r):
+        for ds, code in DS_CODE.items():
+            if r["model_run"].startswith(ds):
+                return code
+        return "?"
+
+    for r in evals:
+        r["_ds_code"] = get_ds_code(r)
+
+    ds_list = sorted({r["_ds_code"] for r in evals if r["_ds_code"] != "?"})
+    n_cols  = len(ds_list)
+
+    fig, axes = plt.subplots(2, n_cols,
+                             figsize=(5 * n_cols, 10), squeeze=False)
+    fig.suptitle("Eval Results by Training Dataset  "
+                 "(row 1 = F1 Ranking · row 2 = Domain Shift)",
+                 fontsize=14, fontweight="bold")
+
+    for col, ds_code in enumerate(ds_list):
+        subset = [r for r in evals if r["_ds_code"] == ds_code]
+
+        # ── Row 0: ranking ──
+        ax1 = axes[0][col]
+        subset_s = sorted(subset, key=lambda r: r["f1_eval"], reverse=True)
+        labels = [f"{r['bb_code']}-{r['cond_code']}" for r in subset_s]
+        f1s    = [r["f1_eval"] for r in subset_s]
+        colors = [COND_COLOR.get(r["condition"], "#888888") for r in subset_s]
+        bars = ax1.bar(range(len(subset_s)), f1s, color=colors,
+                       alpha=0.85, edgecolor="white")
+        for bar, val in zip(bars, f1s):
+            ax1.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.4,
+                     f"{val:.0f}", ha="center", fontsize=7, color="white")
+        ax1.set_xticks(range(len(subset_s)))
+        ax1.set_xticklabels(labels, rotation=45, ha="right", fontsize=7)
+        ax1.set_ylim(0, 105)
+        ax1.set_title(ds_code, fontsize=13, fontweight="bold")
+        ax1.grid(True, axis="y", alpha=0.2)
+        if col == 0:
+            ax1.set_ylabel("F1 Eval (%)", fontsize=10)
+
+        # ── Row 1: domain shift ──
+        ax2 = axes[1][col]
+        valid = sorted([r for r in subset if r["f1_train"] is not None],
+                       key=lambda r: r["drop"] if r["drop"] else 999)
+        x = np.arange(len(valid)); w = 0.38
+        ax2.bar(x - w/2, [r["f1_train"] for r in valid], w,
+                label="Train", color="#4C72B0", alpha=0.85)
+        ax2.bar(x + w/2, [r["f1_eval"]  for r in valid], w,
+                label="Eval",  color=COND_COLOR["head_layer4"], alpha=0.85)
+        for i, r in enumerate(valid):
+            if r["drop"] is not None:
+                c = "#e74c3c" if r["drop"] > 15 else "#f39c12" if r["drop"] > 5 else "#2ecc71"
+                ax2.text(i, max(r["f1_train"], r["f1_eval"]) + 1.2,
+                         f"−{r['drop']:.0f}", ha="center", fontsize=7,
+                         color=c, fontweight="bold")
+        ax2.set_xticks(x)
+        ax2.set_xticklabels([f"{r['bb_code']}-{r['cond_code']}" for r in valid],
+                             rotation=45, ha="right", fontsize=7)
+        ax2.set_ylim(0, 110)
+        ax2.grid(True, axis="y", alpha=0.2)
+        if col == 0:
+            ax2.set_ylabel("F1 (%)", fontsize=10)
+            ax2.legend(fontsize=8)
+        elif col == n_cols - 1:
+            ax2.legend(fontsize=8)
+
+    plt.tight_layout(pad=2.0, h_pad=3.0, w_pad=1.5)
+    _save(fig, out_dir, "04_eval_by_dataset.png")
+
+
+def plot_eval_grid(evals, out_dir):
+    """Option E: grid backbone × condition for ranking and domain shift."""
+    backbones  = [b for b in ["resnet18","mobilenet_v3_small",
+                               "efficientnet_b0","efficientnet_b2"]
+                  if any(r["backbone"] == b for r in evals)]
+    conditions = [c for c in CONDITIONS
+                  if any(r["condition"] == c for r in evals)]
+
+    if not backbones or not conditions:
+        return
+
+    n_rows = len(backbones)
+    n_cols = len(conditions)
+
+    for metric, ylabel, title_suffix, fname in [
+        ("f1_eval",  "F1 Eval (%)",   "F1 on own_dataset",    "06_eval_grid_f1.png"),
+        ("drop",     "Drop (%)",       "Domain Shift (drop)",  "02_eval_grid_drop.png"),
+    ]:
+        fig, axes = plt.subplots(n_rows, n_cols,
+                                 figsize=(4 * n_cols, 4 * n_rows), squeeze=False)
+        fig.suptitle(f"Backbone × Condition Grid — {title_suffix}",
+                     fontsize=14, fontweight="bold")
+
+        for row, bb in enumerate(backbones):
+            bb_code = BB_CODE.get(bb, bb[:4])
+            for col, cond in enumerate(conditions):
+                ax = axes[row][col]
+                subset = [r for r in evals
+                          if r["backbone"] == bb and r["condition"] == cond
+                          and r[metric] is not None]
+                subset.sort(key=lambda r: -r["f1_eval"])
+
+                if row == 0:
+                    ax.set_title(COND_LABEL.get(cond, cond), fontsize=12,
+                                 fontweight="bold")
+                if col == 0:
+                    ax.text(-0.25, 0.5, bb_code, transform=ax.transAxes,
+                            fontsize=12, fontweight="bold", ha="right",
+                            va="center", rotation=0)
+
+                if not subset:
+                    ax.text(0.5, 0.5, "n/a", transform=ax.transAxes,
+                            ha="center", va="center", color=C_GRAY, fontsize=13)
+                    ax.axis("off")
+                    continue
+
+                # One bar per training dataset
+                ds_codes = [DS_CODE.get(r["model_run"].split("_all_")[0]
+                            if "_all_" in r["model_run"] else "", "?")
+                            for r in subset]
+                vals  = [r[metric] if r[metric] is not None else 0 for r in subset]
+                col_c = COND_COLOR.get(cond, "#888888")
+                bars  = ax.bar(range(len(subset)), vals, color=col_c,
+                               alpha=0.85, edgecolor="white")
+                for bar, val in zip(bars, vals):
+                    ax.text(bar.get_x() + bar.get_width()/2,
+                            bar.get_height() + 0.5,
+                            f"{val:.0f}", ha="center", fontsize=8, color="white")
+                ax.set_xticks(range(len(subset)))
+                ax.set_xticklabels(ds_codes, rotation=30, ha="right", fontsize=8)
+                if metric == "drop":
+                    ax.set_ylim(0, 40)
+                else:
+                    ax.set_ylim(0, 105)
+                ax.grid(True, axis="y", alpha=0.2)
+                if col == 0:
+                    ax.set_ylabel(ylabel, fontsize=9)
+
+        plt.tight_layout(pad=2.0, h_pad=3.0)
+        _save(fig, out_dir, fname)
 
 
 def plot_eval_summary(evals, out_dir):
@@ -868,10 +1013,12 @@ PLOT_MENU = {
 }
 
 EVAL_PLOT_MENU = {
-    1: ("eval_ranking",      plot_eval_ranking),
-    2: ("eval_domain_shift", plot_eval_domain_shift),
-    3: ("eval_heatmap",      plot_eval_heatmap),
-    4: ("eval_confidence",   plot_eval_confidence),
+    1: ("eval_ranking",      plot_eval_ranking),       # → 01_eval_ranking.png
+    2: ("eval_grid_drop",    plot_eval_grid),           # → 02_eval_grid_drop.png + 06_eval_grid_f1.png
+    3: ("eval_domain_shift", plot_eval_domain_shift),  # → 03_eval_domain_shift.png
+    4: ("eval_by_dataset",   plot_eval_by_dataset),    # → 04_eval_by_dataset.png
+    5: ("eval_heatmap",      plot_eval_heatmap),       # → 05_eval_heatmap.png
+    6: ("eval_confidence",   plot_eval_confidence),    # → 07_eval_confidence.png
 }
 
 
@@ -925,6 +1072,11 @@ if __name__ == "__main__":
 
         out_dir = os.path.join(args.runs_dir, "_plots", "eval")
         os.makedirs(out_dir, exist_ok=True)
+
+        # Clean old numbered eval plots to avoid stale files from previous runs
+        import glob as _glob
+        for old_png in _glob.glob(os.path.join(out_dir, "0?_eval_*.png")):
+            os.remove(old_png)
 
         selected = parse_plots(args.plots, EVAL_PLOT_MENU)
 

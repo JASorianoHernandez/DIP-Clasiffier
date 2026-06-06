@@ -480,15 +480,24 @@ def main():
     p = Path(ds_path)
     has_split = (p / "train").exists() and (p / "test").exists()
 
+    # Pure evaluation sets (never used for training) are scored on ALL their
+    # images. Splitting them 80/20 would throw away 80% of held-out real
+    # photos for no reason. In-distribution datasets keep the 0.2 val split
+    # so we only score the portion the model did not train on.
+    PURE_EVAL_DATASETS = {"own_dataset"}
+    eval_val_split = 1.0 if ds_name in PURE_EVAL_DATASETS else 0.2
+    if eval_val_split == 1.0:
+        print(f"  Pure eval set '{ds_name}': scoring on ALL images (val_split=1.0)")
+
     if has_split:
         _, val_loader, num_classes, eval_classes = get_loaders(
             ds_path, batch_size=32, num_workers=4,
-            val_split=0.2, seed=CONFIG["seed"],
+            val_split=eval_val_split, seed=CONFIG["seed"],
         )
     else:
         _, val_loader, num_classes, eval_classes = get_loaders_nested(
             ds_path, batch_size=32, num_workers=4,
-            val_split=0.2, seed=CONFIG["seed"],
+            val_split=eval_val_split, seed=CONFIG["seed"],
             label_mode=label_mode,
         )
 

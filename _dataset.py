@@ -228,8 +228,13 @@ def get_loaders_nested(
     train_ds = Subset(full_train, train_idx)
     val_ds   = Subset(full_val,   val_idx)
 
-    train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True,
-                              num_workers=num_workers, pin_memory=True)
+    # val_split=1.0 (pure evaluation) leaves no training samples — a DataLoader
+    # with shuffle over 0 samples would crash, so return None in that case.
+    train_loader = (
+        DataLoader(train_ds, batch_size=batch_size, shuffle=True,
+                   num_workers=num_workers, pin_memory=True)
+        if len(train_ds) > 0 else None
+    )
     val_loader   = DataLoader(val_ds,   batch_size=batch_size, shuffle=False,
                               num_workers=num_workers, pin_memory=True)
 

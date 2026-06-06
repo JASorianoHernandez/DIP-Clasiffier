@@ -186,10 +186,13 @@ ROC curves, confusion matrices, and Train F1 vs Eval F1 comparison.
 **4. Model ensemble**
 The per-image predictions of several models are combined (averaged softmax,
 optionally weighted by validation F1 or per-image confidence) into a single
-ensemble decision on own_dataset. This tests whether architecture and
-source-dataset diversity reduce the domain shift observed on real photos.
-Combining a few strong, diverse models improves F1 over the best single model,
-while indiscriminately combining all models degrades it.
+ensemble decision on the full own_dataset (121 real photos). This tests whether
+architecture and source-dataset diversity reduce the domain shift observed on
+real photos. The effect is small and depends strongly on how many models are
+combined: the best single model reaches 93.3% F1, the top-3 ensemble improves it
+modestly to 95.0% F1 (+1.7 pts, MCC 0.835 → 0.902), but adding more models
+erodes the gain and combining all 80 degrades to 91.7%. The sweet spot is a
+handful of the strongest models — more is not better.
 
 **5. Reporting**
 Excel trackers summarize experiment status and results with color coding.

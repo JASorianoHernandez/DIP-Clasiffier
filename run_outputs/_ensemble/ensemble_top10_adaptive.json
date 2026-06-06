@@ -1,0 +1,91 @@
+{
+  "tag": "top10",
+  "method": "adaptive",
+  "n_members": 10,
+  "members": [
+    {
+      "id": "MFR-EB2-C3-ST",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
+      "val_f1": 0.963738,
+      "eval_f1": 0.9331
+    },
+    {
+      "id": "KFS-EB0-C3-ST",
+      "run": "kaggle_fresh_stale_all_head_frozen_efficientnet_b0",
+      "val_f1": 0.993899,
+      "eval_f1": 0.9253
+    },
+    {
+      "id": "MFR-EB2-C1-ST",
+      "run": "mendeley_fruits_all_frozen_efficientnet_b2",
+      "val_f1": 0.951661,
+      "eval_f1": 0.9251
+    },
+    {
+      "id": "MFR-EB0-C1-ST",
+      "run": "mendeley_fruits_all_frozen_efficientnet_b0",
+      "val_f1": 0.945579,
+      "eval_f1": 0.9249
+    },
+    {
+      "id": "MFR-EB0-C3-ST",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b0",
+      "val_f1": 0.969788,
+      "eval_f1": 0.9169
+    },
+    {
+      "id": "MFR-R18-C4-ST",
+      "run": "mendeley_fruits_all_head_layer4_resnet18",
+      "val_f1": 0.963743,
+      "eval_f1": 0.9169
+    },
+    {
+      "id": "KFQ-EB0-C3-ST",
+      "run": "kaggle_fruits_quality_all_head_frozen_efficientnet_b0",
+      "val_f1": 0.81913,
+      "eval_f1": 0.9089
+    },
+    {
+      "id": "KFQ-MN3-C3-ST",
+      "run": "kaggle_fruits_quality_all_head_frozen_mobilenet_v3_small",
+      "val_f1": 0.916084,
+      "eval_f1": 0.9087
+    },
+    {
+      "id": "MFR-R18-C2-ST",
+      "run": "mendeley_fruits_all_layer4_resnet18",
+      "val_f1": 0.954668,
+      "eval_f1": 0.9085
+    },
+    {
+      "id": "KFQ-R18-C2-ST",
+      "run": "kaggle_fruits_quality_all_layer4_resnet18",
+      "val_f1": 0.916409,
+      "eval_f1": 0.9079
+    }
+  ],
+  "best_single": {
+    "id": "MFR-EB2-C3-ST",
+    "f1": 0.9331
+  },
+  "ensemble": {
+    "n_images": 121,
+    "acc": 0.9256,
+    "f1_macro": 0.9249,
+    "precision_macro": 0.93,
+    "recall_macro": 0.923,
+    "mcc": 0.853,
+    "confusion_matrix": [
+      [
+        62,
+        2
+      ],
+      [
+        7,
+        50
+      ]
+    ],
+    "auc_roc": 0.9742
+  },
+  "delta_f1_pts": -0.82
+}

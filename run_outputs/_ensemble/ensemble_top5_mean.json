@@ -4,58 +4,58 @@
   "n_members": 5,
   "members": [
     {
-      "id": "MLM-EB0-C4-ST",
-      "run": "mendeley_lemon_varieties_all_head_layer4_efficientnet_b0",
-      "val_f1": 0.953961,
-      "eval_f1": 0.9167
+      "id": "MFR-EB2-C3-ST",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
+      "val_f1": 0.963738,
+      "eval_f1": 0.9331
     },
     {
-      "id": "MLM-R18-C4-ST",
-      "run": "mendeley_lemon_varieties_all_head_layer4_resnet18",
-      "val_f1": 0.984654,
-      "eval_f1": 0.9167
+      "id": "KFS-EB0-C3-ST",
+      "run": "kaggle_fresh_stale_all_head_frozen_efficientnet_b0",
+      "val_f1": 0.993899,
+      "eval_f1": 0.9253
     },
     {
       "id": "MFR-EB2-C1-ST",
       "run": "mendeley_fruits_all_frozen_efficientnet_b2",
       "val_f1": 0.951661,
-      "eval_f1": 0.9161
+      "eval_f1": 0.9251
     },
     {
-      "id": "MFR-EB2-C3-ST",
-      "run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
-      "val_f1": 0.963738,
-      "eval_f1": 0.9161
+      "id": "MFR-EB0-C1-ST",
+      "run": "mendeley_fruits_all_frozen_efficientnet_b0",
+      "val_f1": 0.945579,
+      "eval_f1": 0.9249
     },
     {
-      "id": "KFS-MN3-C1-ST",
-      "run": "kaggle_fresh_stale_all_frozen_mobilenet_v3_small",
-      "val_f1": 0.959402,
-      "eval_f1": 0.8748
+      "id": "MFR-EB0-C3-ST",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b0",
+      "val_f1": 0.969788,
+      "eval_f1": 0.9169
     }
   ],
   "best_single": {
-    "id": "MLM-EB0-C4-ST",
-    "f1": 0.9167
+    "id": "MFR-EB2-C3-ST",
+    "f1": 0.9331
   },
   "ensemble": {
-    "n_images": 24,
-    "acc": 0.9583,
-    "f1_macro": 0.9583,
-    "precision_macro": 0.9583,
-    "recall_macro": 0.9615,
-    "mcc": 0.9199,
+    "n_images": 121,
+    "acc": 0.9256,
+    "f1_macro": 0.9249,
+    "precision_macro": 0.93,
+    "recall_macro": 0.923,
+    "mcc": 0.853,
     "confusion_matrix": [
       [
-        12,
-        1
+        62,
+        2
       ],
       [
-        0,
-        11
+        7,
+        50
       ]
     ],
-    "auc_roc": 0.993
+    "auc_roc": 0.9677
   },
-  "delta_f1_pts": 4.16
+  "delta_f1_pts": -0.82
 }

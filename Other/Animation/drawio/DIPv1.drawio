@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="OG_snsxsW1cElL4kmLsf">
-    <mxGraphModel dx="2020" dy="2370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="808" dy="1650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -258,8 +258,7 @@
         <mxCell id="2tPUo-XkhBDmI97mid4I-140" edge="1" parent="1" source="2tPUo-XkhBDmI97mid4I-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.014;exitY=0.089;exitDx=0;exitDy=0;flowAnimation=1;strokeWidth=2;fillColor=#0050ef;strokeColor=#001DBC;exitPerimeter=0;entryX=0.532;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" target="2tPUo-XkhBDmI97mid4I-164">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="793" y="-493" />
-              <mxPoint x="810" y="-493" />
+              <mxPoint x="810" y="-513" />
               <mxPoint x="810" y="-216" />
               <mxPoint x="160" y="-216" />
               <mxPoint x="160" y="-156" />
@@ -369,8 +368,7 @@
         <mxCell id="2tPUo-XkhBDmI97mid4I-171" edge="1" parent="1" source="2tPUo-XkhBDmI97mid4I-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;flowAnimation=1;entryX=-0.003;entryY=0.116;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#008a00;strokeColor=#005700;entryPerimeter=0;" target="2tPUo-XkhBDmI97mid4I-147">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="470" y="-347" />
-              <mxPoint x="550" y="-347" />
+              <mxPoint x="550" y="-365" />
               <mxPoint x="550" y="-510" />
               <mxPoint x="565" y="-510" />
               <mxPoint x="565" y="-509" />
@@ -403,90 +401,74 @@
             <mxPoint x="359" y="-116" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-177" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=11;strokeWidth=3;fillColor=#60a917;fontColor=#ffffff;" value="Raw Datasets - datasets/..." vertex="1">
-          <mxGeometry height="140" width="160" x="590" y="-160.5" as="geometry" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-177" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=light-dark(#FFFFFF,#FFFFFF);fontSize=10;strokeWidth=1;fillColor=none;fontColor=default;labelBackgroundColor=none;" value="run_outputs/_plots/... png" vertex="1">
+          <mxGeometry height="140" width="200" x="570" y="-160.5" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-178" parent="2tPUo-XkhBDmI97mid4I-177" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="21" width="160" y="30" as="geometry" />
+          <mxGeometry height="21" width="200" y="30" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-179" parent="2tPUo-XkhBDmI97mid4I-178" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Kaggle Fruits Quality&lt;/font&gt;" vertex="1">
-          <mxGeometry height="21" width="160" as="geometry">
-            <mxRectangle height="21" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-179" parent="2tPUo-XkhBDmI97mid4I-178" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;span style=&quot;font-size: 9px;&quot;&gt;F1, Accuracy, Recall, Precision Graph&lt;/span&gt;" vertex="1">
+          <mxGeometry height="21" width="200" as="geometry">
+            <mxRectangle height="21" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-180" parent="2tPUo-XkhBDmI97mid4I-177" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="20" width="160" y="51" as="geometry" />
+          <mxGeometry height="20" width="200" y="51" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-181" parent="2tPUo-XkhBDmI97mid4I-180" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Mendeley Fruits&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-181" parent="2tPUo-XkhBDmI97mid4I-180" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;metrics summary&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-182" parent="2tPUo-XkhBDmI97mid4I-177" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="20" width="160" y="71" as="geometry" />
+          <mxGeometry height="20" width="200" y="71" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-183" parent="2tPUo-XkhBDmI97mid4I-182" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Mendeley Lemons&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-183" parent="2tPUo-XkhBDmI97mid4I-182" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;span style=&quot;font-size: 9px;&quot;&gt;F1, Accuracy, Recall, Precision Heatmap&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-184" parent="2tPUo-XkhBDmI97mid4I-177" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" vertex="1">
-          <mxGeometry height="20" width="160" y="91" as="geometry" />
+          <mxGeometry height="20" width="200" y="91" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-185" parent="2tPUo-XkhBDmI97mid4I-184" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Mendeley Fruitvision&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-185" parent="2tPUo-XkhBDmI97mid4I-184" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Confusion_matrix per backbone&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-186" parent="2tPUo-XkhBDmI97mid4I-177" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" vertex="1">
-          <mxGeometry height="20" width="160" y="111" as="geometry" />
+          <mxGeometry height="20" width="200" y="111" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-187" parent="2tPUo-XkhBDmI97mid4I-186" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Kaggle Fruits Fresh/Rotten&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-187" parent="2tPUo-XkhBDmI97mid4I-186" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Per-class bars&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-190" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=11;strokeWidth=3;fillColor=#60a917;fontColor=#ffffff;" value="Raw Datasets - datasets/..." vertex="1">
-          <mxGeometry height="140" width="160" x="590" as="geometry" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-190" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=1;fillColor=none;fontColor=light-dark(#FFFFFF,#FFFFFF);align=left;" value="run_outputs/&#xa;{dataset}_{fruits}_{condition}_{backbone}/eval/" vertex="1">
+          <mxGeometry height="140" width="200" x="570" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-191" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="21" width="160" y="30" as="geometry" />
+          <mxGeometry height="21" width="200" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-192" parent="2tPUo-XkhBDmI97mid4I-191" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Kaggle Fruits Quality&lt;/font&gt;" vertex="1">
-          <mxGeometry height="21" width="160" as="geometry">
-            <mxRectangle height="21" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-192" parent="2tPUo-XkhBDmI97mid4I-191" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;span style=&quot;font-size: 9px;&quot;&gt;own_dataset_state.json&lt;/span&gt;" vertex="1">
+          <mxGeometry height="21" width="200" as="geometry">
+            <mxRectangle height="21" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-193" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="20" width="160" y="51" as="geometry" />
+          <mxGeometry height="20" width="200" y="61" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-194" parent="2tPUo-XkhBDmI97mid4I-193" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Mendeley Fruits&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-194" parent="2tPUo-XkhBDmI97mid4I-193" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;own_dataset_state_preds.json&amp;nbsp;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-195" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="20" width="160" y="71" as="geometry" />
+          <mxGeometry height="39" width="200" y="81" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-196" parent="2tPUo-XkhBDmI97mid4I-195" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Mendeley Lemons&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-197" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;strokeWidth=2;" vertex="1">
-          <mxGeometry height="20" width="160" y="91" as="geometry" />
-        </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-198" parent="2tPUo-XkhBDmI97mid4I-197" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Mendeley Fruitvision&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-199" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" vertex="1">
-          <mxGeometry height="20" width="160" y="111" as="geometry" />
-        </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-200" parent="2tPUo-XkhBDmI97mid4I-199" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Kaggle Fruits Fresh/Rotten&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="160" as="geometry">
-            <mxRectangle height="20" width="160" as="alternateBounds" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-196" parent="2tPUo-XkhBDmI97mid4I-195" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;own_dataset_state_plots.jpg&amp;nbsp;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="39" width="200" as="geometry">
+            <mxRectangle height="39" width="200" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-203" edge="1" parent="1" source="2tPUo-XkhBDmI97mid4I-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;flowAnimation=1;entryX=-0.011;entryY=0.143;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#008a00;strokeColor=#005700;entryPerimeter=0;" target="2tPUo-XkhBDmI97mid4I-190">
@@ -640,7 +622,7 @@
         <mxCell id="2tPUo-XkhBDmI97mid4I-240" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;i style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;Raw datsets collected from the different websites. Each one with their own labelling, image size and folder organization.&lt;/font&gt;&lt;/i&gt;" vertex="1">
           <mxGeometry height="37.5" width="170" x="30" y="-825" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-241" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;i style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;Dataset made by taking or own photos. Before use it, a rename is made to organize the photos and then the preparation is scheduled.&lt;/font&gt;&lt;/i&gt;" vertex="1">
+        <mxCell id="2tPUo-XkhBDmI97mid4I-241" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;i style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;Dataset made by taking our own photos. Before use it, a rename is made to organize the photos and then the preparation is scheduled.&lt;/font&gt;&lt;/i&gt;" vertex="1">
           <mxGeometry height="67.5" width="160" x="30" y="-705" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-242" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeWidth=2;fillColor=#0050ef;strokeColor=#001DBC;">
@@ -770,8 +752,39 @@
         <mxCell id="2tPUo-XkhBDmI97mid4I-280" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;font-style: italic; font-size: 8.5px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-Loads best_model.pt and evaluates it on any dataset — including real photos.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;font-style: italic; font-size: 8.5px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;-Computes F1, accuracy, MCC, AUC-ROC, per-image confidence and domain shift.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;-Generates confusion matrix, ROC curve, confidence histogram and per-class bars&lt;/div&gt;&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="130" width="142.68" x="180" y="-60" as="geometry" />
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-281" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Reads all metrics.json files&amp;nbsp;&lt;/span&gt;&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Generates training curves (accuracy, F1, loss) and comparison plots across all runs.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;Supports --eval flag for cross-dataset evaluation plots&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="130" width="142.68" x="373.66" y="-60" as="geometry" />
+        <mxCell id="2tPUo-XkhBDmI97mid4I-281" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Reads all metrics.json files of any runned configuration model.&amp;nbsp;&lt;/span&gt;&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Generates training curves (accuracy, F1, loss) and comparison plots across all runs.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Supports --eval flag for cross-dataset evaluation plots&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="136" width="146.34" x="373.66" y="-66" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-script" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;03_03_ensemble.py&lt;/font&gt;" vertex="1">
+          <mxGeometry height="33.25" width="135" x="290" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Combines per-image predictions from several models into one ensemble decision.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Tests whether model diversity reduces the domain shift on own photos.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="34" width="200" x="257" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=1;fillColor=none;fontColor=light-dark(#FFFFFF,#FFFFFF);align=left;" value="run_outputs/_ensemble/" vertex="1">
+          <mxGeometry height="80" width="200" x="570" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-out-r1" parent="ens-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="20" width="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-out-c1" parent="ens-out-r1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;ensemble_{tag}_{method}.json&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ens-out-r2" parent="ens-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="20" width="200" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-out-c2" parent="ens-out-r2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;ensemble_{tag}_{method}.png&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" as="geometry">
+            <mxRectangle height="20" width="200" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ens-in-edge" edge="1" parent="1" source="2tPUo-XkhBDmI97mid4I-190" target="ens-script" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeWidth=2;fillColor=#0050ef;strokeColor=#001DBC;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ens-out-edge" edge="1" parent="1" source="ens-script" target="ens-out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeWidth=2;fillColor=#008a00;strokeColor=#005700;">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
