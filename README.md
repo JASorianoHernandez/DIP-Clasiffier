@@ -33,6 +33,7 @@ Stage 02 — Training
 Stage 03 — Evaluation & Analysis
   03_01             Cross-dataset evaluation on real photos
   03_02             Training curves and comparison plots
+  03_03             Model ensemble on own photos
 
 Stage 04 — Reporting
   04_01             Excel experiment tracker
@@ -152,6 +153,7 @@ The drastically lower backbone LR ensures gradual adaptation — the backbone sp
 |--------|-------------|
 | `03_01_evaluate.py` | Loads any `best_model.pt` and evaluates it on any dataset. Computes F1, accuracy, precision, recall, MCC, AUC-ROC, per-image confidence, and domain shift (Train F1 − Eval F1). Generates confusion matrix, ROC curve, confidence histogram, and per-class bar chart. |
 | `03_02_analyze.py` | Reads all `metrics.json` files and generates training-curve comparison plots (accuracy, F1, precision, recall, loss, heatmap, confusion matrices, per-class bars). |
+| `03_03_ensemble.py` | Combines several trained models into an ensemble and evaluates it on own_dataset (state mode). Builds the ensemble directly from saved per-image predictions (no GPU). Supports selecting members (all / top-K / by dataset+condition / by backbone+condition / manual) and combination methods (mean softmax, F1-weighted, confidence-adaptive). Reports ensemble F1/MCC/AUC vs the best single model and the gain in domain shift. |
 
 ### Stage 04 — Reporting
 
@@ -181,7 +183,15 @@ confusion matrix, learning rate, and confidence statistics.
 domain shift. Generates per-image predictions with confidence scores,
 ROC curves, confusion matrices, and Train F1 vs Eval F1 comparison.
 
-**4. Reporting**
+**4. Model ensemble**
+The per-image predictions of several models are combined (averaged softmax,
+optionally weighted by validation F1 or per-image confidence) into a single
+ensemble decision on own_dataset. This tests whether architecture and
+source-dataset diversity reduce the domain shift observed on real photos.
+Combining a few strong, diverse models improves F1 over the best single model,
+while indiscriminately combining all models degrades it.
+
+**5. Reporting**
 Excel trackers summarize experiment status and results with color coding.
 The eval report ranks models by performance, generalization, food-safety
 recall, and accuracy across all evaluated datasets.

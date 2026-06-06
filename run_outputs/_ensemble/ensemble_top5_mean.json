@@ -1,0 +1,61 @@
+{
+  "tag": "top5",
+  "method": "mean",
+  "n_members": 5,
+  "members": [
+    {
+      "id": "MLM-EB0-C4-ST",
+      "run": "mendeley_lemon_varieties_all_head_layer4_efficientnet_b0",
+      "val_f1": 0.953961,
+      "eval_f1": 0.9167
+    },
+    {
+      "id": "MLM-R18-C4-ST",
+      "run": "mendeley_lemon_varieties_all_head_layer4_resnet18",
+      "val_f1": 0.984654,
+      "eval_f1": 0.9167
+    },
+    {
+      "id": "MFR-EB2-C1-ST",
+      "run": "mendeley_fruits_all_frozen_efficientnet_b2",
+      "val_f1": 0.951661,
+      "eval_f1": 0.9161
+    },
+    {
+      "id": "MFR-EB2-C3-ST",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
+      "val_f1": 0.963738,
+      "eval_f1": 0.9161
+    },
+    {
+      "id": "KFS-MN3-C1-ST",
+      "run": "kaggle_fresh_stale_all_frozen_mobilenet_v3_small",
+      "val_f1": 0.959402,
+      "eval_f1": 0.8748
+    }
+  ],
+  "best_single": {
+    "id": "MLM-EB0-C4-ST",
+    "f1": 0.9167
+  },
+  "ensemble": {
+    "n_images": 24,
+    "acc": 0.9583,
+    "f1_macro": 0.9583,
+    "precision_macro": 0.9583,
+    "recall_macro": 0.9615,
+    "mcc": 0.9199,
+    "confusion_matrix": [
+      [
+        12,
+        1
+      ],
+      [
+        0,
+        11
+      ]
+    ],
+    "auc_roc": 0.993
+  },
+  "delta_f1_pts": 4.16
+}
