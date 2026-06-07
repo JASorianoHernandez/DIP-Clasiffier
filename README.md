@@ -10,7 +10,7 @@ and measures domain shift through cross-dataset evaluation on real photos.
 ## Visual Overview
 
 ![Project Pipeline](Other/Animation/drawio/DIPv2.gif#gh-light-mode-only)
-![Project Pipeline](Other/Animation/drawio/DIPv1_black.gif#gh-dark-mode-only)
+![Project Pipeline](Other/Animation/drawio/DIPv2.gif#gh-dark-mode-only)
 
 ---
 
