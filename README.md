@@ -1,9 +1,12 @@
 # DIP Classifier — Fruit and Vegetable Freshness Classification
 
-Transfer learning pipeline for freshness classification (fresh / rotten) using publicly
-available fruit and vegetable datasets. The project explores three backbone architectures
-(ResNet-18, EfficientNet-B0, EfficientNet-B2), four training conditions (C1--C4),
-and measures domain shift through cross-dataset evaluation on real photos.
+Transfer-learning pipeline for produce freshness classification (fresh / rotten). Models are
+trained on six public fruit/vegetable datasets across four backbones (ResNet-18,
+MobileNetV3-Small, EfficientNet-B0/B2) and four training conditions (C1–C4), then tested on
+our own photos of real produce to measure domain shift. A per-fruit analysis shows that
+generalization tracks **training exposure** (a model collapses on fruits its training set
+never contained), and a domain-adaptation fine-tuning step lifts a balanced base model from
+86.3% to **94.5% F1** on the real photos — the project's best general fresh/rotten classifier.
 
 ---
 
@@ -41,6 +44,7 @@ Stage 03 — Evaluation & Analysis
 Stage 04 — Reporting
   04_01             Excel experiment tracker
   04_02             Excel evaluation report with rankings
+  04_03             Consolidated own_dataset domain-adaptation report
 ```
 
 ---
@@ -81,6 +85,11 @@ Example:  KFR-EB0-C3-ST
 | Fruits Quality | KFQ | 12 mixed fruits | Fresh / Rotten | 359 | Kaggle |
 | Fruits Fresh/Rotten | KFR | Apple, Banana, Orange | Fresh / Rotten | 13,599 | Kaggle |
 | Fresh & Stale | KFS | 9 fruits/vegetables | Fresh / Rotten | 27,317 | Kaggle |
+| **Own Dataset** | **OWN** | **Strawberry, Banana** | **Fresh / Rotten** | **219** | **Own photos** |
+
+`own_dataset` holds our own photos of real produce (121 strawberry + 98 banana, balanced
+fresh/rotten). It is **never used for training** — only as a held-out, real-world test set
+to measure domain shift and, in Stage 02, as the fine-tuning target.
 
 ---
 
@@ -167,6 +176,7 @@ The drastically lower backbone LR ensures gradual adaptation — the backbone sp
 |--------|-------------|
 | `04_01_generate_tracker.py` | Generates `experiments_tracker.xlsx`. One sheet per backbone with color-coded run status (complete / running / pending / n/a) and metrics (F1, ACC, MCC, AUC, time). |
 | `04_02_generate_eval_report.py` | Generates `eval_report.xlsx`. One sheet per evaluated dataset with metrics and embedded plots. Four ranking sheets: by F1, by domain shift (robustness), by recall (food safety), by accuracy. |
+| `04_03_generate_own_report.py` | Generates `own_dataset_report.xlsx`: a visual summary of the domain-adaptation work that consolidates the Stage 02/03 analyses (fine-tuning, per-fruit, error analysis, ensemble) by reading their saved JSON and embedding their plots. No GPU; regenerates instantly. Sheets: Summary, Fine-tuning, Per-fruit, Hardest images, Ensemble. |
 
 ---
 
@@ -262,38 +272,48 @@ Best macro F1 per dataset and backbone (state mode, 60 epochs).
 
 ---
 
-## Key Findings
+## Own Photos: Domain Shift, Per-Fruit Analysis & Fine-Tuning
 
-- **C3 is optimal for EfficientNet** (head\_frozen). In 5 of 6 datasets, EB0 C3 outperforms EB0 C4. EB2 follows the same pattern.
-- **C4 is optimal for ResNet-18** (head\_layer4). Consistent across all datasets.
-- **Dataset size determines which backbone wins.** Below ~500 images ResNet-18 outperforms EfficientNet. Above ~1,500 images EfficientNet-B0 consistently wins.
-- **EfficientNet-B0 C3 reached 100% F1** on kaggle\_fruits\_fresh\_rotten — the only perfect result across all experiments.
-- **Formalin is the hardest class.** FruitVision is the only dataset where no backbone exceeds 92.3%. EB2 C3 achieves the best result (92.3%).
-- **Domain shift is real and large.** Mean drop across all models: 16 percentage points. Range: 3.7 to 34.3 points.
-- **Generalization ≠ training performance.** KFR-EB0-C3 achieves 100% training F1 but only 65.7% on real photos (-34.3%). MLM-R18-C4 achieves 98.5% training F1 and 91.7% on real photos (-6.8%).
-- **EB2 shows higher variance in generalization.** Best result: MFR-EB2-C3 at 91.6%. Worst result: MLM-EB2-C4 at 43.4%. EB2 is more sensitive to domain shift than EB0 or R18.
-- **Diverse training data generalizes better.** Models trained on Lemon Varieties (MLM) consistently top the cross-dataset rankings despite not having the highest training F1.
+All 80 state-mode models are evaluated on the full `own_dataset` (219 real photos: 121
+strawberry + 98 banana). Using the complete multi-fruit set exposes two findings that a
+single-fruit test would hide.
 
----
+### Generalization tracks training exposure
 
-## Cross-Dataset Evaluation on Own Photos
+Splitting each model's predictions by fruit shows that a model collapses on a fruit its
+training set never contained:
 
-60 models evaluated on 121 real strawberry photos (`own_dataset`). Top and notable results:
+| Model group | F1 on banana |
+|---|---|
+| Trained **with** banana (KFR, KFS, MFV, KFQ) | **71.4%** |
+| Never saw banana (MFR, MLM) | **42.0%** |
 
-| ID | Train F1 | Eval F1 | Recall | Drop |
-|---|---|---|---|---|
-| MLM-R18-C4 | 98.5% | **91.7%** | 92.3% | 6.8% |
-| MLM-EB0-C4 | 95.4% | **91.7%** | 92.3% | 3.7% |
-| MFR-EB2-C3 | — | **91.6%** | 91.6% | — |
-| MFR-EB2-C1 | — | **91.6%** | 91.6% | — |
-| MLM-R18-C2 | 98.0% | 87.5% | 88.5% | 10.5% |
-| MFR-EB0-C3 | 97.0% | 87.3% | 87.1% | 9.7% |
-| KFR-R18-C4 | 99.8% | 70.8% | 71.0% | 29.0% |
-| KFR-EB0-C3 | 100.0% | 65.7% | 65.7% | 34.3% |
-| MLM-EB2-C4 | — | 43.4% | 47.9% | — |
+The apparent single-fruit "champion" is an illusion of the test set: **MFR-EB2-C3** scores
+93.3% on strawberry but only **32.4% on banana**, ranking 77th of 80 overall. The best
+*all-round* base models are EfficientNet-B0 trained on banana-containing data
+(e.g. **KFQ-EB0-C1**: 88.3% strawberry / 82.8% banana).
 
-> Best generalizers: Lemon Varieties (MLM) and Fruits Classification (MFR) — photographic diversity during training improves real-world transfer.
-> EB2 C4 variants show catastrophic domain shift on several datasets.
+The hardest images are all **ripe-but-fresh bananas** with brown speckles, which ~79/80
+models confidently (≈94%) call rotten — public datasets label such browning as "rotten", so
+the domain gap is largest exactly there.
+
+### Fine-tuning closes the gap
+
+Fine-tuning the balanced, banana-aware base (KFQ-EB0-C1) on the full multi-fruit own_dataset
+with the backbone **frozen** (linear-probe), validated by 5-fold cross-validation:
+
+| Metric | Baseline | Fine-tuned | Δ |
+|---|---|---|---|
+| F1 macro | 86.3% | **94.5%** | +8.2 |
+| Accuracy | 86.3% | **94.5%** | +8.2 |
+| MCC | 0.729 | **0.892** | +0.163 |
+| Recall (rotten) | 90.8% | 91.7% | +0.9 |
+
+Every fold improves (`[97.7, 95.5, 88.5, 93.2, 97.7]`). Unfreezing the backbone, or starting
+from a single-fruit base, instead overfits the small dataset and degrades performance.
+Ensembling gives only a small, sample-sensitive gain — the bottleneck is **data diversity**,
+not how predictions are pooled. The fine-tuned model is the project's best general
+fresh/rotten classifier on real photos.
 
 ---
 
@@ -317,25 +337,36 @@ DIP-Classfier/
 ├── 01_02_rename_own_dataset.py
 ├── 01_03_prepare_own_dataset.py
 ├── 02_01_train.py
+├── 02_02_finetune.py              # domain-adaptation fine-tuning (k-fold)
 ├── 03_01_evaluate.py
 ├── 03_02_analyze.py
+├── 03_03_ensemble.py
+├── 03_04_error_analysis.py
+├── 03_05_per_fruit.py
 ├── 04_01_generate_tracker.py
 ├── 04_02_generate_eval_report.py
+├── 04_03_generate_own_report.py
 ├── data/                          # Prepared datasets (images excluded from git)
 ├── datasets/                      # Raw downloaded datasets (images excluded from git)
 ├── run_outputs/                   # Training results, metrics, plots
-│   └── {run_name}/
-│       ├── metrics.json
-│       ├── best_model.pt
-│       ├── checkpoint.pt
-│       └── eval/
+│   ├── {run_name}/
+│   │   ├── metrics.json
+│   │   ├── best_model.pt
+│   │   ├── checkpoint.pt
+│   │   └── eval/                  # own_dataset predictions per model
+│   ├── own_dataset_finetune_from_KFQ-EB0-C1-ST/   # deployable fine-tuned model
+│   ├── _finetune/                 # fine-tuning results (json + plots)
+│   ├── _per_fruit/                # per-fruit breakdown
+│   ├── _error_analysis/           # per-image difficulty
+│   ├── _ensemble/                 # ensemble variants
+│   └── _plots/                    # training / eval comparison plots
 ├── Other/
+│   ├── Animation/drawio/          # pipeline diagram (DIPv2.gif)
 │   ├── LatexReport/
-│   ├── Literature/
-│   ├── AnusDraft/
-│   └── TanzinaDraft/
+│   └── IEEEDraft/
 ├── experiments_tracker.xlsx
 ├── eval_report.xlsx
+├── own_dataset_report.xlsx
 └── README.md
 ```
 
@@ -345,9 +376,10 @@ DIP-Classfier/
 
 | # | Date | Description |
 |---|------|-------------|
-| 11 | 2026-05-31 | Restructured README. EB0 fresh_stale complete (99.4%). EB2 fruits_fresh_rotten complete (99.9%). Updated LaTeX report with backbone comparison and cross-dataset sections. |
+| 14 | 2026-06-07 | Added banana to own_dataset (now 219 multi-fruit photos). Per-fruit analysis (`03_05`) revealed generalization tracks training exposure. Domain-adaptation fine-tuning (`02_02`, frozen backbone) reaches **94.5% F1**. New analyses: ensemble (`03_03`), error analysis (`03_04`). Consolidated report (`04_03`). Fixed `03_01` to score pure-eval sets on all images and `04_02` ID bug. |
+| 13 | 2026-06-06 | Pipeline diagram (DIPv2.gif) added to README with stage-by-stage inputs/outputs. |
 | 12 | 2026-06-01 | MobileNetV3 experiments running. Detailed C1-C4 explanations in README and IEEE paper. analyze.py plots restructured with per-backbone grids and numbered --plots flag. |
-| 11 | 2026-05-31 | Restructured README. EB0 fresh_stale 99.4%. EB2 fruits_fresh_rotten 99.9%. Updated LaTeX. |
+| 11 | 2026-05-31 | Restructured README. EB0 fresh_stale complete (99.4%). EB2 fruits_fresh_rotten complete (99.9%). Updated LaTeX report with backbone comparison and cross-dataset sections. |
 | 10 | 2026-05-31 | Updated README with full results summary, key findings and cross-dataset evaluation. |
 | 9 | 2026-05-31 | EfficientNet-B2 Phase 2 started. EB0 C3 reaches 100% F1 on fruits\_fresh\_rotten. |
 | 8 | 2026-05-30 | EfficientNet-B0 Phase 2 experiments. Script reorganization with stage numbering. eval\_report.xlsx added. |
