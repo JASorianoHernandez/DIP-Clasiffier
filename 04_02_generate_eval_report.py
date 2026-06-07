@@ -129,7 +129,7 @@ def load_eval_results():
         # Load training metrics for F1_train
         train_metrics_path = run_dir / "metrics.json"
         f1_train = acc_train = prec_train = rec_train = mcc_train = auc_train = None
-        backbone_name = condition_name = None
+        backbone_name = condition_name = train_dataset = None
         if train_metrics_path.exists():
             with open(train_metrics_path) as f:
                 tm = json.load(f)
@@ -141,6 +141,7 @@ def load_eval_results():
             auc_train     = tm.get("best_auc")
             backbone_name = tm.get("backbone_name", "resnet18")
             condition_name = tm.get("condition", "")
+            train_dataset  = tm.get("dataset", "")
 
         # Load each eval result
         for eval_path in sorted(eval_dir.glob("*.json")):
@@ -164,8 +165,11 @@ def load_eval_results():
             def pct(v):   return round(v * 100, 1) if v is not None else None
             def drop(t,e): return round(t - e, 1) if t is not None else None
 
+            # ID must encode the dataset the model was TRAINED on, not the
+            # dataset it is being evaluated on (own_dataset). The eval dataset
+            # is shown separately in its own column.
             run_id = make_id(
-                em.get("eval_dataset", ""),
+                train_dataset or em.get("eval_dataset", ""),
                 backbone_name or "resnet18",
                 condition_name or "",
                 em.get("label_mode", "state"),
