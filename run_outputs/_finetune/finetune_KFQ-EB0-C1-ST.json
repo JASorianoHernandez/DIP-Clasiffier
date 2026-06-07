@@ -1,0 +1,82 @@
+{
+  "source_id": "KFQ-EB0-C1-ST",
+  "source_run": "kaggle_fruits_quality_all_frozen_efficientnet_b0",
+  "n_photos": 219,
+  "folds": 5,
+  "epochs": 30,
+  "ft_config": {
+    "epochs": 30,
+    "batch_size": 16,
+    "lr_head": 0.0005,
+    "lr_backbone": 1e-05,
+    "unfreeze": 0,
+    "weight_decay": 0.0001,
+    "folds": 5,
+    "seed": 42
+  },
+  "per_fold": [
+    {
+      "fold": 1,
+      "n_test": 44,
+      "f1_base": 0.8167,
+      "f1_ft": 0.9773
+    },
+    {
+      "fold": 2,
+      "n_test": 44,
+      "f1_base": 0.8863,
+      "f1_ft": 0.9545
+    },
+    {
+      "fold": 3,
+      "n_test": 44,
+      "f1_base": 0.8408,
+      "f1_ft": 0.8849
+    },
+    {
+      "fold": 4,
+      "n_test": 44,
+      "f1_base": 0.8147,
+      "f1_ft": 0.9318
+    },
+    {
+      "fold": 5,
+      "n_test": 43,
+      "f1_base": 0.9535,
+      "f1_ft": 0.9767
+    }
+  ],
+  "baseline": {
+    "acc": 0.863,
+    "f1_macro": 0.8628,
+    "mcc": 0.7292,
+    "recall_rotten": 0.9083,
+    "confusion_matrix": [
+      [
+        90,
+        20
+      ],
+      [
+        10,
+        99
+      ]
+    ]
+  },
+  "finetuned": {
+    "acc": 0.9452,
+    "f1_macro": 0.9451,
+    "mcc": 0.8917,
+    "recall_rotten": 0.9174,
+    "confusion_matrix": [
+      [
+        107,
+        3
+      ],
+      [
+        9,
+        100
+      ]
+    ]
+  },
+  "delta_f1_pts": 8.23
+}

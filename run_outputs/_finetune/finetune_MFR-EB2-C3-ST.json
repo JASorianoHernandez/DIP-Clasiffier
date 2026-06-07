@@ -1,0 +1,82 @@
+{
+  "source_id": "MFR-EB2-C3-ST",
+  "source_run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
+  "n_photos": 121,
+  "folds": 5,
+  "epochs": 5,
+  "ft_config": {
+    "epochs": 5,
+    "batch_size": 16,
+    "lr_head": 2e-05,
+    "lr_backbone": 1e-05,
+    "unfreeze": 1,
+    "weight_decay": 0.0001,
+    "folds": 5,
+    "seed": 42
+  },
+  "per_fold": [
+    {
+      "fold": 1,
+      "n_test": 25,
+      "f1_base": 0.9597,
+      "f1_ft": 0.7565
+    },
+    {
+      "fold": 2,
+      "n_test": 24,
+      "f1_base": 0.9577,
+      "f1_ft": 0.7037
+    },
+    {
+      "fold": 3,
+      "n_test": 24,
+      "f1_base": 1.0,
+      "f1_ft": 0.9167
+    },
+    {
+      "fold": 4,
+      "n_test": 24,
+      "f1_base": 0.7822,
+      "f1_ft": 0.7884
+    },
+    {
+      "fold": 5,
+      "n_test": 24,
+      "f1_base": 0.9583,
+      "f1_ft": 0.8322
+    }
+  ],
+  "baseline": {
+    "acc": 0.9339,
+    "f1_macro": 0.9331,
+    "mcc": 0.8709,
+    "recall_rotten": 0.8772,
+    "confusion_matrix": [
+      [
+        63,
+        1
+      ],
+      [
+        7,
+        50
+      ]
+    ]
+  },
+  "finetuned": {
+    "acc": 0.8017,
+    "f1_macro": 0.8013,
+    "mcc": 0.6186,
+    "recall_rotten": 0.8947,
+    "confusion_matrix": [
+      [
+        46,
+        18
+      ],
+      [
+        6,
+        51
+      ]
+    ]
+  },
+  "delta_f1_pts": -13.18
+}

@@ -11,35 +11,35 @@
   ],
   "label_mode": "state",
   "device": "cuda",
-  "acc": 0.843,
-  "f1_macro": 0.8414,
-  "precision_macro": 0.8457,
-  "recall_macro": 0.84,
-  "mcc": 0.6858,
-  "auc_roc": 0.9252,
-  "inference_ms_per_img": 44.29,
-  "conf_avg_correct": 0.9235,
-  "conf_avg_wrong": 0.7347,
+  "acc": 0.8128,
+  "f1_macro": 0.8128,
+  "precision_macro": 0.8128,
+  "recall_macro": 0.8128,
+  "mcc": 0.6256,
+  "auc_roc": 0.8933,
+  "inference_ms_per_img": 81.19,
+  "conf_avg_correct": 0.9163,
+  "conf_avg_wrong": 0.7877,
   "f1_per_class": [
-    0.8571,
-    0.8257
+    0.8145,
+    0.8111
   ],
   "precision_per_class": [
-    0.8261,
-    0.8654
+    0.8108,
+    0.8148
   ],
   "recall_per_class": [
-    0.8906,
-    0.7895
+    0.8182,
+    0.8073
   ],
   "confusion_matrix": [
     [
-      57,
-      7
+      90,
+      20
     ],
     [
-      12,
-      45
+      21,
+      88
     ]
   ]
 }

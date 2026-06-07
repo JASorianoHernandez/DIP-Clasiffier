@@ -4,46 +4,46 @@
   "n_members": 3,
   "members": [
     {
-      "id": "MFR-EB2-C3-ST",
-      "run": "mendeley_fruits_all_head_frozen_efficientnet_b2",
-      "val_f1": 0.963738,
-      "eval_f1": 0.9331
-    },
-    {
       "id": "KFS-EB0-C3-ST",
       "run": "kaggle_fresh_stale_all_head_frozen_efficientnet_b0",
       "val_f1": 0.993899,
-      "eval_f1": 0.9253
+      "eval_f1": 0.8667
     },
     {
-      "id": "MFR-EB2-C1-ST",
-      "run": "mendeley_fruits_all_frozen_efficientnet_b2",
-      "val_f1": 0.951661,
-      "eval_f1": 0.9251
+      "id": "KFQ-EB0-C1-ST",
+      "run": "kaggle_fruits_quality_all_frozen_efficientnet_b0",
+      "val_f1": 0.847193,
+      "eval_f1": 0.8628
+    },
+    {
+      "id": "KFS-R18-C3-ST",
+      "run": "kaggle_fresh_stale_all_head_frozen_resnet18",
+      "val_f1": 0.979798,
+      "eval_f1": 0.8438
     }
   ],
   "best_single": {
-    "id": "MFR-EB2-C3-ST",
-    "f1": 0.9331
+    "id": "KFS-EB0-C3-ST",
+    "f1": 0.8667
   },
   "ensemble": {
-    "n_images": 121,
-    "acc": 0.9504,
-    "f1_macro": 0.95,
-    "precision_macro": 0.9538,
-    "recall_macro": 0.9483,
-    "mcc": 0.9021,
+    "n_images": 219,
+    "acc": 0.8676,
+    "f1_macro": 0.867,
+    "precision_macro": 0.8744,
+    "recall_macro": 0.8679,
+    "mcc": 0.7423,
     "confusion_matrix": [
       [
-        63,
-        1
+        88,
+        22
       ],
       [
-        5,
-        52
+        7,
+        102
       ]
     ],
-    "auc_roc": 0.972
+    "auc_roc": 0.9316
   },
-  "delta_f1_pts": 1.69
+  "delta_f1_pts": 0.03
 }

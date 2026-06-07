@@ -29,11 +29,14 @@ Stage 01 — Data preparation
 
 Stage 02 — Training
   02_01             Train models with interactive menu
+  02_02             Fine-tune a base model on own photos (k-fold CV)
 
 Stage 03 — Evaluation & Analysis
   03_01             Cross-dataset evaluation on real photos
   03_02             Training curves and comparison plots
   03_03             Model ensemble on own photos
+  03_04             Per-image error analysis on own photos
+  03_05             Per-fruit evaluation breakdown
 
 Stage 04 — Reporting
   04_01             Excel experiment tracker
@@ -146,6 +149,7 @@ The drastically lower backbone LR ensures gradual adaptation — the backbone sp
 | Script | Description |
 |--------|-------------|
 | `02_01_train.py` | Interactive training loop. Menu selects dataset, label mode, backbone and condition. Runs 60 epochs with Adam + cosine annealing. Saves `metrics.json` (all metrics per 5 epochs), `best_model.pt` (best F1), and rolling checkpoints for resume. |
+| `02_02_finetune.py` | Domain-adaptation fine-tuning: continues training a public-trained `best_model.pt` on own_dataset to learn the local domain (real backgrounds, early rot). Stratified k-fold CV pools held-out predictions over all photos for a stable before/after comparison. Geometry-heavy, color-light augmentation preserves the fragile rot signal. `--freeze` (linear-probe) avoids catastrophic forgetting on small data; `--save-final` trains one deployable model on all photos. |
 
 ### Stage 03 — Evaluation & Analysis
 
@@ -154,6 +158,8 @@ The drastically lower backbone LR ensures gradual adaptation — the backbone sp
 | `03_01_evaluate.py` | Loads any `best_model.pt` and evaluates it on any dataset. Computes F1, accuracy, precision, recall, MCC, AUC-ROC, per-image confidence, and domain shift (Train F1 − Eval F1). Generates confusion matrix, ROC curve, confidence histogram, and per-class bar chart. |
 | `03_02_analyze.py` | Reads all `metrics.json` files and generates training-curve comparison plots (accuracy, F1, precision, recall, loss, heatmap, confusion matrices, per-class bars). |
 | `03_03_ensemble.py` | Combines several trained models into an ensemble and evaluates it on own_dataset (state mode). Builds the ensemble directly from saved per-image predictions (no GPU). Supports selecting members (all / top-K / by dataset+condition / by backbone+condition / manual) and combination methods (mean softmax, F1-weighted, confidence-adaptive). Reports ensemble F1/MCC/AUC vs the best single model and the gain in domain shift. |
+| `03_04_error_analysis.py` | Flips the table from per-model to per-image: across all evaluated models, how many miss each photo? Images missed by most models are intrinsically hard (correlated errors no ensemble can fix) and define the accuracy ceiling. Reports difficulty buckets, the hardest images, and the confidence of the wrong predictions. |
+| `03_05_per_fruit.py` | Splits each model's own_dataset predictions by fruit (parsed from the filename code, e.g. `FR_SB`→strawberry, `RT_BN`→banana) and reports F1 per fruit. Reveals whether a model generalizes across fruits or only handles the fruit family it trained on, and contrasts banana F1 for models that did vs did not see banana in training. Scatter plot of strawberry-vs-banana F1 per model. |
 
 ### Stage 04 — Reporting
 
@@ -186,15 +192,31 @@ ROC curves, confusion matrices, and Train F1 vs Eval F1 comparison.
 **4. Model ensemble**
 The per-image predictions of several models are combined (averaged softmax,
 optionally weighted by validation F1 or per-image confidence) into a single
-ensemble decision on the full own_dataset (121 real photos). This tests whether
-architecture and source-dataset diversity reduce the domain shift observed on
-real photos. The effect is small and depends strongly on how many models are
-combined: the best single model reaches 93.3% F1, the top-3 ensemble improves it
-modestly to 95.0% F1 (+1.7 pts, MCC 0.835 → 0.902), but adding more models
-erodes the gain and combining all 80 degrades to 91.7%. The sweet spot is a
-handful of the strongest models — more is not better.
+ensemble decision on own_dataset. Combining a few strong, diverse models gives
+only a small, sample-sensitive gain over the best single model, while combining
+all models degrades it — the bottleneck is data, not how predictions are pooled.
 
-**5. Reporting**
+**5. Error and per-fruit analysis**
+Per-image error analysis shows the failures are concentrated and confidently
+wrong: a handful of borderline / early-rot photos are missed by most models at
+~85–90% confidence, which is why ensembling cannot fix them. Splitting the
+predictions by fruit reveals the real driver of error: models whose training
+data never contained a given fruit collapse on it. On own_dataset, models
+trained without banana average ~42% F1 on banana vs ~71% for models that saw it
+— and the apparent single-fruit "champion" (93% on strawberry) drops to ~32% on
+banana, ranking near last overall. Generalization tracks training exposure, not
+the leaderboard of any one fruit.
+
+**6. Domain-adaptation fine-tuning**
+A balanced, fruit-aware base model is fine-tuned on the full multi-fruit
+own_dataset, evaluated with stratified k-fold CV. With the backbone **frozen**
+(linear-probe) the model adapts without catastrophic forgetting: F1 improves
+from 86.3% to **94.5%** (+8.2 pts, MCC 0.729 → 0.892) with every fold improving.
+Unfreezing the backbone, or starting from a single-fruit base, instead overfits
+the small dataset and degrades performance. The fine-tuned model is the project's
+best general fresh/rotten classifier on real photos.
+
+**7. Reporting**
 Excel trackers summarize experiment status and results with color coding.
 The eval report ranks models by performance, generalization, food-safety
 recall, and accuracy across all evaluated datasets.

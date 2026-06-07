@@ -1,0 +1,982 @@
+{
+  "n_images": 121,
+  "n_models": 80,
+  "buckets": {
+    "easy (0-10%)": 46,
+    "mild (10-50%)": 65,
+    "hard (50-90%)": 10,
+    "unanimous (>90%)": 0
+  },
+  "n_unanimous_fail": 0,
+  "accuracy_ceiling": 100.0,
+  "per_image": [
+    {
+      "file": "FR_SB_021.jpg",
+      "true_label": "fresh",
+      "n_wrong": 67,
+      "n_models": 80,
+      "err_rate": 0.8375,
+      "conf_wrong": 0.9001
+    },
+    {
+      "file": "FR_SB_004.jpg",
+      "true_label": "fresh",
+      "n_wrong": 65,
+      "n_models": 80,
+      "err_rate": 0.8125,
+      "conf_wrong": 0.8753
+    },
+    {
+      "file": "RT_SB_013.jpg",
+      "true_label": "rotten",
+      "n_wrong": 64,
+      "n_models": 80,
+      "err_rate": 0.8,
+      "conf_wrong": 0.8801
+    },
+    {
+      "file": "RT_SB_056.jpg",
+      "true_label": "rotten",
+      "n_wrong": 60,
+      "n_models": 80,
+      "err_rate": 0.75,
+      "conf_wrong": 0.8241
+    },
+    {
+      "file": "RT_SB_006.jpg",
+      "true_label": "rotten",
+      "n_wrong": 58,
+      "n_models": 80,
+      "err_rate": 0.725,
+      "conf_wrong": 0.8752
+    },
+    {
+      "file": "RT_SB_036.jpg",
+      "true_label": "rotten",
+      "n_wrong": 58,
+      "n_models": 80,
+      "err_rate": 0.725,
+      "conf_wrong": 0.8343
+    },
+    {
+      "file": "FR_SB_003.jpg",
+      "true_label": "fresh",
+      "n_wrong": 52,
+      "n_models": 80,
+      "err_rate": 0.65,
+      "conf_wrong": 0.7991
+    },
+    {
+      "file": "RT_SB_002.jpg",
+      "true_label": "rotten",
+      "n_wrong": 52,
+      "n_models": 80,
+      "err_rate": 0.65,
+      "conf_wrong": 0.8348
+    },
+    {
+      "file": "RT_SB_030.jpg",
+      "true_label": "rotten",
+      "n_wrong": 52,
+      "n_models": 80,
+      "err_rate": 0.65,
+      "conf_wrong": 0.7894
+    },
+    {
+      "file": "RT_SB_035.jpg",
+      "true_label": "rotten",
+      "n_wrong": 42,
+      "n_models": 80,
+      "err_rate": 0.525,
+      "conf_wrong": 0.7834
+    },
+    {
+      "file": "RT_SB_017.jpg",
+      "true_label": "rotten",
+      "n_wrong": 40,
+      "n_models": 80,
+      "err_rate": 0.5,
+      "conf_wrong": 0.8519
+    },
+    {
+      "file": "FR_SB_001.jpg",
+      "true_label": "fresh",
+      "n_wrong": 36,
+      "n_models": 80,
+      "err_rate": 0.45,
+      "conf_wrong": 0.8418
+    },
+    {
+      "file": "RT_SB_051.jpg",
+      "true_label": "rotten",
+      "n_wrong": 35,
+      "n_models": 80,
+      "err_rate": 0.4375,
+      "conf_wrong": 0.8211
+    },
+    {
+      "file": "FR_SB_015.jpg",
+      "true_label": "fresh",
+      "n_wrong": 34,
+      "n_models": 80,
+      "err_rate": 0.425,
+      "conf_wrong": 0.8186
+    },
+    {
+      "file": "FR_SB_013.jpg",
+      "true_label": "fresh",
+      "n_wrong": 32,
+      "n_models": 80,
+      "err_rate": 0.4,
+      "conf_wrong": 0.7448
+    },
+    {
+      "file": "FR_SB_012.jpg",
+      "true_label": "fresh",
+      "n_wrong": 30,
+      "n_models": 80,
+      "err_rate": 0.375,
+      "conf_wrong": 0.8235
+    },
+    {
+      "file": "FR_SB_042.jpg",
+      "true_label": "fresh",
+      "n_wrong": 30,
+      "n_models": 80,
+      "err_rate": 0.375,
+      "conf_wrong": 0.8081
+    },
+    {
+      "file": "FR_SB_005.jpg",
+      "true_label": "fresh",
+      "n_wrong": 29,
+      "n_models": 80,
+      "err_rate": 0.3625,
+      "conf_wrong": 0.7693
+    },
+    {
+      "file": "RT_SB_021.jpg",
+      "true_label": "rotten",
+      "n_wrong": 29,
+      "n_models": 80,
+      "err_rate": 0.3625,
+      "conf_wrong": 0.7675
+    },
+    {
+      "file": "FR_SB_046.jpg",
+      "true_label": "fresh",
+      "n_wrong": 27,
+      "n_models": 80,
+      "err_rate": 0.3375,
+      "conf_wrong": 0.7483
+    },
+    {
+      "file": "RT_SB_008.jpg",
+      "true_label": "rotten",
+      "n_wrong": 24,
+      "n_models": 80,
+      "err_rate": 0.3,
+      "conf_wrong": 0.8154
+    },
+    {
+      "file": "FR_SB_045.jpg",
+      "true_label": "fresh",
+      "n_wrong": 23,
+      "n_models": 80,
+      "err_rate": 0.2875,
+      "conf_wrong": 0.7477
+    },
+    {
+      "file": "FR_SB_041.jpg",
+      "true_label": "fresh",
+      "n_wrong": 22,
+      "n_models": 80,
+      "err_rate": 0.275,
+      "conf_wrong": 0.6715
+    },
+    {
+      "file": "RT_SB_022.jpg",
+      "true_label": "rotten",
+      "n_wrong": 22,
+      "n_models": 80,
+      "err_rate": 0.275,
+      "conf_wrong": 0.7543
+    },
+    {
+      "file": "FR_SB_008.jpg",
+      "true_label": "fresh",
+      "n_wrong": 21,
+      "n_models": 80,
+      "err_rate": 0.2625,
+      "conf_wrong": 0.8162
+    },
+    {
+      "file": "FR_SB_010.jpg",
+      "true_label": "fresh",
+      "n_wrong": 21,
+      "n_models": 80,
+      "err_rate": 0.2625,
+      "conf_wrong": 0.7976
+    },
+    {
+      "file": "RT_SB_040.jpg",
+      "true_label": "rotten",
+      "n_wrong": 21,
+      "n_models": 80,
+      "err_rate": 0.2625,
+      "conf_wrong": 0.6651
+    },
+    {
+      "file": "FR_SB_002.jpg",
+      "true_label": "fresh",
+      "n_wrong": 20,
+      "n_models": 80,
+      "err_rate": 0.25,
+      "conf_wrong": 0.7592
+    },
+    {
+      "file": "RT_SB_011.jpg",
+      "true_label": "rotten",
+      "n_wrong": 20,
+      "n_models": 80,
+      "err_rate": 0.25,
+      "conf_wrong": 0.758
+    },
+    {
+      "file": "FR_SB_019.jpg",
+      "true_label": "fresh",
+      "n_wrong": 19,
+      "n_models": 80,
+      "err_rate": 0.2375,
+      "conf_wrong": 0.7607
+    },
+    {
+      "file": "FR_SB_017.jpg",
+      "true_label": "fresh",
+      "n_wrong": 18,
+      "n_models": 80,
+      "err_rate": 0.225,
+      "conf_wrong": 0.7942
+    },
+    {
+      "file": "FR_SB_033.jpg",
+      "true_label": "fresh",
+      "n_wrong": 18,
+      "n_models": 80,
+      "err_rate": 0.225,
+      "conf_wrong": 0.7911
+    },
+    {
+      "file": "FR_SB_035.jpg",
+      "true_label": "fresh",
+      "n_wrong": 18,
+      "n_models": 80,
+      "err_rate": 0.225,
+      "conf_wrong": 0.7913
+    },
+    {
+      "file": "RT_SB_014.jpg",
+      "true_label": "rotten",
+      "n_wrong": 18,
+      "n_models": 80,
+      "err_rate": 0.225,
+      "conf_wrong": 0.7875
+    },
+    {
+      "file": "FR_SB_014.jpg",
+      "true_label": "fresh",
+      "n_wrong": 17,
+      "n_models": 80,
+      "err_rate": 0.2125,
+      "conf_wrong": 0.8063
+    },
+    {
+      "file": "FR_SB_006.jpg",
+      "true_label": "fresh",
+      "n_wrong": 16,
+      "n_models": 80,
+      "err_rate": 0.2,
+      "conf_wrong": 0.8059
+    },
+    {
+      "file": "FR_SB_032.jpg",
+      "true_label": "fresh",
+      "n_wrong": 16,
+      "n_models": 80,
+      "err_rate": 0.2,
+      "conf_wrong": 0.7463
+    },
+    {
+      "file": "FR_SB_044.jpg",
+      "true_label": "fresh",
+      "n_wrong": 16,
+      "n_models": 80,
+      "err_rate": 0.2,
+      "conf_wrong": 0.7528
+    },
+    {
+      "file": "RT_SB_004.jpg",
+      "true_label": "rotten",
+      "n_wrong": 16,
+      "n_models": 80,
+      "err_rate": 0.2,
+      "conf_wrong": 0.6969
+    },
+    {
+      "file": "RT_SB_037.jpg",
+      "true_label": "rotten",
+      "n_wrong": 16,
+      "n_models": 80,
+      "err_rate": 0.2,
+      "conf_wrong": 0.756
+    },
+    {
+      "file": "RT_SB_052.jpg",
+      "true_label": "rotten",
+      "n_wrong": 16,
+      "n_models": 80,
+      "err_rate": 0.2,
+      "conf_wrong": 0.8109
+    },
+    {
+      "file": "FR_SB_030.jpg",
+      "true_label": "fresh",
+      "n_wrong": 15,
+      "n_models": 80,
+      "err_rate": 0.1875,
+      "conf_wrong": 0.6944
+    },
+    {
+      "file": "RT_SB_029.jpg",
+      "true_label": "rotten",
+      "n_wrong": 15,
+      "n_models": 80,
+      "err_rate": 0.1875,
+      "conf_wrong": 0.7135
+    },
+    {
+      "file": "FR_SB_007.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.7958
+    },
+    {
+      "file": "FR_SB_011.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.6818
+    },
+    {
+      "file": "FR_SB_040.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.749
+    },
+    {
+      "file": "FR_SB_043.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.7684
+    },
+    {
+      "file": "FR_SB_047.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.6884
+    },
+    {
+      "file": "FR_SB_052.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.7474
+    },
+    {
+      "file": "FR_SB_054.jpg",
+      "true_label": "fresh",
+      "n_wrong": 14,
+      "n_models": 80,
+      "err_rate": 0.175,
+      "conf_wrong": 0.7806
+    },
+    {
+      "file": "FR_SB_037.jpg",
+      "true_label": "fresh",
+      "n_wrong": 13,
+      "n_models": 80,
+      "err_rate": 0.1625,
+      "conf_wrong": 0.6596
+    },
+    {
+      "file": "FR_SB_039.jpg",
+      "true_label": "fresh",
+      "n_wrong": 13,
+      "n_models": 80,
+      "err_rate": 0.1625,
+      "conf_wrong": 0.6903
+    },
+    {
+      "file": "RT_SB_034.jpg",
+      "true_label": "rotten",
+      "n_wrong": 13,
+      "n_models": 80,
+      "err_rate": 0.1625,
+      "conf_wrong": 0.6726
+    },
+    {
+      "file": "FR_SB_016.jpg",
+      "true_label": "fresh",
+      "n_wrong": 12,
+      "n_models": 80,
+      "err_rate": 0.15,
+      "conf_wrong": 0.8057
+    },
+    {
+      "file": "FR_SB_029.jpg",
+      "true_label": "fresh",
+      "n_wrong": 12,
+      "n_models": 80,
+      "err_rate": 0.15,
+      "conf_wrong": 0.7552
+    },
+    {
+      "file": "FR_SB_034.jpg",
+      "true_label": "fresh",
+      "n_wrong": 12,
+      "n_models": 80,
+      "err_rate": 0.15,
+      "conf_wrong": 0.7034
+    },
+    {
+      "file": "FR_SB_050.jpg",
+      "true_label": "fresh",
+      "n_wrong": 12,
+      "n_models": 80,
+      "err_rate": 0.15,
+      "conf_wrong": 0.758
+    },
+    {
+      "file": "FR_SB_051.jpg",
+      "true_label": "fresh",
+      "n_wrong": 12,
+      "n_models": 80,
+      "err_rate": 0.15,
+      "conf_wrong": 0.8191
+    },
+    {
+      "file": "RT_SB_046.jpg",
+      "true_label": "rotten",
+      "n_wrong": 12,
+      "n_models": 80,
+      "err_rate": 0.15,
+      "conf_wrong": 0.7555
+    },
+    {
+      "file": "FR_SB_018.jpg",
+      "true_label": "fresh",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.7835
+    },
+    {
+      "file": "FR_SB_053.jpg",
+      "true_label": "fresh",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.6678
+    },
+    {
+      "file": "FR_SB_059.jpg",
+      "true_label": "fresh",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.789
+    },
+    {
+      "file": "FR_SB_062.jpg",
+      "true_label": "fresh",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.766
+    },
+    {
+      "file": "RT_SB_019.jpg",
+      "true_label": "rotten",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.7513
+    },
+    {
+      "file": "RT_SB_044.jpg",
+      "true_label": "rotten",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.768
+    },
+    {
+      "file": "RT_SB_047.jpg",
+      "true_label": "rotten",
+      "n_wrong": 11,
+      "n_models": 80,
+      "err_rate": 0.1375,
+      "conf_wrong": 0.6869
+    },
+    {
+      "file": "FR_SB_020.jpg",
+      "true_label": "fresh",
+      "n_wrong": 10,
+      "n_models": 80,
+      "err_rate": 0.125,
+      "conf_wrong": 0.7204
+    },
+    {
+      "file": "FR_SB_028.jpg",
+      "true_label": "fresh",
+      "n_wrong": 10,
+      "n_models": 80,
+      "err_rate": 0.125,
+      "conf_wrong": 0.7289
+    },
+    {
+      "file": "FR_SB_023.jpg",
+      "true_label": "fresh",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.6945
+    },
+    {
+      "file": "FR_SB_024.jpg",
+      "true_label": "fresh",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.7295
+    },
+    {
+      "file": "FR_SB_025.jpg",
+      "true_label": "fresh",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.7657
+    },
+    {
+      "file": "FR_SB_038.jpg",
+      "true_label": "fresh",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.7204
+    },
+    {
+      "file": "FR_SB_049.jpg",
+      "true_label": "fresh",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.8446
+    },
+    {
+      "file": "RT_SB_023.jpg",
+      "true_label": "rotten",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.7357
+    },
+    {
+      "file": "RT_SB_026.jpg",
+      "true_label": "rotten",
+      "n_wrong": 9,
+      "n_models": 80,
+      "err_rate": 0.1125,
+      "conf_wrong": 0.6536
+    },
+    {
+      "file": "RT_SB_009.jpg",
+      "true_label": "rotten",
+      "n_wrong": 8,
+      "n_models": 80,
+      "err_rate": 0.1,
+      "conf_wrong": 0.8058
+    },
+    {
+      "file": "RT_SB_020.jpg",
+      "true_label": "rotten",
+      "n_wrong": 8,
+      "n_models": 80,
+      "err_rate": 0.1,
+      "conf_wrong": 0.7462
+    },
+    {
+      "file": "RT_SB_031.jpg",
+      "true_label": "rotten",
+      "n_wrong": 8,
+      "n_models": 80,
+      "err_rate": 0.1,
+      "conf_wrong": 0.6106
+    },
+    {
+      "file": "RT_SB_050.jpg",
+      "true_label": "rotten",
+      "n_wrong": 8,
+      "n_models": 80,
+      "err_rate": 0.1,
+      "conf_wrong": 0.7014
+    },
+    {
+      "file": "RT_SB_055.jpg",
+      "true_label": "rotten",
+      "n_wrong": 8,
+      "n_models": 80,
+      "err_rate": 0.1,
+      "conf_wrong": 0.7291
+    },
+    {
+      "file": "FR_SB_027.jpg",
+      "true_label": "fresh",
+      "n_wrong": 7,
+      "n_models": 80,
+      "err_rate": 0.0875,
+      "conf_wrong": 0.7306
+    },
+    {
+      "file": "FR_SB_048.jpg",
+      "true_label": "fresh",
+      "n_wrong": 7,
+      "n_models": 80,
+      "err_rate": 0.0875,
+      "conf_wrong": 0.7014
+    },
+    {
+      "file": "FR_SB_058.jpg",
+      "true_label": "fresh",
+      "n_wrong": 7,
+      "n_models": 80,
+      "err_rate": 0.0875,
+      "conf_wrong": 0.7251
+    },
+    {
+      "file": "RT_SB_025.jpg",
+      "true_label": "rotten",
+      "n_wrong": 7,
+      "n_models": 80,
+      "err_rate": 0.0875,
+      "conf_wrong": 0.8323
+    },
+    {
+      "file": "RT_SB_032.jpg",
+      "true_label": "rotten",
+      "n_wrong": 7,
+      "n_models": 80,
+      "err_rate": 0.0875,
+      "conf_wrong": 0.7356
+    },
+    {
+      "file": "FR_SB_026.jpg",
+      "true_label": "fresh",
+      "n_wrong": 6,
+      "n_models": 80,
+      "err_rate": 0.075,
+      "conf_wrong": 0.6757
+    },
+    {
+      "file": "FR_SB_031.jpg",
+      "true_label": "fresh",
+      "n_wrong": 6,
+      "n_models": 80,
+      "err_rate": 0.075,
+      "conf_wrong": 0.8079
+    },
+    {
+      "file": "RT_SB_001.jpg",
+      "true_label": "rotten",
+      "n_wrong": 6,
+      "n_models": 80,
+      "err_rate": 0.075,
+      "conf_wrong": 0.8195
+    },
+    {
+      "file": "FR_SB_009.jpg",
+      "true_label": "fresh",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.6358
+    },
+    {
+      "file": "FR_SB_036.jpg",
+      "true_label": "fresh",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.8131
+    },
+    {
+      "file": "FR_SB_055.jpg",
+      "true_label": "fresh",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.5872
+    },
+    {
+      "file": "FR_SB_057.jpg",
+      "true_label": "fresh",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.8334
+    },
+    {
+      "file": "FR_SB_061.jpg",
+      "true_label": "fresh",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.6666
+    },
+    {
+      "file": "RT_SB_024.jpg",
+      "true_label": "rotten",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.6038
+    },
+    {
+      "file": "RT_SB_045.jpg",
+      "true_label": "rotten",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.6761
+    },
+    {
+      "file": "RT_SB_057.jpg",
+      "true_label": "rotten",
+      "n_wrong": 5,
+      "n_models": 80,
+      "err_rate": 0.0625,
+      "conf_wrong": 0.7393
+    },
+    {
+      "file": "FR_SB_022.jpg",
+      "true_label": "fresh",
+      "n_wrong": 4,
+      "n_models": 80,
+      "err_rate": 0.05,
+      "conf_wrong": 0.8641
+    },
+    {
+      "file": "FR_SB_056.jpg",
+      "true_label": "fresh",
+      "n_wrong": 4,
+      "n_models": 80,
+      "err_rate": 0.05,
+      "conf_wrong": 0.8567
+    },
+    {
+      "file": "RT_SB_015.jpg",
+      "true_label": "rotten",
+      "n_wrong": 4,
+      "n_models": 80,
+      "err_rate": 0.05,
+      "conf_wrong": 0.6296
+    },
+    {
+      "file": "RT_SB_054.jpg",
+      "true_label": "rotten",
+      "n_wrong": 4,
+      "n_models": 80,
+      "err_rate": 0.05,
+      "conf_wrong": 0.6644
+    },
+    {
+      "file": "RT_SB_027.jpg",
+      "true_label": "rotten",
+      "n_wrong": 3,
+      "n_models": 80,
+      "err_rate": 0.0375,
+      "conf_wrong": 0.5709
+    },
+    {
+      "file": "RT_SB_038.jpg",
+      "true_label": "rotten",
+      "n_wrong": 3,
+      "n_models": 80,
+      "err_rate": 0.0375,
+      "conf_wrong": 0.6179
+    },
+    {
+      "file": "RT_SB_043.jpg",
+      "true_label": "rotten",
+      "n_wrong": 3,
+      "n_models": 80,
+      "err_rate": 0.0375,
+      "conf_wrong": 0.8512
+    },
+    {
+      "file": "FR_SB_064.jpg",
+      "true_label": "fresh",
+      "n_wrong": 2,
+      "n_models": 80,
+      "err_rate": 0.025,
+      "conf_wrong": 0.7637
+    },
+    {
+      "file": "RT_SB_010.jpg",
+      "true_label": "rotten",
+      "n_wrong": 2,
+      "n_models": 80,
+      "err_rate": 0.025,
+      "conf_wrong": 0.7179
+    },
+    {
+      "file": "RT_SB_012.jpg",
+      "true_label": "rotten",
+      "n_wrong": 2,
+      "n_models": 80,
+      "err_rate": 0.025,
+      "conf_wrong": 0.8
+    },
+    {
+      "file": "RT_SB_018.jpg",
+      "true_label": "rotten",
+      "n_wrong": 2,
+      "n_models": 80,
+      "err_rate": 0.025,
+      "conf_wrong": 0.5441
+    },
+    {
+      "file": "RT_SB_049.jpg",
+      "true_label": "rotten",
+      "n_wrong": 2,
+      "n_models": 80,
+      "err_rate": 0.025,
+      "conf_wrong": 0.6159
+    },
+    {
+      "file": "FR_SB_063.jpg",
+      "true_label": "fresh",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.6664
+    },
+    {
+      "file": "RT_SB_003.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.9618
+    },
+    {
+      "file": "RT_SB_005.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.8649
+    },
+    {
+      "file": "RT_SB_007.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.57
+    },
+    {
+      "file": "RT_SB_016.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.5601
+    },
+    {
+      "file": "RT_SB_041.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.8867
+    },
+    {
+      "file": "RT_SB_042.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.5827
+    },
+    {
+      "file": "RT_SB_048.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.6523
+    },
+    {
+      "file": "RT_SB_053.jpg",
+      "true_label": "rotten",
+      "n_wrong": 1,
+      "n_models": 80,
+      "err_rate": 0.0125,
+      "conf_wrong": 0.551
+    },
+    {
+      "file": "FR_SB_060.jpg",
+      "true_label": "fresh",
+      "n_wrong": 0,
+      "n_models": 80,
+      "err_rate": 0.0,
+      "conf_wrong": 0.0
+    },
+    {
+      "file": "RT_SB_028.jpg",
+      "true_label": "rotten",
+      "n_wrong": 0,
+      "n_models": 80,
+      "err_rate": 0.0,
+      "conf_wrong": 0.0
+    },
+    {
+      "file": "RT_SB_033.jpg",
+      "true_label": "rotten",
+      "n_wrong": 0,
+      "n_models": 80,
+      "err_rate": 0.0,
+      "conf_wrong": 0.0
+    },
+    {
+      "file": "RT_SB_039.jpg",
+      "true_label": "rotten",
+      "n_wrong": 0,
+      "n_models": 80,
+      "err_rate": 0.0,
+      "conf_wrong": 0.0
+    }
+  ]
+}

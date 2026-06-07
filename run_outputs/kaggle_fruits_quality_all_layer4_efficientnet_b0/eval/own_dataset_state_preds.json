@@ -1,805 +1,13 @@
 [
   {
-    "file": "FR_SB_018.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9289,
-    "probs": {
-      "fresh": 0.9289,
-      "rotten": 0.0711
-    }
-  },
-  {
-    "file": "FR_SB_014.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.5713,
-    "probs": {
-      "fresh": 0.5713,
-      "rotten": 0.4287
-    }
-  },
-  {
-    "file": "FR_SB_052.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.88,
-    "probs": {
-      "fresh": 0.88,
-      "rotten": 0.12
-    }
-  },
-  {
-    "file": "FR_SB_051.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9705,
-    "probs": {
-      "fresh": 0.9705,
-      "rotten": 0.0295
-    }
-  },
-  {
-    "file": "FR_SB_004.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.8181,
-    "probs": {
-      "fresh": 0.1819,
-      "rotten": 0.8181
-    }
-  },
-  {
-    "file": "FR_SB_013.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.5395,
-    "probs": {
-      "fresh": 0.4605,
-      "rotten": 0.5395
-    }
-  },
-  {
-    "file": "FR_SB_007.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9575,
-    "probs": {
-      "fresh": 0.9575,
-      "rotten": 0.0425
-    }
-  },
-  {
-    "file": "FR_SB_036.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9626,
-    "probs": {
-      "fresh": 0.9626,
-      "rotten": 0.0374
-    }
-  },
-  {
-    "file": "FR_SB_037.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9384,
-    "probs": {
-      "fresh": 0.9384,
-      "rotten": 0.0616
-    }
-  },
-  {
-    "file": "FR_SB_015.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.697,
-    "probs": {
-      "fresh": 0.303,
-      "rotten": 0.697
-    }
-  },
-  {
-    "file": "FR_SB_044.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9143,
-    "probs": {
-      "fresh": 0.9143,
-      "rotten": 0.0857
-    }
-  },
-  {
-    "file": "FR_SB_024.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7665,
-    "probs": {
-      "fresh": 0.7665,
-      "rotten": 0.2335
-    }
-  },
-  {
-    "file": "FR_SB_026.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.932,
-    "probs": {
-      "fresh": 0.932,
-      "rotten": 0.068
-    }
-  },
-  {
-    "file": "FR_SB_055.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8906,
-    "probs": {
-      "fresh": 0.8906,
-      "rotten": 0.1094
-    }
-  },
-  {
-    "file": "FR_SB_042.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.6993,
-    "probs": {
-      "fresh": 0.6993,
-      "rotten": 0.3007
-    }
-  },
-  {
-    "file": "FR_SB_023.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9395,
-    "probs": {
-      "fresh": 0.9395,
-      "rotten": 0.0605
-    }
-  },
-  {
-    "file": "FR_SB_005.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.837,
-    "probs": {
-      "fresh": 0.837,
-      "rotten": 0.163
-    }
-  },
-  {
-    "file": "FR_SB_063.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.977,
-    "probs": {
-      "fresh": 0.977,
-      "rotten": 0.023
-    }
-  },
-  {
-    "file": "FR_SB_062.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.877,
-    "probs": {
-      "fresh": 0.877,
-      "rotten": 0.123
-    }
-  },
-  {
-    "file": "FR_SB_048.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8814,
-    "probs": {
-      "fresh": 0.8814,
-      "rotten": 0.1186
-    }
-  },
-  {
-    "file": "FR_SB_043.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.6753,
-    "probs": {
-      "fresh": 0.6753,
-      "rotten": 0.3247
-    }
-  },
-  {
-    "file": "FR_SB_039.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.5199,
-    "probs": {
-      "fresh": 0.4801,
-      "rotten": 0.5199
-    }
-  },
-  {
-    "file": "FR_SB_003.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.5568,
-    "probs": {
-      "fresh": 0.5568,
-      "rotten": 0.4432
-    }
-  },
-  {
-    "file": "FR_SB_028.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8356,
-    "probs": {
-      "fresh": 0.8356,
-      "rotten": 0.1644
-    }
-  },
-  {
-    "file": "FR_SB_009.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9379,
-    "probs": {
-      "fresh": 0.9379,
-      "rotten": 0.0621
-    }
-  },
-  {
-    "file": "FR_SB_019.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9453,
-    "probs": {
-      "fresh": 0.9453,
-      "rotten": 0.0547
-    }
-  },
-  {
-    "file": "FR_SB_010.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9493,
-    "probs": {
-      "fresh": 0.9493,
-      "rotten": 0.0507
-    }
-  },
-  {
-    "file": "FR_SB_045.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.6774,
-    "probs": {
-      "fresh": 0.6774,
-      "rotten": 0.3226
-    }
-  },
-  {
-    "file": "FR_SB_021.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.9423,
-    "probs": {
-      "fresh": 0.0577,
-      "rotten": 0.9423
-    }
-  },
-  {
-    "file": "FR_SB_061.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9858,
-    "probs": {
-      "fresh": 0.9858,
-      "rotten": 0.0142
-    }
-  },
-  {
-    "file": "FR_SB_030.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8973,
-    "probs": {
-      "fresh": 0.8973,
-      "rotten": 0.1027
-    }
-  },
-  {
-    "file": "FR_SB_047.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9553,
-    "probs": {
-      "fresh": 0.9553,
-      "rotten": 0.0447
-    }
-  },
-  {
-    "file": "FR_SB_032.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8538,
-    "probs": {
-      "fresh": 0.8538,
-      "rotten": 0.1462
-    }
-  },
-  {
-    "file": "FR_SB_016.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9579,
-    "probs": {
-      "fresh": 0.9579,
-      "rotten": 0.0421
-    }
-  },
-  {
-    "file": "FR_SB_038.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9434,
-    "probs": {
-      "fresh": 0.9434,
-      "rotten": 0.0566
-    }
-  },
-  {
-    "file": "FR_SB_049.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9014,
-    "probs": {
-      "fresh": 0.9014,
-      "rotten": 0.0986
-    }
-  },
-  {
-    "file": "FR_SB_033.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.6668,
-    "probs": {
-      "fresh": 0.3332,
-      "rotten": 0.6668
-    }
-  },
-  {
-    "file": "FR_SB_050.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7967,
-    "probs": {
-      "fresh": 0.7967,
-      "rotten": 0.2033
-    }
-  },
-  {
-    "file": "FR_SB_060.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8277,
-    "probs": {
-      "fresh": 0.8277,
-      "rotten": 0.1723
-    }
-  },
-  {
-    "file": "FR_SB_056.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9649,
-    "probs": {
-      "fresh": 0.9649,
-      "rotten": 0.0351
-    }
-  },
-  {
-    "file": "FR_SB_059.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8339,
-    "probs": {
-      "fresh": 0.8339,
-      "rotten": 0.1661
-    }
-  },
-  {
-    "file": "FR_SB_001.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.7443,
-    "probs": {
-      "fresh": 0.2557,
-      "rotten": 0.7443
-    }
-  },
-  {
-    "file": "FR_SB_025.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9593,
-    "probs": {
-      "fresh": 0.9593,
-      "rotten": 0.0407
-    }
-  },
-  {
-    "file": "FR_SB_064.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8892,
-    "probs": {
-      "fresh": 0.8892,
-      "rotten": 0.1108
-    }
-  },
-  {
-    "file": "FR_SB_034.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.955,
-    "probs": {
-      "fresh": 0.955,
-      "rotten": 0.045
-    }
-  },
-  {
-    "file": "FR_SB_054.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7568,
-    "probs": {
-      "fresh": 0.7568,
-      "rotten": 0.2432
-    }
-  },
-  {
-    "file": "FR_SB_035.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.5029,
-    "probs": {
-      "fresh": 0.4971,
-      "rotten": 0.5029
-    }
-  },
-  {
-    "file": "FR_SB_002.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.6791,
-    "probs": {
-      "fresh": 0.3209,
-      "rotten": 0.6791
-    }
-  },
-  {
-    "file": "FR_SB_012.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.526,
-    "probs": {
-      "fresh": 0.526,
-      "rotten": 0.474
-    }
-  },
-  {
-    "file": "FR_SB_020.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9752,
-    "probs": {
-      "fresh": 0.9752,
-      "rotten": 0.0248
-    }
-  },
-  {
-    "file": "FR_SB_053.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9097,
-    "probs": {
-      "fresh": 0.9097,
-      "rotten": 0.0903
-    }
-  },
-  {
-    "file": "FR_SB_029.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7429,
-    "probs": {
-      "fresh": 0.7429,
-      "rotten": 0.2571
-    }
-  },
-  {
-    "file": "FR_SB_008.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.6896,
-    "probs": {
-      "fresh": 0.6896,
-      "rotten": 0.3104
-    }
-  },
-  {
-    "file": "FR_SB_040.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7982,
-    "probs": {
-      "fresh": 0.7982,
-      "rotten": 0.2018
-    }
-  },
-  {
-    "file": "FR_SB_006.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.942,
-    "probs": {
-      "fresh": 0.942,
-      "rotten": 0.058
-    }
-  },
-  {
-    "file": "FR_SB_057.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8204,
-    "probs": {
-      "fresh": 0.8204,
-      "rotten": 0.1796
-    }
-  },
-  {
-    "file": "FR_SB_031.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.845,
-    "probs": {
-      "fresh": 0.845,
-      "rotten": 0.155
-    }
-  },
-  {
-    "file": "FR_SB_022.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7571,
-    "probs": {
-      "fresh": 0.7571,
-      "rotten": 0.2429
-    }
-  },
-  {
-    "file": "FR_SB_041.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.8275,
-    "probs": {
-      "fresh": 0.8275,
-      "rotten": 0.1725
-    }
-  },
-  {
-    "file": "FR_SB_027.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7745,
-    "probs": {
-      "fresh": 0.7745,
-      "rotten": 0.2255
-    }
-  },
-  {
-    "file": "FR_SB_046.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.6713,
-    "probs": {
-      "fresh": 0.3287,
-      "rotten": 0.6713
-    }
-  },
-  {
-    "file": "FR_SB_011.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.9491,
-    "probs": {
-      "fresh": 0.9491,
-      "rotten": 0.0509
-    }
-  },
-  {
-    "file": "FR_SB_017.jpg",
-    "true_label": "fresh",
-    "pred_label": "rotten",
-    "correct": false,
-    "confidence": 0.7077,
-    "probs": {
-      "fresh": 0.2923,
-      "rotten": 0.7077
-    }
-  },
-  {
-    "file": "FR_SB_058.jpg",
-    "true_label": "fresh",
-    "pred_label": "fresh",
-    "correct": true,
-    "confidence": 0.7242,
-    "probs": {
-      "fresh": 0.7242,
-      "rotten": 0.2758
-    }
-  },
-  {
-    "file": "RT_SB_045.jpg",
+    "file": "RT_SB_037.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9823,
+    "confidence": 0.9567,
     "probs": {
-      "fresh": 0.0177,
-      "rotten": 0.9823
-    }
-  },
-  {
-    "file": "RT_SB_002.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8499,
-    "probs": {
-      "fresh": 0.1501,
-      "rotten": 0.8499
-    }
-  },
-  {
-    "file": "RT_SB_049.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9654,
-    "probs": {
-      "fresh": 0.0346,
-      "rotten": 0.9654
-    }
-  },
-  {
-    "file": "RT_SB_001.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.7581,
-    "probs": {
-      "fresh": 0.2419,
-      "rotten": 0.7581
-    }
-  },
-  {
-    "file": "RT_SB_033.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9846,
-    "probs": {
-      "fresh": 0.0154,
-      "rotten": 0.9846
-    }
-  },
-  {
-    "file": "RT_SB_036.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.9174,
-    "probs": {
-      "fresh": 0.9174,
-      "rotten": 0.0826
-    }
-  },
-  {
-    "file": "RT_SB_051.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.7196,
-    "probs": {
-      "fresh": 0.7196,
-      "rotten": 0.2804
-    }
-  },
-  {
-    "file": "RT_SB_040.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8368,
-    "probs": {
-      "fresh": 0.1632,
-      "rotten": 0.8368
-    }
-  },
-  {
-    "file": "RT_SB_034.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9744,
-    "probs": {
-      "fresh": 0.0256,
-      "rotten": 0.9744
+      "fresh": 0.0433,
+      "rotten": 0.9567
     }
   },
   {
@@ -814,322 +22,25 @@
     }
   },
   {
-    "file": "RT_SB_025.jpg",
+    "file": "RT_BN_003.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9891,
+    "confidence": 0.9351,
     "probs": {
-      "fresh": 0.0109,
-      "rotten": 0.9891
+      "fresh": 0.0649,
+      "rotten": 0.9351
     }
   },
   {
-    "file": "RT_SB_009.jpg",
+    "file": "RT_BN_025.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.8784,
+    "confidence": 0.7737,
     "probs": {
-      "fresh": 0.1216,
-      "rotten": 0.8784
-    }
-  },
-  {
-    "file": "RT_SB_046.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.5004,
-    "probs": {
-      "fresh": 0.4996,
-      "rotten": 0.5004
-    }
-  },
-  {
-    "file": "RT_SB_003.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9712,
-    "probs": {
-      "fresh": 0.0288,
-      "rotten": 0.9712
-    }
-  },
-  {
-    "file": "RT_SB_057.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9795,
-    "probs": {
-      "fresh": 0.0205,
-      "rotten": 0.9795
-    }
-  },
-  {
-    "file": "RT_SB_050.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9774,
-    "probs": {
-      "fresh": 0.0226,
-      "rotten": 0.9774
-    }
-  },
-  {
-    "file": "RT_SB_027.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9568,
-    "probs": {
-      "fresh": 0.0432,
-      "rotten": 0.9568
-    }
-  },
-  {
-    "file": "RT_SB_054.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.502,
-    "probs": {
-      "fresh": 0.498,
-      "rotten": 0.502
-    }
-  },
-  {
-    "file": "RT_SB_020.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8455,
-    "probs": {
-      "fresh": 0.1545,
-      "rotten": 0.8455
-    }
-  },
-  {
-    "file": "RT_SB_013.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.5809,
-    "probs": {
-      "fresh": 0.5809,
-      "rotten": 0.4191
-    }
-  },
-  {
-    "file": "RT_SB_024.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9255,
-    "probs": {
-      "fresh": 0.0745,
-      "rotten": 0.9255
-    }
-  },
-  {
-    "file": "RT_SB_015.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.6415,
-    "probs": {
-      "fresh": 0.3585,
-      "rotten": 0.6415
-    }
-  },
-  {
-    "file": "RT_SB_053.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9611,
-    "probs": {
-      "fresh": 0.0389,
-      "rotten": 0.9611
-    }
-  },
-  {
-    "file": "RT_SB_029.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8337,
-    "probs": {
-      "fresh": 0.1663,
-      "rotten": 0.8337
-    }
-  },
-  {
-    "file": "RT_SB_016.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8766,
-    "probs": {
-      "fresh": 0.1234,
-      "rotten": 0.8766
-    }
-  },
-  {
-    "file": "RT_SB_028.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9671,
-    "probs": {
-      "fresh": 0.0329,
-      "rotten": 0.9671
-    }
-  },
-  {
-    "file": "RT_SB_042.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9222,
-    "probs": {
-      "fresh": 0.0778,
-      "rotten": 0.9222
-    }
-  },
-  {
-    "file": "RT_SB_022.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.6436,
-    "probs": {
-      "fresh": 0.3564,
-      "rotten": 0.6436
-    }
-  },
-  {
-    "file": "RT_SB_011.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.7192,
-    "probs": {
-      "fresh": 0.2808,
-      "rotten": 0.7192
-    }
-  },
-  {
-    "file": "RT_SB_031.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9797,
-    "probs": {
-      "fresh": 0.0203,
-      "rotten": 0.9797
-    }
-  },
-  {
-    "file": "RT_SB_014.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.6961,
-    "probs": {
-      "fresh": 0.6961,
-      "rotten": 0.3039
-    }
-  },
-  {
-    "file": "RT_SB_055.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9157,
-    "probs": {
-      "fresh": 0.0843,
-      "rotten": 0.9157
-    }
-  },
-  {
-    "file": "RT_SB_047.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9359,
-    "probs": {
-      "fresh": 0.0641,
-      "rotten": 0.9359
-    }
-  },
-  {
-    "file": "RT_SB_006.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.6805,
-    "probs": {
-      "fresh": 0.6805,
-      "rotten": 0.3195
-    }
-  },
-  {
-    "file": "RT_SB_019.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9686,
-    "probs": {
-      "fresh": 0.0314,
-      "rotten": 0.9686
-    }
-  },
-  {
-    "file": "RT_SB_035.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.7697,
-    "probs": {
-      "fresh": 0.7697,
-      "rotten": 0.2303
-    }
-  },
-  {
-    "file": "RT_SB_012.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9591,
-    "probs": {
-      "fresh": 0.0409,
-      "rotten": 0.9591
-    }
-  },
-  {
-    "file": "RT_SB_010.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9858,
-    "probs": {
-      "fresh": 0.0142,
-      "rotten": 0.9858
-    }
-  },
-  {
-    "file": "RT_SB_004.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8577,
-    "probs": {
-      "fresh": 0.1423,
-      "rotten": 0.8577
+      "fresh": 0.2263,
+      "rotten": 0.7737
     }
   },
   {
@@ -1144,135 +55,69 @@
     }
   },
   {
-    "file": "RT_SB_032.jpg",
+    "file": "RT_BN_038.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9639,
+    "confidence": 0.8288,
     "probs": {
-      "fresh": 0.0361,
-      "rotten": 0.9639
+      "fresh": 0.1712,
+      "rotten": 0.8288
     }
   },
   {
-    "file": "RT_SB_030.jpg",
+    "file": "RT_SB_051.jpg",
     "true_label": "rotten",
     "pred_label": "fresh",
     "correct": false,
-    "confidence": 0.7691,
+    "confidence": 0.7196,
     "probs": {
-      "fresh": 0.7691,
-      "rotten": 0.2309
+      "fresh": 0.7196,
+      "rotten": 0.2804
     }
   },
   {
-    "file": "RT_SB_043.jpg",
+    "file": "RT_BN_043.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9952,
+    "confidence": 0.9542,
     "probs": {
-      "fresh": 0.0048,
-      "rotten": 0.9952
+      "fresh": 0.0458,
+      "rotten": 0.9542
     }
   },
   {
-    "file": "RT_SB_017.jpg",
+    "file": "RT_BN_020.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.5463,
+    "confidence": 0.8392,
     "probs": {
-      "fresh": 0.4537,
-      "rotten": 0.5463
+      "fresh": 0.1608,
+      "rotten": 0.8392
     }
   },
   {
-    "file": "RT_SB_037.jpg",
+    "file": "RT_BN_048.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9567,
+    "confidence": 0.9717,
     "probs": {
-      "fresh": 0.0433,
-      "rotten": 0.9567
+      "fresh": 0.0283,
+      "rotten": 0.9717
     }
   },
   {
-    "file": "RT_SB_056.jpg",
-    "true_label": "rotten",
-    "pred_label": "fresh",
-    "correct": false,
-    "confidence": 0.6115,
-    "probs": {
-      "fresh": 0.6115,
-      "rotten": 0.3885
-    }
-  },
-  {
-    "file": "RT_SB_044.jpg",
+    "file": "RT_BN_009.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9821,
+    "confidence": 0.8901,
     "probs": {
-      "fresh": 0.0179,
-      "rotten": 0.9821
-    }
-  },
-  {
-    "file": "RT_SB_018.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9289,
-    "probs": {
-      "fresh": 0.0711,
-      "rotten": 0.9289
-    }
-  },
-  {
-    "file": "RT_SB_038.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.9402,
-    "probs": {
-      "fresh": 0.0598,
-      "rotten": 0.9402
-    }
-  },
-  {
-    "file": "RT_SB_026.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.956,
-    "probs": {
-      "fresh": 0.044,
-      "rotten": 0.956
-    }
-  },
-  {
-    "file": "RT_SB_008.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.6854,
-    "probs": {
-      "fresh": 0.3146,
-      "rotten": 0.6854
-    }
-  },
-  {
-    "file": "RT_SB_052.jpg",
-    "true_label": "rotten",
-    "pred_label": "rotten",
-    "correct": true,
-    "confidence": 0.8638,
-    "probs": {
-      "fresh": 0.1362,
-      "rotten": 0.8638
+      "fresh": 0.1099,
+      "rotten": 0.8901
     }
   },
   {
@@ -1287,14 +132,14 @@
     }
   },
   {
-    "file": "RT_SB_005.jpg",
+    "file": "RT_SB_004.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
     "correct": true,
-    "confidence": 0.9958,
+    "confidence": 0.8577,
     "probs": {
-      "fresh": 0.0042,
-      "rotten": 0.9958
+      "fresh": 0.1423,
+      "rotten": 0.8577
     }
   },
   {
@@ -1309,6 +154,556 @@
     }
   },
   {
+    "file": "RT_SB_053.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9611,
+    "probs": {
+      "fresh": 0.0389,
+      "rotten": 0.9611
+    }
+  },
+  {
+    "file": "RT_BN_012.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8529,
+    "probs": {
+      "fresh": 0.1471,
+      "rotten": 0.8529
+    }
+  },
+  {
+    "file": "RT_BN_042.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6945,
+    "probs": {
+      "fresh": 0.3055,
+      "rotten": 0.6945
+    }
+  },
+  {
+    "file": "RT_SB_030.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.7691,
+    "probs": {
+      "fresh": 0.7691,
+      "rotten": 0.2309
+    }
+  },
+  {
+    "file": "RT_SB_026.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.956,
+    "probs": {
+      "fresh": 0.044,
+      "rotten": 0.956
+    }
+  },
+  {
+    "file": "RT_BN_024.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6932,
+    "probs": {
+      "fresh": 0.3068,
+      "rotten": 0.6932
+    }
+  },
+  {
+    "file": "RT_SB_009.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8784,
+    "probs": {
+      "fresh": 0.1216,
+      "rotten": 0.8784
+    }
+  },
+  {
+    "file": "RT_SB_015.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6415,
+    "probs": {
+      "fresh": 0.3585,
+      "rotten": 0.6415
+    }
+  },
+  {
+    "file": "RT_SB_043.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9952,
+    "probs": {
+      "fresh": 0.0048,
+      "rotten": 0.9952
+    }
+  },
+  {
+    "file": "RT_SB_036.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.9174,
+    "probs": {
+      "fresh": 0.9174,
+      "rotten": 0.0826
+    }
+  },
+  {
+    "file": "RT_BN_026.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7582,
+    "probs": {
+      "fresh": 0.2418,
+      "rotten": 0.7582
+    }
+  },
+  {
+    "file": "RT_SB_047.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9359,
+    "probs": {
+      "fresh": 0.0641,
+      "rotten": 0.9359
+    }
+  },
+  {
+    "file": "RT_BN_029.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6617,
+    "probs": {
+      "fresh": 0.3383,
+      "rotten": 0.6617
+    }
+  },
+  {
+    "file": "RT_SB_018.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9289,
+    "probs": {
+      "fresh": 0.0711,
+      "rotten": 0.9289
+    }
+  },
+  {
+    "file": "RT_BN_034.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8626,
+    "probs": {
+      "fresh": 0.1374,
+      "rotten": 0.8626
+    }
+  },
+  {
+    "file": "RT_SB_011.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7192,
+    "probs": {
+      "fresh": 0.2808,
+      "rotten": 0.7192
+    }
+  },
+  {
+    "file": "RT_BN_037.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6822,
+    "probs": {
+      "fresh": 0.3178,
+      "rotten": 0.6822
+    }
+  },
+  {
+    "file": "RT_BN_035.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.5151,
+    "probs": {
+      "fresh": 0.5151,
+      "rotten": 0.4849
+    }
+  },
+  {
+    "file": "RT_BN_027.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.5712,
+    "probs": {
+      "fresh": 0.4288,
+      "rotten": 0.5712
+    }
+  },
+  {
+    "file": "RT_BN_023.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.613,
+    "probs": {
+      "fresh": 0.613,
+      "rotten": 0.387
+    }
+  },
+  {
+    "file": "RT_SB_017.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.5463,
+    "probs": {
+      "fresh": 0.4537,
+      "rotten": 0.5463
+    }
+  },
+  {
+    "file": "RT_BN_005.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8101,
+    "probs": {
+      "fresh": 0.1899,
+      "rotten": 0.8101
+    }
+  },
+  {
+    "file": "RT_SB_034.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9744,
+    "probs": {
+      "fresh": 0.0256,
+      "rotten": 0.9744
+    }
+  },
+  {
+    "file": "RT_BN_045.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9295,
+    "probs": {
+      "fresh": 0.0705,
+      "rotten": 0.9295
+    }
+  },
+  {
+    "file": "RT_SB_044.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9821,
+    "probs": {
+      "fresh": 0.0179,
+      "rotten": 0.9821
+    }
+  },
+  {
+    "file": "RT_BN_049.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8064,
+    "probs": {
+      "fresh": 0.1936,
+      "rotten": 0.8064
+    }
+  },
+  {
+    "file": "RT_SB_008.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6854,
+    "probs": {
+      "fresh": 0.3146,
+      "rotten": 0.6854
+    }
+  },
+  {
+    "file": "RT_BN_018.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7726,
+    "probs": {
+      "fresh": 0.2274,
+      "rotten": 0.7726
+    }
+  },
+  {
+    "file": "RT_SB_019.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9686,
+    "probs": {
+      "fresh": 0.0314,
+      "rotten": 0.9686
+    }
+  },
+  {
+    "file": "RT_BN_008.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8522,
+    "probs": {
+      "fresh": 0.1478,
+      "rotten": 0.8522
+    }
+  },
+  {
+    "file": "RT_SB_014.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.6961,
+    "probs": {
+      "fresh": 0.6961,
+      "rotten": 0.3039
+    }
+  },
+  {
+    "file": "RT_SB_013.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.5809,
+    "probs": {
+      "fresh": 0.5809,
+      "rotten": 0.4191
+    }
+  },
+  {
+    "file": "RT_SB_005.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9958,
+    "probs": {
+      "fresh": 0.0042,
+      "rotten": 0.9958
+    }
+  },
+  {
+    "file": "RT_SB_035.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.7697,
+    "probs": {
+      "fresh": 0.7697,
+      "rotten": 0.2303
+    }
+  },
+  {
+    "file": "RT_SB_049.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9654,
+    "probs": {
+      "fresh": 0.0346,
+      "rotten": 0.9654
+    }
+  },
+  {
+    "file": "RT_BN_036.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.5705,
+    "probs": {
+      "fresh": 0.4295,
+      "rotten": 0.5705
+    }
+  },
+  {
+    "file": "RT_BN_046.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.5712,
+    "probs": {
+      "fresh": 0.4288,
+      "rotten": 0.5712
+    }
+  },
+  {
+    "file": "RT_BN_002.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.5962,
+    "probs": {
+      "fresh": 0.5962,
+      "rotten": 0.4038
+    }
+  },
+  {
+    "file": "RT_SB_040.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8368,
+    "probs": {
+      "fresh": 0.1632,
+      "rotten": 0.8368
+    }
+  },
+  {
+    "file": "RT_BN_016.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9138,
+    "probs": {
+      "fresh": 0.0862,
+      "rotten": 0.9138
+    }
+  },
+  {
+    "file": "RT_BN_017.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8232,
+    "probs": {
+      "fresh": 0.1768,
+      "rotten": 0.8232
+    }
+  },
+  {
+    "file": "RT_BN_041.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.5572,
+    "probs": {
+      "fresh": 0.5572,
+      "rotten": 0.4428
+    }
+  },
+  {
+    "file": "RT_BN_040.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7384,
+    "probs": {
+      "fresh": 0.2616,
+      "rotten": 0.7384
+    }
+  },
+  {
+    "file": "RT_BN_021.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.644,
+    "probs": {
+      "fresh": 0.356,
+      "rotten": 0.644
+    }
+  },
+  {
+    "file": "RT_BN_014.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.5952,
+    "probs": {
+      "fresh": 0.4048,
+      "rotten": 0.5952
+    }
+  },
+  {
+    "file": "RT_BN_015.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7307,
+    "probs": {
+      "fresh": 0.2693,
+      "rotten": 0.7307
+    }
+  },
+  {
+    "file": "RT_SB_028.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9671,
+    "probs": {
+      "fresh": 0.0329,
+      "rotten": 0.9671
+    }
+  },
+  {
+    "file": "RT_SB_010.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9858,
+    "probs": {
+      "fresh": 0.0142,
+      "rotten": 0.9858
+    }
+  },
+  {
+    "file": "RT_BN_022.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8387,
+    "probs": {
+      "fresh": 0.1613,
+      "rotten": 0.8387
+    }
+  },
+  {
+    "file": "RT_SB_016.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8766,
+    "probs": {
+      "fresh": 0.1234,
+      "rotten": 0.8766
+    }
+  },
+  {
     "file": "RT_SB_039.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
@@ -1320,6 +715,28 @@
     }
   },
   {
+    "file": "RT_SB_006.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.6805,
+    "probs": {
+      "fresh": 0.6805,
+      "rotten": 0.3195
+    }
+  },
+  {
+    "file": "RT_SB_038.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9402,
+    "probs": {
+      "fresh": 0.0598,
+      "rotten": 0.9402
+    }
+  },
+  {
     "file": "RT_SB_048.jpg",
     "true_label": "rotten",
     "pred_label": "rotten",
@@ -1328,6 +745,1667 @@
     "probs": {
       "fresh": 0.0216,
       "rotten": 0.9784
+    }
+  },
+  {
+    "file": "RT_SB_031.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9797,
+    "probs": {
+      "fresh": 0.0203,
+      "rotten": 0.9797
+    }
+  },
+  {
+    "file": "RT_BN_050.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.803,
+    "probs": {
+      "fresh": 0.197,
+      "rotten": 0.803
+    }
+  },
+  {
+    "file": "RT_SB_025.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9891,
+    "probs": {
+      "fresh": 0.0109,
+      "rotten": 0.9891
+    }
+  },
+  {
+    "file": "RT_SB_012.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9591,
+    "probs": {
+      "fresh": 0.0409,
+      "rotten": 0.9591
+    }
+  },
+  {
+    "file": "RT_BN_031.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.584,
+    "probs": {
+      "fresh": 0.416,
+      "rotten": 0.584
+    }
+  },
+  {
+    "file": "RT_SB_052.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8638,
+    "probs": {
+      "fresh": 0.1362,
+      "rotten": 0.8638
+    }
+  },
+  {
+    "file": "RT_BN_007.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7606,
+    "probs": {
+      "fresh": 0.2394,
+      "rotten": 0.7606
+    }
+  },
+  {
+    "file": "RT_SB_045.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9823,
+    "probs": {
+      "fresh": 0.0177,
+      "rotten": 0.9823
+    }
+  },
+  {
+    "file": "RT_BN_030.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7557,
+    "probs": {
+      "fresh": 0.2443,
+      "rotten": 0.7557
+    }
+  },
+  {
+    "file": "RT_SB_050.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9774,
+    "probs": {
+      "fresh": 0.0226,
+      "rotten": 0.9774
+    }
+  },
+  {
+    "file": "RT_SB_046.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.5004,
+    "probs": {
+      "fresh": 0.4996,
+      "rotten": 0.5004
+    }
+  },
+  {
+    "file": "RT_BN_011.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6734,
+    "probs": {
+      "fresh": 0.3266,
+      "rotten": 0.6734
+    }
+  },
+  {
+    "file": "RT_BN_039.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6621,
+    "probs": {
+      "fresh": 0.3379,
+      "rotten": 0.6621
+    }
+  },
+  {
+    "file": "RT_SB_033.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9846,
+    "probs": {
+      "fresh": 0.0154,
+      "rotten": 0.9846
+    }
+  },
+  {
+    "file": "RT_SB_001.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7581,
+    "probs": {
+      "fresh": 0.2419,
+      "rotten": 0.7581
+    }
+  },
+  {
+    "file": "RT_BN_013.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.6661,
+    "probs": {
+      "fresh": 0.6661,
+      "rotten": 0.3339
+    }
+  },
+  {
+    "file": "RT_SB_032.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9639,
+    "probs": {
+      "fresh": 0.0361,
+      "rotten": 0.9639
+    }
+  },
+  {
+    "file": "RT_BN_051.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.606,
+    "probs": {
+      "fresh": 0.394,
+      "rotten": 0.606
+    }
+  },
+  {
+    "file": "RT_SB_020.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8455,
+    "probs": {
+      "fresh": 0.1545,
+      "rotten": 0.8455
+    }
+  },
+  {
+    "file": "RT_BN_032.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7744,
+    "probs": {
+      "fresh": 0.2256,
+      "rotten": 0.7744
+    }
+  },
+  {
+    "file": "RT_BN_006.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9007,
+    "probs": {
+      "fresh": 0.0993,
+      "rotten": 0.9007
+    }
+  },
+  {
+    "file": "RT_SB_027.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9568,
+    "probs": {
+      "fresh": 0.0432,
+      "rotten": 0.9568
+    }
+  },
+  {
+    "file": "RT_BN_047.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6801,
+    "probs": {
+      "fresh": 0.3199,
+      "rotten": 0.6801
+    }
+  },
+  {
+    "file": "RT_BN_028.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6801,
+    "probs": {
+      "fresh": 0.3199,
+      "rotten": 0.6801
+    }
+  },
+  {
+    "file": "RT_SB_057.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9795,
+    "probs": {
+      "fresh": 0.0205,
+      "rotten": 0.9795
+    }
+  },
+  {
+    "file": "RT_BN_004.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8951,
+    "probs": {
+      "fresh": 0.1049,
+      "rotten": 0.8951
+    }
+  },
+  {
+    "file": "RT_BN_010.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9406,
+    "probs": {
+      "fresh": 0.0594,
+      "rotten": 0.9406
+    }
+  },
+  {
+    "file": "RT_BN_044.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9498,
+    "probs": {
+      "fresh": 0.0502,
+      "rotten": 0.9498
+    }
+  },
+  {
+    "file": "RT_SB_054.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.502,
+    "probs": {
+      "fresh": 0.498,
+      "rotten": 0.502
+    }
+  },
+  {
+    "file": "RT_SB_056.jpg",
+    "true_label": "rotten",
+    "pred_label": "fresh",
+    "correct": false,
+    "confidence": 0.6115,
+    "probs": {
+      "fresh": 0.6115,
+      "rotten": 0.3885
+    }
+  },
+  {
+    "file": "RT_SB_029.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8337,
+    "probs": {
+      "fresh": 0.1663,
+      "rotten": 0.8337
+    }
+  },
+  {
+    "file": "RT_BN_001.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8901,
+    "probs": {
+      "fresh": 0.1099,
+      "rotten": 0.8901
+    }
+  },
+  {
+    "file": "RT_SB_042.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9222,
+    "probs": {
+      "fresh": 0.0778,
+      "rotten": 0.9222
+    }
+  },
+  {
+    "file": "RT_BN_052.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9264,
+    "probs": {
+      "fresh": 0.0736,
+      "rotten": 0.9264
+    }
+  },
+  {
+    "file": "RT_SB_002.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8499,
+    "probs": {
+      "fresh": 0.1501,
+      "rotten": 0.8499
+    }
+  },
+  {
+    "file": "RT_BN_019.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.7114,
+    "probs": {
+      "fresh": 0.2886,
+      "rotten": 0.7114
+    }
+  },
+  {
+    "file": "RT_SB_022.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.6436,
+    "probs": {
+      "fresh": 0.3564,
+      "rotten": 0.6436
+    }
+  },
+  {
+    "file": "RT_BN_033.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.8249,
+    "probs": {
+      "fresh": 0.1751,
+      "rotten": 0.8249
+    }
+  },
+  {
+    "file": "RT_SB_003.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9712,
+    "probs": {
+      "fresh": 0.0288,
+      "rotten": 0.9712
+    }
+  },
+  {
+    "file": "RT_SB_024.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9255,
+    "probs": {
+      "fresh": 0.0745,
+      "rotten": 0.9255
+    }
+  },
+  {
+    "file": "RT_SB_055.jpg",
+    "true_label": "rotten",
+    "pred_label": "rotten",
+    "correct": true,
+    "confidence": 0.9157,
+    "probs": {
+      "fresh": 0.0843,
+      "rotten": 0.9157
+    }
+  },
+  {
+    "file": "FR_BN_026.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8205,
+    "probs": {
+      "fresh": 0.8205,
+      "rotten": 0.1795
+    }
+  },
+  {
+    "file": "FR_BN_013.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6966,
+    "probs": {
+      "fresh": 0.3034,
+      "rotten": 0.6966
+    }
+  },
+  {
+    "file": "FR_SB_006.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.942,
+    "probs": {
+      "fresh": 0.942,
+      "rotten": 0.058
+    }
+  },
+  {
+    "file": "FR_SB_040.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7982,
+    "probs": {
+      "fresh": 0.7982,
+      "rotten": 0.2018
+    }
+  },
+  {
+    "file": "FR_SB_012.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.526,
+    "probs": {
+      "fresh": 0.526,
+      "rotten": 0.474
+    }
+  },
+  {
+    "file": "FR_SB_008.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6896,
+    "probs": {
+      "fresh": 0.6896,
+      "rotten": 0.3104
+    }
+  },
+  {
+    "file": "FR_BN_009.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.7678,
+    "probs": {
+      "fresh": 0.2322,
+      "rotten": 0.7678
+    }
+  },
+  {
+    "file": "FR_SB_009.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9379,
+    "probs": {
+      "fresh": 0.9379,
+      "rotten": 0.0621
+    }
+  },
+  {
+    "file": "FR_BN_002.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6317,
+    "probs": {
+      "fresh": 0.3683,
+      "rotten": 0.6317
+    }
+  },
+  {
+    "file": "FR_SB_028.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8356,
+    "probs": {
+      "fresh": 0.8356,
+      "rotten": 0.1644
+    }
+  },
+  {
+    "file": "FR_BN_040.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.644,
+    "probs": {
+      "fresh": 0.644,
+      "rotten": 0.356
+    }
+  },
+  {
+    "file": "FR_BN_030.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.515,
+    "probs": {
+      "fresh": 0.515,
+      "rotten": 0.485
+    }
+  },
+  {
+    "file": "FR_BN_025.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6073,
+    "probs": {
+      "fresh": 0.6073,
+      "rotten": 0.3927
+    }
+  },
+  {
+    "file": "FR_BN_039.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.7584,
+    "probs": {
+      "fresh": 0.2416,
+      "rotten": 0.7584
+    }
+  },
+  {
+    "file": "FR_BN_015.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6636,
+    "probs": {
+      "fresh": 0.3364,
+      "rotten": 0.6636
+    }
+  },
+  {
+    "file": "FR_SB_059.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8339,
+    "probs": {
+      "fresh": 0.8339,
+      "rotten": 0.1661
+    }
+  },
+  {
+    "file": "FR_SB_026.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.932,
+    "probs": {
+      "fresh": 0.932,
+      "rotten": 0.068
+    }
+  },
+  {
+    "file": "FR_SB_018.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9289,
+    "probs": {
+      "fresh": 0.9289,
+      "rotten": 0.0711
+    }
+  },
+  {
+    "file": "FR_SB_038.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9434,
+    "probs": {
+      "fresh": 0.9434,
+      "rotten": 0.0566
+    }
+  },
+  {
+    "file": "FR_BN_029.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9496,
+    "probs": {
+      "fresh": 0.9496,
+      "rotten": 0.0504
+    }
+  },
+  {
+    "file": "FR_SB_048.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8814,
+    "probs": {
+      "fresh": 0.8814,
+      "rotten": 0.1186
+    }
+  },
+  {
+    "file": "FR_SB_020.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9752,
+    "probs": {
+      "fresh": 0.9752,
+      "rotten": 0.0248
+    }
+  },
+  {
+    "file": "FR_SB_063.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.977,
+    "probs": {
+      "fresh": 0.977,
+      "rotten": 0.023
+    }
+  },
+  {
+    "file": "FR_BN_045.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6616,
+    "probs": {
+      "fresh": 0.6616,
+      "rotten": 0.3384
+    }
+  },
+  {
+    "file": "FR_SB_060.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8277,
+    "probs": {
+      "fresh": 0.8277,
+      "rotten": 0.1723
+    }
+  },
+  {
+    "file": "FR_BN_035.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8336,
+    "probs": {
+      "fresh": 0.8336,
+      "rotten": 0.1664
+    }
+  },
+  {
+    "file": "FR_SB_039.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5199,
+    "probs": {
+      "fresh": 0.4801,
+      "rotten": 0.5199
+    }
+  },
+  {
+    "file": "FR_SB_047.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9553,
+    "probs": {
+      "fresh": 0.9553,
+      "rotten": 0.0447
+    }
+  },
+  {
+    "file": "FR_SB_064.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8892,
+    "probs": {
+      "fresh": 0.8892,
+      "rotten": 0.1108
+    }
+  },
+  {
+    "file": "FR_BN_043.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5792,
+    "probs": {
+      "fresh": 0.4208,
+      "rotten": 0.5792
+    }
+  },
+  {
+    "file": "FR_SB_003.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.5568,
+    "probs": {
+      "fresh": 0.5568,
+      "rotten": 0.4432
+    }
+  },
+  {
+    "file": "FR_SB_053.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9097,
+    "probs": {
+      "fresh": 0.9097,
+      "rotten": 0.0903
+    }
+  },
+  {
+    "file": "FR_SB_025.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9593,
+    "probs": {
+      "fresh": 0.9593,
+      "rotten": 0.0407
+    }
+  },
+  {
+    "file": "FR_SB_030.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8973,
+    "probs": {
+      "fresh": 0.8973,
+      "rotten": 0.1027
+    }
+  },
+  {
+    "file": "FR_BN_014.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5023,
+    "probs": {
+      "fresh": 0.4977,
+      "rotten": 0.5023
+    }
+  },
+  {
+    "file": "FR_BN_034.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8682,
+    "probs": {
+      "fresh": 0.8682,
+      "rotten": 0.1318
+    }
+  },
+  {
+    "file": "FR_SB_056.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9649,
+    "probs": {
+      "fresh": 0.9649,
+      "rotten": 0.0351
+    }
+  },
+  {
+    "file": "FR_SB_050.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7967,
+    "probs": {
+      "fresh": 0.7967,
+      "rotten": 0.2033
+    }
+  },
+  {
+    "file": "FR_SB_033.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6668,
+    "probs": {
+      "fresh": 0.3332,
+      "rotten": 0.6668
+    }
+  },
+  {
+    "file": "FR_BN_006.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5227,
+    "probs": {
+      "fresh": 0.4773,
+      "rotten": 0.5227
+    }
+  },
+  {
+    "file": "FR_SB_043.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6753,
+    "probs": {
+      "fresh": 0.6753,
+      "rotten": 0.3247
+    }
+  },
+  {
+    "file": "FR_BN_023.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5582,
+    "probs": {
+      "fresh": 0.4418,
+      "rotten": 0.5582
+    }
+  },
+  {
+    "file": "FR_SB_015.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.697,
+    "probs": {
+      "fresh": 0.303,
+      "rotten": 0.697
+    }
+  },
+  {
+    "file": "FR_SB_013.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5395,
+    "probs": {
+      "fresh": 0.4605,
+      "rotten": 0.5395
+    }
+  },
+  {
+    "file": "FR_BN_001.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.8683,
+    "probs": {
+      "fresh": 0.1317,
+      "rotten": 0.8683
+    }
+  },
+  {
+    "file": "FR_SB_027.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7745,
+    "probs": {
+      "fresh": 0.7745,
+      "rotten": 0.2255
+    }
+  },
+  {
+    "file": "FR_BN_012.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6139,
+    "probs": {
+      "fresh": 0.3861,
+      "rotten": 0.6139
+    }
+  },
+  {
+    "file": "FR_BN_017.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7096,
+    "probs": {
+      "fresh": 0.7096,
+      "rotten": 0.2904
+    }
+  },
+  {
+    "file": "FR_BN_008.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.7788,
+    "probs": {
+      "fresh": 0.2212,
+      "rotten": 0.7788
+    }
+  },
+  {
+    "file": "FR_BN_038.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.8528,
+    "probs": {
+      "fresh": 0.1472,
+      "rotten": 0.8528
+    }
+  },
+  {
+    "file": "FR_SB_002.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6791,
+    "probs": {
+      "fresh": 0.3209,
+      "rotten": 0.6791
+    }
+  },
+  {
+    "file": "FR_SB_005.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.837,
+    "probs": {
+      "fresh": 0.837,
+      "rotten": 0.163
+    }
+  },
+  {
+    "file": "FR_SB_029.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7429,
+    "probs": {
+      "fresh": 0.7429,
+      "rotten": 0.2571
+    }
+  },
+  {
+    "file": "FR_SB_042.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6993,
+    "probs": {
+      "fresh": 0.6993,
+      "rotten": 0.3007
+    }
+  },
+  {
+    "file": "FR_SB_037.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9384,
+    "probs": {
+      "fresh": 0.9384,
+      "rotten": 0.0616
+    }
+  },
+  {
+    "file": "FR_SB_046.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.6713,
+    "probs": {
+      "fresh": 0.3287,
+      "rotten": 0.6713
+    }
+  },
+  {
+    "file": "FR_BN_004.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.7784,
+    "probs": {
+      "fresh": 0.2216,
+      "rotten": 0.7784
+    }
+  },
+  {
+    "file": "FR_SB_054.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7568,
+    "probs": {
+      "fresh": 0.7568,
+      "rotten": 0.2432
+    }
+  },
+  {
+    "file": "FR_SB_049.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9014,
+    "probs": {
+      "fresh": 0.9014,
+      "rotten": 0.0986
+    }
+  },
+  {
+    "file": "FR_BN_019.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5292,
+    "probs": {
+      "fresh": 0.4708,
+      "rotten": 0.5292
+    }
+  },
+  {
+    "file": "FR_SB_052.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.88,
+    "probs": {
+      "fresh": 0.88,
+      "rotten": 0.12
+    }
+  },
+  {
+    "file": "FR_BN_005.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5041,
+    "probs": {
+      "fresh": 0.4959,
+      "rotten": 0.5041
+    }
+  },
+  {
+    "file": "FR_BN_007.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.8999,
+    "probs": {
+      "fresh": 0.1001,
+      "rotten": 0.8999
+    }
+  },
+  {
+    "file": "FR_SB_021.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.9423,
+    "probs": {
+      "fresh": 0.0577,
+      "rotten": 0.9423
+    }
+  },
+  {
+    "file": "FR_BN_018.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.5927,
+    "probs": {
+      "fresh": 0.5927,
+      "rotten": 0.4073
+    }
+  },
+  {
+    "file": "FR_BN_031.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5761,
+    "probs": {
+      "fresh": 0.4239,
+      "rotten": 0.5761
+    }
+  },
+  {
+    "file": "FR_SB_055.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8906,
+    "probs": {
+      "fresh": 0.8906,
+      "rotten": 0.1094
+    }
+  },
+  {
+    "file": "FR_SB_016.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9579,
+    "probs": {
+      "fresh": 0.9579,
+      "rotten": 0.0421
+    }
+  },
+  {
+    "file": "FR_BN_033.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.5815,
+    "probs": {
+      "fresh": 0.5815,
+      "rotten": 0.4185
+    }
+  },
+  {
+    "file": "FR_SB_017.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.7077,
+    "probs": {
+      "fresh": 0.2923,
+      "rotten": 0.7077
+    }
+  },
+  {
+    "file": "FR_BN_036.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8849,
+    "probs": {
+      "fresh": 0.8849,
+      "rotten": 0.1151
+    }
+  },
+  {
+    "file": "FR_SB_062.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.877,
+    "probs": {
+      "fresh": 0.877,
+      "rotten": 0.123
+    }
+  },
+  {
+    "file": "FR_SB_014.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.5713,
+    "probs": {
+      "fresh": 0.5713,
+      "rotten": 0.4287
+    }
+  },
+  {
+    "file": "FR_BN_044.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5773,
+    "probs": {
+      "fresh": 0.4227,
+      "rotten": 0.5773
+    }
+  },
+  {
+    "file": "FR_SB_057.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8204,
+    "probs": {
+      "fresh": 0.8204,
+      "rotten": 0.1796
+    }
+  },
+  {
+    "file": "FR_SB_036.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9626,
+    "probs": {
+      "fresh": 0.9626,
+      "rotten": 0.0374
+    }
+  },
+  {
+    "file": "FR_SB_044.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9143,
+    "probs": {
+      "fresh": 0.9143,
+      "rotten": 0.0857
+    }
+  },
+  {
+    "file": "FR_BN_016.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8133,
+    "probs": {
+      "fresh": 0.8133,
+      "rotten": 0.1867
+    }
+  },
+  {
+    "file": "FR_SB_011.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9491,
+    "probs": {
+      "fresh": 0.9491,
+      "rotten": 0.0509
+    }
+  },
+  {
+    "file": "FR_SB_022.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7571,
+    "probs": {
+      "fresh": 0.7571,
+      "rotten": 0.2429
+    }
+  },
+  {
+    "file": "FR_SB_007.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9575,
+    "probs": {
+      "fresh": 0.9575,
+      "rotten": 0.0425
+    }
+  },
+  {
+    "file": "FR_SB_010.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9493,
+    "probs": {
+      "fresh": 0.9493,
+      "rotten": 0.0507
+    }
+  },
+  {
+    "file": "FR_BN_042.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.5367,
+    "probs": {
+      "fresh": 0.5367,
+      "rotten": 0.4633
+    }
+  },
+  {
+    "file": "FR_BN_027.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8041,
+    "probs": {
+      "fresh": 0.8041,
+      "rotten": 0.1959
+    }
+  },
+  {
+    "file": "FR_BN_011.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.8497,
+    "probs": {
+      "fresh": 0.1503,
+      "rotten": 0.8497
+    }
+  },
+  {
+    "file": "FR_BN_021.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6946,
+    "probs": {
+      "fresh": 0.6946,
+      "rotten": 0.3054
+    }
+  },
+  {
+    "file": "FR_SB_032.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8538,
+    "probs": {
+      "fresh": 0.8538,
+      "rotten": 0.1462
+    }
+  },
+  {
+    "file": "FR_SB_045.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6774,
+    "probs": {
+      "fresh": 0.6774,
+      "rotten": 0.3226
+    }
+  },
+  {
+    "file": "FR_SB_051.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9705,
+    "probs": {
+      "fresh": 0.9705,
+      "rotten": 0.0295
+    }
+  },
+  {
+    "file": "FR_BN_037.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6006,
+    "probs": {
+      "fresh": 0.6006,
+      "rotten": 0.3994
+    }
+  },
+  {
+    "file": "FR_BN_028.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7647,
+    "probs": {
+      "fresh": 0.7647,
+      "rotten": 0.2353
+    }
+  },
+  {
+    "file": "FR_BN_010.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.821,
+    "probs": {
+      "fresh": 0.179,
+      "rotten": 0.821
+    }
+  },
+  {
+    "file": "FR_BN_003.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.5944,
+    "probs": {
+      "fresh": 0.5944,
+      "rotten": 0.4056
+    }
+  },
+  {
+    "file": "FR_SB_019.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9453,
+    "probs": {
+      "fresh": 0.9453,
+      "rotten": 0.0547
+    }
+  },
+  {
+    "file": "FR_SB_031.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.845,
+    "probs": {
+      "fresh": 0.845,
+      "rotten": 0.155
+    }
+  },
+  {
+    "file": "FR_SB_058.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7242,
+    "probs": {
+      "fresh": 0.7242,
+      "rotten": 0.2758
+    }
+  },
+  {
+    "file": "FR_SB_061.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9858,
+    "probs": {
+      "fresh": 0.9858,
+      "rotten": 0.0142
+    }
+  },
+  {
+    "file": "FR_BN_032.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6972,
+    "probs": {
+      "fresh": 0.6972,
+      "rotten": 0.3028
+    }
+  },
+  {
+    "file": "FR_BN_041.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7038,
+    "probs": {
+      "fresh": 0.7038,
+      "rotten": 0.2962
+    }
+  },
+  {
+    "file": "FR_SB_035.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.5029,
+    "probs": {
+      "fresh": 0.4971,
+      "rotten": 0.5029
+    }
+  },
+  {
+    "file": "FR_BN_020.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6256,
+    "probs": {
+      "fresh": 0.6256,
+      "rotten": 0.3744
+    }
+  },
+  {
+    "file": "FR_SB_034.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.955,
+    "probs": {
+      "fresh": 0.955,
+      "rotten": 0.045
+    }
+  },
+  {
+    "file": "FR_BN_046.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.788,
+    "probs": {
+      "fresh": 0.788,
+      "rotten": 0.212
+    }
+  },
+  {
+    "file": "FR_BN_024.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7091,
+    "probs": {
+      "fresh": 0.7091,
+      "rotten": 0.2909
+    }
+  },
+  {
+    "file": "FR_SB_004.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.8181,
+    "probs": {
+      "fresh": 0.1819,
+      "rotten": 0.8181
+    }
+  },
+  {
+    "file": "FR_SB_001.jpg",
+    "true_label": "fresh",
+    "pred_label": "rotten",
+    "correct": false,
+    "confidence": 0.7443,
+    "probs": {
+      "fresh": 0.2557,
+      "rotten": 0.7443
+    }
+  },
+  {
+    "file": "FR_SB_023.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.9395,
+    "probs": {
+      "fresh": 0.9395,
+      "rotten": 0.0605
+    }
+  },
+  {
+    "file": "FR_SB_024.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.7665,
+    "probs": {
+      "fresh": 0.7665,
+      "rotten": 0.2335
+    }
+  },
+  {
+    "file": "FR_BN_022.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.6124,
+    "probs": {
+      "fresh": 0.6124,
+      "rotten": 0.3876
+    }
+  },
+  {
+    "file": "FR_SB_041.jpg",
+    "true_label": "fresh",
+    "pred_label": "fresh",
+    "correct": true,
+    "confidence": 0.8275,
+    "probs": {
+      "fresh": 0.8275,
+      "rotten": 0.1725
     }
   }
 ]
