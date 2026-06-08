@@ -58,7 +58,7 @@
             <mxRectangle height="20" width="160" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-49" parent="1" style="shape=card;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=light-dark(default, #82cd82);" value="" vertex="1">
+        <mxCell id="2tPUo-XkhBDmI97mid4I-49" parent="1" style="shape=card;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=light-dark(#000000,#0000FF);" value="" vertex="1">
           <mxGeometry height="396" width="760" x="40" y="-546" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-52" parent="1" style="shape=card;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=light-dark(#000000,#6600CC);" value="" vertex="1">
@@ -379,7 +379,7 @@
             <mxPoint x="356" y="-43" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-177" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=light-dark(#FFFFFF,#FFFFFF);fontSize=10;strokeWidth=1;fillColor=none;fontColor=default;labelBackgroundColor=none;" value="run_outputs/_plots/... png" vertex="1">
+        <mxCell id="2tPUo-XkhBDmI97mid4I-177" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=10;strokeWidth=1;fillColor=none;fontColor=default;labelBackgroundColor=none;swimlaneFillColor=default;" value="run_outputs/_plots/... png" vertex="1">
           <mxGeometry height="140" width="200" x="567" y="-87.5" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-178" parent="2tPUo-XkhBDmI97mid4I-177" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
@@ -423,30 +423,30 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-190" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=3;fillColor=none;fontColor=light-dark(#FFFFFF,#FFFFFF);align=left;" value="run_outputs/&#xa;{dataset}_{fruits}_{condition}_{backbone}/eval/" vertex="1">
-          <mxGeometry height="140" width="200" x="47" y="147" as="geometry" />
+          <mxGeometry height="140" width="213" x="47" y="147" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-191" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="21" width="200" y="40" as="geometry" />
+          <mxGeometry height="21" width="213" y="40" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-192" parent="2tPUo-XkhBDmI97mid4I-191" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;span style=&quot;font-size: 9px;&quot;&gt;own_dataset_state.json&lt;/span&gt;" vertex="1">
-          <mxGeometry height="21" width="200" as="geometry">
-            <mxRectangle height="21" width="200" as="alternateBounds" />
+          <mxGeometry height="21" width="213" as="geometry">
+            <mxRectangle height="21" width="213" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-193" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="20" width="200" y="61" as="geometry" />
+          <mxGeometry height="20" width="213" y="61" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-194" parent="2tPUo-XkhBDmI97mid4I-193" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;own_dataset_state_preds.json&amp;nbsp;&lt;/font&gt;" vertex="1">
-          <mxGeometry height="20" width="200" as="geometry">
-            <mxRectangle height="20" width="200" as="alternateBounds" />
+          <mxGeometry height="20" width="213" as="geometry">
+            <mxRectangle height="20" width="213" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-195" parent="2tPUo-XkhBDmI97mid4I-190" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
-          <mxGeometry height="39" width="200" y="81" as="geometry" />
+          <mxGeometry height="39" width="213" y="81" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-196" parent="2tPUo-XkhBDmI97mid4I-195" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;own_dataset_state_plots.jpg&amp;nbsp;&lt;/font&gt;" vertex="1">
-          <mxGeometry height="39" width="200" as="geometry">
-            <mxRectangle height="39" width="200" as="alternateBounds" />
+          <mxGeometry height="39" width="213" as="geometry">
+            <mxRectangle height="39" width="213" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-203" edge="1" parent="1" source="2tPUo-XkhBDmI97mid4I-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;flowAnimation=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#008a00;strokeColor=#005700;" target="2tPUo-XkhBDmI97mid4I-190">
@@ -785,7 +785,7 @@
         <mxCell id="ea-note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Per-image difficulty: how many models miss each photo. Finds the accuracy ceiling.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="30" width="230" x="50" y="363" as="geometry" />
         </mxCell>
-        <mxCell id="ea-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=1;fillColor=none;fontColor=light-dark(#FFFFFF,#FFFFFF);align=left;" value="run_outputs/_error_analysis/" vertex="1">
+        <mxCell id="ea-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=1;fillColor=none;fontColor=light-dark(#000000,#FFFFFF);align=left;" value="run_outputs/_error_analysis/" vertex="1">
           <mxGeometry height="80" width="210" x="143.34" y="400" as="geometry" />
         </mxCell>
         <mxCell id="ea-out-r1" parent="ea-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
@@ -820,7 +820,7 @@
         <mxCell id="pf-note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Splits predictions by fruit (FR_SB / FR_BN). F1 per fruit; exposure gap.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="30" width="212.5" x="297.19" y="270" as="geometry" />
         </mxCell>
-        <mxCell id="pf-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=1;fillColor=none;fontColor=light-dark(#FFFFFF,#FFFFFF);align=left;" value="run_outputs/_per_fruit/" vertex="1">
+        <mxCell id="pf-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=default;fontSize=9;strokeWidth=1;fillColor=none;fontColor=light-dark(#000000,#FFFFFF);align=left;" value="run_outputs/_per_fruit/" vertex="1">
           <mxGeometry height="80" width="210" x="397" y="393" as="geometry" />
         </mxCell>
         <mxCell id="pf-out-r1" parent="pf-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
