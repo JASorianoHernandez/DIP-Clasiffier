@@ -69,8 +69,8 @@ Example:  KFR-EB0-C3-ST
 | MFR | mendeley_fruits | MN3 | MobileNetV3-S | C2 | layer4 | FS | fruit_state |
 | MLM | mendeley_lemon_varieties | EB0 | EfficientNet-B0 | C3 | head_frozen | | |
 | MFV | mendeley_fruitvision | EB2 | EfficientNet-B2 | C4 | head_layer4 | | |
-| KFR | kaggle_fruits_fresh_rotten | EB0 | EfficientNet-B0 | | | | |
-| KFS | kaggle_fresh_stale | EB2 | EfficientNet-B2 | | | | |
+| KFR | kaggle_fruits_fresh_rotten | | | | | | |
+| KFS | kaggle_fresh_stale | | | | | | |
 | OWN | own_dataset | | | | | | |
 
 ---
@@ -235,18 +235,30 @@ recall, and accuracy across all evaluated datasets.
 
 ## Results Summary
 
-Best macro F1 per dataset and backbone (state mode, 60 epochs).
+Best macro F1 per dataset and backbone (state mode, 60 epochs). All 96 experiments
+complete. Values read from each run's `metrics.json`.
 
 ### ResNet-18
 
 | Dataset | Images | Best Cond | F1 | MCC | AUC |
 |---|---|---|---|---|---|
-| kaggle_fruits_fresh_rotten | 13,599 | C4 / C2 | **99.8%** | 0.996 | 1.000 |
+| kaggle_fruits_fresh_rotten | 13,599 | C4 | **99.8%** | 0.996 | 1.000 |
 | kaggle_fresh_stale | 27,317 | C4 | **99.0%** | 0.979 | 1.000 |
 | mendeley_lemon_varieties | 1,956 | C4 | **98.5%** | 0.970 | 1.000 |
 | mendeley_fruits | 1,655 | C4 | **96.4%** | 0.929 | 0.995 |
 | mendeley_fruitvision | 10,154 | C2 | **91.0%** | 0.863 | 0.981 |
 | kaggle_fruits_quality | 359 | C2 | **91.6%** | 0.839 | 0.947 |
+
+### MobileNetV3-Small
+
+| Dataset | Images | Best Cond | F1 | MCC | AUC |
+|---|---|---|---|---|---|
+| kaggle_fruits_fresh_rotten | 13,599 | C3 | **100.0%** | 1.000 | 1.000 |
+| kaggle_fresh_stale | 27,317 | C3 | **99.2%** | 0.984 | 1.000 |
+| mendeley_lemon_varieties | 1,956 | C3 | **98.2%** | 0.964 | 0.998 |
+| mendeley_fruits | 1,655 | C3 | **96.7%** | 0.934 | 0.997 |
+| mendeley_fruitvision | 10,154 | C3 | **92.4%** | 0.884 | 0.989 |
+| kaggle_fruits_quality | 359 | C1 | **91.6%** | 0.839 | 0.959 |
 
 ### EfficientNet-B0
 
@@ -264,11 +276,11 @@ Best macro F1 per dataset and backbone (state mode, 60 epochs).
 | Dataset | Images | Best Cond | F1 | MCC | AUC |
 |---|---|---|---|---|---|
 | kaggle_fruits_fresh_rotten | 13,599 | C3 | **99.9%** | 0.999 | 1.000 |
-| kaggle_fresh_stale | 27,317 | C3 | pending | — | — |
-| mendeley_lemon_varieties | 1,956 | C3 | **98.5%** | — | — |
-| mendeley_fruits | 1,655 | C4 | **95.8%** | — | — |
+| kaggle_fresh_stale | 27,317 | C3 | **99.3%** | 0.987 | 1.000 |
+| mendeley_lemon_varieties | 1,956 | C3 | **98.0%** | 0.959 | 0.999 |
+| mendeley_fruits | 1,655 | C3 | **96.4%** | 0.928 | 0.995 |
 | mendeley_fruitvision | 10,154 | C3 | **92.3%** | 0.881 | 0.987 |
-| kaggle_fruits_quality | 359 | C3 | **88.9%** | — | — |
+| kaggle_fruits_quality | 359 | C1 | **88.9%** | 0.779 | 0.941 |
 
 ---
 
