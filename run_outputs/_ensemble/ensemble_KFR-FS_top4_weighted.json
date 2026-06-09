@@ -1,0 +1,106 @@
+{
+  "eval_dataset": "kaggle_fruits_fresh_rotten",
+  "eval_mode": "fruit_state",
+  "classes": [
+    "apple_fresh",
+    "apple_rotten",
+    "banana_fresh",
+    "banana_rotten",
+    "orange_fresh",
+    "orange_rotten"
+  ],
+  "tag": "top4",
+  "method": "weighted",
+  "n_members": 4,
+  "members": [
+    {
+      "id": "KFR-R18-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_resnet18_fs",
+      "val_f1": 0.996486,
+      "eval_f1": 0.9965
+    },
+    {
+      "id": "KFR-R18-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_resnet18_fs",
+      "val_f1": 0.994608,
+      "eval_f1": 0.9946
+    },
+    {
+      "id": "KFR-R18-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_resnet18_fs",
+      "val_f1": 0.994021,
+      "eval_f1": 0.994
+    },
+    {
+      "id": "KFR-R18-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_resnet18_fs",
+      "val_f1": 0.977828,
+      "eval_f1": 0.9778
+    }
+  ],
+  "best_single": {
+    "id": "KFR-R18-C4-FS",
+    "f1": 0.9965
+  },
+  "ensemble": {
+    "n_images": 2721,
+    "n_classes": 6,
+    "acc": 0.9963,
+    "f1_macro": 0.9964,
+    "precision_macro": 0.9961,
+    "recall_macro": 0.9966,
+    "mcc": 0.9956,
+    "confusion_matrix": [
+      [
+        418,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        5,
+        583,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        392,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        551,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        371,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        2,
+        396
+      ]
+    ],
+    "auc_roc": null
+  },
+  "delta_f1_pts": -0.01
+}
