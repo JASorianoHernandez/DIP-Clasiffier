@@ -10,53 +10,49 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 6000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: references.bib
-Warning--I didn't find a database entry for "placeholder_food"
-Warning--I didn't find a database entry for "placeholder_fruits"
-Warning--I didn't find a database entry for "placeholder_veg"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 5 entries,
+You've used 13 entries,
             4087 wiz_defined-function locations,
-            856 strings with 8477 characters,
-and the built_in function-call counts, 5303 in all, are:
-= -- 408
-> -- 140
-< -- 57
-+ -- 82
-- -- 22
-* -- 265
-:= -- 718
-add.period$ -- 10
-call.type$ -- 5
-change.case$ -- 5
-chr.to.int$ -- 144
-cite$ -- 5
-duplicate$ -- 345
-empty$ -- 406
-format.name$ -- 27
-if$ -- 1243
+            893 strings with 9940 characters,
+and the built_in function-call counts, 10440 in all, are:
+= -- 819
+> -- 246
+< -- 95
++ -- 141
+- -- 40
+* -- 492
+:= -- 1512
+add.period$ -- 28
+call.type$ -- 13
+change.case$ -- 13
+chr.to.int$ -- 237
+cite$ -- 13
+duplicate$ -- 734
+empty$ -- 859
+format.name$ -- 49
+if$ -- 2446
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 57
-newline$ -- 38
-num.names$ -- 5
-pop$ -- 134
+int.to.str$ -- 13
+missing$ -- 120
+newline$ -- 62
+num.names$ -- 13
+pop$ -- 286
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 406
+skip$ -- 806
 stack$ -- 0
-substring$ -- 341
-swap$ -- 311
-text.length$ -- 9
+substring$ -- 565
+swap$ -- 595
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
+type$ -- 13
 warning$ -- 0
-while$ -- 25
-width$ -- 6
-write$ -- 71
-(There were 3 warnings)
+while$ -- 49
+width$ -- 15
+write$ -- 142

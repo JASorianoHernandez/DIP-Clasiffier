@@ -39,33 +39,37 @@ A Comparative Study of Backbone Architectures and Training Conditions}
 Automated freshness classification of fruits and vegetables is a
 critical task for food safety, supply chain management, and retail
 quality control.
-This paper presents a systematic comparative study of transfer learning
-applied to this problem, evaluating three convolutional neural network
-backbone architectures --- ResNet-18, EfficientNet-B0, and
+This paper presents a systematic study of transfer learning applied to
+this problem, evaluating four convolutional neural network backbone
+architectures --- ResNet-18, MobileNetV3-Small, EfficientNet-B0, and
 EfficientNet-B2 --- under four training conditions that vary the degree
 of backbone fine-tuning and the presence of a non-linear projection head.
 Experiments are conducted on six publicly available datasets comprising
 over 55,000 images across multiple fruit and vegetable categories,
 including binary (fresh/rotten) and three-class (fresh/formalin/rotten)
 annotation schemes.
-We find that EfficientNet-B0 with a frozen backbone and projection head
-achieves the best performance on datasets with more than 1,500 images,
-reaching 100\% macro F1-score on one benchmark,
-while ResNet-18 remains superior for very small datasets ($<$500 images).
+On the two datasets for which published baselines exist, our models
+exceed the state of the art: on the apple/banana/orange benchmark our
+best single model reaches a perfect 100\% accuracy and a 16-model
+ensemble attains 99.96\%, surpassing the previously reported 99.61\%;
+on the peach/pomegranate/strawberry benchmark our ensemble reaches
+96.68\%, surpassing the published 95.0\%.
 A key finding is that the optimal training condition differs by backbone
-family: fine-tuning the last residual block is beneficial for ResNet-18
-(C4), but detrimental for EfficientNet variants, which perform best
-with a completely frozen backbone (C3).
-We further evaluate domain shift by testing trained models on a small
-collection of 121 real-world photos taken under natural lighting
-conditions, revealing a significant performance gap of up to 34.3
-percentage points between studio-quality training data and
-real-world evaluation images.
+family: fine-tuning the last residual block benefits ResNet-18 (C4),
+whereas MobileNetV3 and both EfficientNet variants perform best with a
+completely frozen backbone and projection head (C3).
+We further quantify domain shift on a held-out set of 219 real-world
+mobile-camera photos of two fruits, showing that a model's per-fruit
+accuracy is governed by whether that fruit appeared in training
+(banana F1 of 71\% when seen versus 42\% when unseen), and we demonstrate
+that a lightweight head-only fine-tuning step closes most of this gap,
+raising macro F1 from 86.3\% to 94.5\%.
 \end{abstract}
 
 \begin{IEEEkeywords}
 transfer learning, freshness classification, convolutional neural networks,
-EfficientNet, ResNet, domain shift, food quality inspection, fine-tuning
+EfficientNet, MobileNet, ResNet, model ensemble, domain shift,
+food quality inspection, fine-tuning
 \end{IEEEkeywords}
 
 % ── I. Introduction ───────────────────────────────────────────
@@ -98,19 +102,27 @@ images captured by mobile devices has received limited attention.
 
 This paper addresses both gaps through the following contributions:
 \begin{itemize}
-    \item A controlled comparison of three CNN backbone architectures
-    (ResNet-18, EfficientNet-B0, EfficientNet-B2) and four training
-    conditions (C1--C4) across six benchmark datasets totalling
-    55,040 images.
+    \item A controlled comparison of four CNN backbone architectures
+    (ResNet-18, MobileNetV3-Small, EfficientNet-B0, EfficientNet-B2) and
+    four training conditions (C1--C4) across six benchmark datasets
+    totalling 55,040 images, in both binary and six-class
+    (fruit$\times$state) formulations.
+    \item State-of-the-art results on the two datasets with published
+    baselines: a perfect 100\% accuracy (best single model) and a 99.96\%
+    16-model ensemble on the apple/banana/orange benchmark, and a 96.68\%
+    ensemble on the peach/pomegranate/strawberry benchmark, both exceeding
+    previously reported figures.
     \item The identification of a consistent interaction between backbone
     family and optimal training condition: C4 (partial fine-tuning +
     projection head) for ResNet-18 vs.\ C3 (frozen backbone + projection
-    head) for EfficientNet variants.
-    \item A quantitative domain shift analysis showing that models
-    trained on internet-sourced studio photos can lose up to 34 percentage
-    points of F1-score when evaluated on real-world mobile camera images.
+    head) for the MobileNet and EfficientNet families.
+    \item A per-fruit domain-shift analysis on 219 real mobile-camera
+    photos showing that generalization tracks training exposure, together
+    with a head-only fine-tuning recipe that raises in-domain macro F1
+    from 86.3\% to 94.5\%.
     \item An open-source pipeline implementing the full experimental
-    workflow from data preparation to evaluation reporting.
+    workflow from data preparation to ensemble construction and
+    benchmark reporting.
 \end{itemize}
 
 The remainder of the paper is organized as follows.
@@ -127,13 +139,14 @@ Section~\ref{sec:conclusion} concludes the paper.
 \subsection{Food Quality Classification with Deep Learning}
 
 Deep learning has been widely applied to food recognition and quality
-assessment~\cite{placeholder_food}.
+assessment~\cite{automatic2023classification}.
 Several works specifically target freshness detection using CNNs trained
-from scratch or with transfer learning~\cite{placeholder_fruits}.
+from scratch or with transfer
+learning~\cite{fresh2023rotten,iqbal2025canned}.
 Bangladeshi et al.\ evaluated multiple deep learning architectures for
 fresh/rotten detection of fruits and vegetables, finding that pre-trained
 models significantly outperform models trained from
-scratch~\cite{placeholder_veg}.
+scratch~\cite{bangladeshi2022fresh}.
 
 \subsection{Backbone Architectures}
 
@@ -159,6 +172,26 @@ The intermediate strategy of fine-tuning only the later layers ---
 which capture more task-specific features --- is widely adopted as a
 balance between adaptation and catastrophic
 forgetting~\cite{kirkpatrick2017catastrophic}.
+Combining multiple models into an ensemble by averaging their predicted
+class probabilities is a long-established technique for reducing variance
+and exploiting complementary errors across
+classifiers~\cite{dietterich2000ensemble}; its benefit is largest when the
+constituent models are diverse and the task is not already saturated.
+
+\subsection{Prior Results on the Benchmark Datasets}
+
+Two of the datasets used here have published baselines that enable a
+direct comparison.
+On the Kaggle apple/banana/orange collection,
+Palakodati et al.~\cite{palakodati2020fresh} trained a custom CNN and
+reported 97.82\% accuracy, while
+Chakraborty et al.~\cite{chakraborty2021implementation} obtained 99.61\%
+with a MobileNetV2 transfer-learning model.
+On the Mendeley peach/pomegranate/strawberry collection,
+Sharma and Kumar~\cite{sharma2025automated} fine-tuned ResNet50 and
+reported 95.0\% accuracy.
+All three report accuracy as their primary metric, which we adopt for the
+comparison in Section~\ref{sec:experiments}.
 
 % ── III. Methodology ──────────────────────────────────────────
 \section{Methodology}
@@ -214,12 +247,15 @@ is applied to all datasets.
 
 \subsection{Backbone Architectures}
 
-Three pre-trained CNN backbones are evaluated, all initialized with
+Four pre-trained CNN backbones are evaluated, all initialized with
 ImageNet weights from the \texttt{torchvision} library:
 
 \begin{itemize}
     \item \textbf{ResNet-18}~\cite{he2016resnet}: 11.2M parameters,
     512-dimensional feature output from global average pooling.
+    \item \textbf{MobileNetV3-Small}: 2.5M parameters,
+    576-dimensional feature output; the most compact backbone, designed
+    for mobile and embedded inference.
     \item \textbf{EfficientNet-B0}~\cite{tan2019efficientnet}: 5.3M
     parameters, 1280-dimensional feature output.
     \item \textbf{EfficientNet-B2}~\cite{tan2019efficientnet}: 9.1M
@@ -310,6 +346,45 @@ All models are trained for 60 epochs using the Adam optimizer
 rate schedule and weight decay $\lambda = 10^{-4}$.
 Batch size is 32.
 
+\subsection{Label Modes}
+
+Each dataset is trained under two label formulations.
+In \textbf{state} mode the classes are the freshness states only
+(fresh/rotten, or fresh/formalin/rotten), so the classifier is
+fruit-agnostic.
+In \textbf{fruit\_state} mode each fruit$\times$state combination is a
+distinct class (e.g.\ \texttt{apple\_fresh}, \texttt{apple\_rotten}),
+yielding six classes for the two three-fruit benchmark datasets.
+The fruit\_state formulation matches the protocol of the published
+baselines and is therefore used for the head-to-head comparison
+(Section~\ref{sec:bench}).
+
+\subsection{Model Ensemble}
+\label{sec:ensmethod}
+
+For the two benchmark datasets, the sixteen fruit\_state models
+(four backbones $\times$ four conditions) are combined into a single
+classifier by averaging their predicted class-probability vectors.
+Let $\mathbf{p}^{(m)}_i \in \Delta^{C-1}$ be the softmax output of model
+$m$ for image $i$.
+The ensemble prediction is $\hat{y}_i = \arg\max_c \sum_{m=1}^{M} w_m\,
+p^{(m)}_{i,c}$, with three weighting schemes evaluated:
+\textbf{mean} ($w_m = 1/M$),
+\textbf{weighted} ($w_m \propto$ model $m$'s validation F1), and
+\textbf{adaptive} ($w_m \propto$ model $m$'s confidence on image $i$).
+The ensemble is computed entirely from the saved per-image probability
+files, requiring no GPU or model reloading.
+
+\subsection{Domain-Adaptation Fine-Tuning}
+\label{sec:ftmethod}
+
+To adapt a model to a new visual domain with minimal data, the backbone
+is kept frozen and only the classifier head is re-trained on a small set
+of target-domain images.
+This is evaluated with 5-fold cross-validation
+(30 epochs, $\text{lr}_\text{head} = 5\times10^{-4}$, batch size 16),
+reporting the mean macro F1 before and after adaptation.
+
 \subsection{Evaluation Metrics}
 
 Given the potential class imbalance in food datasets, accuracy alone is
@@ -365,164 +440,322 @@ KFQ & 86.1 & \textbf{91.6} & 86.0 & 88.9 & C2 \\
 \subsection{Phase 2: Backbone Comparison}
 
 Table~\ref{tab:backbone} compares the best macro F1-score per dataset
-across the three backbone architectures (state mode, best condition).
-EfficientNet-B0 with condition C3 achieves the best result in three
-datasets; EfficientNet-B2 wins on MFV (the hardest, three-class dataset)
-and matches EB0 on KFS; ResNet-18 wins only on KFQ (359 images),
-the smallest dataset in the benchmark.
-Notably, EB2 does not consistently outperform EB0 despite having
-more parameters, suggesting diminishing returns from increased
-model capacity for this task.
+across all four backbone architectures (state mode), with the winning
+condition shown in parentheses.
+EfficientNet-B0 achieves the best result on four of six datasets;
+MobileNetV3-Small --- despite being the smallest backbone (2.5M
+parameters) --- wins on the hardest three-class dataset (MFV) and ties for
+the lead on KFR and KFQ; ResNet-18 ties on KFQ, the smallest dataset.
+A clear pattern emerges in the \emph{condition} column: every backbone
+except ResNet-18 attains its best result under C3 (frozen backbone +
+projection head), whereas ResNet-18 prefers C4 (partial fine-tuning).
 
 \begin{table}[h]
 \centering
-\caption{Best macro F1-score (\%) by backbone architecture, state mode.
-Bold: overall best per dataset.}
+\caption{Best macro F1-score (\%) by backbone, state mode.
+Winning condition in parentheses. Bold: overall best per dataset.}
 \label{tab:backbone}
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lccc ccc}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc}
 \toprule
-\multirow{2}{*}{\textbf{Dataset}}
-    & \multicolumn{2}{c}{\textbf{ResNet-18}}
-    & \multicolumn{2}{c}{\textbf{EffNet-B0}}
-    & \multicolumn{2}{c}{\textbf{EffNet-B2}} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-    & F1 & Cond & F1 & Cond & F1 & Cond \\
+\textbf{Dataset} & \textbf{ResNet-18} & \textbf{MobileNetV3}
+    & \textbf{EffNet-B0} & \textbf{EffNet-B2} \\
 \midrule
-KFR & 99.8 & C4 & \textbf{100.0} & C3 & 99.9 & C3 \\
-KFS & 99.0 & C4 & \textbf{99.4} & C3 & 99.0 & C3 \\
-MLM & 98.5 & C4 & \textbf{98.7} & C3 & 98.5 & C3 \\
-MFR & 96.4 & C4 & \textbf{97.0} & C3 & 95.8 & C4 \\
-MFV & 91.0 & C2 & 91.6 & C3 & \textbf{92.3} & C3 \\
-KFQ & \textbf{91.6} & C2 & 86.1 & C4 & 88.9 & C3 \\
+KFR & 99.8 (C4) & \textbf{100.0} (C3) & \textbf{100.0} (C3) & 99.9 (C3) \\
+KFS & 99.0 (C4) & 99.2 (C3) & \textbf{99.4} (C3) & 99.3 (C3) \\
+MLM & 98.5 (C4) & 98.2 (C3) & \textbf{98.7} (C3) & 98.0 (C3) \\
+MFR & 96.4 (C4) & 96.7 (C3) & \textbf{97.0} (C3) & 96.4 (C3) \\
+MFV & 91.0 (C2) & \textbf{92.4} (C3) & 91.6 (C3) & 92.3 (C3) \\
+KFQ & \textbf{91.6} (C2) & \textbf{91.6} (C1) & 86.1 (C4) & 88.9 (C1) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Domain Shift Analysis}
+\subsection{Fruit-State Classification and Benchmark}
+\label{sec:bench}
 
-To measure generalization to real-world conditions, trained models are
-evaluated on \textit{own\_dataset}: 121 strawberry photos taken with a
-mobile phone camera under natural indoor lighting.
-None of the training datasets contain photos of strawberries taken in
-these conditions.
-Table~\ref{tab:domain} reports the top results sorted by evaluation
-F1-score, with the domain shift (Drop = F1$_\text{train}$ $-$
-F1$_\text{eval}$) for each model.
+To compare against published work, the two three-fruit datasets with
+existing baselines --- KFR (apple/banana/orange) and MFR
+(peach/pomegranate/strawberry) --- are trained in fruit\_state mode
+(6 classes) with the full $4\times4$ grid of backbones and conditions.
+Tables~\ref{tab:kfrfs} and~\ref{tab:mfrfs} report the macro F1 of every
+combination.
+The C3 dominance observed in state mode is even stronger here: C3 is the
+best condition for every backbone except ResNet-18 on both datasets, and
+EfficientNet-B0--C3 and MobileNetV3--C3 both reach a perfect 100\% on KFR.
 
 \begin{table}[h]
 \centering
-\caption{Cross-dataset evaluation on \textit{own\_dataset} (121 real
-strawberry photos, state mode). Top results and notable extremes.
+\caption{KFR fruit\_state macro F1 (\%). Bold: best per backbone.}
+\label{tab:kfrfs}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Backbone} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} \\
+\midrule
+ResNet-18       & 97.78 & 99.46 & 99.40 & \textbf{99.65} \\
+MobileNetV3-S   & 98.71 & 97.25 & \textbf{100.0} & 99.20 \\
+EfficientNet-B0 & 99.70 & 98.75 & \textbf{100.0} & 99.46 \\
+EfficientNet-B2 & 99.53 & 98.46 & \textbf{99.97} & 99.36 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{MFR fruit\_state macro F1 (\%). Bold: best per backbone.}
+\label{tab:mfrfs}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Backbone} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} \\
+\midrule
+ResNet-18       & 90.98 & 92.67 & \textbf{94.09} & 93.35 \\
+MobileNetV3-S   & 93.13 & 89.48 & \textbf{95.25} & 93.84 \\
+EfficientNet-B0 & 93.36 & 84.05 & \textbf{95.72} & 88.49 \\
+EfficientNet-B2 & 92.82 & 82.08 & \textbf{93.98} & 84.71 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:benchmark} places these results against the published
+baselines using accuracy, the metric all three papers report.
+On both datasets our models exceed the prior state of the art ---
+by $+0.35$ points on KFR (ensemble vs.\ the best published MobileNetV2)
+and by $+1.68$ points on MFR (ensemble vs.\ the published ResNet50).
+
+\begin{table}[h]
+\centering
+\caption{Benchmark against published work on the same datasets
+(metric: accuracy, \%). Bold: best per dataset.}
+\label{tab:benchmark}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llc}
+\toprule
+\textbf{Source / Model} & \textbf{Split} & \textbf{Acc.} \\
+\midrule
+\multicolumn{3}{l}{\textit{KFR --- apple/banana/orange (6 classes)}} \\
+Palakodati et al.~\cite{palakodati2020fresh}, CNN          & 60-10-30 & 97.82 \\
+Chakraborty et al.~\cite{chakraborty2021implementation}, MobileNetV2 & 80-20 & 99.61 \\
+Ours --- best single (EB0/MN3-C3)                          & 80-20 & \textbf{100.0} \\
+Ours --- ensemble (16 models)                              & 80-20 & 99.96 \\
+\midrule
+\multicolumn{3}{l}{\textit{MFR --- peach/pomegranate/strawberry (6 classes)}} \\
+Sharma \& Kumar~\cite{sharma2025automated}, ResNet50       & 70-15-15 & 95.00 \\
+Ours --- best single (EB0-C3)                              & 80-20 & 95.77 \\
+Ours --- ensemble (16 models)                              & 80-20 & \textbf{96.68} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model Ensemble}
+\label{sec:ensresults}
+
+The sixteen fruit\_state models per dataset are combined as described in
+Section~\ref{sec:ensmethod}.
+Table~\ref{tab:ensemble} reports the outcome, which is almost invariant to
+the weighting scheme.
+The result is informative in both directions.
+On KFR, where the best single model is already perfect, the ensemble
+cannot improve and dips marginally ($-0.03$ pts): averaging a saturated
+model with weaker members only adds noise.
+On MFR, where headroom remains, the ensemble adds $+0.85$ pts of F1
+($+0.96$ pts of accuracy over the best single model), confirming that the
+four distinct backbone families produce complementary errors when the task
+is not already solved.
+Figure~\ref{fig:ensemble} shows the per-model F1 bars and the ensemble
+confusion matrix for both datasets.
+
+\begin{table}[h]
+\centering
+\caption{Ensemble of 16 models (fruit\_state).
+$\Delta$F1 is relative to the best single model.}
+\label{tab:ensemble}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Data} & \textbf{Method} & \textbf{Best sgl.} & \textbf{Ens.\ F1}
+    & \textbf{Ens.\ Acc} & \textbf{$\Delta$F1} & \textbf{MCC} \\
+\midrule
+KFR & mean     & 100.0 & 99.97 & 99.96 & $-0.03$ & 0.9996 \\
+KFR & weighted & 100.0 & 99.97 & 99.96 & $-0.03$ & 0.9996 \\
+KFR & adaptive & 100.0 & 99.97 & 99.96 & $-0.03$ & 0.9996 \\
+MFR & mean     & 95.72 & 96.56 & 96.68 & $+0.84$ & 0.9601 \\
+MFR & weighted & 95.72 & 96.56 & 96.68 & $+0.84$ & 0.9601 \\
+MFR & adaptive & 95.72 & 96.57 & 96.68 & $+0.85$ & 0.9601 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[t]
+\centering
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=\textwidth]{ensemble_kfr.png}
+\caption{KFR --- essentially perfect diagonal.}
+\label{fig:ens_kfr}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=\textwidth]{ensemble_mfr.png}
+\caption{MFR --- residual confusion on rotten pomegranate/strawberry.}
+\label{fig:ens_mfr}
+\end{subfigure}
+\caption{Per-model macro F1 (left bars) and ensemble confusion matrix
+(right, percentages and counts) for the 16-model mean-softmax ensemble on
+each benchmark dataset.}
+\label{fig:ensemble}
+\end{figure*}
+
+\subsection{Domain Shift and Per-Fruit Analysis}
+\label{sec:domain}
+
+To measure generalization to real-world conditions, the state-mode models
+are evaluated on \textit{own\_dataset}: 219 mobile-camera photos of two
+fruits --- 121 strawberry (64 fresh, 57 rotten) and 98 banana
+(46 fresh, 52 rotten) --- used only for evaluation.
+Across all 80 evaluated models the mean F1 drop from training to this set
+is 21.8 points (range $-1.6$ to $51.5$).
+Crucially, the drop is not uniform across fruits but is governed by
+training exposure (Table~\ref{tab:perfruit}): models whose source dataset
+\emph{included} banana average 71.4\% F1 on banana, whereas models that
+\emph{never saw} banana collapse to 42.0\% --- barely above chance ---
+while strawberry F1 is essentially unaffected.
+The worst performers in Table~\ref{tab:domain} are precisely the
+Lemon-Varieties (MLM) models, which never saw either evaluation fruit and
+fall below 55\% despite $>$92\% training F1.
+
+\begin{table}[h]
+\centering
+\caption{Per-fruit F1 on own\_dataset (219 photos, state mode), averaged
+over the 80 models, grouped by whether banana appeared in training.}
+\label{tab:perfruit}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model group} & \textbf{\# models} & \textbf{Banana F1} & \textbf{Strawberry F1} \\
+\midrule
+Saw banana in training & 48 & \textbf{71.4} & 80.5 \\
+Did not see banana     & 32 & 42.0 & 79.9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Cross-dataset evaluation on own\_dataset (219 photos, state mode):
+top and bottom models by evaluation F1.
 Drop = F1$_\text{train}$ $-$ F1$_\text{eval}$.}
 \label{tab:domain}
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Model ID} & \textbf{F1$_\text{train}$} & \textbf{F1$_\text{eval}$}
-    & \textbf{Recall$_\text{eval}$} & \textbf{Drop} \\
+    & \textbf{Drop} & \textbf{Saw banana} \\
 \midrule
-MLM-R18-C4  & 98.5 & \textbf{91.7} & 92.3 & 6.8  \\
-MLM-EB0-C4  & 95.4 & \textbf{91.7} & 92.3 & 3.7  \\
-MFR-EB2-C3  & ---  & \textbf{91.6} & 91.6 & ---  \\
-MLM-R18-C2  & 98.0 & 87.5          & 88.5 & 10.5 \\
-MFR-EB0-C3  & 97.0 & 87.3          & 87.1 & 9.7  \\
-KFS-R18-C4  & 99.0 & 87.3          & 87.1 & 11.7 \\
-KFR-R18-C4  & 99.8 & 70.8          & 71.0 & 29.0 \\
-KFR-EB0-C3  & 100.0 & 65.7         & 65.7 & 34.3 \\
-MLM-EB2-C4  & ---  & 43.4          & 47.9 & ---  \\
+KFS-EB0-C3 & 99.4 & \textbf{86.7} & 12.7 & yes \\
+KFQ-EB0-C1 & 84.7 & 86.3 & $-1.6$ & yes \\
+KFS-R18-C3 & 98.0 & 84.4 & 13.6 & yes \\
+KFQ-R18-C3 & 86.0 & 83.5 & 2.5 & yes \\
+\midrule
+MLM-EB2-C2 & 92.6 & 54.6 & 38.0 & no \\
+MLM-EB2-C4 & 94.1 & 52.0 & 42.1 & no \\
+MLM-MN3-C4 & 92.8 & 41.6 & 51.3 & no \\
+MLM-MN3-C2 & 91.0 & 39.6 & 51.5 & no \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\paragraph{Domain-adaptation fine-tuning.}
+The domain gap can be closed cheaply.
+Starting from the EfficientNet-B0 head trained on Fruits Quality
+(KFQ-EB0-C1) and fine-tuning only the head on \textit{own\_dataset} with
+the backbone frozen (Section~\ref{sec:ftmethod}), macro F1 rises from
+86.3\% to \textbf{94.5\%} ($+8.2$ points) under 5-fold cross-validation,
+with the safety-critical rotten-class recall improving in step.
+Because only the lightweight head is updated, this adaptation takes seconds
+and needs no backbone storage --- a practical recipe for deployment:
+pre-train on abundant public images, then fine-tune the head on a small
+set of in-domain photos.
 
 % ── V. Results and Discussion ─────────────────────────────────
 \section{Results and Discussion}
 \label{sec:discussion}
 
-\textbf{Finding 1: C3 is optimal for EfficientNet; C4 for ResNet-18.}
-In four of five completed datasets, EfficientNet-B0 achieves its best
-performance under C3 (frozen backbone + projection head), while ResNet-18
-consistently benefits from partial fine-tuning (C4).
-We attribute this to the richer pre-trained features of EfficientNet:
-its 1280-dimensional output already captures discriminative cues for
-freshness without backbone adaptation, whereas ResNet-18's 512-dimensional
-output benefits from specialized high-level feature adaptation.
-Fine-tuning EfficientNet's backbone with the available data sizes
-appears to introduce overfitting rather than beneficial specialization.
+\textbf{Finding 1: C3 is optimal for MobileNet/EfficientNet; C4 for ResNet-18.}
+Across both state and fruit\_state modes, MobileNetV3-Small and both
+EfficientNet variants achieve their best performance under C3 (frozen
+backbone + projection head), while ResNet-18 consistently benefits from
+partial fine-tuning (C4).
+We attribute this to the richer pre-trained features of the
+MobileNet/EfficientNet families: their 576--1408-dimensional outputs
+already capture discriminative cues for freshness without backbone
+adaptation, whereas ResNet-18's 512-dimensional output benefits from
+specialized high-level feature adaptation.
+Fine-tuning these backbones with the available data sizes appears to
+introduce overfitting rather than beneficial specialization.
 
 \textbf{Finding 2: Dataset size determines the winning backbone.}
-Below approximately 500 training samples, ResNet-18 outperforms
-EfficientNet-B0 by up to 5.5 percentage points (KFQ dataset: 91.6\%
-vs.\ 86.1\%).
-Above 1,500 training samples, EfficientNet-B0 consistently matches
-or surpasses ResNet-18.
-This is consistent with the larger head parameters of EfficientNet
-requiring more data to generalize: a $1280 \to 256 \to 128 \to C$
-projection head has approximately 3$\times$ more parameters than the
-equivalent ResNet-18 head.
+Below approximately 500 training samples, the compact backbones (ResNet-18
+and MobileNetV3-Small, both 91.6\% on KFQ) outperform EfficientNet-B0
+by up to 5.5 percentage points (86.1\%).
+Above 1,500 training samples, EfficientNet-B0 consistently matches or
+surpasses the other backbones, winning four of six datasets.
+This is consistent with the larger head of EfficientNet requiring more
+data to generalize.
 
-\textbf{Finding 3: EfficientNet-B0 achieves perfect classification on KFR.}
-On the Fruits Fresh/Rotten dataset (apple, banana, orange),
-EfficientNet-B0 under C3 achieves 100\% macro F1-score, MCC = 1.0,
-and AUC-ROC = 1.0.
-This represents a perfect separation between fresh and rotten classes,
-suggesting that the visual differences in this dataset are highly
-discriminative and well-captured by EfficientNet's pre-trained features
-without backbone adaptation.
+\textbf{Finding 3: Our models exceed the published state of the art.}
+On both datasets with published baselines, our results surpass prior work
+(Table~\ref{tab:benchmark}).
+On KFR our best single model (EfficientNet-B0/MobileNetV3 under C3) reaches
+a perfect 100\% accuracy and the ensemble 99.96\%, above the 99.61\%
+reported with MobileNetV2~\cite{chakraborty2021implementation}.
+On MFR the ensemble reaches 96.68\%, above the 95.0\% reported with
+ResNet50~\cite{sharma2025automated}.
+The perfect KFR result (MCC $=$ 1.0, AUC-ROC $=$ 1.0) indicates that the
+fresh/rotten distinction in this dataset is highly discriminative and fully
+captured by frozen pre-trained features.
 
-\textbf{Finding 4: Formalin represents a fundamental classification challenge.}
-FruitVision is the only dataset where no backbone exceeds 92.3\% F1-score,
+\textbf{Finding 4: Ensembling helps only where headroom remains.}
+Combining the 16 fruit\_state models yields opposite outcomes on the two
+datasets (Table~\ref{tab:ensemble}).
+On KFR, where the best single model is already perfect, the ensemble
+marginally dips ($-0.03$ pts) because averaging a saturated model with
+weaker members can only add noise.
+On MFR, where the best single model reaches 95.72\%, the ensemble adds
+$+0.85$ pts of F1.
+The effect is invariant to the weighting scheme, confirming that the gain
+stems from genuine error diversity across the four backbone families rather
+than from any particular weighting heuristic.
+
+\textbf{Finding 5: Formalin remains a fundamental challenge.}
+FruitVision is the only dataset where no backbone exceeds 92.4\% F1-score,
 despite having 10,154 images.
 The formalin class is chemically treated to appear visually similar to
-fresh samples, creating a subtle spectral shift that is difficult to
-detect from RGB images alone.
-EfficientNet-B2 achieves the best result (92.3\%), suggesting that
-larger, more expressive backbones provide marginal improvements on
-hard discrimination tasks.
-This finding is directly relevant to the detection of subtle spoilage
-in fermented foods.
+fresh samples, creating a subtle shift difficult to detect from RGB images
+alone.
+MobileNetV3-Small achieves the best result (92.4\%), narrowly ahead of
+EfficientNet-B2 (92.3\%).
+This is directly relevant to detecting subtle spoilage in fermented foods.
 
-\textbf{Finding 5: High training F1 does not imply good generalization.}
-The Fruits Fresh/Rotten model that achieves 100\% F1 on its own training
-domain (KFR-EB0-C3) performs worst in cross-dataset evaluation,
-dropping to 65.7\% on real photos (drop of 34.3 points).
-Conversely, the Lemon Varieties model (MLM-R18-C4, 98.5\% F1) achieves
-the highest evaluation performance (91.7\%, drop of only 6.8 points).
-We attribute this inversion to the diverse photographic conditions in
-the Lemon Varieties dataset, which expose the model to a wider range
-of lighting and background variation during training.
+\textbf{Finding 6: Generalization tracks per-fruit training exposure.}
+On the 219-photo real-world set, a model's accuracy on a given fruit is
+governed by whether that fruit appeared in training
+(Table~\ref{tab:perfruit}): banana F1 averages 71.4\% for models that saw
+banana versus 42.0\% for those that did not, while strawberry F1 is
+essentially unchanged ($\approx$80\% either way).
+This explains the bottom of Table~\ref{tab:domain}: the worst models are
+all Lemon-Varieties models, which never saw either evaluation fruit and so
+fail catastrophically despite $>$92\% training F1.
+High in-domain accuracy therefore does not imply good generalization to
+unseen fruits or visual domains.
 
-\textbf{Finding 6: Domain shift is quantifiable and large.}
-Across 60 evaluated models, the mean domain shift is 16.0 percentage
-points, with a range from 3.7 to 34.3 points.
-Models trained on datasets with more uniform photographic conditions
-(KFR: studio photos with white backgrounds) exhibit the largest shift.
-This strongly motivates the collection of domain-specific datasets
-that match real deployment conditions when high-accuracy production
-systems are required.
-
-\textbf{Finding 7: EfficientNet-B2 exhibits high variance in generalization.}
-While EfficientNet-B2 achieves competitive or superior training performance,
-its cross-dataset behavior is highly inconsistent.
-MFR-EB2-C3 achieves 91.6\% F1 on \textit{own\_dataset} (top result),
-while MLM-EB2-C4 drops to 43.4\% (worst result across all models).
-This 48-point range --- compared to a 22-point range for ResNet-18
-and a 26-point range for EfficientNet-B0 --- suggests that EB2's
-larger feature dimensionality (1408) amplifies both the benefits
-of good training data alignment and the costs of misalignment.
-The condition C4 appears particularly problematic for EB2:
-all EB2 C4 models in the bottom half of Table~\ref{tab:domain}
-belong to this condition.
-
-\textbf{Finding 8: MFR-EB2-C1 (frozen backbone, linear only) ties with top models.}
-MFR-EB2-C3 (frozen + projection head) and MFR-EB2-C1 (frozen + linear only)
-both achieve 91.6\% F1 on \textit{own\_dataset}.
-This suggests that for EB2, even the simplest linear probe already
-captures sufficient discriminative information from the pre-trained
-features for this specific cross-domain evaluation, and that the
-projection head provides no additional benefit in this setting.
-The result further reinforces the finding that fine-tuning is not
-necessary --- and may be harmful --- for larger EfficientNet models.
+\textbf{Finding 7: Lightweight head fine-tuning closes the domain gap.}
+Freezing the backbone and re-training only the classifier head on a small
+set of in-domain photos raises macro F1 from 86.3\% to 94.5\%
+($+8.2$ points) under 5-fold cross-validation.
+Because only the head is updated, the adaptation is fast and storage-free,
+offering a practical deployment recipe: pre-train on abundant public
+images, then adapt the head to the target domain.
 
 % ── VI. Conclusion ────────────────────────────────────────────
 \section{Conclusion}
@@ -530,32 +763,36 @@ necessary --- and may be harmful --- for larger EfficientNet models.
 
 This paper presented a systematic comparison of transfer learning
 strategies for fruit and vegetable freshness classification.
-Three backbone architectures (ResNet-18, EfficientNet-B0, EfficientNet-B2)
-and four training conditions were evaluated across six benchmark datasets
-totalling 55,040 images.
-Cross-dataset generalization was measured against 121 real-world photos
-across 60 model evaluations.
+Four backbone architectures (ResNet-18, MobileNetV3-Small,
+EfficientNet-B0, EfficientNet-B2) and four training conditions were
+evaluated across six benchmark datasets totalling 55,040 images, in both
+binary and six-class formulations, and combined into per-dataset
+ensembles.
+Generalization was measured against 219 real-world photos of two fruits.
 
 The key findings are:
-(1) EfficientNet-B0 with a frozen backbone and projection head (C3)
-achieves the best training performance on medium-to-large datasets,
-including a perfect 100\% F1-score on one benchmark;
-(2) ResNet-18 with layer4 fine-tuning (C4) remains the best choice for
-datasets with fewer than 500 training samples;
-(3) the optimal condition differs by backbone family --- C4 for ResNet-18,
-C3 for EfficientNet variants --- suggesting that richer pre-trained
-features reduce the need for backbone fine-tuning;
-(4) domain shift ranges from 3.7 to 34.3 percentage points across
-60 evaluations, with a mean of 16.0 points;
-(5) EfficientNet-B2 shows high variance in generalization (range:
-43.4\%--91.6\%), making it less reliable than EB0 for
-cross-domain deployment despite superior training performance on
-challenging datasets.
+(1) on the two datasets with published baselines, our models exceed the
+state of the art --- a perfect 100\% accuracy (best single) and 99.96\%
+(ensemble) on the apple/banana/orange benchmark, and 96.68\% (ensemble) on
+the peach/pomegranate/strawberry benchmark;
+(2) the optimal training condition differs by backbone family --- C4 for
+ResNet-18, C3 (frozen backbone + projection head) for the MobileNet and
+EfficientNet families --- indicating that richer pre-trained features
+reduce the need for backbone fine-tuning;
+(3) ensembling the four backbone families helps only where headroom
+remains, adding $+0.85$ F1 points on the harder dataset but slightly
+reducing the already-saturated one;
+(4) real-world generalization is governed by per-fruit training exposure,
+with banana F1 falling from 71\% to 42\% when the fruit is unseen;
+(5) a lightweight, backbone-frozen head fine-tuning step raises in-domain
+macro F1 from 86.3\% to 94.5\%, providing a practical domain-adaptation
+recipe.
 
 Future work will extend this pipeline to Korean food categories
 (kimchi, rice cake, fermented side dishes), where the visual similarity
 between fresh and fermented states is directly analogous to the
-formalin challenge identified in this study.
+formalin challenge identified in this study, applying the same
+public-pretrain then head-adapt recipe to bridge the domain gap.
 
 % ── References ────────────────────────────────────────────────
 \bibliographystyle{IEEEtran}

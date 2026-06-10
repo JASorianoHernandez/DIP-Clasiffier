@@ -1,0 +1,4967 @@
+[
+  {
+    "file": "fresh_pomegranate_208.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8318,
+    "probs": {
+      "peach_fresh": 0.0046,
+      "peach_rotten": 0.0186,
+      "pomegranate_fresh": 0.8318,
+      "pomegranate_rotten": 0.1197,
+      "strawberry_fresh": 0.0151,
+      "strawberry_rotten": 0.0103
+    }
+  },
+  {
+    "file": "fresh_pomegranate_232.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.996,
+    "probs": {
+      "peach_fresh": 0.0008,
+      "peach_rotten": 0.0006,
+      "pomegranate_fresh": 0.996,
+      "pomegranate_rotten": 0.0018,
+      "strawberry_fresh": 0.0008,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_78.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9937,
+    "probs": {
+      "peach_fresh": 0.0005,
+      "peach_rotten": 0.0004,
+      "pomegranate_fresh": 0.9937,
+      "pomegranate_rotten": 0.0054,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_82.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9903,
+    "probs": {
+      "peach_fresh": 0.0087,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.9903,
+      "pomegranate_rotten": 0.0009,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_172.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.7166,
+    "probs": {
+      "peach_fresh": 0.2227,
+      "peach_rotten": 0.0409,
+      "pomegranate_fresh": 0.7166,
+      "pomegranate_rotten": 0.0191,
+      "strawberry_fresh": 0.0005,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_pomegranate_81.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9678,
+    "probs": {
+      "peach_fresh": 0.0132,
+      "peach_rotten": 0.0013,
+      "pomegranate_fresh": 0.9678,
+      "pomegranate_rotten": 0.0173,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_98.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.5836,
+    "probs": {
+      "peach_fresh": 0.0462,
+      "peach_rotten": 0.5836,
+      "pomegranate_fresh": 0.3213,
+      "pomegranate_rotten": 0.0467,
+      "strawberry_fresh": 0.0009,
+      "strawberry_rotten": 0.0013
+    }
+  },
+  {
+    "file": "fresh_pomegranate_245.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9572,
+    "probs": {
+      "peach_fresh": 0.0098,
+      "peach_rotten": 0.0113,
+      "pomegranate_fresh": 0.9572,
+      "pomegranate_rotten": 0.0183,
+      "strawberry_fresh": 0.003,
+      "strawberry_rotten": 0.0004
+    }
+  },
+  {
+    "file": "fresh_pomegranate_140.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.5376,
+    "probs": {
+      "peach_fresh": 0.0138,
+      "peach_rotten": 0.197,
+      "pomegranate_fresh": 0.5376,
+      "pomegranate_rotten": 0.2503,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_106.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9993,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.9993,
+      "pomegranate_rotten": 0.0005,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_119.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9885,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0011,
+      "pomegranate_fresh": 0.9885,
+      "pomegranate_rotten": 0.0092,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0007
+    }
+  },
+  {
+    "file": "fresh_pomegranate_148.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9958,
+    "probs": {
+      "peach_fresh": 0.0014,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.9958,
+      "pomegranate_rotten": 0.0018,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_318.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.819,
+    "probs": {
+      "peach_fresh": 0.0009,
+      "peach_rotten": 0.0046,
+      "pomegranate_fresh": 0.819,
+      "pomegranate_rotten": 0.1594,
+      "strawberry_fresh": 0.0049,
+      "strawberry_rotten": 0.0112
+    }
+  },
+  {
+    "file": "fresh_pomegranate_3.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8243,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0323,
+      "pomegranate_fresh": 0.8243,
+      "pomegranate_rotten": 0.115,
+      "strawberry_fresh": 0.0074,
+      "strawberry_rotten": 0.0203
+    }
+  },
+  {
+    "file": "fresh_pomegranate_48.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9657,
+    "probs": {
+      "peach_fresh": 0.0012,
+      "peach_rotten": 0.0026,
+      "pomegranate_fresh": 0.9657,
+      "pomegranate_rotten": 0.0274,
+      "strawberry_fresh": 0.0018,
+      "strawberry_rotten": 0.0013
+    }
+  },
+  {
+    "file": "fresh_pomegranate_121.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9892,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0044,
+      "pomegranate_fresh": 0.9892,
+      "pomegranate_rotten": 0.005,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_143.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8227,
+    "probs": {
+      "peach_fresh": 0.0544,
+      "peach_rotten": 0.0219,
+      "pomegranate_fresh": 0.8227,
+      "pomegranate_rotten": 0.0998,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_322.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9962,
+    "probs": {
+      "peach_fresh": 0.0012,
+      "peach_rotten": 0.0002,
+      "pomegranate_fresh": 0.9962,
+      "pomegranate_rotten": 0.002,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_237.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8694,
+    "probs": {
+      "peach_fresh": 0.0375,
+      "peach_rotten": 0.0312,
+      "pomegranate_fresh": 0.8694,
+      "pomegranate_rotten": 0.0618,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_290.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9764,
+    "probs": {
+      "peach_fresh": 0.017,
+      "peach_rotten": 0.0008,
+      "pomegranate_fresh": 0.9764,
+      "pomegranate_rotten": 0.0059,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_251.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9987,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.9987,
+      "pomegranate_rotten": 0.0011,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_77.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.993,
+    "probs": {
+      "peach_fresh": 0.0008,
+      "peach_rotten": 0.0003,
+      "pomegranate_fresh": 0.993,
+      "pomegranate_rotten": 0.0049,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0004
+    }
+  },
+  {
+    "file": "fresh_pomegranate_270.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9923,
+    "probs": {
+      "peach_fresh": 0.0071,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.9923,
+      "pomegranate_rotten": 0.0006,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_59.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9936,
+    "probs": {
+      "peach_fresh": 0.0025,
+      "peach_rotten": 0.0002,
+      "pomegranate_fresh": 0.9936,
+      "pomegranate_rotten": 0.0036,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_316.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.991,
+    "probs": {
+      "peach_fresh": 0.0007,
+      "peach_rotten": 0.0002,
+      "pomegranate_fresh": 0.991,
+      "pomegranate_rotten": 0.008,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_15.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.7499,
+    "probs": {
+      "peach_fresh": 0.002,
+      "peach_rotten": 0.0068,
+      "pomegranate_fresh": 0.7499,
+      "pomegranate_rotten": 0.1719,
+      "strawberry_fresh": 0.0496,
+      "strawberry_rotten": 0.0198
+    }
+  },
+  {
+    "file": "fresh_pomegranate_224.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.6769,
+    "probs": {
+      "peach_fresh": 0.2872,
+      "peach_rotten": 0.0067,
+      "pomegranate_fresh": 0.6769,
+      "pomegranate_rotten": 0.0185,
+      "strawberry_fresh": 0.0076,
+      "strawberry_rotten": 0.003
+    }
+  },
+  {
+    "file": "fresh_pomegranate_115.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9911,
+    "probs": {
+      "peach_fresh": 0.0059,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.9911,
+      "pomegranate_rotten": 0.002,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_16.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8371,
+    "probs": {
+      "peach_fresh": 0.0028,
+      "peach_rotten": 0.0152,
+      "pomegranate_fresh": 0.8371,
+      "pomegranate_rotten": 0.1108,
+      "strawberry_fresh": 0.0195,
+      "strawberry_rotten": 0.0146
+    }
+  },
+  {
+    "file": "fresh_pomegranate_311.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9645,
+    "probs": {
+      "peach_fresh": 0.024,
+      "peach_rotten": 0.0003,
+      "pomegranate_fresh": 0.9645,
+      "pomegranate_rotten": 0.0112,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_124.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9324,
+    "probs": {
+      "peach_fresh": 0.0315,
+      "peach_rotten": 0.0195,
+      "pomegranate_fresh": 0.9324,
+      "pomegranate_rotten": 0.0151,
+      "strawberry_fresh": 0.0008,
+      "strawberry_rotten": 0.0007
+    }
+  },
+  {
+    "file": "fresh_pomegranate_171.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9167,
+    "probs": {
+      "peach_fresh": 0.0004,
+      "peach_rotten": 0.0228,
+      "pomegranate_fresh": 0.9167,
+      "pomegranate_rotten": 0.0544,
+      "strawberry_fresh": 0.0007,
+      "strawberry_rotten": 0.005
+    }
+  },
+  {
+    "file": "fresh_pomegranate_209.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9831,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0006,
+      "pomegranate_fresh": 0.9831,
+      "pomegranate_rotten": 0.0073,
+      "strawberry_fresh": 0.0052,
+      "strawberry_rotten": 0.0037
+    }
+  },
+  {
+    "file": "fresh_pomegranate_214.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9741,
+    "probs": {
+      "peach_fresh": 0.0117,
+      "peach_rotten": 0.0058,
+      "pomegranate_fresh": 0.9741,
+      "pomegranate_rotten": 0.0083,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_46.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9047,
+    "probs": {
+      "peach_fresh": 0.0618,
+      "peach_rotten": 0.015,
+      "pomegranate_fresh": 0.9047,
+      "pomegranate_rotten": 0.0185,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_60.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.64,
+    "probs": {
+      "peach_fresh": 0.0728,
+      "peach_rotten": 0.0482,
+      "pomegranate_fresh": 0.64,
+      "pomegranate_rotten": 0.0213,
+      "strawberry_fresh": 0.1376,
+      "strawberry_rotten": 0.0801
+    }
+  },
+  {
+    "file": "fresh_pomegranate_281.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9921,
+    "probs": {
+      "peach_fresh": 0.0031,
+      "peach_rotten": 0.0003,
+      "pomegranate_fresh": 0.9921,
+      "pomegranate_rotten": 0.0014,
+      "strawberry_fresh": 0.0031,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_303.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9856,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0028,
+      "pomegranate_fresh": 0.9856,
+      "pomegranate_rotten": 0.0101,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0006
+    }
+  },
+  {
+    "file": "fresh_pomegranate_272.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9928,
+    "probs": {
+      "peach_fresh": 0.0048,
+      "peach_rotten": 0.0004,
+      "pomegranate_fresh": 0.9928,
+      "pomegranate_rotten": 0.002,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_85.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9451,
+    "probs": {
+      "peach_fresh": 0.0144,
+      "peach_rotten": 0.0111,
+      "pomegranate_fresh": 0.9451,
+      "pomegranate_rotten": 0.0255,
+      "strawberry_fresh": 0.0014,
+      "strawberry_rotten": 0.0026
+    }
+  },
+  {
+    "file": "fresh_pomegranate_139.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9495,
+    "probs": {
+      "peach_fresh": 0.0099,
+      "peach_rotten": 0.0157,
+      "pomegranate_fresh": 0.9495,
+      "pomegranate_rotten": 0.0114,
+      "strawberry_fresh": 0.0093,
+      "strawberry_rotten": 0.0042
+    }
+  },
+  {
+    "file": "fresh_pomegranate_176.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.6042,
+    "probs": {
+      "peach_fresh": 0.0232,
+      "peach_rotten": 0.0005,
+      "pomegranate_fresh": 0.6042,
+      "pomegranate_rotten": 0.0076,
+      "strawberry_fresh": 0.3498,
+      "strawberry_rotten": 0.0148
+    }
+  },
+  {
+    "file": "fresh_pomegranate_117.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.5267,
+    "probs": {
+      "peach_fresh": 0.0029,
+      "peach_rotten": 0.244,
+      "pomegranate_fresh": 0.5267,
+      "pomegranate_rotten": 0.2143,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0119
+    }
+  },
+  {
+    "file": "fresh_pomegranate_297.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.5448,
+    "probs": {
+      "peach_fresh": 0.0128,
+      "peach_rotten": 0.1089,
+      "pomegranate_fresh": 0.5448,
+      "pomegranate_rotten": 0.3294,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.004
+    }
+  },
+  {
+    "file": "fresh_pomegranate_183.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9498,
+    "probs": {
+      "peach_fresh": 0.0048,
+      "peach_rotten": 0.0113,
+      "pomegranate_fresh": 0.9498,
+      "pomegranate_rotten": 0.034,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_206.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9863,
+    "probs": {
+      "peach_fresh": 0.0076,
+      "peach_rotten": 0.0014,
+      "pomegranate_fresh": 0.9863,
+      "pomegranate_rotten": 0.0019,
+      "strawberry_fresh": 0.0025,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_pomegranate_118.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.5217,
+    "probs": {
+      "peach_fresh": 0.0399,
+      "peach_rotten": 0.0716,
+      "pomegranate_fresh": 0.5217,
+      "pomegranate_rotten": 0.3663,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_pomegranate_129.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9895,
+    "probs": {
+      "peach_fresh": 0.0065,
+      "peach_rotten": 0.0004,
+      "pomegranate_fresh": 0.9895,
+      "pomegranate_rotten": 0.0036,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_114.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9774,
+    "probs": {
+      "peach_fresh": 0.0016,
+      "peach_rotten": 0.0074,
+      "pomegranate_fresh": 0.9774,
+      "pomegranate_rotten": 0.0133,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_pomegranate_87.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9792,
+    "probs": {
+      "peach_fresh": 0.0034,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.9792,
+      "pomegranate_rotten": 0.0158,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0003
+    }
+  },
+  {
+    "file": "fresh_pomegranate_76.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9372,
+    "probs": {
+      "peach_fresh": 0.0012,
+      "peach_rotten": 0.0051,
+      "pomegranate_fresh": 0.9372,
+      "pomegranate_rotten": 0.0354,
+      "strawberry_fresh": 0.0086,
+      "strawberry_rotten": 0.0126
+    }
+  },
+  {
+    "file": "fresh_pomegranate_109.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.997,
+    "probs": {
+      "peach_fresh": 0.0011,
+      "peach_rotten": 0.0004,
+      "pomegranate_fresh": 0.997,
+      "pomegranate_rotten": 0.0013,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_1.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9344,
+    "probs": {
+      "peach_fresh": 0.009,
+      "peach_rotten": 0.0034,
+      "pomegranate_fresh": 0.9344,
+      "pomegranate_rotten": 0.046,
+      "strawberry_fresh": 0.0013,
+      "strawberry_rotten": 0.0057
+    }
+  },
+  {
+    "file": "fresh_pomegranate_67.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9773,
+    "probs": {
+      "peach_fresh": 0.0086,
+      "peach_rotten": 0.0031,
+      "pomegranate_fresh": 0.9773,
+      "pomegranate_rotten": 0.0097,
+      "strawberry_fresh": 0.0011,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_pomegranate_321.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8308,
+    "probs": {
+      "peach_fresh": 0.0126,
+      "peach_rotten": 0.0453,
+      "pomegranate_fresh": 0.8308,
+      "pomegranate_rotten": 0.1056,
+      "strawberry_fresh": 0.0039,
+      "strawberry_rotten": 0.0016
+    }
+  },
+  {
+    "file": "fresh_pomegranate_24.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9986,
+    "probs": {
+      "peach_fresh": 0.0004,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.9986,
+      "pomegranate_rotten": 0.0008,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_300.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9399,
+    "probs": {
+      "peach_fresh": 0.007,
+      "peach_rotten": 0.0114,
+      "pomegranate_fresh": 0.9399,
+      "pomegranate_rotten": 0.0408,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_pomegranate_70.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9306,
+    "probs": {
+      "peach_fresh": 0.02,
+      "peach_rotten": 0.0143,
+      "pomegranate_fresh": 0.9306,
+      "pomegranate_rotten": 0.0339,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0009
+    }
+  },
+  {
+    "file": "fresh_pomegranate_266.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9906,
+    "probs": {
+      "peach_fresh": 0.0043,
+      "peach_rotten": 0.0006,
+      "pomegranate_fresh": 0.9906,
+      "pomegranate_rotten": 0.0042,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_56.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8654,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0445,
+      "pomegranate_fresh": 0.8654,
+      "pomegranate_rotten": 0.0885,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0014
+    }
+  },
+  {
+    "file": "fresh_pomegranate_178.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.9978,
+    "probs": {
+      "peach_fresh": 0.0016,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.9978,
+      "pomegranate_rotten": 0.0005,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_pomegranate_175.jpg",
+    "true_label": "pomegranate_fresh",
+    "pred_label": "pomegranate_fresh",
+    "correct": true,
+    "confidence": 0.8309,
+    "probs": {
+      "peach_fresh": 0.0215,
+      "peach_rotten": 0.0417,
+      "pomegranate_fresh": 0.8309,
+      "pomegranate_rotten": 0.1057,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_strawberry_92.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.6746,
+    "probs": {
+      "peach_fresh": 0.0003,
+      "peach_rotten": 0.0123,
+      "pomegranate_fresh": 0.0026,
+      "pomegranate_rotten": 0.0355,
+      "strawberry_fresh": 0.2749,
+      "strawberry_rotten": 0.6746
+    }
+  },
+  {
+    "file": "rotten_strawberry_182.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.721,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0138,
+      "strawberry_fresh": 0.2641,
+      "strawberry_rotten": 0.721
+    }
+  },
+  {
+    "file": "rotten_strawberry_246.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9295,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0328,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0307,
+      "strawberry_fresh": 0.0066,
+      "strawberry_rotten": 0.9295
+    }
+  },
+  {
+    "file": "rotten_strawberry_34.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.944,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0005,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0126,
+      "strawberry_fresh": 0.0429,
+      "strawberry_rotten": 0.944
+    }
+  },
+  {
+    "file": "rotten_strawberry_221.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.7129,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.006,
+      "pomegranate_fresh": 0.0026,
+      "pomegranate_rotten": 0.014,
+      "strawberry_fresh": 0.2643,
+      "strawberry_rotten": 0.7129
+    }
+  },
+  {
+    "file": "rotten_strawberry_126.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.7185,
+    "probs": {
+      "peach_fresh": 0.0031,
+      "peach_rotten": 0.217,
+      "pomegranate_fresh": 0.0061,
+      "pomegranate_rotten": 0.7185,
+      "strawberry_fresh": 0.0023,
+      "strawberry_rotten": 0.053
+    }
+  },
+  {
+    "file": "rotten_strawberry_270.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8982,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0498,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0481,
+      "strawberry_fresh": 0.0038,
+      "strawberry_rotten": 0.8982
+    }
+  },
+  {
+    "file": "rotten_strawberry_294.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9913,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0013,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0034,
+      "strawberry_fresh": 0.0036,
+      "strawberry_rotten": 0.9913
+    }
+  },
+  {
+    "file": "rotten_strawberry_278.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8718,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0028,
+      "pomegranate_fresh": 0.0034,
+      "pomegranate_rotten": 0.0161,
+      "strawberry_fresh": 0.106,
+      "strawberry_rotten": 0.8718
+    }
+  },
+  {
+    "file": "rotten_strawberry_78.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.3891,
+    "probs": {
+      "peach_fresh": 0.0004,
+      "peach_rotten": 0.2536,
+      "pomegranate_fresh": 0.0199,
+      "pomegranate_rotten": 0.275,
+      "strawberry_fresh": 0.0619,
+      "strawberry_rotten": 0.3891
+    }
+  },
+  {
+    "file": "rotten_strawberry_173.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.7409,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0004,
+      "strawberry_fresh": 0.7409,
+      "strawberry_rotten": 0.2587
+    }
+  },
+  {
+    "file": "rotten_strawberry_32.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.7014,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0067,
+      "pomegranate_fresh": 0.002,
+      "pomegranate_rotten": 0.049,
+      "strawberry_fresh": 0.2406,
+      "strawberry_rotten": 0.7014
+    }
+  },
+  {
+    "file": "rotten_strawberry_280.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.9643,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0003,
+      "strawberry_fresh": 0.9643,
+      "strawberry_rotten": 0.0351
+    }
+  },
+  {
+    "file": "rotten_strawberry_273.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8947,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0176,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0251,
+      "strawberry_fresh": 0.062,
+      "strawberry_rotten": 0.8947
+    }
+  },
+  {
+    "file": "rotten_strawberry_247.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8123,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0012,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.1119,
+      "strawberry_fresh": 0.0743,
+      "strawberry_rotten": 0.8123
+    }
+  },
+  {
+    "file": "rotten_strawberry_261.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9503,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0117,
+      "strawberry_fresh": 0.0378,
+      "strawberry_rotten": 0.9503
+    }
+  },
+  {
+    "file": "rotten_strawberry_190.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9591,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0063,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.013,
+      "strawberry_fresh": 0.0215,
+      "strawberry_rotten": 0.9591
+    }
+  },
+  {
+    "file": "rotten_strawberry_170.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.6492,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0092,
+      "pomegranate_fresh": 0.0014,
+      "pomegranate_rotten": 0.0071,
+      "strawberry_fresh": 0.3332,
+      "strawberry_rotten": 0.6492
+    }
+  },
+  {
+    "file": "rotten_strawberry_77.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9334,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0077,
+      "pomegranate_fresh": 0.0006,
+      "pomegranate_rotten": 0.0288,
+      "strawberry_fresh": 0.0294,
+      "strawberry_rotten": 0.9334
+    }
+  },
+  {
+    "file": "rotten_strawberry_100.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.857,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.1052,
+      "pomegranate_fresh": 0.0031,
+      "pomegranate_rotten": 0.0262,
+      "strawberry_fresh": 0.0084,
+      "strawberry_rotten": 0.857
+    }
+  },
+  {
+    "file": "rotten_strawberry_9.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.5849,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0029,
+      "strawberry_fresh": 0.5849,
+      "strawberry_rotten": 0.4117
+    }
+  },
+  {
+    "file": "rotten_strawberry_209.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8702,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0032,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.042,
+      "strawberry_fresh": 0.0845,
+      "strawberry_rotten": 0.8702
+    }
+  },
+  {
+    "file": "rotten_strawberry_298.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.6478,
+    "probs": {
+      "peach_fresh": 0.001,
+      "peach_rotten": 0.0075,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0395,
+      "strawberry_fresh": 0.6478,
+      "strawberry_rotten": 0.3034
+    }
+  },
+  {
+    "file": "rotten_strawberry_228.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.5972,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0037,
+      "pomegranate_fresh": 0.0033,
+      "pomegranate_rotten": 0.0039,
+      "strawberry_fresh": 0.5972,
+      "strawberry_rotten": 0.3918
+    }
+  },
+  {
+    "file": "rotten_strawberry_167.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9611,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0013,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0066,
+      "strawberry_fresh": 0.031,
+      "strawberry_rotten": 0.9611
+    }
+  },
+  {
+    "file": "rotten_strawberry_186.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8085,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0264,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0218,
+      "strawberry_fresh": 0.143,
+      "strawberry_rotten": 0.8085
+    }
+  },
+  {
+    "file": "rotten_strawberry_23.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9527,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0017,
+      "pomegranate_fresh": 0.0009,
+      "pomegranate_rotten": 0.0415,
+      "strawberry_fresh": 0.0032,
+      "strawberry_rotten": 0.9527
+    }
+  },
+  {
+    "file": "rotten_strawberry_31.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8424,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0013,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0062,
+      "strawberry_fresh": 0.15,
+      "strawberry_rotten": 0.8424
+    }
+  },
+  {
+    "file": "rotten_strawberry_179.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9047,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0006,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0199,
+      "strawberry_fresh": 0.0746,
+      "strawberry_rotten": 0.9047
+    }
+  },
+  {
+    "file": "rotten_strawberry_19.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.7159,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0005,
+      "pomegranate_fresh": 0.0089,
+      "pomegranate_rotten": 0.0051,
+      "strawberry_fresh": 0.7159,
+      "strawberry_rotten": 0.2694
+    }
+  },
+  {
+    "file": "rotten_strawberry_218.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8982,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0005,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0179,
+      "strawberry_fresh": 0.0831,
+      "strawberry_rotten": 0.8982
+    }
+  },
+  {
+    "file": "rotten_strawberry_94.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.6004,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0033,
+      "pomegranate_fresh": 0.0039,
+      "pomegranate_rotten": 0.0541,
+      "strawberry_fresh": 0.6004,
+      "strawberry_rotten": 0.3382
+    }
+  },
+  {
+    "file": "rotten_strawberry_290.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8011,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0014,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0038,
+      "strawberry_fresh": 0.1935,
+      "strawberry_rotten": 0.8011
+    }
+  },
+  {
+    "file": "rotten_strawberry_257.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.6601,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0006,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0099,
+      "strawberry_fresh": 0.3293,
+      "strawberry_rotten": 0.6601
+    }
+  },
+  {
+    "file": "rotten_strawberry_54.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9592,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.005,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0053,
+      "strawberry_fresh": 0.0304,
+      "strawberry_rotten": 0.9592
+    }
+  },
+  {
+    "file": "rotten_strawberry_62.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.6762,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.6762,
+      "strawberry_rotten": 0.3236
+    }
+  },
+  {
+    "file": "rotten_strawberry_137.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.9061,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9061,
+      "strawberry_rotten": 0.0936
+    }
+  },
+  {
+    "file": "rotten_strawberry_144.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.9048,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0007,
+      "pomegranate_fresh": 0.0019,
+      "pomegranate_rotten": 0.0023,
+      "strawberry_fresh": 0.9048,
+      "strawberry_rotten": 0.0903
+    }
+  },
+  {
+    "file": "rotten_strawberry_84.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8786,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0014,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0112,
+      "strawberry_fresh": 0.1084,
+      "strawberry_rotten": 0.8786
+    }
+  },
+  {
+    "file": "rotten_strawberry_110.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9318,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0117,
+      "pomegranate_fresh": 0.0025,
+      "pomegranate_rotten": 0.0077,
+      "strawberry_fresh": 0.0462,
+      "strawberry_rotten": 0.9318
+    }
+  },
+  {
+    "file": "rotten_strawberry_46.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.656,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0045,
+      "pomegranate_fresh": 0.0048,
+      "pomegranate_rotten": 0.1212,
+      "strawberry_fresh": 0.2129,
+      "strawberry_rotten": 0.656
+    }
+  },
+  {
+    "file": "rotten_strawberry_145.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.5599,
+    "probs": {
+      "peach_fresh": 0.0606,
+      "peach_rotten": 0.0408,
+      "pomegranate_fresh": 0.0417,
+      "pomegranate_rotten": 0.5599,
+      "strawberry_fresh": 0.0116,
+      "strawberry_rotten": 0.2853
+    }
+  },
+  {
+    "file": "rotten_strawberry_291.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8704,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.002,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0025,
+      "strawberry_fresh": 0.1247,
+      "strawberry_rotten": 0.8704
+    }
+  },
+  {
+    "file": "rotten_strawberry_196.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.6474,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.2764,
+      "pomegranate_fresh": 0.0031,
+      "pomegranate_rotten": 0.0582,
+      "strawberry_fresh": 0.0148,
+      "strawberry_rotten": 0.6474
+    }
+  },
+  {
+    "file": "rotten_strawberry_112.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.6489,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.1112,
+      "pomegranate_fresh": 0.0235,
+      "pomegranate_rotten": 0.1268,
+      "strawberry_fresh": 0.0894,
+      "strawberry_rotten": 0.6489
+    }
+  },
+  {
+    "file": "rotten_strawberry_183.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.952,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0006,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0155,
+      "strawberry_fresh": 0.0318,
+      "strawberry_rotten": 0.952
+    }
+  },
+  {
+    "file": "rotten_strawberry_59.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.9575,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.002,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.004,
+      "strawberry_fresh": 0.0363,
+      "strawberry_rotten": 0.9575
+    }
+  },
+  {
+    "file": "rotten_strawberry_72.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.55,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.002,
+      "pomegranate_fresh": 0.0053,
+      "pomegranate_rotten": 0.0204,
+      "strawberry_fresh": 0.4223,
+      "strawberry_rotten": 0.55
+    }
+  },
+  {
+    "file": "rotten_strawberry_263.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "strawberry_rotten",
+    "correct": true,
+    "confidence": 0.8285,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0008,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0297,
+      "strawberry_fresh": 0.1408,
+      "strawberry_rotten": 0.8285
+    }
+  },
+  {
+    "file": "rotten_strawberry_169.jpg",
+    "true_label": "strawberry_rotten",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.6039,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.6039,
+      "pomegranate_fresh": 0.0005,
+      "pomegranate_rotten": 0.0629,
+      "strawberry_fresh": 0.0101,
+      "strawberry_rotten": 0.3225
+    }
+  },
+  {
+    "file": "rotten_pomegranate_195.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.95,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0107,
+      "pomegranate_fresh": 0.0024,
+      "pomegranate_rotten": 0.95,
+      "strawberry_fresh": 0.0027,
+      "strawberry_rotten": 0.0343
+    }
+  },
+  {
+    "file": "rotten_pomegranate_63.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.8719,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0873,
+      "pomegranate_fresh": 0.0188,
+      "pomegranate_rotten": 0.8719,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0217
+    }
+  },
+  {
+    "file": "rotten_pomegranate_170.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6831,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.1256,
+      "pomegranate_fresh": 0.0015,
+      "pomegranate_rotten": 0.6831,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.1893
+    }
+  },
+  {
+    "file": "rotten_pomegranate_248.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9844,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0106,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.9844,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0049
+    }
+  },
+  {
+    "file": "rotten_pomegranate_87.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9215,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0482,
+      "pomegranate_fresh": 0.0033,
+      "pomegranate_rotten": 0.9215,
+      "strawberry_fresh": 0.0007,
+      "strawberry_rotten": 0.0257
+    }
+  },
+  {
+    "file": "rotten_pomegranate_3.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.5667,
+    "probs": {
+      "peach_fresh": 0.0727,
+      "peach_rotten": 0.5667,
+      "pomegranate_fresh": 0.0462,
+      "pomegranate_rotten": 0.2786,
+      "strawberry_fresh": 0.0134,
+      "strawberry_rotten": 0.0225
+    }
+  },
+  {
+    "file": "rotten_pomegranate_117.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.5226,
+    "probs": {
+      "peach_fresh": 0.0723,
+      "peach_rotten": 0.2871,
+      "pomegranate_fresh": 0.1178,
+      "pomegranate_rotten": 0.5226,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_pomegranate_29.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9453,
+    "probs": {
+      "peach_fresh": 0.0004,
+      "peach_rotten": 0.0269,
+      "pomegranate_fresh": 0.0212,
+      "pomegranate_rotten": 0.9453,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.006
+    }
+  },
+  {
+    "file": "rotten_pomegranate_49.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.7036,
+    "probs": {
+      "peach_fresh": 0.0025,
+      "peach_rotten": 0.2089,
+      "pomegranate_fresh": 0.0786,
+      "pomegranate_rotten": 0.7036,
+      "strawberry_fresh": 0.0014,
+      "strawberry_rotten": 0.005
+    }
+  },
+  {
+    "file": "rotten_pomegranate_191.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.5362,
+    "probs": {
+      "peach_fresh": 0.0005,
+      "peach_rotten": 0.4156,
+      "pomegranate_fresh": 0.002,
+      "pomegranate_rotten": 0.5362,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0457
+    }
+  },
+  {
+    "file": "rotten_pomegranate_232.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6141,
+    "probs": {
+      "peach_fresh": 0.0152,
+      "peach_rotten": 0.294,
+      "pomegranate_fresh": 0.0659,
+      "pomegranate_rotten": 0.6141,
+      "strawberry_fresh": 0.0027,
+      "strawberry_rotten": 0.0081
+    }
+  },
+  {
+    "file": "rotten_pomegranate_57.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9761,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0142,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.9761,
+      "strawberry_fresh": 0.0014,
+      "strawberry_rotten": 0.008
+    }
+  },
+  {
+    "file": "rotten_pomegranate_214.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9707,
+    "probs": {
+      "peach_fresh": 0.0008,
+      "peach_rotten": 0.0153,
+      "pomegranate_fresh": 0.0046,
+      "pomegranate_rotten": 0.9707,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0085
+    }
+  },
+  {
+    "file": "rotten_pomegranate_47.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9823,
+    "probs": {
+      "peach_fresh": 0.0022,
+      "peach_rotten": 0.0037,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.9823,
+      "strawberry_fresh": 0.0019,
+      "strawberry_rotten": 0.0097
+    }
+  },
+  {
+    "file": "rotten_pomegranate_242.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.7971,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.1765,
+      "pomegranate_fresh": 0.0005,
+      "pomegranate_rotten": 0.7971,
+      "strawberry_fresh": 0.0035,
+      "strawberry_rotten": 0.0223
+    }
+  },
+  {
+    "file": "rotten_pomegranate_30.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.957,
+    "probs": {
+      "peach_fresh": 0.0013,
+      "peach_rotten": 0.0282,
+      "pomegranate_fresh": 0.0084,
+      "pomegranate_rotten": 0.957,
+      "strawberry_fresh": 0.0005,
+      "strawberry_rotten": 0.0046
+    }
+  },
+  {
+    "file": "rotten_pomegranate_77.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9894,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0099,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.9894,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0006
+    }
+  },
+  {
+    "file": "rotten_pomegranate_44.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9727,
+    "probs": {
+      "peach_fresh": 0.0003,
+      "peach_rotten": 0.0163,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.9727,
+      "strawberry_fresh": 0.0005,
+      "strawberry_rotten": 0.0101
+    }
+  },
+  {
+    "file": "rotten_pomegranate_83.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6491,
+    "probs": {
+      "peach_fresh": 0.0022,
+      "peach_rotten": 0.3334,
+      "pomegranate_fresh": 0.013,
+      "pomegranate_rotten": 0.6491,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0023
+    }
+  },
+  {
+    "file": "rotten_pomegranate_164.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.3277,
+    "probs": {
+      "peach_fresh": 0.0156,
+      "peach_rotten": 0.3277,
+      "pomegranate_fresh": 0.3151,
+      "pomegranate_rotten": 0.1913,
+      "strawberry_fresh": 0.0447,
+      "strawberry_rotten": 0.1056
+    }
+  },
+  {
+    "file": "rotten_pomegranate_32.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9731,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0214,
+      "pomegranate_fresh": 0.0015,
+      "pomegranate_rotten": 0.9731,
+      "strawberry_fresh": 0.0007,
+      "strawberry_rotten": 0.003
+    }
+  },
+  {
+    "file": "rotten_pomegranate_216.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_fresh",
+    "correct": false,
+    "confidence": 0.981,
+    "probs": {
+      "peach_fresh": 0.0058,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.981,
+      "pomegranate_rotten": 0.0106,
+      "strawberry_fresh": 0.001,
+      "strawberry_rotten": 0.0008
+    }
+  },
+  {
+    "file": "rotten_pomegranate_168.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9031,
+    "probs": {
+      "peach_fresh": 0.0011,
+      "peach_rotten": 0.0789,
+      "pomegranate_fresh": 0.0048,
+      "pomegranate_rotten": 0.9031,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0119
+    }
+  },
+  {
+    "file": "rotten_pomegranate_17.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.8121,
+    "probs": {
+      "peach_fresh": 0.0043,
+      "peach_rotten": 0.1295,
+      "pomegranate_fresh": 0.0452,
+      "pomegranate_rotten": 0.8121,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0087
+    }
+  },
+  {
+    "file": "rotten_pomegranate_112.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_fresh",
+    "correct": false,
+    "confidence": 0.5443,
+    "probs": {
+      "peach_fresh": 0.0491,
+      "peach_rotten": 0.0737,
+      "pomegranate_fresh": 0.5443,
+      "pomegranate_rotten": 0.3191,
+      "strawberry_fresh": 0.0104,
+      "strawberry_rotten": 0.0033
+    }
+  },
+  {
+    "file": "rotten_pomegranate_73.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9186,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0427,
+      "pomegranate_fresh": 0.0005,
+      "pomegranate_rotten": 0.9186,
+      "strawberry_fresh": 0.0113,
+      "strawberry_rotten": 0.0268
+    }
+  },
+  {
+    "file": "rotten_pomegranate_149.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6523,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.1688,
+      "pomegranate_fresh": 0.0026,
+      "pomegranate_rotten": 0.6523,
+      "strawberry_fresh": 0.0019,
+      "strawberry_rotten": 0.1743
+    }
+  },
+  {
+    "file": "rotten_pomegranate_92.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9223,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0711,
+      "pomegranate_fresh": 0.001,
+      "pomegranate_rotten": 0.9223,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0053
+    }
+  },
+  {
+    "file": "rotten_pomegranate_183.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.8479,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.1054,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.8479,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.046
+    }
+  },
+  {
+    "file": "rotten_pomegranate_64.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9044,
+    "probs": {
+      "peach_fresh": 0.0432,
+      "peach_rotten": 0.044,
+      "pomegranate_fresh": 0.0034,
+      "pomegranate_rotten": 0.9044,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0047
+    }
+  },
+  {
+    "file": "rotten_pomegranate_235.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9849,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0037,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.9849,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0107
+    }
+  },
+  {
+    "file": "rotten_pomegranate_19.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_fresh",
+    "correct": false,
+    "confidence": 0.6161,
+    "probs": {
+      "peach_fresh": 0.0061,
+      "peach_rotten": 0.0635,
+      "pomegranate_fresh": 0.6161,
+      "pomegranate_rotten": 0.3135,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0005
+    }
+  },
+  {
+    "file": "rotten_pomegranate_229.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9685,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0054,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.9685,
+      "strawberry_fresh": 0.0022,
+      "strawberry_rotten": 0.0237
+    }
+  },
+  {
+    "file": "rotten_pomegranate_56.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6916,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.2733,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.6916,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0346
+    }
+  },
+  {
+    "file": "rotten_pomegranate_163.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.8432,
+    "probs": {
+      "peach_fresh": 0.0099,
+      "peach_rotten": 0.8432,
+      "pomegranate_fresh": 0.0419,
+      "pomegranate_rotten": 0.0891,
+      "strawberry_fresh": 0.0099,
+      "strawberry_rotten": 0.0061
+    }
+  },
+  {
+    "file": "rotten_pomegranate_209.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6218,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.1173,
+      "pomegranate_fresh": 0.0154,
+      "pomegranate_rotten": 0.6218,
+      "strawberry_fresh": 0.0026,
+      "strawberry_rotten": 0.2428
+    }
+  },
+  {
+    "file": "rotten_pomegranate_186.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.8429,
+    "probs": {
+      "peach_fresh": 0.0009,
+      "peach_rotten": 0.1309,
+      "pomegranate_fresh": 0.0138,
+      "pomegranate_rotten": 0.8429,
+      "strawberry_fresh": 0.0064,
+      "strawberry_rotten": 0.0051
+    }
+  },
+  {
+    "file": "rotten_pomegranate_239.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.8692,
+    "probs": {
+      "peach_fresh": 0.0003,
+      "peach_rotten": 0.0552,
+      "pomegranate_fresh": 0.0037,
+      "pomegranate_rotten": 0.8692,
+      "strawberry_fresh": 0.0025,
+      "strawberry_rotten": 0.0691
+    }
+  },
+  {
+    "file": "rotten_pomegranate_202.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.6482,
+    "probs": {
+      "peach_fresh": 0.0795,
+      "peach_rotten": 0.6482,
+      "pomegranate_fresh": 0.1755,
+      "pomegranate_rotten": 0.0951,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0013
+    }
+  },
+  {
+    "file": "rotten_pomegranate_240.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.7738,
+    "probs": {
+      "peach_fresh": 0.1263,
+      "peach_rotten": 0.0878,
+      "pomegranate_fresh": 0.0028,
+      "pomegranate_rotten": 0.7738,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0088
+    }
+  },
+  {
+    "file": "rotten_pomegranate_9.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9822,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.016,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.9822,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0018
+    }
+  },
+  {
+    "file": "rotten_pomegranate_198.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9067,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0835,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.9067,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0096
+    }
+  },
+  {
+    "file": "rotten_pomegranate_245.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9267,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0355,
+      "pomegranate_fresh": 0.0007,
+      "pomegranate_rotten": 0.9267,
+      "strawberry_fresh": 0.0025,
+      "strawberry_rotten": 0.0346
+    }
+  },
+  {
+    "file": "rotten_pomegranate_119.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6673,
+    "probs": {
+      "peach_fresh": 0.0039,
+      "peach_rotten": 0.2801,
+      "pomegranate_fresh": 0.0137,
+      "pomegranate_rotten": 0.6673,
+      "strawberry_fresh": 0.0041,
+      "strawberry_rotten": 0.031
+    }
+  },
+  {
+    "file": "rotten_pomegranate_160.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.6021,
+    "probs": {
+      "peach_fresh": 0.0007,
+      "peach_rotten": 0.3829,
+      "pomegranate_fresh": 0.0006,
+      "pomegranate_rotten": 0.6021,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0136
+    }
+  },
+  {
+    "file": "rotten_pomegranate_138.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.5425,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.4488,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.5425,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0087
+    }
+  },
+  {
+    "file": "rotten_pomegranate_254.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.905,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0551,
+      "pomegranate_fresh": 0.0012,
+      "pomegranate_rotten": 0.905,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0383
+    }
+  },
+  {
+    "file": "rotten_pomegranate_74.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9961,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0028,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.9961,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.001
+    }
+  },
+  {
+    "file": "rotten_pomegranate_55.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9576,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0353,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.9576,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0068
+    }
+  },
+  {
+    "file": "rotten_pomegranate_98.jpg",
+    "true_label": "pomegranate_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": true,
+    "confidence": 0.9705,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0271,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.9705,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.002
+    }
+  },
+  {
+    "file": "fresh_strawberry_44.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8507,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0012,
+      "pomegranate_fresh": 0.0021,
+      "pomegranate_rotten": 0.0021,
+      "strawberry_fresh": 0.8507,
+      "strawberry_rotten": 0.1439
+    }
+  },
+  {
+    "file": "fresh_strawberry_87.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9398,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0005,
+      "strawberry_fresh": 0.9398,
+      "strawberry_rotten": 0.059
+    }
+  },
+  {
+    "file": "fresh_strawberry_211.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9805,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9805,
+      "strawberry_rotten": 0.0194
+    }
+  },
+  {
+    "file": "fresh_strawberry_139.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8645,
+    "probs": {
+      "peach_fresh": 0.0589,
+      "peach_rotten": 0.0023,
+      "pomegranate_fresh": 0.0284,
+      "pomegranate_rotten": 0.0035,
+      "strawberry_fresh": 0.8645,
+      "strawberry_rotten": 0.0424
+    }
+  },
+  {
+    "file": "fresh_strawberry_229.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9964,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9964,
+      "strawberry_rotten": 0.0035
+    }
+  },
+  {
+    "file": "fresh_strawberry_1.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.7843,
+    "probs": {
+      "peach_fresh": 0.0012,
+      "peach_rotten": 0.004,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0022,
+      "strawberry_fresh": 0.7843,
+      "strawberry_rotten": 0.2081
+    }
+  },
+  {
+    "file": "fresh_strawberry_231.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9738,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9738,
+      "strawberry_rotten": 0.0261
+    }
+  },
+  {
+    "file": "fresh_strawberry_188.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9947,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9947,
+      "strawberry_rotten": 0.0051
+    }
+  },
+  {
+    "file": "fresh_strawberry_34.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8856,
+    "probs": {
+      "peach_fresh": 0.0003,
+      "peach_rotten": 0.0003,
+      "pomegranate_fresh": 0.0044,
+      "pomegranate_rotten": 0.0118,
+      "strawberry_fresh": 0.8856,
+      "strawberry_rotten": 0.0975
+    }
+  },
+  {
+    "file": "fresh_strawberry_19.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9902,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9902,
+      "strawberry_rotten": 0.0098
+    }
+  },
+  {
+    "file": "fresh_strawberry_248.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9857,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.9857,
+      "strawberry_rotten": 0.014
+    }
+  },
+  {
+    "file": "fresh_strawberry_132.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_rotten",
+    "correct": false,
+    "confidence": 0.5566,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.001,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0419,
+      "strawberry_fresh": 0.3996,
+      "strawberry_rotten": 0.5566
+    }
+  },
+  {
+    "file": "fresh_strawberry_237.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9838,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9838,
+      "strawberry_rotten": 0.0162
+    }
+  },
+  {
+    "file": "fresh_strawberry_24.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8356,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0006,
+      "pomegranate_rotten": 0.0052,
+      "strawberry_fresh": 0.8356,
+      "strawberry_rotten": 0.1586
+    }
+  },
+  {
+    "file": "fresh_strawberry_122.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9711,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9711,
+      "strawberry_rotten": 0.0287
+    }
+  },
+  {
+    "file": "fresh_strawberry_142.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.6886,
+    "probs": {
+      "peach_fresh": 0.0003,
+      "peach_rotten": 0.002,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0034,
+      "strawberry_fresh": 0.6886,
+      "strawberry_rotten": 0.3055
+    }
+  },
+  {
+    "file": "fresh_strawberry_179.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9988,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9988,
+      "strawberry_rotten": 0.0012
+    }
+  },
+  {
+    "file": "fresh_strawberry_218.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9459,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9459,
+      "strawberry_rotten": 0.054
+    }
+  },
+  {
+    "file": "fresh_strawberry_154.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9624,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0026,
+      "pomegranate_rotten": 0.0008,
+      "strawberry_fresh": 0.9624,
+      "strawberry_rotten": 0.0339
+    }
+  },
+  {
+    "file": "fresh_strawberry_72.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.977,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0003,
+      "strawberry_fresh": 0.977,
+      "strawberry_rotten": 0.0227
+    }
+  },
+  {
+    "file": "fresh_strawberry_51.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.7437,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0007,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0052,
+      "strawberry_fresh": 0.7437,
+      "strawberry_rotten": 0.2501
+    }
+  },
+  {
+    "file": "fresh_strawberry_155.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8858,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0087,
+      "pomegranate_fresh": 0.0021,
+      "pomegranate_rotten": 0.0298,
+      "strawberry_fresh": 0.8858,
+      "strawberry_rotten": 0.073
+    }
+  },
+  {
+    "file": "fresh_strawberry_206.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8917,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.001,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0022,
+      "strawberry_fresh": 0.8917,
+      "strawberry_rotten": 0.1049
+    }
+  },
+  {
+    "file": "fresh_strawberry_32.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9962,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9962,
+      "strawberry_rotten": 0.0037
+    }
+  },
+  {
+    "file": "fresh_strawberry_135.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9526,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9526,
+      "strawberry_rotten": 0.0473
+    }
+  },
+  {
+    "file": "fresh_strawberry_125.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.6725,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0012,
+      "pomegranate_rotten": 0.0027,
+      "strawberry_fresh": 0.6725,
+      "strawberry_rotten": 0.3234
+    }
+  },
+  {
+    "file": "fresh_strawberry_71.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9742,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0007,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0007,
+      "strawberry_fresh": 0.9742,
+      "strawberry_rotten": 0.024
+    }
+  },
+  {
+    "file": "fresh_strawberry_235.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.92,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0003,
+      "strawberry_fresh": 0.92,
+      "strawberry_rotten": 0.0796
+    }
+  },
+  {
+    "file": "fresh_strawberry_43.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.7464,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0027,
+      "strawberry_fresh": 0.7464,
+      "strawberry_rotten": 0.2503
+    }
+  },
+  {
+    "file": "fresh_strawberry_105.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9932,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9932,
+      "strawberry_rotten": 0.0067
+    }
+  },
+  {
+    "file": "fresh_strawberry_209.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9983,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9983,
+      "strawberry_rotten": 0.0017
+    }
+  },
+  {
+    "file": "fresh_strawberry_52.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9492,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0005,
+      "pomegranate_fresh": 0.001,
+      "pomegranate_rotten": 0.0006,
+      "strawberry_fresh": 0.9492,
+      "strawberry_rotten": 0.0486
+    }
+  },
+  {
+    "file": "fresh_strawberry_172.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.7912,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0009,
+      "strawberry_fresh": 0.7912,
+      "strawberry_rotten": 0.2074
+    }
+  },
+  {
+    "file": "fresh_strawberry_245.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9443,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.001,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.0022,
+      "strawberry_fresh": 0.9443,
+      "strawberry_rotten": 0.0522
+    }
+  },
+  {
+    "file": "fresh_strawberry_233.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9954,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9954,
+      "strawberry_rotten": 0.0045
+    }
+  },
+  {
+    "file": "fresh_strawberry_129.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9838,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9838,
+      "strawberry_rotten": 0.0162
+    }
+  },
+  {
+    "file": "fresh_strawberry_109.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9977,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9977,
+      "strawberry_rotten": 0.0023
+    }
+  },
+  {
+    "file": "fresh_strawberry_166.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9981,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.9981,
+      "strawberry_rotten": 0.0019
+    }
+  },
+  {
+    "file": "fresh_strawberry_180.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9409,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0002,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0005,
+      "strawberry_fresh": 0.9409,
+      "strawberry_rotten": 0.0583
+    }
+  },
+  {
+    "file": "fresh_strawberry_113.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.7673,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0005,
+      "pomegranate_fresh": 0.0012,
+      "pomegranate_rotten": 0.0076,
+      "strawberry_fresh": 0.7673,
+      "strawberry_rotten": 0.2234
+    }
+  },
+  {
+    "file": "fresh_strawberry_27.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8776,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0007,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.8776,
+      "strawberry_rotten": 0.1208
+    }
+  },
+  {
+    "file": "fresh_strawberry_47.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.969,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.0002,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.969,
+      "strawberry_rotten": 0.0305
+    }
+  },
+  {
+    "file": "fresh_strawberry_201.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.6437,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0011,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0226,
+      "strawberry_fresh": 0.6437,
+      "strawberry_rotten": 0.3326
+    }
+  },
+  {
+    "file": "fresh_strawberry_169.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9866,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.9866,
+      "strawberry_rotten": 0.0132
+    }
+  },
+  {
+    "file": "fresh_strawberry_48.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9673,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9673,
+      "strawberry_rotten": 0.0325
+    }
+  },
+  {
+    "file": "fresh_strawberry_137.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9152,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9152,
+      "strawberry_rotten": 0.0847
+    }
+  },
+  {
+    "file": "fresh_strawberry_254.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9676,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9676,
+      "strawberry_rotten": 0.0322
+    }
+  },
+  {
+    "file": "fresh_strawberry_46.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.8858,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.8858,
+      "strawberry_rotten": 0.1139
+    }
+  },
+  {
+    "file": "fresh_strawberry_216.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9435,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.0,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.9435,
+      "strawberry_rotten": 0.0554
+    }
+  },
+  {
+    "file": "fresh_strawberry_86.jpg",
+    "true_label": "strawberry_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": true,
+    "confidence": 0.9847,
+    "probs": {
+      "peach_fresh": 0.0005,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.9847,
+      "strawberry_rotten": 0.0143
+    }
+  },
+  {
+    "file": "rotten_peach_47.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8758,
+    "probs": {
+      "peach_fresh": 0.007,
+      "peach_rotten": 0.8758,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.1168,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "rotten_peach_210.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6469,
+    "probs": {
+      "peach_fresh": 0.0098,
+      "peach_rotten": 0.6469,
+      "pomegranate_fresh": 0.008,
+      "pomegranate_rotten": 0.218,
+      "strawberry_fresh": 0.0263,
+      "strawberry_rotten": 0.091
+    }
+  },
+  {
+    "file": "rotten_peach_241.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9359,
+    "probs": {
+      "peach_fresh": 0.0076,
+      "peach_rotten": 0.9359,
+      "pomegranate_fresh": 0.004,
+      "pomegranate_rotten": 0.0514,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0009
+    }
+  },
+  {
+    "file": "rotten_peach_212.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6797,
+    "probs": {
+      "peach_fresh": 0.1023,
+      "peach_rotten": 0.6797,
+      "pomegranate_fresh": 0.1038,
+      "pomegranate_rotten": 0.0949,
+      "strawberry_fresh": 0.0046,
+      "strawberry_rotten": 0.0147
+    }
+  },
+  {
+    "file": "rotten_peach_123.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.8057,
+    "probs": {
+      "peach_fresh": 0.0004,
+      "peach_rotten": 0.1232,
+      "pomegranate_fresh": 0.0104,
+      "pomegranate_rotten": 0.8057,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.06
+    }
+  },
+  {
+    "file": "rotten_peach_247.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.7496,
+    "probs": {
+      "peach_fresh": 0.0007,
+      "peach_rotten": 0.7496,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.2141,
+      "strawberry_fresh": 0.0009,
+      "strawberry_rotten": 0.0344
+    }
+  },
+  {
+    "file": "rotten_peach_190.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.337,
+    "probs": {
+      "peach_fresh": 0.1866,
+      "peach_rotten": 0.337,
+      "pomegranate_fresh": 0.0437,
+      "pomegranate_rotten": 0.2014,
+      "strawberry_fresh": 0.217,
+      "strawberry_rotten": 0.0143
+    }
+  },
+  {
+    "file": "rotten_peach_283.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8535,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.8535,
+      "pomegranate_fresh": 0.0011,
+      "pomegranate_rotten": 0.1451,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "rotten_peach_264.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.6289,
+    "probs": {
+      "peach_fresh": 0.0224,
+      "peach_rotten": 0.2221,
+      "pomegranate_fresh": 0.0684,
+      "pomegranate_rotten": 0.6289,
+      "strawberry_fresh": 0.0128,
+      "strawberry_rotten": 0.0455
+    }
+  },
+  {
+    "file": "rotten_peach_341.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9871,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.9871,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0115,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.001
+    }
+  },
+  {
+    "file": "rotten_peach_181.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8956,
+    "probs": {
+      "peach_fresh": 0.009,
+      "peach_rotten": 0.8956,
+      "pomegranate_fresh": 0.0048,
+      "pomegranate_rotten": 0.0902,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0003
+    }
+  },
+  {
+    "file": "rotten_peach_10.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_fresh",
+    "correct": false,
+    "confidence": 0.7556,
+    "probs": {
+      "peach_fresh": 0.7556,
+      "peach_rotten": 0.2399,
+      "pomegranate_fresh": 0.0019,
+      "pomegranate_rotten": 0.0026,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "rotten_peach_138.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8427,
+    "probs": {
+      "peach_fresh": 0.0589,
+      "peach_rotten": 0.8427,
+      "pomegranate_fresh": 0.0744,
+      "pomegranate_rotten": 0.0235,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_peach_130.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6266,
+    "probs": {
+      "peach_fresh": 0.0736,
+      "peach_rotten": 0.6266,
+      "pomegranate_fresh": 0.2029,
+      "pomegranate_rotten": 0.0879,
+      "strawberry_fresh": 0.0078,
+      "strawberry_rotten": 0.0011
+    }
+  },
+  {
+    "file": "rotten_peach_108.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8794,
+    "probs": {
+      "peach_fresh": 0.0794,
+      "peach_rotten": 0.8794,
+      "pomegranate_fresh": 0.0103,
+      "pomegranate_rotten": 0.0309,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "rotten_peach_64.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8958,
+    "probs": {
+      "peach_fresh": 0.025,
+      "peach_rotten": 0.8958,
+      "pomegranate_fresh": 0.0176,
+      "pomegranate_rotten": 0.0613,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0003
+    }
+  },
+  {
+    "file": "rotten_peach_339.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.5794,
+    "probs": {
+      "peach_fresh": 0.0499,
+      "peach_rotten": 0.1635,
+      "pomegranate_fresh": 0.069,
+      "pomegranate_rotten": 0.5794,
+      "strawberry_fresh": 0.0128,
+      "strawberry_rotten": 0.1254
+    }
+  },
+  {
+    "file": "rotten_peach_316.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.7282,
+    "probs": {
+      "peach_fresh": 0.1767,
+      "peach_rotten": 0.7282,
+      "pomegranate_fresh": 0.0378,
+      "pomegranate_rotten": 0.0258,
+      "strawberry_fresh": 0.0294,
+      "strawberry_rotten": 0.0022
+    }
+  },
+  {
+    "file": "rotten_peach_249.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.5413,
+    "probs": {
+      "peach_fresh": 0.033,
+      "peach_rotten": 0.5413,
+      "pomegranate_fresh": 0.225,
+      "pomegranate_rotten": 0.1808,
+      "strawberry_fresh": 0.003,
+      "strawberry_rotten": 0.0169
+    }
+  },
+  {
+    "file": "rotten_peach_199.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.639,
+    "probs": {
+      "peach_fresh": 0.0012,
+      "peach_rotten": 0.353,
+      "pomegranate_fresh": 0.0063,
+      "pomegranate_rotten": 0.639,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0005
+    }
+  },
+  {
+    "file": "rotten_peach_307.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9254,
+    "probs": {
+      "peach_fresh": 0.0502,
+      "peach_rotten": 0.9254,
+      "pomegranate_fresh": 0.0102,
+      "pomegranate_rotten": 0.0142,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "rotten_peach_277.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.6809,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.3088,
+      "pomegranate_fresh": 0.0002,
+      "pomegranate_rotten": 0.6809,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0099
+    }
+  },
+  {
+    "file": "rotten_peach_340.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9572,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.9572,
+      "pomegranate_fresh": 0.0014,
+      "pomegranate_rotten": 0.0175,
+      "strawberry_fresh": 0.0019,
+      "strawberry_rotten": 0.0218
+    }
+  },
+  {
+    "file": "rotten_peach_258.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9388,
+    "probs": {
+      "peach_fresh": 0.0257,
+      "peach_rotten": 0.9388,
+      "pomegranate_fresh": 0.0077,
+      "pomegranate_rotten": 0.0263,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0011
+    }
+  },
+  {
+    "file": "rotten_peach_243.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.5111,
+    "probs": {
+      "peach_fresh": 0.0436,
+      "peach_rotten": 0.5111,
+      "pomegranate_fresh": 0.0486,
+      "pomegranate_rotten": 0.353,
+      "strawberry_fresh": 0.0035,
+      "strawberry_rotten": 0.0402
+    }
+  },
+  {
+    "file": "rotten_peach_282.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9847,
+    "probs": {
+      "peach_fresh": 0.0023,
+      "peach_rotten": 0.9847,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0102,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0018
+    }
+  },
+  {
+    "file": "rotten_peach_175.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_fresh",
+    "correct": false,
+    "confidence": 0.7461,
+    "probs": {
+      "peach_fresh": 0.7461,
+      "peach_rotten": 0.2441,
+      "pomegranate_fresh": 0.0023,
+      "pomegranate_rotten": 0.0074,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "rotten_peach_265.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6903,
+    "probs": {
+      "peach_fresh": 0.0197,
+      "peach_rotten": 0.6903,
+      "pomegranate_fresh": 0.0135,
+      "pomegranate_rotten": 0.2283,
+      "strawberry_fresh": 0.0267,
+      "strawberry_rotten": 0.0216
+    }
+  },
+  {
+    "file": "rotten_peach_324.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8702,
+    "probs": {
+      "peach_fresh": 0.0009,
+      "peach_rotten": 0.8702,
+      "pomegranate_fresh": 0.0499,
+      "pomegranate_rotten": 0.0766,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0023
+    }
+  },
+  {
+    "file": "rotten_peach_154.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.933,
+    "probs": {
+      "peach_fresh": 0.0015,
+      "peach_rotten": 0.933,
+      "pomegranate_fresh": 0.0248,
+      "pomegranate_rotten": 0.0397,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0009
+    }
+  },
+  {
+    "file": "rotten_peach_72.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9513,
+    "probs": {
+      "peach_fresh": 0.0002,
+      "peach_rotten": 0.9513,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0399,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0078
+    }
+  },
+  {
+    "file": "rotten_peach_9.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9634,
+    "probs": {
+      "peach_fresh": 0.0014,
+      "peach_rotten": 0.9634,
+      "pomegranate_fresh": 0.0075,
+      "pomegranate_rotten": 0.0271,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0006
+    }
+  },
+  {
+    "file": "rotten_peach_83.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6182,
+    "probs": {
+      "peach_fresh": 0.2881,
+      "peach_rotten": 0.6182,
+      "pomegranate_fresh": 0.0742,
+      "pomegranate_rotten": 0.0186,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0003
+    }
+  },
+  {
+    "file": "rotten_peach_207.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6928,
+    "probs": {
+      "peach_fresh": 0.0306,
+      "peach_rotten": 0.6928,
+      "pomegranate_fresh": 0.0482,
+      "pomegranate_rotten": 0.2272,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0011
+    }
+  },
+  {
+    "file": "rotten_peach_328.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8122,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.8122,
+      "pomegranate_fresh": 0.0011,
+      "pomegranate_rotten": 0.1841,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.002
+    }
+  },
+  {
+    "file": "rotten_peach_32.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8976,
+    "probs": {
+      "peach_fresh": 0.0139,
+      "peach_rotten": 0.8976,
+      "pomegranate_fresh": 0.0023,
+      "pomegranate_rotten": 0.0686,
+      "strawberry_fresh": 0.0138,
+      "strawberry_rotten": 0.0039
+    }
+  },
+  {
+    "file": "rotten_peach_228.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9555,
+    "probs": {
+      "peach_fresh": 0.0049,
+      "peach_rotten": 0.9555,
+      "pomegranate_fresh": 0.0104,
+      "pomegranate_rotten": 0.0286,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0005
+    }
+  },
+  {
+    "file": "rotten_peach_314.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.5984,
+    "probs": {
+      "peach_fresh": 0.1078,
+      "peach_rotten": 0.5984,
+      "pomegranate_fresh": 0.2196,
+      "pomegranate_rotten": 0.0723,
+      "strawberry_fresh": 0.0017,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_peach_284.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.7572,
+    "probs": {
+      "peach_fresh": 0.0028,
+      "peach_rotten": 0.7572,
+      "pomegranate_fresh": 0.0152,
+      "pomegranate_rotten": 0.2229,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0019
+    }
+  },
+  {
+    "file": "rotten_peach_211.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8137,
+    "probs": {
+      "peach_fresh": 0.0148,
+      "peach_rotten": 0.8137,
+      "pomegranate_fresh": 0.0072,
+      "pomegranate_rotten": 0.108,
+      "strawberry_fresh": 0.0178,
+      "strawberry_rotten": 0.0385
+    }
+  },
+  {
+    "file": "rotten_peach_171.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8728,
+    "probs": {
+      "peach_fresh": 0.0304,
+      "peach_rotten": 0.8728,
+      "pomegranate_fresh": 0.0141,
+      "pomegranate_rotten": 0.0822,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0004
+    }
+  },
+  {
+    "file": "rotten_peach_286.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.738,
+    "probs": {
+      "peach_fresh": 0.0005,
+      "peach_rotten": 0.738,
+      "pomegranate_fresh": 0.007,
+      "pomegranate_rotten": 0.2538,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0006
+    }
+  },
+  {
+    "file": "rotten_peach_13.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.5166,
+    "probs": {
+      "peach_fresh": 0.4642,
+      "peach_rotten": 0.5166,
+      "pomegranate_fresh": 0.016,
+      "pomegranate_rotten": 0.0031,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "rotten_peach_136.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9452,
+    "probs": {
+      "peach_fresh": 0.0012,
+      "peach_rotten": 0.9452,
+      "pomegranate_fresh": 0.0042,
+      "pomegranate_rotten": 0.0492,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_peach_291.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6926,
+    "probs": {
+      "peach_fresh": 0.0082,
+      "peach_rotten": 0.6926,
+      "pomegranate_fresh": 0.0056,
+      "pomegranate_rotten": 0.2656,
+      "strawberry_fresh": 0.0187,
+      "strawberry_rotten": 0.0092
+    }
+  },
+  {
+    "file": "rotten_peach_46.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.5305,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.2529,
+      "pomegranate_fresh": 0.0012,
+      "pomegranate_rotten": 0.5305,
+      "strawberry_fresh": 0.0023,
+      "strawberry_rotten": 0.2131
+    }
+  },
+  {
+    "file": "rotten_peach_318.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8849,
+    "probs": {
+      "peach_fresh": 0.0001,
+      "peach_rotten": 0.8849,
+      "pomegranate_fresh": 0.0042,
+      "pomegranate_rotten": 0.1079,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0027
+    }
+  },
+  {
+    "file": "rotten_peach_271.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8785,
+    "probs": {
+      "peach_fresh": 0.002,
+      "peach_rotten": 0.8785,
+      "pomegranate_fresh": 0.0048,
+      "pomegranate_rotten": 0.113,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0017
+    }
+  },
+  {
+    "file": "rotten_peach_159.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6573,
+    "probs": {
+      "peach_fresh": 0.1597,
+      "peach_rotten": 0.6573,
+      "pomegranate_fresh": 0.1251,
+      "pomegranate_rotten": 0.0552,
+      "strawberry_fresh": 0.0019,
+      "strawberry_rotten": 0.0008
+    }
+  },
+  {
+    "file": "rotten_peach_120.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9219,
+    "probs": {
+      "peach_fresh": 0.0539,
+      "peach_rotten": 0.9219,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0218,
+      "strawberry_fresh": 0.0014,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_peach_157.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8785,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.8785,
+      "pomegranate_fresh": 0.0047,
+      "pomegranate_rotten": 0.1146,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0014
+    }
+  },
+  {
+    "file": "rotten_peach_183.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6715,
+    "probs": {
+      "peach_fresh": 0.0134,
+      "peach_rotten": 0.6715,
+      "pomegranate_fresh": 0.2064,
+      "pomegranate_rotten": 0.0929,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0155
+    }
+  },
+  {
+    "file": "rotten_peach_98.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8582,
+    "probs": {
+      "peach_fresh": 0.0068,
+      "peach_rotten": 0.8582,
+      "pomegranate_fresh": 0.0143,
+      "pomegranate_rotten": 0.1162,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0041
+    }
+  },
+  {
+    "file": "rotten_peach_81.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.7914,
+    "probs": {
+      "peach_fresh": 0.0221,
+      "peach_rotten": 0.7914,
+      "pomegranate_fresh": 0.0355,
+      "pomegranate_rotten": 0.0722,
+      "strawberry_fresh": 0.04,
+      "strawberry_rotten": 0.0388
+    }
+  },
+  {
+    "file": "rotten_peach_299.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8863,
+    "probs": {
+      "peach_fresh": 0.003,
+      "peach_rotten": 0.8863,
+      "pomegranate_fresh": 0.0011,
+      "pomegranate_rotten": 0.1087,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.001
+    }
+  },
+  {
+    "file": "rotten_peach_109.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.7536,
+    "probs": {
+      "peach_fresh": 0.01,
+      "peach_rotten": 0.7536,
+      "pomegranate_fresh": 0.0139,
+      "pomegranate_rotten": 0.1865,
+      "strawberry_fresh": 0.0185,
+      "strawberry_rotten": 0.0175
+    }
+  },
+  {
+    "file": "rotten_peach_153.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9784,
+    "probs": {
+      "peach_fresh": 0.0,
+      "peach_rotten": 0.9784,
+      "pomegranate_fresh": 0.0001,
+      "pomegranate_rotten": 0.0199,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0016
+    }
+  },
+  {
+    "file": "rotten_peach_232.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9078,
+    "probs": {
+      "peach_fresh": 0.0591,
+      "peach_rotten": 0.9078,
+      "pomegranate_fresh": 0.001,
+      "pomegranate_rotten": 0.0321,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "rotten_peach_278.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.6024,
+    "probs": {
+      "peach_fresh": 0.2258,
+      "peach_rotten": 0.6024,
+      "pomegranate_fresh": 0.0072,
+      "pomegranate_rotten": 0.1539,
+      "strawberry_fresh": 0.0018,
+      "strawberry_rotten": 0.009
+    }
+  },
+  {
+    "file": "rotten_peach_288.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "pomegranate_rotten",
+    "correct": false,
+    "confidence": 0.6029,
+    "probs": {
+      "peach_fresh": 0.0056,
+      "peach_rotten": 0.3868,
+      "pomegranate_fresh": 0.0007,
+      "pomegranate_rotten": 0.6029,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0036
+    }
+  },
+  {
+    "file": "rotten_peach_127.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9855,
+    "probs": {
+      "peach_fresh": 0.0006,
+      "peach_rotten": 0.9855,
+      "pomegranate_fresh": 0.0004,
+      "pomegranate_rotten": 0.0098,
+      "strawberry_fresh": 0.001,
+      "strawberry_rotten": 0.0027
+    }
+  },
+  {
+    "file": "rotten_peach_86.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8936,
+    "probs": {
+      "peach_fresh": 0.0305,
+      "peach_rotten": 0.8936,
+      "pomegranate_fresh": 0.0263,
+      "pomegranate_rotten": 0.0479,
+      "strawberry_fresh": 0.0011,
+      "strawberry_rotten": 0.0006
+    }
+  },
+  {
+    "file": "rotten_peach_70.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9849,
+    "probs": {
+      "peach_fresh": 0.0003,
+      "peach_rotten": 0.9849,
+      "pomegranate_fresh": 0.0011,
+      "pomegranate_rotten": 0.011,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0026
+    }
+  },
+  {
+    "file": "rotten_peach_222.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8456,
+    "probs": {
+      "peach_fresh": 0.0165,
+      "peach_rotten": 0.8456,
+      "pomegranate_fresh": 0.0256,
+      "pomegranate_rotten": 0.083,
+      "strawberry_fresh": 0.0065,
+      "strawberry_rotten": 0.0228
+    }
+  },
+  {
+    "file": "rotten_peach_256.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8585,
+    "probs": {
+      "peach_fresh": 0.0053,
+      "peach_rotten": 0.8585,
+      "pomegranate_fresh": 0.0284,
+      "pomegranate_rotten": 0.1065,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0011
+    }
+  },
+  {
+    "file": "rotten_peach_14.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8567,
+    "probs": {
+      "peach_fresh": 0.0079,
+      "peach_rotten": 0.8567,
+      "pomegranate_fresh": 0.0099,
+      "pomegranate_rotten": 0.1217,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0036
+    }
+  },
+  {
+    "file": "rotten_peach_239.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.8534,
+    "probs": {
+      "peach_fresh": 0.0009,
+      "peach_rotten": 0.8534,
+      "pomegranate_fresh": 0.0023,
+      "pomegranate_rotten": 0.1252,
+      "strawberry_fresh": 0.0041,
+      "strawberry_rotten": 0.0142
+    }
+  },
+  {
+    "file": "rotten_peach_144.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.843,
+    "probs": {
+      "peach_fresh": 0.1116,
+      "peach_rotten": 0.843,
+      "pomegranate_fresh": 0.0058,
+      "pomegranate_rotten": 0.0393,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "rotten_peach_119.jpg",
+    "true_label": "peach_rotten",
+    "pred_label": "peach_rotten",
+    "correct": true,
+    "confidence": 0.9341,
+    "probs": {
+      "peach_fresh": 0.0028,
+      "peach_rotten": 0.9341,
+      "pomegranate_fresh": 0.0038,
+      "pomegranate_rotten": 0.0567,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0022
+    }
+  },
+  {
+    "file": "fresh_peach_24.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9283,
+    "probs": {
+      "peach_fresh": 0.9283,
+      "peach_rotten": 0.005,
+      "pomegranate_fresh": 0.0655,
+      "pomegranate_rotten": 0.0012,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_81.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.809,
+    "probs": {
+      "peach_fresh": 0.809,
+      "peach_rotten": 0.027,
+      "pomegranate_fresh": 0.1587,
+      "pomegranate_rotten": 0.0053,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_164.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.4503,
+    "probs": {
+      "peach_fresh": 0.4503,
+      "peach_rotten": 0.0302,
+      "pomegranate_fresh": 0.4417,
+      "pomegranate_rotten": 0.0777,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_40.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.8928,
+    "probs": {
+      "peach_fresh": 0.8928,
+      "peach_rotten": 0.0802,
+      "pomegranate_fresh": 0.0175,
+      "pomegranate_rotten": 0.0092,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_peach_83.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9985,
+    "probs": {
+      "peach_fresh": 0.9985,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0003,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_96.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9593,
+    "probs": {
+      "peach_fresh": 0.9593,
+      "peach_rotten": 0.0263,
+      "pomegranate_fresh": 0.0076,
+      "pomegranate_rotten": 0.0056,
+      "strawberry_fresh": 0.0008,
+      "strawberry_rotten": 0.0004
+    }
+  },
+  {
+    "file": "fresh_peach_149.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9485,
+    "probs": {
+      "peach_fresh": 0.9485,
+      "peach_rotten": 0.0056,
+      "pomegranate_fresh": 0.0447,
+      "pomegranate_rotten": 0.0011,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_246.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9903,
+    "probs": {
+      "peach_fresh": 0.9903,
+      "peach_rotten": 0.001,
+      "pomegranate_fresh": 0.0078,
+      "pomegranate_rotten": 0.0008,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_45.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9874,
+    "probs": {
+      "peach_fresh": 0.9874,
+      "peach_rotten": 0.0036,
+      "pomegranate_fresh": 0.0061,
+      "pomegranate_rotten": 0.0016,
+      "strawberry_fresh": 0.001,
+      "strawberry_rotten": 0.0004
+    }
+  },
+  {
+    "file": "fresh_peach_172.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9981,
+    "probs": {
+      "peach_fresh": 0.9981,
+      "peach_rotten": 0.0011,
+      "pomegranate_fresh": 0.0003,
+      "pomegranate_rotten": 0.0004,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_30.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.4276,
+    "probs": {
+      "peach_fresh": 0.4276,
+      "peach_rotten": 0.3112,
+      "pomegranate_fresh": 0.0388,
+      "pomegranate_rotten": 0.1493,
+      "strawberry_fresh": 0.0431,
+      "strawberry_rotten": 0.03
+    }
+  },
+  {
+    "file": "fresh_peach_267.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9956,
+    "probs": {
+      "peach_fresh": 0.9956,
+      "peach_rotten": 0.0024,
+      "pomegranate_fresh": 0.0017,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_201.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.937,
+    "probs": {
+      "peach_fresh": 0.937,
+      "peach_rotten": 0.0451,
+      "pomegranate_fresh": 0.0116,
+      "pomegranate_rotten": 0.0044,
+      "strawberry_fresh": 0.0016,
+      "strawberry_rotten": 0.0003
+    }
+  },
+  {
+    "file": "fresh_peach_174.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.8991,
+    "probs": {
+      "peach_fresh": 0.8991,
+      "peach_rotten": 0.0957,
+      "pomegranate_fresh": 0.002,
+      "pomegranate_rotten": 0.0032,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_125.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9009,
+    "probs": {
+      "peach_fresh": 0.9009,
+      "peach_rotten": 0.0705,
+      "pomegranate_fresh": 0.0256,
+      "pomegranate_rotten": 0.0027,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_256.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9998,
+    "probs": {
+      "peach_fresh": 0.9998,
+      "peach_rotten": 0.0001,
+      "pomegranate_fresh": 0.0,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_127.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9388,
+    "probs": {
+      "peach_fresh": 0.9388,
+      "peach_rotten": 0.01,
+      "pomegranate_fresh": 0.048,
+      "pomegranate_rotten": 0.0033,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_75.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.832,
+    "probs": {
+      "peach_fresh": 0.832,
+      "peach_rotten": 0.1126,
+      "pomegranate_fresh": 0.0203,
+      "pomegranate_rotten": 0.035,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_16.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.6812,
+    "probs": {
+      "peach_fresh": 0.6812,
+      "peach_rotten": 0.1629,
+      "pomegranate_fresh": 0.0116,
+      "pomegranate_rotten": 0.1204,
+      "strawberry_fresh": 0.0099,
+      "strawberry_rotten": 0.014
+    }
+  },
+  {
+    "file": "fresh_peach_99.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9924,
+    "probs": {
+      "peach_fresh": 0.9924,
+      "peach_rotten": 0.0038,
+      "pomegranate_fresh": 0.0025,
+      "pomegranate_rotten": 0.001,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_peach_105.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.8694,
+    "probs": {
+      "peach_fresh": 0.8694,
+      "peach_rotten": 0.0127,
+      "pomegranate_fresh": 0.1082,
+      "pomegranate_rotten": 0.0048,
+      "strawberry_fresh": 0.0038,
+      "strawberry_rotten": 0.001
+    }
+  },
+  {
+    "file": "fresh_peach_144.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9521,
+    "probs": {
+      "peach_fresh": 0.9521,
+      "peach_rotten": 0.0014,
+      "pomegranate_fresh": 0.0447,
+      "pomegranate_rotten": 0.0018,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_88.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.979,
+    "probs": {
+      "peach_fresh": 0.979,
+      "peach_rotten": 0.0036,
+      "pomegranate_fresh": 0.0164,
+      "pomegranate_rotten": 0.0004,
+      "strawberry_fresh": 0.0006,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_251.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9612,
+    "probs": {
+      "peach_fresh": 0.9612,
+      "peach_rotten": 0.014,
+      "pomegranate_fresh": 0.0143,
+      "pomegranate_rotten": 0.01,
+      "strawberry_fresh": 0.0004,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_peach_60.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9863,
+    "probs": {
+      "peach_fresh": 0.9863,
+      "peach_rotten": 0.0042,
+      "pomegranate_fresh": 0.0089,
+      "pomegranate_rotten": 0.0005,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_247.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9275,
+    "probs": {
+      "peach_fresh": 0.9275,
+      "peach_rotten": 0.0229,
+      "pomegranate_fresh": 0.0428,
+      "pomegranate_rotten": 0.0068,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_66.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.6997,
+    "probs": {
+      "peach_fresh": 0.6997,
+      "peach_rotten": 0.0998,
+      "pomegranate_fresh": 0.1708,
+      "pomegranate_rotten": 0.0265,
+      "strawberry_fresh": 0.0013,
+      "strawberry_rotten": 0.0019
+    }
+  },
+  {
+    "file": "fresh_peach_76.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.8821,
+    "probs": {
+      "peach_fresh": 0.8821,
+      "peach_rotten": 0.0096,
+      "pomegranate_fresh": 0.1019,
+      "pomegranate_rotten": 0.0064,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_147.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9884,
+    "probs": {
+      "peach_fresh": 0.9884,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.0095,
+      "pomegranate_rotten": 0.001,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_171.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.8101,
+    "probs": {
+      "peach_fresh": 0.8101,
+      "peach_rotten": 0.1071,
+      "pomegranate_fresh": 0.0716,
+      "pomegranate_rotten": 0.007,
+      "strawberry_fresh": 0.004,
+      "strawberry_rotten": 0.0002
+    }
+  },
+  {
+    "file": "fresh_peach_145.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9892,
+    "probs": {
+      "peach_fresh": 0.9892,
+      "peach_rotten": 0.0018,
+      "pomegranate_fresh": 0.0073,
+      "pomegranate_rotten": 0.0004,
+      "strawberry_fresh": 0.0012,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_257.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9663,
+    "probs": {
+      "peach_fresh": 0.9663,
+      "peach_rotten": 0.0266,
+      "pomegranate_fresh": 0.0006,
+      "pomegranate_rotten": 0.0063,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_peach_78.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9967,
+    "probs": {
+      "peach_fresh": 0.9967,
+      "peach_rotten": 0.0023,
+      "pomegranate_fresh": 0.0009,
+      "pomegranate_rotten": 0.0,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_41.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9384,
+    "probs": {
+      "peach_fresh": 0.9384,
+      "peach_rotten": 0.0314,
+      "pomegranate_fresh": 0.0013,
+      "pomegranate_rotten": 0.0016,
+      "strawberry_fresh": 0.0215,
+      "strawberry_rotten": 0.0059
+    }
+  },
+  {
+    "file": "fresh_peach_77.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9885,
+    "probs": {
+      "peach_fresh": 0.9885,
+      "peach_rotten": 0.0009,
+      "pomegranate_fresh": 0.0105,
+      "pomegranate_rotten": 0.0001,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_22.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.7416,
+    "probs": {
+      "peach_fresh": 0.7416,
+      "peach_rotten": 0.2509,
+      "pomegranate_fresh": 0.0049,
+      "pomegranate_rotten": 0.002,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0004
+    }
+  },
+  {
+    "file": "fresh_peach_211.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9962,
+    "probs": {
+      "peach_fresh": 0.9962,
+      "peach_rotten": 0.0026,
+      "pomegranate_fresh": 0.0008,
+      "pomegranate_rotten": 0.0003,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_179.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.913,
+    "probs": {
+      "peach_fresh": 0.913,
+      "peach_rotten": 0.0234,
+      "pomegranate_fresh": 0.0612,
+      "pomegranate_rotten": 0.0024,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_3.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9742,
+    "probs": {
+      "peach_fresh": 0.9742,
+      "peach_rotten": 0.0117,
+      "pomegranate_fresh": 0.0127,
+      "pomegranate_rotten": 0.0014,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_97.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9306,
+    "probs": {
+      "peach_fresh": 0.9306,
+      "peach_rotten": 0.0601,
+      "pomegranate_fresh": 0.0039,
+      "pomegranate_rotten": 0.0036,
+      "strawberry_fresh": 0.0013,
+      "strawberry_rotten": 0.0005
+    }
+  },
+  {
+    "file": "fresh_peach_87.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.5036,
+    "probs": {
+      "peach_fresh": 0.5036,
+      "peach_rotten": 0.4622,
+      "pomegranate_fresh": 0.0244,
+      "pomegranate_rotten": 0.0095,
+      "strawberry_fresh": 0.0002,
+      "strawberry_rotten": 0.0001
+    }
+  },
+  {
+    "file": "fresh_peach_255.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "strawberry_fresh",
+    "correct": false,
+    "confidence": 0.6047,
+    "probs": {
+      "peach_fresh": 0.1899,
+      "peach_rotten": 0.0289,
+      "pomegranate_fresh": 0.1248,
+      "pomegranate_rotten": 0.0279,
+      "strawberry_fresh": 0.6047,
+      "strawberry_rotten": 0.0239
+    }
+  },
+  {
+    "file": "fresh_peach_213.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9359,
+    "probs": {
+      "peach_fresh": 0.9359,
+      "peach_rotten": 0.0541,
+      "pomegranate_fresh": 0.0067,
+      "pomegranate_rotten": 0.0031,
+      "strawberry_fresh": 0.0001,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_265.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9905,
+    "probs": {
+      "peach_fresh": 0.9905,
+      "peach_rotten": 0.0072,
+      "pomegranate_fresh": 0.002,
+      "pomegranate_rotten": 0.0002,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_219.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9686,
+    "probs": {
+      "peach_fresh": 0.9686,
+      "peach_rotten": 0.0036,
+      "pomegranate_fresh": 0.0241,
+      "pomegranate_rotten": 0.003,
+      "strawberry_fresh": 0.0003,
+      "strawberry_rotten": 0.0005
+    }
+  },
+  {
+    "file": "fresh_peach_190.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9695,
+    "probs": {
+      "peach_fresh": 0.9695,
+      "peach_rotten": 0.0289,
+      "pomegranate_fresh": 0.0009,
+      "pomegranate_rotten": 0.0007,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_130.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.9404,
+    "probs": {
+      "peach_fresh": 0.9404,
+      "peach_rotten": 0.0025,
+      "pomegranate_fresh": 0.0563,
+      "pomegranate_rotten": 0.0009,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_162.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_fresh",
+    "correct": true,
+    "confidence": 0.6008,
+    "probs": {
+      "peach_fresh": 0.6008,
+      "peach_rotten": 0.0276,
+      "pomegranate_fresh": 0.3229,
+      "pomegranate_rotten": 0.0486,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_181.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.5151,
+    "probs": {
+      "peach_fresh": 0.3534,
+      "peach_rotten": 0.5151,
+      "pomegranate_fresh": 0.0508,
+      "pomegranate_rotten": 0.0807,
+      "strawberry_fresh": 0.0,
+      "strawberry_rotten": 0.0
+    }
+  },
+  {
+    "file": "fresh_peach_221.jpg",
+    "true_label": "peach_fresh",
+    "pred_label": "peach_rotten",
+    "correct": false,
+    "confidence": 0.5601,
+    "probs": {
+      "peach_fresh": 0.0451,
+      "peach_rotten": 0.5601,
+      "pomegranate_fresh": 0.1068,
+      "pomegranate_rotten": 0.2461,
+      "strawberry_fresh": 0.0146,
+      "strawberry_rotten": 0.0272
+    }
+  }
+]

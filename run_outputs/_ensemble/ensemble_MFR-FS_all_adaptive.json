@@ -1,0 +1,178 @@
+{
+  "eval_dataset": "mendeley_fruits",
+  "eval_mode": "fruit_state",
+  "classes": [
+    "peach_fresh",
+    "peach_rotten",
+    "pomegranate_fresh",
+    "pomegranate_rotten",
+    "strawberry_fresh",
+    "strawberry_rotten"
+  ],
+  "tag": "all",
+  "method": "adaptive",
+  "n_members": 16,
+  "members": [
+    {
+      "id": "MFR-EB0-C1-FS",
+      "run": "mendeley_fruits_all_frozen_efficientnet_b0_fs",
+      "val_f1": 0.933599,
+      "eval_f1": 0.9336
+    },
+    {
+      "id": "MFR-EB2-C1-FS",
+      "run": "mendeley_fruits_all_frozen_efficientnet_b2_fs",
+      "val_f1": 0.928212,
+      "eval_f1": 0.9282
+    },
+    {
+      "id": "MFR-MN3-C1-FS",
+      "run": "mendeley_fruits_all_frozen_mobilenet_v3_small_fs",
+      "val_f1": 0.931294,
+      "eval_f1": 0.9313
+    },
+    {
+      "id": "MFR-R18-C1-FS",
+      "run": "mendeley_fruits_all_frozen_resnet18_fs",
+      "val_f1": 0.90981,
+      "eval_f1": 0.9098
+    },
+    {
+      "id": "MFR-EB0-C3-FS",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b0_fs",
+      "val_f1": 0.95717,
+      "eval_f1": 0.9572
+    },
+    {
+      "id": "MFR-EB2-C3-FS",
+      "run": "mendeley_fruits_all_head_frozen_efficientnet_b2_fs",
+      "val_f1": 0.939757,
+      "eval_f1": 0.9398
+    },
+    {
+      "id": "MFR-MN3-C3-FS",
+      "run": "mendeley_fruits_all_head_frozen_mobilenet_v3_small_fs",
+      "val_f1": 0.952479,
+      "eval_f1": 0.9525
+    },
+    {
+      "id": "MFR-R18-C3-FS",
+      "run": "mendeley_fruits_all_head_frozen_resnet18_fs",
+      "val_f1": 0.940865,
+      "eval_f1": 0.9409
+    },
+    {
+      "id": "MFR-EB0-C4-FS",
+      "run": "mendeley_fruits_all_head_layer4_efficientnet_b0_fs",
+      "val_f1": 0.884889,
+      "eval_f1": 0.8849
+    },
+    {
+      "id": "MFR-EB2-C4-FS",
+      "run": "mendeley_fruits_all_head_layer4_efficientnet_b2_fs",
+      "val_f1": 0.84708,
+      "eval_f1": 0.8471
+    },
+    {
+      "id": "MFR-MN3-C4-FS",
+      "run": "mendeley_fruits_all_head_layer4_mobilenet_v3_small_fs",
+      "val_f1": 0.938432,
+      "eval_f1": 0.9384
+    },
+    {
+      "id": "MFR-R18-C4-FS",
+      "run": "mendeley_fruits_all_head_layer4_resnet18_fs",
+      "val_f1": 0.933536,
+      "eval_f1": 0.9335
+    },
+    {
+      "id": "MFR-EB0-C2-FS",
+      "run": "mendeley_fruits_all_layer4_efficientnet_b0_fs",
+      "val_f1": 0.840546,
+      "eval_f1": 0.8405
+    },
+    {
+      "id": "MFR-EB2-C2-FS",
+      "run": "mendeley_fruits_all_layer4_efficientnet_b2_fs",
+      "val_f1": 0.820752,
+      "eval_f1": 0.8208
+    },
+    {
+      "id": "MFR-MN3-C2-FS",
+      "run": "mendeley_fruits_all_layer4_mobilenet_v3_small_fs",
+      "val_f1": 0.894769,
+      "eval_f1": 0.8948
+    },
+    {
+      "id": "MFR-R18-C2-FS",
+      "run": "mendeley_fruits_all_layer4_resnet18_fs",
+      "val_f1": 0.926721,
+      "eval_f1": 0.9267
+    }
+  ],
+  "best_single": {
+    "id": "MFR-EB0-C3-FS",
+    "f1": 0.9572
+  },
+  "ensemble": {
+    "n_images": 331,
+    "n_classes": 6,
+    "acc": 0.9668,
+    "f1_macro": 0.9657,
+    "precision_macro": 0.967,
+    "recall_macro": 0.9652,
+    "mcc": 0.9601,
+    "confusion_matrix": [
+      [
+        49,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        67,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        62,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        47,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        49,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        4,
+        46
+      ]
+    ],
+    "auc_roc": null
+  },
+  "delta_f1_pts": 0.85
+}

@@ -8,6 +8,11 @@ generalization tracks **training exposure** (a model collapses on fruits its tra
 never contained), and a domain-adaptation fine-tuning step lifts a balanced base model from
 86.3% to **94.5% F1** on the real photos — the project's best general fresh/rotten classifier.
 
+On the two 6-class (fruit×state) datasets that have published baselines, our models **exceed
+the state of the art**: a perfect **100%** accuracy single model and a **99.96%** 16-model
+ensemble on apple/banana/orange (vs 99.61% published), and **96.68%** on
+peach/pomegranate/strawberry (vs 95.0% published). See [Benchmark vs Published Work](#benchmark-vs-published-work).
+
 ---
 
 ## Visual Overview
@@ -45,6 +50,7 @@ Stage 04 — Reporting
   04_01             Excel experiment tracker
   04_02             Excel evaluation report with rankings
   04_03             Consolidated own_dataset domain-adaptation report
+  04_04             Benchmark report vs published papers (KFR / MFR)
 ```
 
 ---
@@ -166,7 +172,7 @@ The drastically lower backbone LR ensures gradual adaptation — the backbone sp
 |--------|-------------|
 | `03_01_evaluate.py` | Loads any `best_model.pt` and evaluates it on any dataset. Computes F1, accuracy, precision, recall, MCC, AUC-ROC, per-image confidence, and domain shift (Train F1 − Eval F1). Generates confusion matrix, ROC curve, confidence histogram, and per-class bar chart. |
 | `03_02_analyze.py` | Reads all `metrics.json` files and generates training-curve comparison plots (accuracy, F1, precision, recall, loss, heatmap, confusion matrices, per-class bars). |
-| `03_03_ensemble.py` | Combines several trained models into an ensemble and evaluates it on own_dataset (state mode). Builds the ensemble directly from saved per-image predictions (no GPU). Supports selecting members (all / top-K / by dataset+condition / by backbone+condition / manual) and combination methods (mean softmax, F1-weighted, confidence-adaptive). Reports ensemble F1/MCC/AUC vs the best single model and the gain in domain shift. |
+| `03_03_ensemble.py` | Combines several trained models into an ensemble and evaluates it on **any dataset / label mode** (2..N classes) via `--eval-dataset` / `--eval-mode` — used both for own_dataset (state) and the 6-class KFR/MFR benchmark (fruit_state). Builds the ensemble directly from saved per-image predictions (no GPU). Supports selecting members (all / top-K / by dataset+condition / by backbone+condition / manual) and combination methods (mean softmax, F1-weighted, confidence-adaptive). Reports ensemble F1/MCC/AUC vs the best single model, and saves a plot pairing the per-model F1 bars with the **ensemble confusion matrix** (percentages + counts). |
 | `03_04_error_analysis.py` | Flips the table from per-model to per-image: across all evaluated models, how many miss each photo? Images missed by most models are intrinsically hard (correlated errors no ensemble can fix) and define the accuracy ceiling. Reports difficulty buckets, the hardest images, and the confidence of the wrong predictions. |
 | `03_05_per_fruit.py` | Splits each model's own_dataset predictions by fruit (parsed from the filename code, e.g. `FR_SB`→strawberry, `RT_BN`→banana) and reports F1 per fruit. Reveals whether a model generalizes across fruits or only handles the fruit family it trained on, and contrasts banana F1 for models that did vs did not see banana in training. Scatter plot of strawberry-vs-banana F1 per model. |
 
@@ -174,9 +180,10 @@ The drastically lower backbone LR ensures gradual adaptation — the backbone sp
 
 | Script | Description |
 |--------|-------------|
-| `04_01_generate_tracker.py` | Generates `experiments_tracker.xlsx`. One sheet per backbone with color-coded run status (complete / running / pending / n/a) and metrics (F1, ACC, MCC, AUC, time). |
-| `04_02_generate_eval_report.py` | Generates `eval_report.xlsx`. One sheet per evaluated dataset with metrics and embedded plots. Four ranking sheets: by F1, by domain shift (robustness), by recall (food safety), by accuracy. |
-| `04_03_generate_own_report.py` | Generates `own_dataset_report.xlsx`: a visual summary of the domain-adaptation work that consolidates the Stage 02/03 analyses (fine-tuning, per-fruit, error analysis, ensemble) by reading their saved JSON and embedding their plots. No GPU; regenerates instantly. Sheets: Summary, Fine-tuning, Per-fruit, Hardest images, Ensemble. |
+| `04_01_generate_tracker.py` | Generates `04_01_experiments_tracker.xlsx`. One sheet per backbone with color-coded run status (complete / running / pending / n/a) and metrics (F1, ACC, MCC, AUC, time). |
+| `04_02_generate_eval_report.py` | Generates `04_02_eval_report.xlsx`. One sheet per evaluated dataset with metrics and embedded plots. Four ranking sheets: by F1, by domain shift (robustness), by recall (food safety), by accuracy. |
+| `04_03_generate_own_report.py` | Generates `04_03_own_dataset_report.xlsx`: a visual summary of the domain-adaptation work that consolidates the Stage 02/03 analyses (fine-tuning, per-fruit, error analysis, ensemble) by reading their saved JSON and embedding their plots. No GPU; regenerates instantly. Sheets: Summary, Fine-tuning, Per-fruit, Hardest images, Ensemble. |
+| `04_04_generate_benchmark_report.py` | Generates `04_04_benchmark_report.xlsx`: compares our best single models and 16-model ensembles against the published papers on the same datasets (KFR, MFR) using accuracy. Auto-discovers the fruit_state eval results and ensembles; paper figures are hardcoded from the PDFs. Sheets: Summary, KFR vs Papers, MFR vs Papers. |
 
 ---
 
@@ -202,9 +209,12 @@ ROC curves, confusion matrices, and Train F1 vs Eval F1 comparison.
 **4. Model ensemble**
 The per-image predictions of several models are combined (averaged softmax,
 optionally weighted by validation F1 or per-image confidence) into a single
-ensemble decision on own_dataset. Combining a few strong, diverse models gives
-only a small, sample-sensitive gain over the best single model, while combining
-all models degrades it — the bottleneck is data, not how predictions are pooled.
+ensemble decision on any dataset / label mode. On the 6-class KFR/MFR benchmark,
+ensembling the 16 models (4 backbones × 4 conditions) helps where headroom
+remains (+0.85 pts F1 on MFR) but saturates where the best single model is
+already perfect (KFR). On own_dataset, combining a few strong, diverse models
+gives only a small, sample-sensitive gain — the bottleneck there is data
+diversity, not how predictions are pooled.
 
 **5. Error and per-fruit analysis**
 Per-image error analysis shows the failures are concentrated and confidently
@@ -235,8 +245,10 @@ recall, and accuracy across all evaluated datasets.
 
 ## Results Summary
 
-Best macro F1 per dataset and backbone (state mode, 60 epochs). All 96 experiments
-complete. Values read from each run's `metrics.json`.
+Best macro F1 per dataset and backbone (**state mode**, 60 epochs). All 96 state-mode
+experiments complete (6 datasets × 4 backbones × 4 conditions). For the 6-class
+fruit_state results on KFR/MFR, see [Benchmark vs Published Work](#benchmark-vs-published-work).
+Values read from each run's `metrics.json`.
 
 ### ResNet-18
 
@@ -281,6 +293,42 @@ complete. Values read from each run's `metrics.json`.
 | mendeley_fruits | 1,655 | C3 | **96.4%** | 0.928 | 0.995 |
 | mendeley_fruitvision | 10,154 | C3 | **92.3%** | 0.881 | 0.987 |
 | kaggle_fruits_quality | 359 | C1 | **88.9%** | 0.779 | 0.941 |
+
+---
+
+## Benchmark vs Published Work
+
+The two datasets with published baselines (KFR: apple/banana/orange; MFR:
+peach/pomegranate/strawberry) were trained in **fruit_state** mode (6 classes = fruit × state,
+matching the papers' protocol) across all 4 backbones × 4 conditions (32 models), then
+combined into a 16-model ensemble per dataset (`03_03`). Comparison uses **accuracy** — the
+metric all three papers report.
+
+| Dataset | Source / Model | Split | Accuracy |
+|---|---|---|---|
+| **KFR** | Palakodati et al. (2020), CNN | 60-10-30 | 97.82% |
+| **KFR** | Chakraborty et al. (2021), MobileNetV2 | 80-20 | 99.61% |
+| **KFR** | **Ours — best single (EB0/MN3-C3)** | 80-20 | **100.0%** |
+| **KFR** | **Ours — ensemble (16 models)** | 80-20 | **99.96%** |
+| **MFR** | Sharma & Kumar (2025), ResNet50 | 70-15-15 | 95.00% |
+| **MFR** | Ours — best single (EB0-C3) | 80-20 | 95.77% |
+| **MFR** | **Ours — ensemble (16 models)** | 80-20 | **96.68%** |
+
+We exceed the prior state of the art on both datasets (+0.35 pts on KFR, +1.68 pts on MFR).
+
+**Best fruit_state F1 per backbone (C3 = best condition for all but ResNet-18):**
+
+| Backbone | KFR (C3) | MFR (C3) |
+|---|---|---|
+| ResNet-18 | 99.40% (C4: 99.65) | 94.09% |
+| MobileNetV3-S | **100.0%** | 95.25% |
+| EfficientNet-B0 | **100.0%** | **95.72%** |
+| EfficientNet-B2 | 99.97% | 93.98% |
+
+**Ensemble behavior** mirrors the headroom: on KFR the best single model is already perfect, so
+the ensemble cannot improve (−0.03 pts); on MFR, where margin remains, the four diverse backbone
+families produce complementary errors and the ensemble adds **+0.85 pts F1** (96.57% vs 95.72%).
+The result is invariant across the three weighting schemes (mean / weighted / adaptive).
 
 ---
 
@@ -358,6 +406,7 @@ DIP-Classfier/
 ├── 04_01_generate_tracker.py
 ├── 04_02_generate_eval_report.py
 ├── 04_03_generate_own_report.py
+├── 04_04_generate_benchmark_report.py
 ├── data/                          # Prepared datasets (images excluded from git)
 ├── datasets/                      # Raw downloaded datasets (images excluded from git)
 ├── run_outputs/                   # Training results, metrics, plots
@@ -374,11 +423,12 @@ DIP-Classfier/
 │   └── _plots/                    # training / eval comparison plots
 ├── Other/
 │   ├── Animation/drawio/          # pipeline diagram (DIPv2.gif)
-│   ├── LatexReport/
-│   └── IEEEDraft/
-├── experiments_tracker.xlsx
-├── eval_report.xlsx
-├── own_dataset_report.xlsx
+│   ├── LatexReport/               # full project report (report_en.tex)
+│   └── IEEEDraft/                 # IEEE conference paper (paper.tex)
+├── 04_01_experiments_tracker.xlsx
+├── 04_02_eval_report.xlsx
+├── 04_03_own_dataset_report.xlsx
+├── 04_04_benchmark_report.xlsx
 └── README.md
 ```
 
@@ -388,6 +438,7 @@ DIP-Classfier/
 
 | # | Date | Description |
 |---|------|-------------|
+| 15 | 2026-06-10 | Completed KFR + MFR fruit_state across all 4 backbones (32 models). Generalized `03_03` ensemble to any dataset / N classes and added ensemble confusion-matrix plots. New `04_04_generate_benchmark_report.py`: we **beat published SOTA** on both benchmarks (KFR 99.96% ensemble / 100% single vs 99.61%; MFR 96.68% vs 95.0%). Excel outputs renamed with `04_0x_` prefixes. Updated LaTeX report and IEEE paper with the benchmark, ensemble, MobileNetV3, and per-fruit/fine-tuning findings. |
 | 14 | 2026-06-07 | Added banana to own_dataset (now 219 multi-fruit photos). Per-fruit analysis (`03_05`) revealed generalization tracks training exposure. Domain-adaptation fine-tuning (`02_02`, frozen backbone) reaches **94.5% F1**. New analyses: ensemble (`03_03`), error analysis (`03_04`). Consolidated report (`04_03`). Fixed `03_01` to score pure-eval sets on all images and `04_02` ID bug. |
 | 13 | 2026-06-06 | Pipeline diagram (DIPv2.gif) added to README with stage-by-stage inputs/outputs. |
 | 12 | 2026-06-01 | MobileNetV3 experiments running. Detailed C1-C4 explanations in README and IEEE paper. analyze.py plots restructured with per-backbone grids and numbered --plots flag. |

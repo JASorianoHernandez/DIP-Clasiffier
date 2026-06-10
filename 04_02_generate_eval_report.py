@@ -1,5 +1,5 @@
 """
-generate_eval_report.py — Generate eval_report.xlsx from evaluate.py results.
+04_02_generate_eval_report.py — Generate 04_02_eval_report.xlsx from evaluate.py results.
 
 Sheets:
   {dataset_name}       — one row per model with metrics + embedded plot image
@@ -103,7 +103,7 @@ def get_fill(value, metric_type="pct"):
 
 # ── Config ────────────────────────────────────────────────────
 RUN_DIR  = Path("run_outputs")
-OUT_FILE = Path("eval_report.xlsx")
+OUT_FILE = Path("04_02_eval_report.xlsx")
 
 # Image size in Excel (pixels)
 IMG_WIDTH_PX  = 560
@@ -481,7 +481,7 @@ def write_legend_sheet(ws):
     # ── ID format ──
     section("ID FORMAT:  {DATASET}-{BACKBONE}-{CONDITION}-{LABELMODE}")
     entry("Example", "KFQ-R18-C4-ST  =  kaggle_fruits_quality, ResNet18, head_layer4, state")
-    entry("Purpose",  "Short unique identifier — search in experiments_tracker.xlsx to cross-reference")
+    entry("Purpose",  "Short unique identifier — search in 04_01_experiments_tracker.xlsx to cross-reference")
 
     blank()
 

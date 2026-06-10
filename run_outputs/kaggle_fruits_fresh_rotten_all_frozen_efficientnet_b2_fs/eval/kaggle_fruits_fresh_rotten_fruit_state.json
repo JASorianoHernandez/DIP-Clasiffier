@@ -1,0 +1,105 @@
+{
+  "model_run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b2_fs",
+  "model_classes": [
+    "apple_fresh",
+    "apple_rotten",
+    "banana_fresh",
+    "banana_rotten",
+    "orange_fresh",
+    "orange_rotten"
+  ],
+  "eval_dataset": "kaggle_fruits_fresh_rotten",
+  "eval_classes": [
+    "apple_fresh",
+    "apple_rotten",
+    "banana_fresh",
+    "banana_rotten",
+    "orange_fresh",
+    "orange_rotten"
+  ],
+  "label_mode": "fruit_state",
+  "device": "cuda",
+  "acc": 0.9952,
+  "f1_macro": 0.9953,
+  "precision_macro": 0.9952,
+  "recall_macro": 0.9954,
+  "mcc": 0.9942,
+  "auc_roc": 1.0,
+  "inference_ms_per_img": 14.96,
+  "conf_avg_correct": 0.9884,
+  "conf_avg_wrong": 0.7646,
+  "f1_per_class": [
+    0.9893,
+    0.9915,
+    1.0,
+    1.0,
+    0.996,
+    0.995
+  ],
+  "precision_per_class": [
+    0.9857,
+    0.9932,
+    1.0,
+    1.0,
+    0.992,
+    1.0
+  ],
+  "recall_per_class": [
+    0.9928,
+    0.9898,
+    1.0,
+    1.0,
+    1.0,
+    0.99
+  ],
+  "confusion_matrix": [
+    [
+      415,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      6,
+      583,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      392,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      551,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      371,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      3,
+      396
+    ]
+  ]
+}

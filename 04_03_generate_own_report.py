@@ -31,7 +31,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 RUN = Path("run_outputs")
-OUT = Path("own_dataset_report.xlsx")
+OUT = Path("04_03_own_dataset_report.xlsx")
 
 FT_DIR  = RUN / "_finetune"
 PF_PATH = RUN / "_per_fruit" / "per_fruit.json"
@@ -100,10 +100,14 @@ def load_json(path):
 
 
 def load_ensemble():
+    """Only own_dataset ensembles belong in this report; the KFR/MFR
+    benchmark ensembles are covered by 04_04_generate_benchmark_report.py."""
     out = []
     if ENS_DIR.exists():
         for f in sorted(ENS_DIR.glob("*.json")):
-            out.append(json.load(open(f)))
+            d = json.load(open(f))
+            if d.get("eval_dataset", "own_dataset") == "own_dataset":
+                out.append(d)
     out.sort(key=lambda d: d["ensemble"]["f1_macro"], reverse=True)
     return out
 

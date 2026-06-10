@@ -1,0 +1,105 @@
+{
+  "model_run": "mendeley_fruits_all_frozen_efficientnet_b2_fs",
+  "model_classes": [
+    "peach_fresh",
+    "peach_rotten",
+    "pomegranate_fresh",
+    "pomegranate_rotten",
+    "strawberry_fresh",
+    "strawberry_rotten"
+  ],
+  "eval_dataset": "mendeley_fruits",
+  "eval_classes": [
+    "peach_fresh",
+    "peach_rotten",
+    "pomegranate_fresh",
+    "pomegranate_rotten",
+    "strawberry_fresh",
+    "strawberry_rotten"
+  ],
+  "label_mode": "fruit_state",
+  "device": "cuda",
+  "acc": 0.9275,
+  "f1_macro": 0.9282,
+  "precision_macro": 0.9302,
+  "recall_macro": 0.9277,
+  "mcc": 0.913,
+  "auc_roc": 0.9943,
+  "inference_ms_per_img": 59.25,
+  "conf_avg_correct": 0.8858,
+  "conf_avg_wrong": 0.6537,
+  "f1_per_class": [
+    0.9583,
+    0.9185,
+    0.9375,
+    0.835,
+    0.9608,
+    0.9592
+  ],
+  "precision_per_class": [
+    1.0,
+    0.9394,
+    0.9091,
+    0.8113,
+    0.9423,
+    0.9792
+  ],
+  "recall_per_class": [
+    0.92,
+    0.8986,
+    0.9677,
+    0.86,
+    0.98,
+    0.94
+  ],
+  "confusion_matrix": [
+    [
+      46,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      62,
+      0,
+      7,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      60,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      5,
+      43,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      49,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      3,
+      47
+    ]
+  ]
+}

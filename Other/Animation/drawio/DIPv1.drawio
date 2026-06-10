@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="OG_snsxsW1cElL4kmLsf">
-    <mxGraphModel dx="1010" dy="1770" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="566" dy="1505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -498,7 +498,7 @@
             <mxPoint x="713" y="414" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-213" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=11;strokeWidth=3;fillColor=#60a917;fontColor=#ffffff;" value="experiments_tracker.xlsx" vertex="1">
+        <mxCell id="2tPUo-XkhBDmI97mid4I-213" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=11;strokeWidth=3;fillColor=#60a917;fontColor=#ffffff;" value="04_01_experiments_tracker.xlsx" vertex="1">
           <mxGeometry height="140" width="160" x="580" y="610" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-214" parent="2tPUo-XkhBDmI97mid4I-213" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
@@ -541,7 +541,7 @@
             <mxRectangle height="20" width="160" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2tPUo-XkhBDmI97mid4I-224" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=11;strokeWidth=3;fillColor=#60a917;fontColor=#ffffff;" value="eval_report.xlsx" vertex="1">
+        <mxCell id="2tPUo-XkhBDmI97mid4I-224" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=11;strokeWidth=3;fillColor=#60a917;fontColor=#ffffff;" value="04_02_eval_report.xlsx" vertex="1">
           <mxGeometry height="140" width="160" x="590" y="770" as="geometry" />
         </mxCell>
         <mxCell id="2tPUo-XkhBDmI97mid4I-225" parent="2tPUo-XkhBDmI97mid4I-224" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
@@ -855,7 +855,7 @@
         <mxCell id="or-note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Consolidates the domain-adaptation findings into one visual Excel.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="30" width="205" x="370" y="815" as="geometry" />
         </mxCell>
-        <mxCell id="or-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=9;strokeWidth=1;fillColor=#60a917;fontColor=#ffffff;align=left;" value="own_dataset_report.xlsx" vertex="1">
+        <mxCell id="or-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=9;strokeWidth=1;fillColor=#60a917;fontColor=#ffffff;align=left;" value="04_03_own_dataset_report.xlsx" vertex="1">
           <mxGeometry height="140" width="210" x="555" y="930" as="geometry" />
         </mxCell>
         <mxCell id="or-out-r1" parent="or-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
@@ -940,6 +940,42 @@
             <mxPoint x="480" y="-1070" as="sourcePoint" />
             <mxPoint x="610" y="-1070" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="bench-script" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;04_04_generate_benchmark_report.py&lt;/font&gt;" vertex="1">
+          <mxGeometry height="34" width="205" x="255" y="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="bench-note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=left;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;font-size: 8.5px;&quot;&gt;&lt;i&gt;-Compares our best single models and 16-model ensembles vs published papers (KFR / MFR), using accuracy.&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="205" x="370" y="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="bench-out" parent="1" style="shape=table;startSize=40;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;strokeColor=#2D7600;fontSize=9;strokeWidth=1;fillColor=#60a917;fontColor=#ffffff;align=left;" value="04_04_benchmark_report.xlsx" vertex="1">
+          <mxGeometry height="100" width="210" x="555" y="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="bench-out-r1" parent="bench-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="20" width="210" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bench-out-c1" parent="bench-out-r1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Summary&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="210" as="geometry">
+            <mxRectangle height="20" width="210" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bench-out-r2" parent="bench-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="20" width="210" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bench-out-c2" parent="bench-out-r2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;KFR vs Papers&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="210" as="geometry">
+            <mxRectangle height="20" width="210" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bench-out-r3" parent="bench-out" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="20" width="210" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bench-out-c3" parent="bench-out-r3" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=inherit;fontSize=16;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;MFR vs Papers&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="210" as="geometry">
+            <mxRectangle height="20" width="210" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bench-out-edge" edge="1" parent="1" source="bench-script" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeWidth=2;fillColor=#008a00;strokeColor=#005700;" target="bench-out">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

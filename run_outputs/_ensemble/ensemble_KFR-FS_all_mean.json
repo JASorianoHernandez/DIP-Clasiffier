@@ -11,13 +11,49 @@
   ],
   "tag": "all",
   "method": "mean",
-  "n_members": 4,
+  "n_members": 16,
   "members": [
+    {
+      "id": "KFR-EB0-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b0_fs",
+      "val_f1": 0.996978,
+      "eval_f1": 0.997
+    },
+    {
+      "id": "KFR-EB2-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b2_fs",
+      "val_f1": 0.995286,
+      "eval_f1": 0.9953
+    },
+    {
+      "id": "KFR-MN3-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_mobilenet_v3_small_fs",
+      "val_f1": 0.9871,
+      "eval_f1": 0.9871
+    },
     {
       "id": "KFR-R18-C1-FS",
       "run": "kaggle_fruits_fresh_rotten_all_frozen_resnet18_fs",
       "val_f1": 0.977828,
       "eval_f1": 0.9778
+    },
+    {
+      "id": "KFR-EB0-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_efficientnet_b0_fs",
+      "val_f1": 1.0,
+      "eval_f1": 1.0
+    },
+    {
+      "id": "KFR-EB2-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_efficientnet_b2_fs",
+      "val_f1": 0.999659,
+      "eval_f1": 0.9997
+    },
+    {
+      "id": "KFR-MN3-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_mobilenet_v3_small_fs",
+      "val_f1": 1.0,
+      "eval_f1": 1.0
     },
     {
       "id": "KFR-R18-C3-FS",
@@ -26,10 +62,46 @@
       "eval_f1": 0.994
     },
     {
+      "id": "KFR-EB0-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_efficientnet_b0_fs",
+      "val_f1": 0.994612,
+      "eval_f1": 0.9946
+    },
+    {
+      "id": "KFR-EB2-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_efficientnet_b2_fs",
+      "val_f1": 0.993577,
+      "eval_f1": 0.9936
+    },
+    {
+      "id": "KFR-MN3-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_mobilenet_v3_small_fs",
+      "val_f1": 0.992033,
+      "eval_f1": 0.992
+    },
+    {
       "id": "KFR-R18-C4-FS",
       "run": "kaggle_fruits_fresh_rotten_all_head_layer4_resnet18_fs",
       "val_f1": 0.996486,
       "eval_f1": 0.9965
+    },
+    {
+      "id": "KFR-EB0-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_efficientnet_b0_fs",
+      "val_f1": 0.987469,
+      "eval_f1": 0.9875
+    },
+    {
+      "id": "KFR-EB2-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_efficientnet_b2_fs",
+      "val_f1": 0.98463,
+      "eval_f1": 0.9846
+    },
+    {
+      "id": "KFR-MN3-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_mobilenet_v3_small_fs",
+      "val_f1": 0.972501,
+      "eval_f1": 0.9725
     },
     {
       "id": "KFR-R18-C2-FS",
@@ -39,17 +111,17 @@
     }
   ],
   "best_single": {
-    "id": "KFR-R18-C4-FS",
-    "f1": 0.9965
+    "id": "KFR-EB0-C3-FS",
+    "f1": 1.0
   },
   "ensemble": {
     "n_images": 2721,
     "n_classes": 6,
-    "acc": 0.9963,
-    "f1_macro": 0.9964,
-    "precision_macro": 0.9961,
-    "recall_macro": 0.9966,
-    "mcc": 0.9956,
+    "acc": 0.9996,
+    "f1_macro": 0.9997,
+    "precision_macro": 0.9996,
+    "recall_macro": 0.9997,
+    "mcc": 0.9996,
     "confusion_matrix": [
       [
         418,
@@ -60,9 +132,9 @@
         0
       ],
       [
-        5,
-        583,
         1,
+        588,
+        0,
         0,
         0,
         0
@@ -93,14 +165,14 @@
       ],
       [
         0,
-        2,
         0,
         0,
-        2,
-        396
+        0,
+        0,
+        400
       ]
     ],
     "auc_roc": null
   },
-  "delta_f1_pts": -0.01
+  "delta_f1_pts": -0.03
 }

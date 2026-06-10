@@ -298,8 +298,14 @@ Combines the projection head of C3 with the partial fine-tuning of C2.
 The last backbone block (\texttt{layer4}) and the full projection head are
 optimized jointly, with a lower learning rate applied to the backbone
 ($\text{lr}_\text{backbone} = 10^{-5}$) to prevent catastrophic forgetting.
-This is the most expressive configuration and consistently achieves the best
-validation F1.
+This is the most expressive configuration and achieves the best validation F1
+for ResNet-18.
+A key empirical finding of this study (Section~\ref{sec:fruitstate}) is that the
+optimal condition is backbone-dependent: ResNet-18 favors C4, whereas
+MobileNetV3 and both EfficientNet variants consistently peak at C3
+(frozen backbone + projection head), where their richer feature vectors are
+already discriminative enough that backbone fine-tuning offers no further gain
+and only risks overfitting.
 
 All models are trained with Adam optimizer
 ($\text{lr} = 10^{-3}$, $\text{lr}_\text{backbone} = 10^{-5}$,
@@ -381,14 +387,18 @@ carries higher risk than a false positive.
 
 \subsection{Setup}
 
-Experiments are organized in two phases.
+Experiments are organized in three phases.
 \textbf{Phase 1} uses ResNet-18 as baseline backbone across all six datasets,
 all four conditions (C1--C4), and both label modes (state and fruit\_state).
-\textbf{Phase 2} introduces EfficientNet-B0 and EfficientNet-B2 for backbone
-comparison, focusing on state mode and conditions C1--C4.
+\textbf{Phase 2} introduces MobileNetV3-Small, EfficientNet-B0, and
+EfficientNet-B2 for backbone comparison across conditions C1--C4.
+\textbf{Phase 3} targets the two apple/banana/orange and
+peach/pomegranate/strawberry collections (KFR and MFR) in fruit\_state mode
+(6 classes each) with all four backbones, then combines them into ensembles and
+benchmarks the result against published work on the same datasets
+(Section~\ref{sec:fruitstate}).
 All experiments apply a stratified 80/20 train/validation split with fixed
 seed 42 and train for 60 epochs with Adam optimizer and cosine annealing.
-Experiments marked \textit{pending} are in progress at the time of this report.
 
 \subsection{Results --- Phase 1: ResNet-18 Baseline}
 
@@ -419,27 +429,26 @@ Fruits Quality      & 86.1 & \textbf{91.6} & 86.0 & 88.9 & C2 \\
 
 \subsection{Results --- Phase 2: Backbone Comparison}
 
-Table~\ref{tab:results_bb} compares the best F1-score per dataset across
-ResNet-18, EfficientNet-B0 and EfficientNet-B2 (state mode, best condition).
-EfficientNet results use C3 (head\_frozen) as the optimal condition.
+Table~\ref{tab:results_bb} compares the best F1-score per dataset across all
+four backbones (state mode, best condition per cell).
+The condition that produced each value is shown in parentheses.
 
 \begin{table}[h]
 \centering
 \caption{Best macro F1-score (\%) by backbone --- state mode.
-\textit{Pending}: experiment in progress.
-Bold: best backbone per dataset.}
+Best condition shown in parentheses. Bold: best backbone per dataset.}
 \label{tab:results_bb}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lC{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lC{2.1cm}C{2.1cm}C{2.1cm}C{2.1cm}C{1.4cm}}
 \toprule
-\textbf{Dataset} & \textbf{R18 best} & \textbf{R18 cond} & \textbf{EB0 best} & \textbf{EB2 best} & \textbf{Winner} \\
+\textbf{Dataset} & \textbf{R18} & \textbf{MN3} & \textbf{EB0} & \textbf{EB2} & \textbf{Winner} \\
 \midrule
-Fruits Fresh/Rotten & 99.8 & C2/C4 & \textbf{100.0} & 99.9 & EB0 \\
-Fresh \& Stale      & 99.0 & C4 & \textbf{99.4} & \textit{pending} & EB0 \\
-Lemon Varieties     & 98.5 & C4 & \textbf{98.7} & \textit{pending} & EB0 \\
-Fruits Classification & 96.4 & C4 & \textbf{97.0} & \textit{pending} & EB0 \\
-FruitVision (3-cls) & 91.0 & C2 & 91.6 & \textbf{92.3} & EB2 \\
-Fruits Quality      & \textbf{91.6} & C2 & 86.1 & \textit{pending} & R18 \\
+Fruits Fresh/Rotten   & 99.8 (C4) & \textbf{100.0} (C3) & \textbf{100.0} (C3) & 99.9 (C3) & MN3/EB0 \\
+Fresh \& Stale        & 99.0 (C4) & 99.2 (C3) & \textbf{99.4} (C3) & 99.3 (C3) & EB0 \\
+Lemon Varieties       & 98.5 (C4) & 98.2 (C3) & \textbf{98.7} (C3) & 98.0 (C3) & EB0 \\
+Fruits Classification & 96.4 (C4) & 96.7 (C3) & \textbf{97.0} (C3) & 96.4 (C3) & EB0 \\
+FruitVision (3-cls)   & 91.0 (C2) & \textbf{92.4} (C3) & 91.6 (C3) & 92.3 (C3) & MN3 \\
+Fruits Quality        & \textbf{91.6} (C2) & \textbf{91.6} (C1) & 86.1 (C4) & 88.9 (C1) & R18/MN3 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -447,12 +456,12 @@ Fruits Quality      & \textbf{91.6} & C2 & 86.1 & \textit{pending} & R18 \\
 \paragraph{Optimal condition per backbone.}
 A consistent pattern emerges across datasets:
 ResNet-18 performs best under C4 (layer4 unfrozen + projection head) in most
-datasets, while both EfficientNet variants perform best under C3
-(backbone frozen + projection head).
-This suggests that EfficientNet's higher-dimensional feature vectors
-(1280--1408 vs.\ 512 for ResNet-18) are already sufficiently discriminative
-without fine-tuning, whereas ResNet-18 benefits from partial backbone
-adaptation to the target domain.
+datasets, while MobileNetV3-Small and both EfficientNet variants perform best
+under C3 (backbone frozen + projection head).
+This suggests that the higher-dimensional feature vectors of the
+MobileNet/EfficientNet backbones (576--1408 vs.\ 512 for ResNet-18) are already
+sufficiently discriminative without fine-tuning, whereas ResNet-18 benefits from
+partial backbone adaptation to the target domain.
 
 \paragraph{Effect of dataset size.}
 On the smallest dataset (Fruits Quality, 359 images), ResNet-18 outperforms
@@ -501,6 +510,157 @@ FruitVision         & frozen      & 78.0 & 78.3 & 0.686 & 0.932 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Fruit-State Classification and Benchmark vs.\ Published Work}
+\label{sec:fruitstate}
+
+To position this work against the literature, the two apple/banana/orange (KFR)
+and peach/pomegranate/strawberry (MFR) collections were trained in
+\texttt{fruit\_state} mode (6 classes: each fruit $\times$ fresh/rotten) with the
+full $4 \times 4$ grid of backbones and conditions.
+These two datasets were selected because published papers report results on the
+exact same data, enabling a like-for-like comparison.
+Tables~\ref{tab:kfr_fs} and~\ref{tab:mfr_fs} report the macro F1-score for every
+backbone--condition combination.
+
+\begin{table}[h]
+\centering
+\caption{KFR (apple/banana/orange) --- macro F1 (\%), fruit\_state mode,
+all backbones $\times$ conditions. Bold: best per backbone.}
+\label{tab:kfr_fs}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lC{1.7cm}C{1.7cm}C{1.7cm}C{1.7cm}}
+\toprule
+\textbf{Backbone} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} \\
+\midrule
+ResNet-18       & 97.78 & 99.46 & 99.40 & \textbf{99.65} \\
+MobileNetV3-S   & 98.71 & 97.25 & \textbf{100.0} & 99.20 \\
+EfficientNet-B0 & 99.70 & 98.75 & \textbf{100.0} & 99.46 \\
+EfficientNet-B2 & 99.53 & 98.46 & \textbf{99.97} & 99.36 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{MFR (peach/pomegranate/strawberry) --- macro F1 (\%), fruit\_state
+mode, all backbones $\times$ conditions. Bold: best per backbone.}
+\label{tab:mfr_fs}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lC{1.7cm}C{1.7cm}C{1.7cm}C{1.7cm}}
+\toprule
+\textbf{Backbone} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} \\
+\midrule
+ResNet-18       & 90.98 & 92.67 & \textbf{94.09} & 93.35 \\
+MobileNetV3-S   & 93.13 & 89.48 & \textbf{95.25} & 93.84 \\
+EfficientNet-B0 & 93.36 & 84.05 & \textbf{95.72} & 88.49 \\
+EfficientNet-B2 & 92.82 & 82.08 & \textbf{93.98} & 84.71 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The C3 dominance noted for state mode holds even more strongly here: C3 is the
+best condition for every backbone except ResNet-18 on both datasets, and the two
+best individual models overall (EfficientNet-B0--C3 and MobileNetV3--C3) reach a
+perfect 100.0\% macro F1 on KFR.
+On the smaller, harder MFR collection the same EfficientNet-B0--C3 leads at
+95.72\%.
+
+\paragraph{Comparison with published papers.}
+All three reference papers report \emph{accuracy} as their primary metric, so for
+a fair comparison our accuracy is used in Table~\ref{tab:benchmark} rather than
+macro F1.
+On both datasets our models surpass the published state of the art.
+
+\begin{table}[h]
+\centering
+\caption{Benchmark against published work on the same datasets (metric:
+accuracy). Bold: best result per dataset.}
+\label{tab:benchmark}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{L{4.6cm} L{3.0cm} C{1.6cm} C{2.0cm}}
+\toprule
+\textbf{Source / Model} & \textbf{Dataset / split} & \textbf{Acc.} & \textbf{Notes} \\
+\midrule
+\multicolumn{4}{l}{\textit{KFR --- apple / banana / orange (6 classes)}} \\
+Palakodati et al.\ (2020), CNN      & 5{,}989 / 60-10-30 & 97.82 & partial KFR \\
+Chakraborty et al.\ (2021), MobileNetV2 & 13{,}599 / 80-20 & 99.61 & full KFR \\
+\textbf{Ours --- best single (EB0/MN3-C3)} & 13{,}599 / 80-20 & \textbf{100.0} & this work \\
+\textbf{Ours --- ensemble (16 models)}     & 13{,}599 / 80-20 & \textbf{99.96} & this work \\
+\midrule
+\multicolumn{4}{l}{\textit{MFR --- peach / pomegranate / strawberry (6 classes)}} \\
+Sharma \& Kumar (2025), ResNet50    & 1{,}655 / 70-15-15 & 95.00 & full MFR \\
+Ours --- best single (EB0-C3)       & 1{,}655 / 80-20 & 95.77 & this work \\
+\textbf{Ours --- ensemble (16 models)} & 1{,}655 / 80-20 & \textbf{96.68} & this work \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model Ensemble}
+\label{sec:ensemble}
+
+To test whether combining backbones improves on any single model, the 16
+\texttt{fruit\_state} models per dataset (4 architectures $\times$ 4 conditions)
+were combined by averaging their softmax outputs.
+Three weighting schemes were evaluated: \textbf{mean} (uniform average),
+\textbf{weighted} (by each model's validation F1), and \textbf{adaptive}
+(per-image weighting by each model's own confidence).
+The ensemble is computed purely from the per-image probability files written by
+the evaluation stage, requiring no GPU or model reloading.
+Table~\ref{tab:ensemble} reports the results.
+
+\begin{table}[h]
+\centering
+\caption{Ensemble of 16 models per dataset (fruit\_state mode).
+$\Delta$F1 is relative to the best single model.}
+\label{tab:ensemble}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llC{1.8cm}C{1.6cm}C{1.6cm}C{1.5cm}C{1.5cm}}
+\toprule
+\textbf{Dataset} & \textbf{Method} & \textbf{Best single} & \textbf{Ens.\ F1} &
+\textbf{Ens.\ Acc} & \textbf{$\Delta$F1} & \textbf{MCC} \\
+\midrule
+KFR & mean     & 100.0 & 99.97 & 99.96 & $-0.03$ & 0.9996 \\
+KFR & weighted & 100.0 & 99.97 & 99.96 & $-0.03$ & 0.9996 \\
+KFR & adaptive & 100.0 & 99.97 & 99.96 & $-0.03$ & 0.9996 \\
+MFR & mean     & 95.72 & 96.56 & 96.68 & $+0.84$ & 0.9601 \\
+MFR & weighted & 95.72 & 96.56 & 96.68 & $+0.84$ & 0.9601 \\
+MFR & adaptive & 95.72 & 96.57 & 96.68 & $+0.85$ & 0.9601 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The result is informative in both directions and largely invariant to the
+weighting scheme.
+On KFR, where the best single model already reaches a perfect 100.0\% F1, the
+ensemble cannot improve and in fact dips marginally ($-0.03$ pts): averaging a
+saturated model with weaker members can only pull the score down.
+On MFR, where substantial headroom remains, the ensemble adds $+0.85$ pts of F1
+($+0.96$ pts of accuracy over the best single model), confirming that the
+architectural diversity of four distinct backbone families yields genuinely
+complementary errors when the task is not already solved.
+Figures~\ref{fig:ens_kfr} and~\ref{fig:ens_mfr} show the per-model F1 bars
+alongside the ensemble confusion matrix for each dataset.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{ensemble_kfr.png}
+\caption{KFR fruit\_state ensemble (16 models, mean softmax).
+Left: macro F1 of each individual model and the ensemble.
+Right: row-normalized confusion matrix of the ensemble (percentages and counts),
+showing an essentially perfect diagonal.}
+\label{fig:ens_kfr}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{ensemble_mfr.png}
+\caption{MFR fruit\_state ensemble (16 models, mean softmax).
+The residual off-diagonal mass concentrates on the visually similar
+pomegranate/strawberry rotten states, consistent with the lower per-class F1
+on those categories.}
+\label{fig:ens_mfr}
+\end{figure}
 
 \subsection{Confusion Matrix Analysis}
 
@@ -554,50 +714,66 @@ Each curve corresponds to one training condition and backbone combination.
 \end{figure}
 
 
-\subsection{Cross-Dataset Evaluation on Real Photos}
+\subsection{Domain Shift on Real Photos and Per-Fruit Analysis}
+\label{sec:ownphotos}
 
-To measure domain shift, trained models are evaluated on a small collection
-of 121 real strawberry photos taken with a phone camera under natural
-lighting conditions (\texttt{own\_dataset}).
-None of the training datasets contain strawberry photos taken in these
-conditions.
+To measure domain shift, trained models are evaluated on \texttt{own\_dataset},
+a collection of 219 real photos taken with a phone camera under natural lighting:
+121 strawberry images (64 fresh, 57 rotten) and 98 banana images
+(46 fresh, 52 rotten).
+This set is used \emph{only} for evaluation --- never for training --- and every
+photo is scored (no held-out split).
 
-Table~\ref{tab:own} shows the top results, sorted by F1 on \texttt{own\_dataset}.
-The ID column uses the experiment identifier format
-\texttt{DATASET-BACKBONE-CONDITION-MODE} defined in Section~\ref{sec:sw}.
+\paragraph{Per-fruit generalization tracks training exposure.}
+Because \texttt{own\_dataset} now contains two fruits, evaluation can be broken
+down per fruit (\texttt{03\_05\_per\_fruit.py}).
+Across all 80 evaluated state-mode models a clear pattern emerges
+(Table~\ref{tab:perfruit}): a model's accuracy on a given fruit depends heavily
+on whether that fruit appeared in its training data.
+Models whose source dataset \emph{included} banana (e.g.\ KFR, KFS, Fruits
+Quality) average 71.4\% F1 on banana, whereas models that \emph{never saw}
+banana (e.g.\ Lemon Varieties, peach/pomegranate/strawberry) collapse to 42.0\%
+--- barely above chance for the binary task.
+Strawberry F1 is essentially unaffected ($\approx$\,80\% either way), because the
+spoilage cues for strawberry transfer more readily.
 
 \begin{table}[h]
 \centering
-\caption{Cross-dataset evaluation on own\_dataset (121 real photos, state mode).
-Drop = F1\_train $-$ F1\_eval.}
-\label{tab:own}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{L{3.8cm} C{2cm} C{2cm} C{1.6cm}}
+\caption{Per-fruit F1 on own\_dataset (219 photos, state mode), averaged over
+the 80 evaluated models, grouped by whether banana was seen during training.}
+\label{tab:perfruit}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{L{5.0cm} C{1.6cm} C{2.2cm} C{2.4cm}}
 \toprule
-\textbf{Model ID} & \textbf{F1 train} & \textbf{F1 eval} & \textbf{Drop} \\
+\textbf{Model group} & \textbf{\# models} & \textbf{Banana F1} & \textbf{Strawberry F1} \\
 \midrule
-MLM-R18-C4-ST  & 98.5 & \textbf{91.7} & 6.8 \\
-MLM-EB0-C4-ST  & 95.4 & \textbf{91.7} & 3.7 \\
-MLM-R18-C2-ST  & 98.0 & 87.5 & 10.5 \\
-MFR-EB0-C3-ST  & 97.0 & 87.3 & 9.7  \\
-MFR-R18-C4-ST  & 96.4 & 87.3 & 9.1  \\
-KFS-R18-C4-ST  & 99.0 & 87.3 & 11.7 \\
-KFR-R18-C4-ST  & 99.8 & 70.8 & 29.0 \\
-KFR-EB0-C3-ST  & 100.0 & 65.7 & 34.3 \\
+Saw banana in training      & 48 & \textbf{71.4} & 80.5 \\
+Did not see banana          & 32 & 42.0 & 79.9 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Two observations are notable.
-First, the Lemon Varieties models (MLM) generalize best despite not being the
-highest-performing models on their own dataset.
-The more diverse photographic conditions in that dataset appear to produce
-more transferable features.
-Second, the models trained on Fruits Fresh/Rotten (KFR) suffer the largest
-domain shift: a model achieving 100\% F1 on studio photos drops to 65.7\%
-on real-world phone camera photos.
-This confirms that high in-domain accuracy does not imply good generalization
-to unseen visual domains.
+The best all-round model is EfficientNet-B0--C3 trained on Fresh\,\&\,Stale
+(banana 78\%, strawberry 93\%, 86.7\% overall), reflecting that the broadest and
+largest training set transfers best to unseen photographic conditions.
+A per-image error analysis (\texttt{03\_04\_error\_analysis.py}) over the same
+219 photos and 80 models finds an accuracy ceiling of 100\% with zero images
+misclassified by every model, confirming there are no inherently unlabelable
+photos --- every image is correctly handled by at least one model.
+
+\paragraph{Domain-adaptation fine-tuning.}
+The domain gap can be closed cheaply.
+Taking the EfficientNet-B0 head trained on Fruits Quality (KFQ-EB0-C1-ST) as a
+starting point, the classifier head was fine-tuned on \texttt{own\_dataset} with
+the backbone kept frozen (30 epochs, $\text{lr}_\text{head} = 5\times10^{-4}$,
+batch size 16), evaluated with 5-fold cross-validation.
+Macro F1 rises from a baseline of \textbf{86.3\%} to \textbf{94.5\%}
+($+8.2$ pts), with the recall on the safety-critical rotten class improving in
+step.
+Because only the lightweight head is updated, this adaptation requires seconds of
+training and no backbone storage, making it a practical recipe for the eventual
+Korean food deployment: train on abundant public images, then fine-tune the head
+on a small set of in-domain photos.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Korean Food Dataset Proposal}
@@ -637,7 +813,8 @@ interactively at runtime.
 % ─────────────────────────────────────────────────────────────────────────────
 
 The classification system is implemented in Python (PyTorch) and organized into
-five modules.
+four numbered stages (data preparation, training, evaluation/analysis, and
+reporting) plus two internal libraries.
 Figure~\ref{fig:pipeline} illustrates the data flow between components.
 
 \subsection{Usage Workflow}
@@ -663,29 +840,48 @@ imported automatically and never run directly.
     evaluates it on any dataset, generating per-image predictions and plots.
     \texttt{03\_02\_analyze.py} reads all \texttt{metrics.json} files and
     generates training-curve comparison plots.
+    \texttt{03\_03\_ensemble.py} combines several models' per-image
+    probabilities into an ensemble (mean / weighted / adaptive) for any dataset
+    and label mode, with a confusion-matrix plot.
+    \texttt{03\_04\_error\_analysis.py} ranks individual photos by how many
+    models misclassify them, and \texttt{03\_05\_per\_fruit.py} breaks the
+    own\_dataset evaluation down per fruit.
 
     \item \textbf{Stage 04 --- Reporting}
     \texttt{04\_01\_generate\_tracker.py} produces
-    \texttt{experiments\_tracker.xlsx} with color-coded run status.
+    \texttt{04\_01\_experiments\_tracker.xlsx} with color-coded run status.
     \texttt{04\_02\_generate\_eval\_report.py} produces
-    \texttt{eval\_report.xlsx} with ranked cross-dataset evaluation results.
+    \texttt{04\_02\_eval\_report.xlsx} with ranked cross-dataset results.
+    \texttt{04\_03\_generate\_own\_report.py} consolidates the own\_dataset
+    domain-adaptation findings (fine-tuning, per-fruit, error analysis, ensemble)
+    into \texttt{04\_03\_own\_dataset\_report.xlsx}, and
+    \texttt{04\_04\_generate\_benchmark\_report.py} builds
+    \texttt{04\_04\_benchmark\_report.xlsx} comparing our models against the
+    published papers of Section~\ref{sec:fruitstate}.
+    Domain-adaptation fine-tuning itself is performed by
+    \texttt{02\_02\_finetune.py}.
 \end{enumerate}
 
 \begin{figure}[h]
 \centering
 \begin{tabular}{ccccc}
 \fbox{\texttt{datasets/}} & $\longrightarrow$ &
-\fbox{\texttt{prepare\_datasets.py}} & $\longrightarrow$ &
+\fbox{\texttt{01\_01\_prepare\_datasets.py}} & $\longrightarrow$ &
 \fbox{\texttt{data/}} \\[6pt]
 & & & & $\downarrow$ \\[6pt]
-\fbox{\texttt{backbone.py}} & $\longrightarrow$ &
-\multicolumn{3}{c}{\fbox{\texttt{train.py}  $\longleftarrow$  \texttt{dataset.py}}} \\[6pt]
+\fbox{\texttt{\_backbone.py}} & $\longrightarrow$ &
+\multicolumn{3}{c}{\fbox{\texttt{02\_01\_train.py}  $\longleftarrow$  \texttt{\_dataset.py}}} \\[6pt]
 & & & & $\downarrow$ \\[6pt]
 & & \multicolumn{3}{c}{\fbox{\texttt{run\_outputs/\{run\_name\}/}}} \\[6pt]
 & & & & $\downarrow$ \\[6pt]
-& & \multicolumn{3}{c}{\fbox{\texttt{analyze.py} $\longrightarrow$ \texttt{run\_outputs/\_plots/}}}
+\fbox{\shortstack{\texttt{03\_01\_evaluate}\\\texttt{03\_03\_ensemble}}} & $\longrightarrow$ &
+\multicolumn{3}{c}{\fbox{\shortstack{
+\texttt{03\_02\_analyze} $\to$ \texttt{run\_outputs/\_plots/}\\
+\texttt{04\_0x\_generate\_*} $\to$ \texttt{*.xlsx} reports}}}
 \end{tabular}
-\caption{Data flow between the five software modules.}
+\caption{Data flow across the four numbered stages.
+Internal libraries (\texttt{\_backbone.py}, \texttt{\_dataset.py}) are imported,
+never run directly.}
 \label{fig:pipeline}
 \end{figure}
 
@@ -818,7 +1014,8 @@ condition+backbone combination):
 \end{itemize}
 
 All plots are saved to \texttt{run\_outputs/\_plots/}.
-Running \texttt{docs/prepare\_figures.py} copies them to
-\texttt{docs/figures/} for inclusion in this report.
+Running \texttt{prepare\_figures.py} copies them --- together with the ensemble
+confusion matrices from \texttt{run\_outputs/\_ensemble/} and the per-fruit
+breakdown --- into \texttt{figures/} for inclusion in this report.
 
 \end{document}

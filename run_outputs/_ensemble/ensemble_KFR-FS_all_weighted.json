@@ -1,0 +1,178 @@
+{
+  "eval_dataset": "kaggle_fruits_fresh_rotten",
+  "eval_mode": "fruit_state",
+  "classes": [
+    "apple_fresh",
+    "apple_rotten",
+    "banana_fresh",
+    "banana_rotten",
+    "orange_fresh",
+    "orange_rotten"
+  ],
+  "tag": "all",
+  "method": "weighted",
+  "n_members": 16,
+  "members": [
+    {
+      "id": "KFR-EB0-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b0_fs",
+      "val_f1": 0.996978,
+      "eval_f1": 0.997
+    },
+    {
+      "id": "KFR-EB2-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_efficientnet_b2_fs",
+      "val_f1": 0.995286,
+      "eval_f1": 0.9953
+    },
+    {
+      "id": "KFR-MN3-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_mobilenet_v3_small_fs",
+      "val_f1": 0.9871,
+      "eval_f1": 0.9871
+    },
+    {
+      "id": "KFR-R18-C1-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_frozen_resnet18_fs",
+      "val_f1": 0.977828,
+      "eval_f1": 0.9778
+    },
+    {
+      "id": "KFR-EB0-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_efficientnet_b0_fs",
+      "val_f1": 1.0,
+      "eval_f1": 1.0
+    },
+    {
+      "id": "KFR-EB2-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_efficientnet_b2_fs",
+      "val_f1": 0.999659,
+      "eval_f1": 0.9997
+    },
+    {
+      "id": "KFR-MN3-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_mobilenet_v3_small_fs",
+      "val_f1": 1.0,
+      "eval_f1": 1.0
+    },
+    {
+      "id": "KFR-R18-C3-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_frozen_resnet18_fs",
+      "val_f1": 0.994021,
+      "eval_f1": 0.994
+    },
+    {
+      "id": "KFR-EB0-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_efficientnet_b0_fs",
+      "val_f1": 0.994612,
+      "eval_f1": 0.9946
+    },
+    {
+      "id": "KFR-EB2-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_efficientnet_b2_fs",
+      "val_f1": 0.993577,
+      "eval_f1": 0.9936
+    },
+    {
+      "id": "KFR-MN3-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_mobilenet_v3_small_fs",
+      "val_f1": 0.992033,
+      "eval_f1": 0.992
+    },
+    {
+      "id": "KFR-R18-C4-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_head_layer4_resnet18_fs",
+      "val_f1": 0.996486,
+      "eval_f1": 0.9965
+    },
+    {
+      "id": "KFR-EB0-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_efficientnet_b0_fs",
+      "val_f1": 0.987469,
+      "eval_f1": 0.9875
+    },
+    {
+      "id": "KFR-EB2-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_efficientnet_b2_fs",
+      "val_f1": 0.98463,
+      "eval_f1": 0.9846
+    },
+    {
+      "id": "KFR-MN3-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_mobilenet_v3_small_fs",
+      "val_f1": 0.972501,
+      "eval_f1": 0.9725
+    },
+    {
+      "id": "KFR-R18-C2-FS",
+      "run": "kaggle_fruits_fresh_rotten_all_layer4_resnet18_fs",
+      "val_f1": 0.994608,
+      "eval_f1": 0.9946
+    }
+  ],
+  "best_single": {
+    "id": "KFR-EB0-C3-FS",
+    "f1": 1.0
+  },
+  "ensemble": {
+    "n_images": 2721,
+    "n_classes": 6,
+    "acc": 0.9996,
+    "f1_macro": 0.9997,
+    "precision_macro": 0.9996,
+    "recall_macro": 0.9997,
+    "mcc": 0.9996,
+    "confusion_matrix": [
+      [
+        418,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        588,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        392,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        551,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        371,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        400
+      ]
+    ],
+    "auc_roc": null
+  },
+  "delta_f1_pts": -0.03
+}

@@ -1,5 +1,5 @@
 """
-generate_tracker.py — Generate experiments_tracker.xlsx from existing run_outputs/.
+04_01_generate_tracker.py — Generate 04_01_experiments_tracker.xlsx from existing run_outputs/.
 
 Structure:
   One sheet per backbone + one SUMMARY sheet.
@@ -21,7 +21,7 @@ from openpyxl.utils import get_column_letter
 
 # ── Config ────────────────────────────────────────────────────
 RUN_DIR  = Path("run_outputs")
-OUT_FILE = Path("experiments_tracker.xlsx")
+OUT_FILE = Path("04_01_experiments_tracker.xlsx")
 
 BACKBONES = [
     "resnet18",
